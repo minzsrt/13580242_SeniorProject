@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
- 
-Route::get('hello', function(){ 
-    return 'Hello Laravel';
+Route::get('index', function(){ 
+    return view('index');
+});
+
+Route::get('search', function(){ 
+    return view('search');
 });
