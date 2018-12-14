@@ -22,3 +22,15 @@ Route::get('index', function(){
 Route::get('search', function(){ 
     return view('search');
 });
+
+Route::get('chatchannel', function(){ 
+    return view('chatchannel');
+});
+
+Route::get('notification', function(){ 
+    return view('notification');
+});
+
+Route::get('profileEmpoyer', function(){ 
+    return view('profileEmpoyer');
+});
