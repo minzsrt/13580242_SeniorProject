@@ -59,3 +59,6 @@ Route::get('orderstep4', function(){ return view('orderstep4');});
 Route::get('orderstep5', function(){ return view('orderstep5');});
 Route::get('orderstep6', function(){ return view('orderstep6');});
 Route::get('orderstep7', function(){ return view('orderstep7');});
+Route::get('listpayment', function(){ return view('listpayment');});
+Route::get('paymentsuccess', function(){ return view('paymentsuccess');});
+Route::get('internetbanking', function(){ return view('internetbanking');});
