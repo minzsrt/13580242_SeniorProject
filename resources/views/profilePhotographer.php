@@ -335,6 +335,17 @@
   </div>
 </div>
 
+    <nav class="container nav_bottom nav_bottom_profile">
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn_color" style="width:100%; margin:10px;">จ้างช่างภาพ</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn_color" style="background: #fff; color:#72AFD3; border:1px solid #72AFD3; width:100%; margin:10px;">ติดต่อสอบถาม</button>
+            </div>
+        </div>
+    </nav>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

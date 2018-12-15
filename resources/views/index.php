@@ -55,7 +55,7 @@
                     <h3 class="headder_text">ช่างภาพแนะนำ</h3>
                 </div>
                 <div class="col text_right">
-                    <a class="all_more_link" href="#"><i class="fas fa-ellipsis-v"></i></a> 
+                    <a class="all_more_link" href="/recommendSetting"><i class="fas fa-ellipsis-v"></i></a> 
                 </div>
             </div>
         </div>
