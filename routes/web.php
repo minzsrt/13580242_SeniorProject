@@ -34,3 +34,15 @@ Route::get('notification', function(){
 Route::get('profileEmpoyer', function(){ 
     return view('profileEmpoyer');
 });
+
+Route::get('profilePhotographer', function(){ 
+    return view('profilePhotographer');
+});
+
+Route::get('package', function(){ 
+    return view('package');
+});
+
+Route::get('searchResult', function(){ 
+    return view('searchResult');
+});

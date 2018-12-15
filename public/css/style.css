@@ -44,7 +44,7 @@ nav{
     margin-bottom: -15px;
 }
 .menu_list_profile_text{
-    font-size: 12px;
+    font-size: 10px;
 }
 .btn_fav{
     height: 20px;
@@ -110,6 +110,18 @@ select.select_search {
     margin: 20px auto;
     font-size: 14px;
 }
+.btn_color_follow{
+    width:auto;
+    height:40px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+.btn_color_employ{
+    width:auto;
+    height:35px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
 .btn_layout{
     width:100%;
     height:40px;
@@ -137,10 +149,96 @@ select.select_search {
     border: 1px solid #AEAEAE;
     font-size: 12px;
 }
-
+.btn_layout_back{
+    width: 75px;
+    height:30px;
+    background:#fff;
+    color:#72afd3;
+    border-radius:20px;
+    border: 1px solid #72afd3;
+    font-size: 12px;
+}
+.btn_layout_equipment{
+    width:auto;
+    height:35px;
+    padding: 7px;
+    background:#fff;
+    color:#72afd3;
+    border-radius:20px;
+    border: 1px solid #72afd3;
+    font-size: 12px;
+}
+.btn_catagory{
+    height:60px; 
+    color:#fff; 
+    border-radius:10px; 
+    overflow:hidden; 
+    margin:0 10px; 
+    text-align:center; 
+    background:#37ECBA;
+    background-image: url(../assets/image/img_show01.png);
+    background-size: cover;
+}
+.btn_catagory_text{
+    height:100%;
+    background-image: linear-gradient(to bottom, rgba(114,175,211,0.5), rgba(76,192,223,0.5), rgba(0,208,223,0.5), rgba(0,223,210,0.5), rgba(55,236,186,0.5));
+    padding-top:18px; 
+}
+.slick-active .btn_catagory_text{
+    text-decoration: underline;
+    font-weight: bold;
+    transition: .3s ease-in-out;
+}
 .wrap_container_search{
     padding-top:20px; 
     margin: 0 20px auto !important; 
     box-shadow: 0px 5px 8px rgba(0,0,0,0.1); 
     border-radius:10px;
+}
+
+
+.month_years{
+	width: 100%;
+	margin: 40% auto 10px;
+	color: #00b8ec;
+}
+.datepicker{
+	width: 100%;
+	margin: 0 auto;
+}
+.datepicker tr{
+	height: 54px;
+}
+.datepicker td{
+	width: 54px;
+	border-radius: 100%;
+	vertical-align: middle;
+	margin: 0 5px;
+	cursor: pointer;
+}
+.datepicker td:hover{
+    background-image: linear-gradient(to bottom, #72afd3, #4cc0df, #00d0df, #00dfd2, #37ecba);
+	color: #fff;
+}
+.datepicker td:focus{
+    background-image: linear-gradient(to bottom, #72afd3, #4cc0df, #00d0df, #00dfd2, #37ecba);
+	color: #fff;
+}
+.activedate{
+    background-image: linear-gradient(to bottom, #72afd3, #4cc0df, #00d0df, #00dfd2, #37ecba);
+	color: #fff;
+}
+.active_employ_date{
+	opacity: 0.5;
+}
+.active_employ_date:hover{
+	color: #fff;
+}
+.price_package{
+    color: #ff3939;
+}
+.detail_pack{
+    color:#707070;
+    font-size: 14px;
+    margin: 0;
 }
