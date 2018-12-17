@@ -24,22 +24,22 @@
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/search'">
                     <img class="menu_list_active" src="assets/image/circle.svg">
-                    <img class="menu_list" src="assets/image/home-button.svg">
+                    <img class="menu_list" src="assets/image/search.svg">
                 </button>
                 </div>
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/chatchannel'">
-                    <img class="menu_list" src="assets/image/home-button.svg" >
+                    <img class="menu_list" src="assets/image/speech-bubbles.svg" >
                 </button>
                 </div>
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/notification'">
-                    <img class="menu_list" src="assets/image/home-button.svg" >
+                    <img class="menu_list" src="assets/image/notification.svg" >
                 </button>
                 </div>
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/profileEmpoyer'">
-                    <img class="menu_list" src="assets/image/home-button.svg" >
+                    <img class="menu_list" src="assets/image/friend.svg" >
                 </button>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                     <option value="3">Three</option>
                 </select>
             </div>
-            <button class="btn_color">Search</button>
+            <button class="btn_color" onclick="window.location.href='/searchResult'">Search</button>
         </div>
     </div>
     

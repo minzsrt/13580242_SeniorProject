@@ -17,7 +17,6 @@
             <div class="row" style="height:100%;">
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/index'">
-                    <img class="menu_list_active" src="assets/image/circle.svg">
                     <img class="menu_list" src="assets/image/home-button.svg">
                 </button>
                 </div>
@@ -38,6 +37,7 @@
                 </div>
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/profileEmpoyer'">
+                    <img class="menu_list_active" src="assets/image/circle.svg">
                     <img class="menu_list" src="assets/image/friend.svg" >
                 </button>
                 </div>
@@ -204,7 +204,7 @@
                 <h3 class="headder_text">รับปริญญา</h3>
             </div>
             <div class="col text_right">
-                <a class="all_more_link" href="searchResult">ดูทั้งหมด</a> 
+                <a class="all_more_link" href="#">ดูทั้งหมด</a> 
             </div>
         </div>
     </div>
@@ -360,7 +360,7 @@
                 <h3 class="headder_text">ภาพบุคคล/แฟชั่น</h3>
             </div>
             <div class="col text_right">
-                <a class="all_more_link" href="/searchResult">ดูทั้งหมด</a> 
+                <a class="all_more_link" href="#">ดูทั้งหมด</a> 
             </div>
         </div>
     </div>
