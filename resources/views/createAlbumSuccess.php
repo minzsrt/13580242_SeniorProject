@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Create Album Success</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
+    <link href="css/style.css" rel="stylesheet"> 
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text_center" style="padding-top: 70%">
+                <img src="assets/image/check.svg" height="35"><br><br>
+                <span class="headder_text">สร้างอัลบั้มแล้ว</span><br><br>
+                <button class="btn_color btn_color_follow" onclick="window.location.href='profile_Photographer'">ตกลง</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

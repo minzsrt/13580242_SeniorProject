@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ProfileEmpoyer</title>
+    <title>Profile Photograpgher</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -17,9 +17,37 @@
     </style>
 </head>
 <body>
-    
+
+
+<nav>
+        <div class="container" style="height:100%;">
+            <div class="row" style="height:100%;">
+                <div class="col">
+                <button class="btn_menu_list" onclick="window.location.href='/index'">
+                    <img class="menu_list" src="assets/image/home-button.svg">
+                </button>
+                </div>
+                <div class="col">
+                <button class="btn_menu_list" onclick="window.location.href='/chatchannel'">
+                    <img class="menu_list" src="assets/image/speech-bubbles.svg" >
+                </button>
+                </div>
+                <div class="col">
+                <button class="btn_menu_list" onclick="window.location.href='/notification'">
+                    <img class="menu_list" src="assets/image/notification.svg" >
+                </button>
+                </div>
+                <div class="col">
+                <button class="btn_menu_list" onclick="window.location.href='/profile_Photographer'">
+                    <img class="menu_list_active" src="assets/image/circle.svg">
+                    <img class="menu_list" src="assets/image/friend.svg" >
+                </button>
+                </div>
+            </div>
+        </div>
+</nav>
+
     <section style="height:60px; padding:20px;">    
-        <button class="btn_layout_back">กลับ</button> 
     </section>
 
     <div class="container wrap_container_head">
@@ -40,7 +68,7 @@
                 </div>        
             </div>
             <div class="col text_right" style="padding-top:20px;">
-                <button class="btn_color btn_color_follow">ติดตาม</button>
+                <button class="btn_layout_back">ตั้งค่า</button>
             </div>
         </div>
 
@@ -76,51 +104,27 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="menu1">
-    <div class="center" style="margin-bottom:20px;">
-            <div class="btn_catagory" style="height:60px;">
-                <div class="btn_catagory_text">
-                    <span>ทั้งหมด</span> 
+  <div class="tab-pane active container" id="menu1">
+    <div class="card" style="border:0; margin:10px auto; ">
+       <button class="btn" onclick="window.location.href='/createAlbum'" style="height:60px; padding: 0; border-radius: 10px; border: 1px dashed #a3a3a3; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+        <i class="fas fa-plus-circle"></i>
+       </button> 
+    </div>
+    <div class="card" style="margin:10px auto; padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+            <div style="width:100%; height:auto; overflow: hidden; position:relative; border-radius: 10px;">
+                <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
+                    <div style="float:left;">
+                        <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">ภาพถ่ายบุคคล</span>
+                        <h3 style="font-size:14px; padding-right:10px; color:#fff; padding-top:5px;">Caption</h3>
+                    </div>
+                    <div class="col text_right" style="padding-top: 10px; color:#fff;">
+                        <span>614 </span><img class="btn_fav" src="assets/image/heart_layout.svg">
+                    </div>
                 </div>
-            </div>
-            <div class="btn_catagory" style="height:60px;">
-                <div class="btn_catagory_text">
-                    <span>รับปริญญา</span> 
-                </div>
-            </div>
-            <div class="btn_catagory" style="height:60px;">
-                <div class="btn_catagory_text">
-                    <span>ภาพบุคคล/แฟชั่น</span> 
-                </div>
-            </div>
-            <div class="btn_catagory" style="height:60px;">
-                <div class="btn_catagory_text">
-                    <span>งานแต่งงาน</span> 
-                </div>
-            </div>
-            <div class="btn_catagory" style="height:60px;">
-                <div class="btn_catagory_text">
-                    <span>พรีเวดดิ้ง</span> 
-                </div>
-            </div>
-            <div class="btn_catagory" style="height:60px;">
-                <div class="btn_catagory_text">
-                    <span>งานอีเวนต์</span> 
-                </div>
-            </div>
-            <div class="btn_catagory" style="height:60px;">
-                <div class="btn_catagory_text">
-                    <span>สถาปัตยกรรม</span> 
-                </div>
-            </div>
-            <div class="btn_catagory" style="height:60px;">
-                <div class="btn_catagory_text">
-                    <span>สินค้า/อาหาร</span> 
-                </div>
+                <img class="card-img-top" src="assets/image/img_show02.jpg">    
             </div>
     </div>
-    <!-- container -->
-    <div class="card" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+    <div class="card" style="margin:10px auto; padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
             <div style="width:100%; height:auto; overflow: hidden; position:relative; border-radius: 10px;">
                 <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
                     <div style="float:left;">
@@ -133,34 +137,6 @@
                 </div>
                 <img class="card-img-top" src="assets/image/img_show03.jpg">    
             </div>
-            <!-- <div class="card-body" style="padding:10px">
-                <div class="row">
-                    <div class="col-2">
-                        <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                            <img src="assets/image/avatar01.jpg" style="height:100%;">    
-                        </div>
-                    </div>
-                    <div class="col-6" style="font-size:10px;">
-                        <div class="row">
-                            <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
-                                <span>Username</span>
-                            </div>
-                            <div class="col-12">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                    
-                    </div>
-                    <div class="col-4 text_right">
-                        <span style="font-size:10px; padding-right:10px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:10px;">900 ฿</h3>
-                    </div>
-                </div>
-            </div> -->
     </div>
   </div>
 
@@ -196,8 +172,13 @@
                 <div class="col-1 text_center">
                     <i class="fas fa-angle-right"></i>
                 </div>
-            </div>        
+            </div>      
         </div>
+        <div class="card" style="border:0; margin:10px auto; ">
+                <button class="btn" style="height:60px; padding: 0; border-radius: 10px; border: 1px dashed #a3a3a3; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+                    <i class="fas fa-plus-circle"></i>
+                </button> 
+        </div>  
         <div class="container wrap_container_head">
             <div class="row">
                 <div class="col">
@@ -332,17 +313,6 @@
         </div>
   </div>
 </div>
-
-    <nav class="container nav_bottom nav_bottom_profile">
-        <div class="row">
-            <div class="col">
-                <button type="submit" class="btn_color" style="width:100%; margin:10px;">จ้างช่างภาพ</button>
-            </div>
-            <div class="col">
-                <button type="submit" class="btn_color" style="background: #fff; color:#72AFD3; border:1px solid #72AFD3; width:100%; margin:10px;">ติดต่อสอบถาม</button>
-            </div>
-        </div>
-    </nav>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>

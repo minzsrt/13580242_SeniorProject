@@ -61,9 +61,13 @@
                 <span class="all_more_link">ประเภทงาน</span>
                 <select class="select_search" style="">
                     <option selected>เลือกประเภทงาน...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">รับปริญญา</option>
+                    <option value="2">ภาพบุคคล/แฟชั่น</option>
+                    <option value="3">งานแต่งงาน</option>
+                    <option value="1">พรีเวดดิ้ง</option>
+                    <option value="2">งานอีเวนต์</option>
+                    <option value="3">สถาปัตยกรรม</option>
+                    <option value="3">สินค้า/อาหาร</option>
                 </select>
             </div>
             <div class="col-md" style="margin-top:10px;">
