@@ -405,7 +405,7 @@ select.select_search {
     background-color:#ffffff;
     text-align:center;
     z-index:99;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     top: auto;
@@ -414,3 +414,44 @@ select.select_search {
     box-shadow: 0px -5px 8px rgba(0,0,0,0.1);
   }
 
+  .album_show_wrap{
+    padding: 0;
+    border-radius: 10px;
+    border:0;
+    box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+    margin: 10px auto;
+  }
+  .album_show{
+    width:100%;
+    height:auto;
+    overflow:hidden;
+    position:relative;
+    border-radius: 10px;
+  }
+.album_show_detail_group{
+    position: absolute;
+    width:100%;
+    padding:10px 0px 10px 10px;
+}
+.float_left{
+    float:left;
+}
+.hastag_album{
+    font-size:10px;
+    border:1px solid #fff;
+    border-radius:20px;
+    padding:3px 8px;
+    color:#fff;
+}
+.caption_album{
+    font-size:14px;
+    padding-right:10px;
+    color:#fff;
+    padding-top:5px;
+}
+.fav_count{
+    padding-top: 10px; color:#fff;
+}
+.center{
+    width:100%;
+}

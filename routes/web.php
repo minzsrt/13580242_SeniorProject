@@ -7,7 +7,8 @@ Route::get('chatchannel', function(){ return view('chatchannel');});
 Route::get('notification', function(){ return view('notification');});
 Route::get('profileEmpoyer', function(){  return view('profileEmpoyer');});
 
-Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
+Route::resource('profilePhotographer', 'AlbumsController');
+// Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
 Route::get('package', function(){ return view('package');});
 
 Route::get('searchResult', function(){ return view('searchResult');});
