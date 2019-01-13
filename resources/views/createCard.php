@@ -24,6 +24,7 @@
                 <button type="submit" class="btn_color" onclick="window.location.href='listPackage'" style="background:#72AFD3; width:100%; margin:0;">สร้าง</button>
                 </div>
             </div>
+            
     </section>
 
     <div class="container">

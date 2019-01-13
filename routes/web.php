@@ -34,4 +34,5 @@ Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');}
 Route::get('createCard', function(){ return view('createCard');});
 Route::get('listPackage', function(){ return view('listPackage');});
 Route::get('listTag', function(){ return view('listTag');});
+Route::get('mn_order', function(){ return view('mn_order');});
 
