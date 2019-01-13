@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Album; 
+use Request;
 
 class AlbumsController extends Controller
 {
@@ -11,10 +11,14 @@ class AlbumsController extends Controller
         $albums = Album::all();
         return view('profilePhotographer', compact('albums'));
     }
-    // public function show($id_album){
-    //     $albums = Article::find($id_album);
-    //     if(empty($album))
-    //         abort(404);
-    //     return view('profilePhotographer.show', compact('profilePhotographer')); 
-    // }
+
+    public function create(){
+        return view('createAlbum');
+    }
+    
+    public function store(){
+        $input = Request::all();
+        Album::create($input);
+        Return redirect('createAlbumSuccess'); 
+    }
 }

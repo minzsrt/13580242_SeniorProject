@@ -21,7 +21,7 @@
     <div class="container wrap_container_head">
         <div class="row">
             <div class="col">
-                <h3 class="headder_text">ค่าบริการถ่ายภาพรับปริญญา</h3>
+                <h3 class="headder_text">ค่าบริการถ่ายภาพภาพบุคคล/แฟชั่น</h3>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                         <button class="btn_color btn_color_employ">จ้างงาน</button>
                     </div>
                 </div>
-                <img class="card-img-top" src="assets/image/img_show03.jpg">    
+                <img class="card-img-top" src="assets/image/img_show_0201.jpg">    
             </div>
             <div class="card-body" style="padding:20px">
                 <div class="row">

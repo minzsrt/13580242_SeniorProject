@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <span class="all_more_link">ชั่วโมง</span>
+        <span class="all_more_link">วันที่</span>
 
         <div class="row">
             <div class="col">

@@ -8,6 +8,8 @@ Route::get('notification', function(){ return view('notification');});
 Route::get('profileEmpoyer', function(){  return view('profileEmpoyer');});
 
 Route::resource('profilePhotographer', 'AlbumsController');
+Route::get('createAlbum', 'AlbumsController@create');
+
 // Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
 Route::get('package', function(){ return view('package');});
 
@@ -30,7 +32,7 @@ Route::get('internetbanking', function(){ return view('internetbanking');});
 Route::get('index_ptg', function(){ return view('index_ptg');});
 Route::get('yourBank', function(){ return view('yourBank');});
 Route::get('profile_Photographer', function(){ return view('profile_Photographer');});
-Route::get('createAlbum', function(){ return view('createAlbum');});
+// Route::get('createAlbum', function(){ return view('createAlbum');});
 Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');});
 Route::get('createCard', function(){ return view('createCard');});
 Route::get('listPackage', function(){ return view('listPackage');});

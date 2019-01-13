@@ -455,3 +455,8 @@ select.select_search {
 .center{
     width:100%;
 }
+.btn_color_bar{
+    background:#72AFD3;
+    width:100%;
+    margin:0;
+}

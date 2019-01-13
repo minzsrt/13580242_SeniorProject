@@ -99,7 +99,7 @@
                 <div class="row">
                     <div class="col-2">
                         <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                            <img src="assets/image/avatar01.jpg" style="height:100%;">    
+                            <img src="assets/image/avatar02.jpg" style="height:100%;">    
                         </div>
                     </div>
                     <div class="col-6" style="font-size:10px;">
@@ -132,7 +132,7 @@
                 <div class="row">
                     <div class="col-2">
                         <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                            <img src="assets/image/avatar01.jpg" style="height:100%;">    
+                            <img src="assets/image/avatar02.jpg" style="height:100%;">    
                         </div>
                     </div>
                     <div class="col-10" style="font-size:10px;">
@@ -156,10 +156,10 @@
                 <div style="width:160px; height:160px; border-radius:10px; overflow: hidden; position:relative; float:left; margin-right:10px;">
                     <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
                         <div style="float:left;">
-                            <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">รับปริญญา</span>
+                            <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">ภาพบุคคล/แฟชั่น</span>
                         </div>
                     </div>
-                    <img style="height:100%;" src="assets/image/img_show02.jpg">    
+                    <img style="height:100%;" src="assets/image/img_show03.jpg">    
                 </div>
                 <div style="width:160px; height:160px; border-radius:10px; overflow: hidden; position:relative;">
                     <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">

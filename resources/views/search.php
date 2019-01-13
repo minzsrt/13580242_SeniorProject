@@ -86,7 +86,7 @@
                 <span class="all_more_link">วันที่</span>
                 <input type="date" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
             </div>
-            <div class="col-md" style="margin-top:10px;">
+            <div class="col-md" style="margin-top:10px; font-size:14px;">
                 <span class="all_more_link">เวลา</span>
                 <div class="row">
                     <div class="col">

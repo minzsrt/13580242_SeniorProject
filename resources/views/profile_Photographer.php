@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-3">
                 <div style="width:80px; height:80px; border-radius:40px; overflow: hidden;">
-                    <img src="assets/image/avatar01.jpg" style="height:100%;">   
+                    <img src="assets/image/avatar05.jpg" style="height:100%;">   
                 </div>
             </div>
             <div class="col" style="padding-top:20px;">
@@ -207,7 +207,7 @@
                 <div class="row">
                     <div class="col-2">
                         <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                            <img src="assets/image/avatar05.jpg" style="height:100%;">    
+                            <img src="assets/image/avatar04.jpg" style="height:100%;">    
                         </div>
                     </div>
                     <div class="col-6" style="font-size:10px;">
