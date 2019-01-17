@@ -7,8 +7,15 @@ Route::get('chatchannel', function(){ return view('chatchannel');});
 Route::get('notification', function(){ return view('notification');});
 Route::get('profileEmpoyer', function(){  return view('profileEmpoyer');});
 
-Route::resource('profilePhotographer', 'AlbumsController');
+// Route::resource('profilePhotographer', 'AlbumsController');
+
+Route::resource('profile_Photographer', 'AlbumsController');
+Route::get('photographer/show/{id}', 'AlbumsController@show');
 Route::get('createAlbum', 'AlbumsController@create');
+Route::get('photographer/show/{id}/edit', 'AlbumsController@edit');
+Route::get('photographer/show/{id}/update', 'AlbumsController@update');
+
+
 
 // Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
 Route::get('package', function(){ return view('package');});
@@ -31,7 +38,7 @@ Route::get('internetbanking', function(){ return view('internetbanking');});
 
 Route::get('index_ptg', function(){ return view('index_ptg');});
 Route::get('yourBank', function(){ return view('yourBank');});
-Route::get('profile_Photographer', function(){ return view('profile_Photographer');});
+// Route::get('profile_Photographer', function(){ return view('profile_Photographer');});
 // Route::get('createAlbum', function(){ return view('createAlbum');});
 Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');});
 Route::get('createCard', function(){ return view('createCard');});

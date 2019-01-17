@@ -4,21 +4,43 @@ namespace App\Http\Controllers;
 
 use App\Album; 
 use Request;
+use App\Http\Requests\AlbumRequest;
+
 
 class AlbumsController extends Controller
 {
     public function index(){
         $albums = Album::all();
-        return view('profilePhotographer', compact('albums'));
+        // return view('profilePhotographer', compact('albums'));
+        return view('photographer.profile_Photographer', compact('albums'));
+    }
+
+    public function show($id){
+        $album = Album::find($id);
+        if(empty($album))
+        abort(404);
+        return view('photographer.show', compact('album')); 
     }
 
     public function create(){
         return view('createAlbum');
     }
     
-    public function store(){
-        $input = Request::all();
-        Album::create($input);
-        Return redirect('createAlbumSuccess'); 
+    public function store(AlbumRequest $request){
+        Album::create($request->all());
+        return redirect('createAlbumSuccess'); 
+        
+    }
+
+    public function edit($id){
+        $album = Album::find($id); if(empty($album))
+        abort(404);
+        return view('photographer.edit', compact('album'));
+    }
+
+    public function update($id, AlbumRequest $request){
+        $album = Album::findOrFail($id); 
+        $album->update($request->all());
+        return redirect('profile_Photographer');
     }
 }

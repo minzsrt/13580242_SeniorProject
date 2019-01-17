@@ -10,11 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
     <link href="css/style.css" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <style>
-        .center{
-            width:100%;
-        }
-    </style>
 </head>
 <body>
 
@@ -104,39 +99,37 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active container" id="menu1">
+
     <div class="card" style="border:0; margin:10px auto; ">
        <button class="btn" onclick="window.location.href='/createAlbum'" style="height:60px; padding: 0; border-radius: 10px; border: 1px dashed #a3a3a3; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
         <i class="fas fa-plus-circle"></i>
        </button> 
     </div>
-    <div class="card" style="margin:10px auto; padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-            <div style="width:100%; height:auto; overflow: hidden; position:relative; border-radius: 10px;">
-                <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
-                    <div style="float:left;">
-                        <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">ภาพถ่ายบุคคล</span>
-                        <h3 style="font-size:14px; padding-right:10px; color:#fff; padding-top:5px;">Caption</h3>
-                    </div>
-                    <div class="col text_right" style="padding-top: 10px; color:#fff;">
-                        <span>614 </span><img class="btn_fav" src="assets/image/heart_layout.svg">
-                    </div>
+
+    @foreach($albums as $album)
+                <div class="card album_show_wrap">
+                        <div class="album_show">
+                            <div class="album_show_detail_group">
+                                <div class="float_left">
+                                    <span class="hastag_album">ภาพถ่ายบุคคล</span>
+                                    <h3 class="caption_album">{{ $album->caption }}</h3>
+                                </div>
+                                <div class="col text_right fav_count">
+                                    <span>614 </span><img class="btn_fav" src="assets/image/heart_layout.svg">
+                                </div>
+                            </div>
+                            <img class="card-img-top" src="assets/image/img_show_020{{ $album->id }}.jpg">  
+                            <a href="{{ url('photographer/show', $album->id) }}">
+                                 {{ $album->caption }}
+                            </a>  
+                            <a 	href="{{ url("photographer/show/{$album->id}/edit/") }}">
+								<i class="glyphicon glyphicon-pencil"></i> แก้ไขเรื่องนี้
+							</a>
+
+                        </div>
                 </div>
-                <img class="card-img-top" src="assets/image/img_show02.jpg">    
-            </div>
-    </div>
-    <div class="card" style="margin:10px auto; padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-            <div style="width:100%; height:auto; overflow: hidden; position:relative; border-radius: 10px;">
-                <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
-                    <div style="float:left;">
-                        <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">ภาพถ่ายบุคคล</span>
-                        <h3 style="font-size:14px; padding-right:10px; color:#fff; padding-top:5px;">Caption</h3>
-                    </div>
-                    <div class="col text_right" style="padding-top: 10px; color:#fff;">
-                        <span>614 </span><img class="btn_fav" src="assets/image/heart_layout.svg">
-                    </div>
-                </div>
-                <img class="card-img-top" src="assets/image/img_show03.jpg">    
-            </div>
-    </div>
+    @endforeach
+    
   </div>
 
   <div class="tab-pane container" id="menu2">

@@ -14,7 +14,7 @@ class CreateAlbumsTable extends Migration
     public function up()
     {
         Schema::create('albums', function (Blueprint $table) {
-            $table->increments('id_album');
+            $table->increments('id');
             $table->text('caption');
             $table->timestamps();
             $table->timestamp('published_at')->nullable();

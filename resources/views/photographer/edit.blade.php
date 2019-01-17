@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Create Album</title>
+    <title>Edit Album</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -11,17 +11,18 @@
     <link href="css/style.css" rel="stylesheet"> 
 </head>
 <body>
-{!! Form::open(['url' => 'profilePhotographer']) !!}
+
+{!! Form::model($album, ['method' => 'GET','action' => ['AlbumsController@update', $album->id]]) !!}
     <section style="height:60px; padding:20px;">  
             <div class="row">
                 <div class="col-1">
                     <button class="btn" style="background:#fff;"><</button> 
                 </div>
                 <div class="col-6">
-                    <h3 class="headder_text" style="padding: 5px;">สร้างอัลบั้ม</h3>
+                    <h3 class="headder_text" style="padding: 5px;">แก้ไขอัลบั้ม</h3>
                 </div>
                 <div class="col">
-                {!! Form::submit('สร้างอัลบั้ม',['class' => 'btn_color btn_color_bar']) !!}
+                {!! Form::submit('แก้ไขอัลบั้ม',['class' => 'btn_color btn_color_bar']) !!}
                 </div>
             </div>
     </section>

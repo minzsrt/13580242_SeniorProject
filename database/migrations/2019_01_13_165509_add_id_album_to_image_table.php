@@ -15,8 +15,8 @@ class AddComicsIdToChapterTable extends Migration
     {
         Schema::table('images_album', function (Blueprint $table) {
             $table->integer('id_album')->unsigned()->default(1);
-            $table->foreign('id_album', 'album_image_foreign')
-                ->references('id_album')
+            $table->foreign('id', 'album_image_foreign')
+                ->references('id')
                 ->on('albums')
                 ->onDelete('cascade');
         });
