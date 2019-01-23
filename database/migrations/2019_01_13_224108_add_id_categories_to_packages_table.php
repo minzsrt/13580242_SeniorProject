@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIdAlbumToImageTable extends Migration
+class AddIdCategoriesToPackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class AddIdAlbumToImageTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::table('images_album', function (Blueprint $table) {
-            $table->integer('id_album')->unsigned()->default(1);
-            $table->foreign('id', 'album_image_foreign')
+    {           
+        Schema::table('packages', function (Blueprint $table) {
+            $table->integer('id_category')->unsigned();
+            $table->foreign('id', 'category_package_foreign')
                 ->references('id')
-                ->on('albums')
+                ->on('categories')
                 ->onDelete('cascade');
         });
     }
@@ -29,7 +29,7 @@ class AddIdAlbumToImageTable extends Migration
      */
     public function down()
     {
-        Schema::table('images_album', function (Blueprint $table) {
+        Schema::table('packages', function (Blueprint $table) {
             //
         });
     }
