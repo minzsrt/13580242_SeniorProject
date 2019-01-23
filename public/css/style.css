@@ -460,3 +460,37 @@ select.select_search {
     width:100%;
     margin:0;
 }
+
+/* choose file */
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.btn_choose {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: none;
+    border: none;
+}
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    height: 100%;
+}
+.album_show_rlt{
+    position: relative;
+}
+.wrap_choose_file{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+  /* choose file */

@@ -27,9 +27,15 @@
     </section>
 
     <div class="container">
-    <div class="card album_show_wrap">
+    <div class="card album_show_wrap album_show_rlt">
             <div class="album_show">
-                <img class="card-img-top" src="assets/image/img_show03.jpg">    
+                <img src="assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
+            </div>
+            <div class="wrap_choose_file">
+                <div class="upload-btn-wrapper">
+                    <button class="btn_choose"><span class="hastag_album">Choose Cover Album...</span></button>
+                    <input type="file" name="file" id="profile-img"/>
+                </div>
             </div>
     </div>
 
@@ -60,5 +66,23 @@
         </div>
     </div>
 {!! Form::close() !!}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#profile-img").change(function(){
+        readURL(this);
+    });
+
+</script>
+
 </body>
 </html>
