@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Album; 
+use App\PackageCard;
 use Request;
 use App\Http\Requests\AlbumRequest;
 
@@ -11,7 +12,8 @@ class AlbumsController extends Controller
 {
     public function index(){
         $albums = Album::all();
-        return view('photographer.profile_Photographer', compact('albums'));
+        $package_cards = PackageCard::all();
+        return view('photographer.profile_Photographer', compact('albums','package_cards'));
     }
 
     public function show($id){

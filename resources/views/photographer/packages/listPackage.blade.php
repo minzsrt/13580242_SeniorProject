@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="card" style="border:0; margin:10px auto; ">
-       <button class="btn" onclick="window.location.href='/createAlbum'" style="height:60px; padding: 0; border-radius: 10px; border: 1px dashed #a3a3a3; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+       <button class="btn" onclick="window.location.href='/createPackageCard'" style="height:60px; padding: 0; border-radius: 10px; border: 1px dashed #a3a3a3; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
         <i class="fas fa-plus-circle"></i>
        </button> 
     </div>

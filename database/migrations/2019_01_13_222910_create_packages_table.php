@@ -13,7 +13,7 @@ class CreatePackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('package_cards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('price');
             $table->text('detail');
@@ -30,6 +30,6 @@ class CreatePackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packages');
+        Schema::dropIfExists('package_cards');
     }
 }

@@ -13,7 +13,7 @@ class AddIdCategoriesToPackagesTable extends Migration
      */
     public function up()
     {           
-        Schema::table('packages', function (Blueprint $table) {
+        Schema::table('package_cards', function (Blueprint $table) {
             $table->integer('id_category')->unsigned();
             $table->foreign('id', 'category_package_foreign')
                 ->references('id')
@@ -29,7 +29,7 @@ class AddIdCategoriesToPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('packages', function (Blueprint $table) {
+        Schema::table('package_cards', function (Blueprint $table) {
             //
         });
     }

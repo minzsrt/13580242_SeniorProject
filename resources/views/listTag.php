@@ -33,7 +33,7 @@
                         <h3  style="font-size:14px; padding-right:20px;">600 ฿</h3>
                     </div>
                 </div>
-                <input type="radio" checked="checked" name="radio">
+                <input type="radio" name="radio">
                 <span class="checkmark"></span>
                 </label>
 

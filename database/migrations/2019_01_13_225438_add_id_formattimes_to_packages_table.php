@@ -13,7 +13,7 @@ class AddIdFormattimesToPackagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('packages', function (Blueprint $table) {
+        Schema::table('package_cards', function (Blueprint $table) {
             $table->integer('id_formattime')->unsigned();
             $table->foreign('id', 'formattime_package_foreign')
                 ->references('id')
@@ -29,7 +29,7 @@ class AddIdFormattimesToPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('packages', function (Blueprint $table) {
+        Schema::table('package_cards', function (Blueprint $table) {
             //
         });
     }

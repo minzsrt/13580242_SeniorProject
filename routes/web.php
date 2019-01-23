@@ -16,6 +16,9 @@ Route::get('photographer/show/{id}/edit', 'AlbumsController@edit');
 Route::get('photographer/show/{id}/update', 'AlbumsController@update');
 Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');});
 
+Route::resource('listPackage', 'PackageCardsController');
+Route::get('createPackageCard', 'PackageCardsController@create');
+Route::get('createPackageCardSuccess', function(){ return view('createPackageCardSuccess');});
 
 
 // Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
@@ -41,8 +44,8 @@ Route::get('index_ptg', function(){ return view('index_ptg');});
 Route::get('yourBank', function(){ return view('yourBank');});
 // Route::get('profile_Photographer', function(){ return view('profile_Photographer');});
 // Route::get('createAlbum', function(){ return view('createAlbum');});
-Route::get('createCard', function(){ return view('createCard');});
-Route::get('listPackage', function(){ return view('listPackage');});
+// Route::get('createCard', function(){ return view('createCard');});
+// Route::get('listPackage', function(){ return view('listPackage');});
 Route::get('listTag', function(){ return view('listTag');});
 Route::get('mn_order', function(){ return view('mn_order');});
 
