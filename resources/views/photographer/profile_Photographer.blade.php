@@ -112,7 +112,7 @@
                             <div class="album_show_detail_group">
                                 <div class="float_left">
                                     <span class="hastag_album">ภาพถ่ายบุคคล</span>
-                                    <h3 class="caption_album">{{ $album->caption }}</h3>
+                                    <h3 class="caption_album">{{ $album->name_album }}</h3>
                                 </div>
                                 <div class="col text_right fav_count">
                                     <span>614 </span><img class="btn_fav" src="assets/image/heart_layout.svg">
@@ -120,7 +120,7 @@
                             </div>
                             <img class="card-img-top" src="assets/image/img_show_020{{ $album->id }}.jpg">  
                             <a href="{{ url('photographer/show', $album->id) }}">
-                                 {{ $album->caption }}
+                                 {{ $album->name_album }}
                             </a>  
                             <a 	href="{{ url("photographer/show/{$album->id}/edit/") }}">
 								<i class="glyphicon glyphicon-pencil"></i> แก้ไขเรื่องนี้

@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-8" style="font-size:10px;">
                         <span class="hastag_album" style="color:#000;">ภาพถ่ายบุคคล</span>
-                        <h3 class="headder_text" style="color:#000;">{{ $album->caption }}</h3>
+                        <h3 class="headder_text" style="color:#000;">{{ $album->name_album }}</h3>
                     </div>
                     <div class="col text_right fav_count">
                         <span style="color:#000;">614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">

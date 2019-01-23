@@ -24,7 +24,7 @@ class AlbumRequest extends FormRequest
     public function rules()
     {
         return [
-            'caption' => 'required|min:5|max:255'
+            'name_album' => 'required|min:5|max:255'
         ];
     }
 }

@@ -11,7 +11,6 @@ class AlbumsController extends Controller
 {
     public function index(){
         $albums = Album::all();
-        // return view('profilePhotographer', compact('albums'));
         return view('photographer.profile_Photographer', compact('albums'));
     }
 
@@ -23,7 +22,7 @@ class AlbumsController extends Controller
     }
 
     public function create(){
-        return view('createAlbum');
+        return view('photographer.createAlbum');
     }
     
     public function store(AlbumRequest $request){

@@ -11,7 +11,7 @@
     <link href="css/style.css" rel="stylesheet"> 
 </head>
 <body>
-{!! Form::open(['url' => 'profilePhotographer']) !!}
+{!! Form::open(['url' => 'profile_Photographer']) !!}
     <section style="height:60px; padding:20px;">  
             <div class="row">
                 <div class="col-1">
@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                        {!! Form::text('caption', null, ['class'=>'form-control']) !!}
+                        {!! Form::text('name_album', null, ['class'=>'form-control']) !!}
                         <div>
                     </div>
                 </div>
