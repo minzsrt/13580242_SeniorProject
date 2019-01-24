@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col" style="padding-top:20px;">
-                <span>{{ Auth::user()->name }}</span>
+                <span>{{ Auth::user()->username }}</span>
                 <div style="font-size:10px;">
                 <i class="fas fa-star checked"></i>
                 <i class="fas fa-star checked"></i>

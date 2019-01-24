@@ -5,29 +5,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="">
-            <div class="row">
-                <img class="logo" src="assets/image/logo.png">    
+            
+                <div class="row">
+                    <img class="logo" src="assets/image/logo.png">    
                 </div>
 
-                <div class="text_center">{{ __('สมัครสมาชิก') }}</div>
-
+                <h3 class="headder_text text_center margin_box20">
+                    {{ __('สร้างบัญชีของคุณ') }}
+                </h3>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="input_box form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="ชื่อผู้ใช้" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
@@ -36,6 +25,18 @@
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="input_box form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="ชื่อผู้ใช้" required autofocus>
+
+                                @if ($errors->has('username'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -66,9 +67,22 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div class="form-group row mb-0 bottom_fixed">
+                                <div class="col-md-8 offset-md-4 text_center">
+                                    <h3 class="headder_text">
+                                        หรือ สร้างบัญชีด้วย
+                                    </h3>
+                                </div> 
+                                <div class="col-md-8 offset-md-4">
+                                    <button class="btn_color_facebook btn_color_employ btn_width margin_box20">
+                                        {{ __('Facebook') }}
+                                    </button>
+                                </div>
+                        </div>
                     </form>
                 </div>
-            </div>
+            
         </div>
     </div>
 </div>

@@ -5,19 +5,19 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="">
-                <div class="row">
-                <img class="logo" src="assets/image/logo.png">    
+                <div class="row ">
+                    <img class="logo" src="assets/image/logo.png">    
                 </div>
 
-                <div class="text_center">{{ __('Login') }}</div>
+                <h3 class="headder_text text_center margin_box20">
+                    {{ __('เข้าสู่ระบบ') }}
+                </h3>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
-
                             <div class="col-md-6">
                                 <input id="email" type="email" class="input_box form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="อีเมล" required autofocus>
 
@@ -30,7 +30,6 @@
                         </div>
 
                         <div class="form-group row">
-
                             <div class="col-md-6">
                                 <input id="password" type="password" class="input_box form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="รหัสผ่าน" required>
 
@@ -63,14 +62,27 @@
                                 @endif
                             </div> 
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn_color btn_color_employ btn_width">
+                                <button type="submit" class="btn_color btn_color_employ btn_width margin_box20">
                                     {{ __('Login') }}
                                 </button>
                             </div>
                         </div>
+
+                            <div class="form-group row mb-0 bottom_fixed">
+                                <div class="col-md-8 offset-md-4 text_center">
+                                    <h3 class="headder_text">
+                                        หรือ เข้าสู่ระบบด้วย
+                                    </h3>
+                                </div> 
+                                <div class="col-md-8 offset-md-4">
+                                    <button class="btn_color_facebook btn_color_employ btn_width margin_box20">
+                                        {{ __('Facebook') }}
+                                    </button>
+                                </div>
+                            </div>
+                        
                     </form>
                 </div>
-            </div>
         </div>
     </div>
 </div>
