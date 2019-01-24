@@ -6,62 +6,62 @@
 {!! Form::model($package_card, ['method' => 'GET','action' => ['PackageCardsController@update', $package_card->id]]) !!}
 
     <div class="container">
-    <div class="row">
-            <div class="col-md">
-                <span class="all_more_link">รูปแบบงาน</span>
-                <div class="form-group">
-                {!! Form::select('id_formattime',['1' => 'ครึ่งวัน', '2' => 'เต็มวัน', '3' => 'รายชั่วโมง'],null,['class'=>'form-control select_search'],['placeholder' => 'เลือกรูปแบบงาน...']) !!}
-                </div>
-            </div>
-            <div class="col-md">
-                <span class="all_more_link">ราคา</span>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            {!! Form::number('price', null, ['class'=>'form-control']) !!} 
-                        <div>
+        <div class="row">
+                <div class="col-md">
+                    <span class="all_more_link">รูปแบบงาน</span>
+                    <div class="form-group">
+                    {!! Form::select('id_formattime',['1' => 'ครึ่งวัน', '2' => 'เต็มวัน', '3' => 'รายชั่วโมง'],null,['class'=>'form-control select_search'],['placeholder' => 'เลือกรูปแบบงาน...']) !!}
                     </div>
                 </div>
-            </div>
-            <div class="col-md">
-                <span class="all_more_link">สิ่งที่ลูกค้าจะได้รับ</span>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            {!! Form::textarea('detail',null,['class'=>'form-control textarea_edit']) !!}
+                <div class="col-md">
+                    <span class="all_more_link">ราคา</span>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                {!! Form::number('price', null, ['class'=>'form-control']) !!} 
+                            <div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md">
-                <span class="all_more_link">การจัดส่ง</span>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            {{ Form::radio('shipping', 1) }} Yes
-                            {{ Form::radio('shipping', 0) }} No
-                        <div>
+                <div class="col-md">
+                    <span class="all_more_link">สิ่งที่ลูกค้าจะได้รับ</span>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                {!! Form::textarea('detail',null,['class'=>'form-control textarea_edit']) !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md">
-                <span class="all_more_link">ค่าจัดส่ง</span>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            {!! Form::number('shipping_cost',null,['class'=>'form-control']) !!}
-                        <div>
+                <div class="col-md">
+                    <span class="all_more_link">การจัดส่ง</span>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                {{ Form::radio('shipping', 1) }} Yes
+                                {{ Form::radio('shipping', 0) }} No
+                            <div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-            {!! Form::hidden('id_category',1,['class'=>'form-control']) !!}
-            </div>
-           
-
+                <div class="col-md">
+                    <span class="all_more_link">ค่าจัดส่ง</span>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                {!! Form::number('shipping_cost',null,['class'=>'form-control']) !!}
+                            <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                {!! Form::hidden('id_category',1,['class'=>'form-control']) !!}
+                </div>
         </div>
     </div>
+
     <section style="height:60px;"></section>
+
     <nav class="container nav_bottom nav_bottom_profile">
         <div class="row">
             <div class="col">
@@ -75,8 +75,7 @@
             </div>
         </div>
     </nav>
-
-
+    
 {!! Form::close() !!}
 
 @stop

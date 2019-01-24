@@ -34,11 +34,10 @@
             <div class="wrap_choose_file">
                 <div class="upload-btn-wrapper">
                     <button class="btn_choose"><span class="hastag_album">Choose Cover Album...</span></button>
-                    <input type="file" name="file" id="profile-img"/>
+                    <input type="file" name="cover_album" id="profile-img"/>
                 </div>
             </div>
     </div>
-
     <div class="row">
             <div class="col-md" style="margin-top:10px;">
                 <span class="all_more_link">ชื่ออัลบั้ม</span>
@@ -52,16 +51,7 @@
             </div>
             <div class="col-md" style="margin-top:10px;">
                 <span class="all_more_link">แท็ก</span>
-                <select class="select_search" style="">
-                    <option selected>เลือกประเภทงาน...</option>
-                    <option value="1">รับปริญญา</option>
-                    <option value="2">ภาพบุคคล/แฟชั่น</option>
-                    <option value="3">งานแต่งงาน</option>
-                    <option value="1">พรีเวดดิ้ง</option>
-                    <option value="2">งานอีเวนต์</option>
-                    <option value="3">สถาปัตยกรรม</option>
-                    <option value="3">สินค้า/อาหาร</option>
-                </select>
+                {!! Form::select('id_category',['1' => 'รับปริญญา', '2' => 'ภาพบุคคล/แฟชั่น', '3' => 'งานแต่งงาน', '4' => 'พรีเวดดิ้ง', '5' => 'งานอีเวนต์', '6' => 'สถาปัตยกรรม', '7' => 'สินค้า/อาหาร'],null,['class'=>'form-control select_search'],['placeholder' => 'เลือกประเภทงาน...']) !!}
             </div>
         </div>
     </div>

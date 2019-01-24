@@ -101,17 +101,24 @@
   <div class="tab-pane active container" id="menu1">
 
     <div class="card" style="border:0; margin:10px auto; ">
-       <button class="btn" onclick="window.location.href='/createAlbum'" style="height:60px; padding: 0; border-radius: 10px; border: 1px dashed #a3a3a3; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+       <button class="btn btn_create" onclick="window.location.href='/createAlbum'">
         <i class="fas fa-plus-circle"></i>
        </button> 
     </div>
 
     @foreach($albums as $album)
+        <a href="{{ url("photographer/show/{$album->id}/edit/") }}">
                 <div class="card album_show_wrap">
                         <div class="album_show">
                             <div class="album_show_detail_group">
                                 <div class="float_left">
-                                    <span class="hastag_album">ภาพถ่ายบุคคล</span>
+                                    <span class="hastag_album">
+                                        @foreach($categories as $category)
+                                            @if( $category->id === $album->id_category)
+                                            {{ $category->name_category }}
+                                            @endif
+                                        @endforeach
+                                    </span>
                                     <h3 class="caption_album">{{ $album->name_album }}</h3>
                                 </div>
                                 <div class="col text_right fav_count">
@@ -119,20 +126,17 @@
                                 </div>
                             </div>
                             <img class="card-img-top" src="assets/image/img_show_020{{ $album->id }}.jpg">  
-                            <a href="{{ url('photographer/show', $album->id) }}">
+                            <!-- <a href="{{ url('photographer/show', $album->id) }}">
                                  {{ $album->name_album }}
-                            </a>  
-                            <a 	href="{{ url("photographer/show/{$album->id}/edit/") }}">
-								<i class="glyphicon glyphicon-pencil"></i> แก้ไขเรื่องนี้
-							</a>
-
+                            </a>   -->
                         </div>
                 </div>
+        </a>        
     @endforeach
     
   </div>
 
-  <div class="tab-pane container" id="menu2">
+    <div class="tab-pane container" id="menu2">
         <div class="container wrap_container_head">
             <div class="row">
                 <div class="col">
@@ -193,7 +197,6 @@
             <label class="btn_layout_equipment">External Flash</label>
         </div>
     </div>
-
     <div class="tab-pane container" id="menu3">
         <div class="card" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
             <div class="card-body" style="padding:10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background:#F2F2F2;">

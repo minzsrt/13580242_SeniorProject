@@ -15,31 +15,31 @@
                 <span class="all_more_link">ชื่ออัลบั้ม</span>
                 <div class="row">
                     <div class="col">
-                    <div class="form-group">
-                    {!! Form::text('name_album', null, ['class'=>'form-control']) !!}
-                    <div>
-                        <!-- <textarea style="width:100%; height:80px; border-radius: 10px; border: 1px solid #ccc;">
-                        </textarea> -->
+                        <div class="form-group">
+                        {!! Form::text('name_album', null, ['class'=>'form-control']) !!}
+                        <div>
                     </div>
                 </div>
             </div>
             <div class="col-md" style="margin-top:10px;">
                 <span class="all_more_link">แท็ก</span>
-                <select class="select_search" style="">
-                    <option selected>เลือกประเภทงาน...</option>
-                    <option value="1">รับปริญญา</option>
-                    <option value="2">ภาพบุคคล/แฟชั่น</option>
-                    <option value="3">งานแต่งงาน</option>
-                    <option value="1">พรีเวดดิ้ง</option>
-                    <option value="2">งานอีเวนต์</option>
-                    <option value="3">สถาปัตยกรรม</option>
-                    <option value="3">สินค้า/อาหาร</option>
-                </select>
+                {!! Form::select('id_category',['1' => 'รับปริญญา', '2' => 'ภาพบุคคล/แฟชั่น', '3' => 'งานแต่งงาน', '4' => 'พรีเวดดิ้ง', '5' => 'งานอีเวนต์', '6' => 'สถาปัตยกรรม', '7' => 'สินค้า/อาหาร'],null,['class'=>'form-control select_search'],['placeholder' => 'เลือกประเภทงาน...']) !!}
             </div>
-            <div class="col-md">
-                {!! Form::submit('แก้ไขอัลบั้ม',['class' => 'btn_color btn_color_bar']) !!}
+    </div>
+    <nav class="container nav_bottom nav_bottom_profile">
+        <div class="row">
+            <div class="col">
+                <a 	class="btn btn_color btn_layout_bottom" 
+                href="{{ url("photographer/show/{$album->id}/destroy/") }}" class="btn" id="destroyalbum" >
+                    ลบอัลบั้ม
+                </a>
+            </div>
+            <div class="col">
+                {!! Form::submit('บันทึก',['class' => 'btn_color btn_bottom']) !!}
             </div>
         </div>
+    </nav>
+
     {!! Form::close() !!}
 
 @stop
