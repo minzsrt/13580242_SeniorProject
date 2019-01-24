@@ -17,7 +17,7 @@
         <div class="container" style="height:100%;">
             <div class="row" style="height:100%;">
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/index'">
+                <button class="btn_menu_list" onclick="window.location.href='/index_ptg'">
                     <img class="menu_list" src="assets/image/home-button.svg">
                 </button>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col" style="padding-top:20px;">
-                <span>Username</span>
+                <span>{{ Auth::user()->name }}</span>
                 <div style="font-size:10px;">
                 <i class="fas fa-star checked"></i>
                 <i class="fas fa-star checked"></i>

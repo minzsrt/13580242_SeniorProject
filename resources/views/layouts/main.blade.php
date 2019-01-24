@@ -1,7 +1,7 @@
 <!Doctype html>
 <html>
 <head>
-	<title>R.COMICS @yield('page_title')</title>
+	<title>@yield('page_title')</title>
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
     
