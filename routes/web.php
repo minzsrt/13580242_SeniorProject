@@ -18,6 +18,9 @@ Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');}
 
 Route::resource('listPackage', 'PackageCardsController');
 Route::get('createPackageCard', 'PackageCardsController@create');
+Route::get('photographer/packages/show/{id}/edit', 'PackageCardsController@edit');
+Route::get('photographer/packages/show/{id}/update', 'PackageCardsController@update');
+Route::get('photographer/packages/show/{id}/destroy', 'PackageCardsController@destroy');
 Route::get('createPackageCardSuccess', function(){ return view('createPackageCardSuccess');});
 
 

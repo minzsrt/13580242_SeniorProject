@@ -24,44 +24,42 @@
                 <h3 class="headder_text">ค่าบริการถ่ายภาพรับปริญญา</h3>
             </div>
         </div>
-    </div>
+    </div> 
 
     <div class="container">
-        <div class="card" style="padding: 0; margin:20px auto; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-            <div style="width:100%; height:250px; overflow: hidden; position:relative; border-top-left-radius: 10px;  border-top-right-radius: 10px;">
-                <img class="card-img-top" src="assets/image/img_show03.jpg">    
-            </div>
-            <div class="card-body" style="padding:20px">
-                <div class="row">
-                    <div class="col-8" style="font-size:10px;">
-                        <h3  style="font-size:18px; padding-right:10px;">ถ่ายภาพรายชั่วโมง</h3>
+            @foreach($package_cards as $package_card)
+            <a class="a_getlink"	href="{{ url("photographer/packages/show/{$package_card->id}/edit/") }}">
+                <div class="card-body album_show_wrap padding_card">
+                    <div class="row">
+                        <div class="col-8" style="font-size:10px;">
+                            <h3  style="font-size:18px; padding-right:10px; display: inline;" >
+                            ถ่ายภาพ
+                            @foreach($formattimes as $formattime)
+                                @if( $formattime->id === $package_card->id_formattime)
+                                {{ $formattime->name_format_time }}
+                                @endif
+                            @endforeach
+                            </h3>
+                        </div>
+                        <div class="col-4 text_right">
+                            <h3  style="font-size:18px; padding-right:10px;">{{ $package_card->price }} ฿</h3>
+                        </div>
                     </div>
-                    <div class="col-4 text_right">
-                        <h3  style="font-size:18px; padding-right:10px;">900 ฿</h3>
+                    <div class="row">
+                        <p class="col detail_pack">
+                        <span>สิ่งที่ได้รับ</span><br>
+                        {{ $package_card->detail }}
+                        </p>
                     </div>
                 </div>
-                <div class="row">
-                    <p class="col detail_pack">
-                    <span>สิ่งที่ได้รับ</span><br>
-                    จำนวน 10 รูป ปรับแต่งไฟล์ภาพ แสง สี ตามความเหมาะสม
-                    </p>
-                </div>
+            </a>
+            @endforeach
+            <div class="card btn_create">
+                <button class="btn" onclick="window.location.href='/createPackageCard'">
+                    <i class="fas fa-plus-circle"></i>
+                </button> 
             </div>
-        </div>
-        <div class="card" style="border:0; margin:10px auto; ">
-       <button class="btn" onclick="window.location.href='/createPackageCard'" style="height:60px; padding: 0; border-radius: 10px; border: 1px dashed #a3a3a3; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-        <i class="fas fa-plus-circle"></i>
-       </button> 
     </div>
-    </div>
-    
-    <nav class="container nav_bottom nav_bottom">
-        <div class="row">
-            <div class="col">
-                <button type="submit" onclick="window.location.href='profile_Photographer'" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">บันทึก</button>
-            </div>
-        </div>
-        </nav>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

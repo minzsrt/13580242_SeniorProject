@@ -494,3 +494,41 @@ select.select_search {
     top: 0;
 }
   /* choose file */
+
+  .padding_card{
+      padding: 20px;
+  }
+  .btn_create{
+    height:60px;
+    padding: 0;
+    border-radius: 10px; 
+    border: 1px dashed #a3a3a3; 
+    box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+  }
+  .btn_create .btn{
+    height:100%;
+  }
+.textarea_edit{
+    height: 150px !important;
+}
+  .a_getlink{
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .a_getlink:active{
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn_bottom{
+    background: #72AFD3;
+    color:#fff;
+    width:100%;
+  }
+  .btn_layout_bottom{
+    background: #fff;
+    color:#72AFD3;
+    border:1px solid #72AFD3;
+    width:100%;
+  }

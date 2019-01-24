@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Create package</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
-    <link href="css/style.css" rel="stylesheet"> 
-</head>
-<body>
-{{ csrf_field() }}
-{!! Form::open(['url'=>'listPackage']) !!}
-    <section style="height:60px; padding:20px;">  
-            <div class="row">
-                <div class="col-1">
-                    <button onclick="window.location.href='/profile_Photographer'" class="btn" style="background:#fff;"><</button> 
-                </div>
-                <div class="col-6">
-                    <h3 class="headder_text" style="padding: 5px;">สร้างการ์ดค่าบริการ</h3>
-                </div>
-                <div class="col">
-                {!! Form::submit('สร้าง',['class' => 'btn_color btn_color_bar']) !!}                
-                </div>
-            </div>
-            
-    </section>
+@extends('layouts.main3')
+@section('page_title', 'Edit')
+@section('btn_name', 'แก้ไขค่าบริการ')
+@section('content')
+
+{!! Form::model($package_card, ['method' => 'GET','action' => ['PackageCardsController@update', $package_card->id]]) !!}
 
     <div class="container">
     <div class="row">
@@ -80,12 +57,26 @@
             <div class="form-group">
             {!! Form::hidden('id_category',1,['class'=>'form-control']) !!}
             </div>
+           
 
         </div>
     </div>
+    <section style="height:60px;"></section>
+    <nav class="container nav_bottom nav_bottom_profile">
+        <div class="row">
+            <div class="col">
+                <a 	class="btn btn_color btn_layout_bottom" 
+                href="{{ url("photographer/packages/show/{$package_card->id}/destroy") }}" class="btn" id="destroypackagecard" >
+                    ลบการ์ด
+                </a>
+            </div>
+            <div class="col">
+                {!! Form::submit('บันทึก',['class' => 'btn_color btn_bottom']) !!}
+            </div>
+        </div>
+    </nav>
 
 
 {!! Form::close() !!}
 
-</body>
-</html>
+@stop
