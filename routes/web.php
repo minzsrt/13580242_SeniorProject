@@ -1,5 +1,7 @@
 <?php
 
+Auth::routes();
+
 // Success CRUD
 Route::resource('profile_Photographer', 'AlbumsController');
 Route::get('photographer/show/{id}', 'AlbumsController@show');
@@ -24,7 +26,6 @@ Route::get('search', function(){ return view('search');});
 Route::get('chatchannel', function(){ return view('chatchannel');});
 Route::get('notification', function(){ return view('notification');});
 Route::get('profileEmpoyer', function(){  return view('profileEmpoyer');});
-
 // Route::resource('profilePhotographer', 'AlbumsController');
 // Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
 Route::get('package', function(){ return view('package');});
@@ -50,3 +51,6 @@ Route::get('yourBank', function(){ return view('yourBank');});
 Route::get('listTag', function(){ return view('listTag');});
 Route::get('mn_order', function(){ return view('mn_order');});
 
+
+
+Route::get('/home', 'HomeController@index')->name('home');

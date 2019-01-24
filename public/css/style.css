@@ -532,3 +532,18 @@ select.select_search {
     border:1px solid #72AFD3;
     width:100%;
   }
+  .input_box{
+    width:100%;
+    border-bottom: 1px solid #ccc;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+  }
+  .logo{
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+  }
+  .btn_width{
+      width: 100%;
+  }

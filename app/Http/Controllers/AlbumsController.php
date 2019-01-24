@@ -53,5 +53,13 @@ class AlbumsController extends Controller
 		$album->delete();
 		return redirect('profile_Photographer');
     }
+
+     
+    public function __construct(){
+
+        $this->middleware('auth');
+
+     }
+     
     
 }
