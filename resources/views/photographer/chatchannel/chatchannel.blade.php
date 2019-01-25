@@ -8,7 +8,7 @@
                     <img src="{{url('assets/image/avatar04.jpg')}}" style="height:100%;">    
                 </div>
             </div>
-            <div class="col-10" style="font-size:10px;">
+            <div class="col-12 username_profile">
                 <div class="row">
                     <div class="col-12" style="font-size:14px;">
                         <span>Username</span>
@@ -25,7 +25,7 @@
                     <img src="{{url('assets/image/avatar03.jpg')}}" style="height:100%;">    
                 </div>
             </div>
-            <div class="col-10" style="font-size:10px;">
+            <div class="col-12 username_profile">
                 <div class="row">
                     <div class="col-12" style="font-size:14px;">
                         <span>Username</span>

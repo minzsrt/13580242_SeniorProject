@@ -26,7 +26,7 @@
                 <h3 class="headder_text text_center review_username">จ้างงาน Username</h3>
             </div>
         </div>
-        <div class="row" class="margin_bomtom20">
+        <div class="row margin_bomtom20">
             <div class="col">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: 14%" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100"></div>

@@ -675,3 +675,12 @@ select.select_search {
 .margin_bomtom20{
     margin-bottom:20px;
 }
+.index_boxcol-12{
+    padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+}
+.index_boxcol12_img{
+    width:100%; height:210px; text-align:center; overflow: hidden; border-radius: 10px 10px 0 0;
+}
+.index_boxcol12_item{
+    padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+}

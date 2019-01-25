@@ -66,7 +66,7 @@
             <div class="card-body" style="padding:10px">
                 <div class="row">
                     <div class="col-2">
-                        <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
+                        <div class="order_img_profile">
                             <img src="assets/image/avatar01.jpg" style="height:100%;">    
                         </div>
                     </div>
@@ -104,7 +104,7 @@
             <div class="card-body" style="padding:10px">
                 <div class="row">
                     <div class="col-2">
-                        <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
+                        <div class="order_img_profile">
                             <img src="assets/image/avatar01.jpg" style="height:100%;">    
                         </div>
                     </div>
