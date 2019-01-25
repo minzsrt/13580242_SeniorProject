@@ -16,7 +16,7 @@
     <section style="height:60px; padding:20px;">  
             <div class="row">
                 <div class="col-1">
-                    <button onclick="window.location.href='/profile_Photographer'" class="btn" style="background:#fff;"><</button> 
+                    <button onclick="window.location.href='/profile_photographer'" class="btn" style="background:#fff;"><</button> 
                 </div>
                 <div class="col-6">
                     <h3 class="headder_text" style="padding: 5px;">สร้างการ์ดค่าบริการ</h3>

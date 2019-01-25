@@ -30,7 +30,7 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/chatchannel'">
+                <button class="btn_menu_list" onclick="window.location.href='{{url('photographer/chatchannel')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Chatchannel'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
@@ -38,7 +38,7 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/notification'">
+                <button class="btn_menu_list" onclick="window.location.href='{{url('photographer/notification')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
@@ -46,7 +46,7 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/profile_Photographer'">
+                <button class="btn_menu_list" onclick="window.location.href='/profile_photographer'">
                     @if (trim($__env->yieldContent('page_title')==='Profile Photographer'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif

@@ -15,7 +15,7 @@ class AlbumsController extends Controller
         $albums = Album::orderBy('id', 'DESC')->get();
         $package_cards = PackageCard::all();
         $categories = Category::all();
-        return view('photographer.profile_Photographer', compact('albums','package_cards','categories'));
+        return view('photographer.profile_photographer', compact('albums','package_cards','categories'));
     }
 
     public function show($id){
@@ -45,13 +45,13 @@ class AlbumsController extends Controller
     public function update($id, AlbumRequest $request){
         $album = Album::findOrFail($id); 
         $album->update($request->all());
-        return redirect('profile_Photographer');
+        return redirect('profile_photographer');
     }
 
     public function destroy($id){
 		$album = Album::findOrFail($id);
 		$album->delete();
-		return redirect('profile_Photographer');
+		return redirect('profile_photographer');
     }
 
      

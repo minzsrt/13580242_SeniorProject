@@ -1,6 +1,7 @@
 @extends('layouts.main3')
 @section('page_title', 'Edit')
 @section('btn_name', 'แก้ไขอัลบั้ม')
+@section('linktoback', '/profile_photographer')
 @section('content')
 
 {!! Form::model($album, ['method' => 'GET','action' => ['AlbumsController@update', $album->id]]) !!}

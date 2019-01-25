@@ -1,6 +1,7 @@
 @extends('layouts.main3')
 @section('page_title', 'Edit')
 @section('btn_name', 'แก้ไขค่าบริการ')
+@section('linktoback', '/listPackage')
 @section('content')
 
 {!! Form::model($package_card, ['method' => 'GET','action' => ['PackageCardsController@update', $package_card->id]]) !!}
