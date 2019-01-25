@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Album; 
+use App\PackageCard;
+use App\Category;
+use Request;
+use App\Http\Requests\AlbumRequest;
 
-
-class IndexController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,10 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('photographer.index');        
+        $albums = Album::orderBy('id', 'DESC')->get();
+        $package_cards = PackageCard::all();
+        $categories = Category::all();
+        return view('profileEmployer', compact('albums','package_cards','categories'));
     }
 
     /**
@@ -82,4 +88,10 @@ class IndexController extends Controller
     {
         //
     }
+
+    public function __construct(){
+
+        $this->middleware('auth');
+
+     }
 }

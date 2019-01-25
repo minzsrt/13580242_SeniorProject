@@ -14,7 +14,7 @@
 <body>
     
     <section style="height:60px; padding:20px;">    
-        <button class="btn_layout_back">กลับ</button> 
+        <button class="btn_layout_back" onclick="window.location.href='/'" >กลับ</button> 
     </section>
 
     <div class="container wrap_container_head">
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="col" style="padding-top:20px;">
-                <span>Username</span>
+                <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
                 <div style="font-size:10px;">
                 <i class="fas fa-star checked"></i>
                 <i class="fas fa-star checked"></i>
@@ -116,20 +116,31 @@
         </div>
         <div class="container">
             @foreach($albums as $album)
-                <div class="card album_show_wrap">
-                        <div class="album_show">
-                            <div class="album_show_detail_group">
-                                <div class="float_left">
-                                    <span class="hastag_album">ภาพถ่ายบุคคล</span>
-                                    <h3 class="caption_album">{{ $album->caption }}</h3>
+                <a href="{{ url("photographer/show/{$album->id}/edit/") }}">
+                        <div class="card album_show_wrap">
+                                <div class="album_show">
+                                    <div class="album_show_detail_group">
+                                        <div class="float_left">
+                                            <span class="hastag_album">
+                                                @foreach($categories as $category)
+                                                    @if( $category->id === $album->id_category)
+                                                    {{ $category->name_category }}
+                                                    @endif
+                                                @endforeach
+                                            </span>
+                                            <h3 class="caption_album">{{ $album->name_album }}</h3>
+                                        </div>
+                                        <div class="col text_right fav_count">
+                                            <span>614 </span><img class="btn_fav" src="assets/image/heart_layout.svg">
+                                        </div>
+                                    </div>
+                                    <img class="card-img-top" src="assets/image/img_show_020{{ $album->id }}.jpg">  
+                                    <!-- <a href="{{ url('photographer/show', $album->id) }}">
+                                        {{ $album->name_album }}
+                                    </a>   -->
                                 </div>
-                                <div class="col text_right fav_count">
-                                    <span>614 </span><img class="btn_fav" src="assets/image/heart_layout.svg">
-                                </div>
-                            </div>
-                            <img class="card-img-top" src="assets/image/img_show_020{{ $album->id_album }}.jpg">    
                         </div>
-                </div>
+                </a>        
             @endforeach
         </div>
     </div>
@@ -204,7 +215,7 @@
                     <div class="col-6" style="font-size:10px;">
                         <div class="row">
                             <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
-                                <span>Username</span>
+                                <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
                             </div>
                             <div class="col-12">
                                 <span class="fa fa-star checked"></span>
@@ -307,7 +318,7 @@
     <nav class="container nav_bottom nav_bottom_profile">
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn_color" style="width:100%; margin:10px;">จ้างช่างภาพ</button>
+                <button type="submit" onclick="window.location.href='/orderstep1'" class="btn_color" style="width:100%; margin:10px;">จ้างช่างภาพ</button>
             </div>
             <div class="col">
                 <button type="submit" class="btn_color" style="background: #fff; color:#72AFD3; border:1px solid #72AFD3; width:100%; margin:10px;">ติดต่อสอบถาม</button>

@@ -11,7 +11,7 @@
             <div class="col-12 username_profile">
                 <div class="row">
                     <div class="col-12" style="font-size:14px;">
-                        <span>Username</span>
+                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
                     </div>
                     <div class="col-12">
                         <span>masessages text</span>
@@ -28,7 +28,7 @@
             <div class="col-12 username_profile">
                 <div class="row">
                     <div class="col-12" style="font-size:14px;">
-                        <span>Username</span>
+                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
                     </div>
                     <div class="col-12">
                         <span>masessages text</span>

@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="col" style="padding-top:30px;">
-                <span>Username</span>
+                <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
             </div>
             <div class="col text_right" style="padding-top:30px;">
                 <button class="btn_layout_back" data-toggle="modal" data-target="#exampleModalCenter">ตั้งค่า</button>
@@ -59,7 +59,7 @@
                     <div class="col-6" style="font-size:10px;">
                         <div class="row">
                             <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
-                                <span>Username</span>
+                                <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
                             </div>
                             <div class="col-12">
                                 <span class="fa fa-star checked"></span>
@@ -92,7 +92,7 @@
                     <div class="col-10" style="font-size:10px;">
                         <div class="row">
                             <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
-                                <span>Username</span>
+                                <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
                             </div>
                             <div class="col-12">
                                 <span class="fa fa-star checked"></span>
