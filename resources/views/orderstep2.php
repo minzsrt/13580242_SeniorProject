@@ -20,13 +20,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div style="width:40px; height:40px; border-radius:20px; overflow: hidden; margin:0 auto;">
-                    <img src="assets/image/avatar01.jpg" style="height:100%;">    
+                <div class="order_img_profile">
+                    <img src="assets/image/avatar01.jpg">    
                 </div>
                 <h3 class="headder_text text_center" style="padding: 5px; font-size:14px;">จ้างงาน Username</h3>
             </div>
         </div>
-        <div class="row" style="margin-bottom:20px;">
+        <div class="row" class="margin_bomtom20">
             <div class="col">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>

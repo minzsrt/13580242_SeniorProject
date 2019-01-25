@@ -24,13 +24,12 @@ Route::get('photographer/packages/show/{id}/destroy', 'PackageCardsController@de
 Route::get('createPackageCardSuccess', function(){ return view('createPackageCardSuccess');});
 
 // Unsuccess CRUD
-Route::get('/', function(){ return view('index');});
-Route::get('search', function(){ return view('search');});
-Route::get('chatchannel', function(){ return view('chatchannel');});
-Route::get('notification', function(){ return view('notification');});
-Route::get('profileEmpoyer', function(){  return view('profileEmpoyer');});
-// Route::resource('profilePhotographer', 'AlbumsController');
-// Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
+Route::get('/', function(){ return view('general.index');});
+Route::get('search', function(){ return view('general.search');});
+Route::get('chatchannel', function(){ return view('general.chatchannel');});
+Route::get('notification', function(){ return view('general.notification');});
+Route::get('profileEmployer', function(){  return view('general.profileEmployer');});
+Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
 Route::get('package', function(){ return view('package');});
 
 Route::get('searchResult', function(){ return view('searchResult');});

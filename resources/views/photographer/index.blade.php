@@ -10,7 +10,7 @@
                         กระเป๋าตังช่างภาพ
                         </div>
                         <div class="col text_right" style="padding-top: 10px;">
-                            <h3  style="font-size:14px; padding-right:20px;">600.00 ฿</h3>
+                            <h3  class="listtag_price">600.00 ฿</h3>
                         </div>
                     </div>
             </label>

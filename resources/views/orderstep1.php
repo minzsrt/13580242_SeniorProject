@@ -20,13 +20,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div style="width:40px; height:40px; border-radius:20px; overflow: hidden; margin:0 auto;">
-                    <img src="assets/image/avatar01.jpg" style="height:100%;">    
+                <div class="order_img_profile">
+                    <img src="assets/image/avatar01.jpg">    
                 </div>
-                <h3 class="headder_text text_center" style="padding: 5px; font-size:14px;">จ้างงาน Username</h3>
+                <h3 class="headder_text text_center review_username">จ้างงาน Username</h3>
             </div>
         </div>
-        <div class="row" style="margin-bottom:20px;">
+        <div class="row" class="margin_bomtom20">
             <div class="col">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: 14%" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100"></div>
@@ -44,8 +44,8 @@
                         รับปริญญา
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -58,8 +58,8 @@
                     ภาพบุคคล/แฟชั่น
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">600 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">600 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -72,8 +72,8 @@
                     งานแต่งงาน
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">3,000 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">3,000 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -86,8 +86,8 @@
                     พรีเวดดิ้ง
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -100,8 +100,8 @@
                     งานอีเวนต์
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -114,8 +114,8 @@
                     สถาปัตยกรรม
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -128,8 +128,8 @@
                     สินค้า/อาหาร
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -144,7 +144,7 @@
                 
             </div>
             <div class="col">
-                <button type="submit" onclick="window.location.href='/orderstep2'" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                <button type="submit" onclick="window.location.href='/orderstep2'" class="btn_color btn_bottom">ต่อไป</button>
             </div>
         </div>
         </nav>

@@ -22,7 +22,7 @@
                 <h3 class="headder_text" style="padding: 5px;">ชำระเงิน</h3><br>
             </div>
         </div>
-        <div class="row" style="margin-bottom:20px;">
+        <div class="row" class="margin_bomtom20">
             <div class="col">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>

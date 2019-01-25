@@ -1,54 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ProfileEmpoyer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
-    <link href="css/style.css" rel="stylesheet"> 
+@extends('layouts.mainmenu_general')
+@section('page_title', 'Profile Employer')
+@section('content')
 
-</head>
-<body>
-
-    <nav>
-        <div class="container" style="height:100%;">
-            <div class="row" style="height:100%;">
-                <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/index'">
-                    <img class="menu_list" src="assets/image/home-button.svg">
-                </button>
-                </div>
-                <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/search'">
-                    <img class="menu_list" src="assets/image/search.svg">
-                </button>
-                </div>
-                <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/chatchannel'">
-                    <img class="menu_list" src="assets/image/speech-bubbles.svg" >
-                </button>
-                </div>
-                <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/notification'">
-                    <img class="menu_list" src="assets/image/notification.svg" >
-                </button>
-                </div>
-                <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/profileEmpoyer'">
-                    <img class="menu_list_active" src="assets/image/circle.svg">
-                    <img class="menu_list" src="assets/image/friend.svg" >
-                </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <section style="height:60px;"></section>
-
-    <div class="container wrap_container_head">
+    <div class="wrap_container_head">
         <div class="row">
             <div class="col-3">
                 <div style="width:80px; height:80px; border-radius:40px; overflow: hidden;">
@@ -59,7 +13,7 @@
                 <span>Username</span>
             </div>
             <div class="col text_right" style="padding-top:30px;">
-                <button class="btn_layout_edit">แก้ไขโปรไฟล์</button>
+                <button class="btn_layout_back" data-toggle="modal" data-target="#exampleModalCenter">ตั้งค่า</button>
             </div>
         </div>
         <ul class="nav nav-tabs row" style="padding:0; margin-bottom:20px;">
@@ -174,10 +128,30 @@
   </div>
   
 
-</div>
+<!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">ตั้งค่า</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <a class="btn btn_color btn_layout_bottom" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                                            {{ __('ออกจากระบบ') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
 
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>
+@stop

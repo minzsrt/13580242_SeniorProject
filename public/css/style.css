@@ -657,3 +657,21 @@ select.select_search {
 .review_body p{
     margin:0;
 }
+
+.listtag_head{
+    font-size:10px;
+    padding-right:20px;
+}
+.listtag_price{
+    font-size:14px;
+    padding-right:20px;
+}
+.order_img_profile{
+    width:40px; height:40px; border-radius:20px; overflow: hidden; margin:0 auto;
+}
+.order_img_profile img{
+    height: 100%;
+}
+.margin_bomtom20{
+    margin-bottom:20px;
+}

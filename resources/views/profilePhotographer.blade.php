@@ -72,7 +72,7 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div class="tab-pane active" id="menu1">
-        <div class="center" style="margin-bottom:20px;">
+        <div class="center" class="margin_bomtom20">
                 <div class="btn_catagory" style="height:60px;">
                     <div class="btn_catagory_text">
                         <span>ทั้งหมด</span> 

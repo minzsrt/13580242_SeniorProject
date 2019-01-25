@@ -14,7 +14,7 @@
 <body>
 
     <section style="height:60px; padding:20px;">    
-        <button class="btn_layout_back" onclick="window.location.href='/index'">กลับ</button> 
+        <button class="btn_layout_back" onclick="window.location.href='/'">กลับ</button> 
     </section>
 
     <div class="container">
@@ -53,7 +53,7 @@
                 <input type="checkbox">
                 <span class="checkmark"></span>
                 </label>
-                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%;">บันทึก</button>
+                <button type="submit" class="btn_color btn_bottom" onclick="window.location.href='/'">บันทึก</button>
             </div>
         </div>
     </div>

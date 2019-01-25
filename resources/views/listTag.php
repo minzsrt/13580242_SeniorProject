@@ -29,8 +29,8 @@
                         รับปริญญา
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">600 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">600 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" name="radio">
@@ -43,8 +43,8 @@
                     ภาพบุคคล/แฟชั่น
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">600 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">600 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -57,8 +57,8 @@
                     งานแต่งงาน
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">3,000 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">3,000 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -71,8 +71,8 @@
                     พรีเวดดิ้ง
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -85,8 +85,8 @@
                     งานอีเวนต์
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -99,8 +99,8 @@
                     สถาปัตยกรรม
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3  class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -113,8 +113,8 @@
                     สินค้า/อาหาร
                     </div>
                     <div class="col text_right">
-                        <span style="font-size:10px; padding-right:20px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:20px;">900 ฿</h3>
+                        <span class="listtag_head">เริ่มต้นที่</span>
+                        <h3 class="listtag_price">900 ฿</h3>
                     </div>
                 </div>
                 <input type="radio" checked="checked" name="radio">
@@ -126,7 +126,7 @@
         <nav class="container nav_bottom nav_bottom">
         <div class="row">
             <div class="col">
-                <button type="submit" onclick="window.location.href='/listPackage'" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                <button type="submit" onclick="window.location.href='/listPackage'" class="btn_color btn_bottom">ต่อไป</button>
             </div>
         </div>
         </nav>
