@@ -61,20 +61,18 @@
     </div>
 
     <section style="height:60px;"></section>
-
-    <nav class="container nav_bottom nav_bottom_profile">
-        <div class="row">
-            <div class="col">
+    
+    <div class="row bottom_fixed">
+        <div class="col">
                 <a 	class="btn btn_color btn_layout_bottom" 
                 href="{{ url("photographer/packages/show/{$package_card->id}/destroy") }}" class="btn" id="destroypackagecard" >
                     ลบการ์ด
-                </a>
-            </div>
-            <div class="col">
-                {!! Form::submit('บันทึก',['class' => 'btn_color btn_bottom']) !!}
-            </div>
+                </a>    
         </div>
-    </nav>
+        <div class="col">
+            {!! Form::submit('บันทึก',['class' => 'btn_color btn_bottom']) !!}
+        </div>
+    </div>
     
 {!! Form::close() !!}
 

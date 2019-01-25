@@ -26,19 +26,17 @@
                 {!! Form::select('id_category',['1' => 'รับปริญญา', '2' => 'ภาพบุคคล/แฟชั่น', '3' => 'งานแต่งงาน', '4' => 'พรีเวดดิ้ง', '5' => 'งานอีเวนต์', '6' => 'สถาปัตยกรรม', '7' => 'สินค้า/อาหาร'],null,['class'=>'form-control select_search'],['placeholder' => 'เลือกประเภทงาน...']) !!}
             </div>
     </div>
-    <nav class="container nav_bottom nav_bottom_profile">
-        <div class="row">
-            <div class="col">
-                <a 	class="btn btn_color btn_layout_bottom" 
+    <div class="row bottom_fixed">
+        <div class="col">
+            <a 	class="btn btn_color btn_layout_bottom" 
                 href="{{ url("photographer/show/{$album->id}/destroy/") }}" class="btn" id="destroyalbum" >
-                    ลบอัลบั้ม
-                </a>
-            </div>
-            <div class="col">
-                {!! Form::submit('บันทึก',['class' => 'btn_color btn_bottom']) !!}
-            </div>
+                ลบอัลบั้ม
+            </a>  
         </div>
-    </nav>
+        <div class="col">
+            {!! Form::submit('บันทึก',['class' => 'btn_color btn_bottom']) !!}
+        </div>
+    </div>
 
     {!! Form::close() !!}
 

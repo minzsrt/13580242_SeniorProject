@@ -2,6 +2,8 @@
 
 Auth::routes();
 
+Route::resource('photographer/index', 'IndexController');
+
 // Success CRUD
 Route::resource('profile_Photographer', 'AlbumsController');
 Route::get('photographer/show/{id}', 'AlbumsController@show');
@@ -18,7 +20,6 @@ Route::get('photographer/packages/show/{id}/edit', 'PackageCardsController@edit'
 Route::get('photographer/packages/show/{id}/update', 'PackageCardsController@update');
 Route::get('photographer/packages/show/{id}/destroy', 'PackageCardsController@destroy');
 Route::get('createPackageCardSuccess', function(){ return view('createPackageCardSuccess');});
-
 
 // Unsuccess CRUD
 Route::get('/', function(){ return view('index');});
@@ -46,7 +47,6 @@ Route::get('listpayment', function(){ return view('listpayment');});
 Route::get('paymentsuccess', function(){ return view('paymentsuccess');});
 Route::get('internetbanking', function(){ return view('internetbanking');});
 
-Route::get('index_ptg', function(){ return view('index_ptg');});
 Route::get('yourBank', function(){ return view('yourBank');});
 Route::get('listTag', function(){ return view('listTag');});
 Route::get('mn_order', function(){ return view('mn_order');});

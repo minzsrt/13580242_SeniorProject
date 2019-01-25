@@ -517,7 +517,8 @@ select.select_search {
     text-decoration: none;
     cursor: pointer;
   }
-  .a_getlink:active{
+  .a_getlink:active,
+  .a_getlink:hover{
     color: #000000;
     text-decoration: none;
     cursor: pointer;
