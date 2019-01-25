@@ -3,6 +3,7 @@
 Auth::routes();
 
 Route::resource('photographer/index', 'IndexController');
+Route::get('profilePhotographer', 'ProfileController@index');
 Route::get('photographer/chatchannel', function(){ return view('photographer.chatchannel.chatchannel');});
 Route::get('photographer/notification', function(){ return view('photographer.notification.notification');});
 

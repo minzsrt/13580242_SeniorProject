@@ -20,7 +20,7 @@ class ProfileController extends Controller
         $albums = Album::orderBy('id', 'DESC')->get();
         $package_cards = PackageCard::all();
         $categories = Category::all();
-        return view('profileEmployer', compact('albums','package_cards','categories'));
+        return view('profilePhotographer', compact('albums','package_cards','categories'));
     }
 
     /**
@@ -89,9 +89,9 @@ class ProfileController extends Controller
         //
     }
 
-    public function __construct(){
+    // public function __construct(){
 
-        $this->middleware('auth');
+    //     $this->middleware('auth');
 
-     }
+    //  }
 }
