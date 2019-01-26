@@ -38,7 +38,6 @@ class RegisterPhotographerController extends Controller
      */
     public function store(PhotographerRequest $request){
         $photographer = Photographer::create($request->all());
-        $photographer->id_user = Auth::user()->id;
         $photographer->save();
         return redirect('regPhotographerSuccess'); 
     }

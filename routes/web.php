@@ -31,7 +31,6 @@ Route::get('search', function(){ return view('general.search');});
 Route::get('chatchannel', function(){ return view('general.chatchannel');})->middleware('auth');
 Route::get('notification', function(){ return view('general.notification');})->middleware('auth');
 Route::get('profileEmployer', function () { return view('general.profileEmployer'); })->middleware('auth');
-// Route::get('profilePhotographer', function(){ return view('profilePhotographer');});
 Route::get('package', function(){ return view('package');});
 
 Route::get('searchResult', function(){ return view('searchResult');});
@@ -61,7 +60,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('invitePhotographer', 'RegisterPhotographerController');
 Route::get('regPhotographer', 'RegisterPhotographerController@create');
-// Route::get('/registerForPhotographer',function(){ return view('regforphotographer.regforphotographer');});
+
+Route::get('regPhotographerSuccess',function(){
+    $id = Auth::user()->id;
+    $user = \App\User::findOrFail($id);
+    $user->role_id = '2';
+    $user->save();
+    return view('regPhotographerSuccess');
+})->middleware('auth');
+
 Route::get('/portfolioPhotographer',function(){ return view('regforphotographer.portfolio');});
 
 

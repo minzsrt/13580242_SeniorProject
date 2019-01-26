@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Photographer extends Model
 {
     protected $fillable = [
-        'name', 'idcard', 'birthday', 'sex', 'address', 'sub_district', 'district', 'province', 'zipcode', 'phone'
+        'name', 'idcard', 'birthday', 'sex', 'address', 'sub_district', 'district', 'province', 'zipcode', 'phone','id_user'
     ];
 
     public function user(){

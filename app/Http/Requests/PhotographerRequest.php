@@ -33,7 +33,9 @@ class PhotographerRequest extends FormRequest
             'district' => 'required', 
             'province' => 'required', 
             'zipcode' => 'required', 
-            'phone' => 'required|max:10'
+            'phone' => 'required|max:10',
+            'id_user' => 'required'
+
         ];
     }
 }

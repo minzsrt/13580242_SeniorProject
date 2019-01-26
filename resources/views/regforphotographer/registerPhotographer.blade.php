@@ -84,6 +84,12 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input class="form-control input_box" type="hidden" name="id_user" value="{{Auth::user()->id}}">  
+                            </div>
+                        </div>
+
                         <div class="row bottom_fixed">
                             <div class="col">
                             </div>
