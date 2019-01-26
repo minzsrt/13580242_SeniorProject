@@ -28,9 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-     
     public function album(){
-    return $this->hasMany('App\Album');
+        return $this->hasMany('App\Album');
     }
 
     public function role(){

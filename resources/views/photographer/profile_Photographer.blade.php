@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="col" style="padding-top:20px;">
-                <span>{{ Auth::user()->username }}</span>
+                <span>{{ Auth::user()->username }} ({{Auth::user()->role->name}})</span>
                 <div class="username_profile">
                     <i class="fas fa-star checked"></i>
                     <i class="fas fa-star checked"></i>
@@ -63,21 +63,25 @@
                 <i class="fas fa-plus-circle"></i>
             </button> 
             </div>
-
-            @foreach($albums as $album)
+        @foreach($albums as $album)
+            @if( Auth::user()->id === $album->id )
                 <a href="{{ url("photographer/show/{$album->id}/edit/") }}">
                         <div class="card album_show_wrap">
                                 <div class="album_show">
                                     <div class="album_show_detail_group">
                                         <div class="float_left">
                                             <span class="hastag_album">
-                                                @foreach($categories as $category)
+                                                <!-- @foreach($categories as $category)
                                                     @if( $category->id === $album->id_category)
                                                     {{ $category->name_category }}
                                                     @endif
-                                                @endforeach
+                                                @endforeach -->
+                                                {{ $album->category->name_category }}
                                             </span>
-                                            <h3 class="caption_album">{{ $album->name_album }}</h3>
+                                            <h3 class="caption_album">
+                                                {{ $album->name_album }}
+                                                {{ $album->user->username }}
+                                            </h3>
                                         </div>
                                         <div class="col text_right fav_count">
                                             <span>614 </span><img class="btn_fav" src="assets/image/heart_layout.svg">
@@ -90,7 +94,8 @@
                                 </div>
                         </div>
                 </a>        
-            @endforeach
+            @endif    
+        @endforeach
             
         </div>
 

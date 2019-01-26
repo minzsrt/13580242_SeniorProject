@@ -25,6 +25,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Gate::define('view-album-cud', function ($user){ 
+        //     if (strcmp($user->role->slug, "admin")==0){
+        //         return true; 
+        //     }
+        //     else {
+        //         return false;
+        //     } 
+        // });
     }
 }

@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Album; 
 use App\PackageCard;
 use App\Category;
+use App\User;
 use Request;
 use Auth;
 use App\Http\Requests\AlbumRequest;
-
-
+use Illuminate\Support\Facades\Gate;
 
 class AlbumsController extends Controller
 {
@@ -33,7 +33,8 @@ class AlbumsController extends Controller
     
     public function store(AlbumRequest $request){
         $album = Album::create($request->all());
-        $album->id_user = Auth::user()->id; $album->save();
+        $album->id_user = Auth::user()->id;
+        $album->save();
         return redirect('createAlbumSuccess'); 
     }
 
