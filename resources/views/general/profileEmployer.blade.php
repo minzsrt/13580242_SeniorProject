@@ -10,7 +10,11 @@
                 </div>
             </div>
             <div class="col" style="padding-top:30px;">
-                <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
+                <a class="a_getlink">
+                    <span>
+                    {{Auth::user()->username}} <span class="all_more_link">( {{Auth::user()->role->slug}} )</span>
+                    </span>
+            </a>
             </div>
             <div class="col text_right" style="padding-top:30px;">
                 <button class="btn_layout_back" data-toggle="modal" data-target="#exampleModalCenter">ตั้งค่า</button>

@@ -91,8 +91,6 @@
                         </div>
 
                         <div class="row bottom_fixed">
-                            <div class="col">
-                            </div>
                             <div class="form-group col">
                                 <button type="submit" class="btn_color btn_color_employ btn_width">
                                     {{ __('Register') }}

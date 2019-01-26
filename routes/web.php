@@ -24,6 +24,17 @@ Route::get('photographer/packages/show/{id}/update', 'PackageCardsController@upd
 Route::get('photographer/packages/show/{id}/destroy', 'PackageCardsController@destroy');
 Route::get('createPackageCardSuccess', function(){ return view('createPackageCardSuccess');});
 
+// Success CRUD
+Route::resource('invitePhotographer', 'RegisterPhotographerController');
+Route::get('regPhotographer', 'RegisterPhotographerController@create');
+Route::get('regPhotographerSuccess',function(){
+    $id = Auth::user()->id;
+    $user = \App\User::findOrFail($id);
+    $user->role_id = '2';
+    $user->save();
+    return view('regPhotographerSuccess');
+})->middleware('auth');
+
 // Unsuccess CRUD
 Route::get('/index', function(){ return view('general.index');});
 Route::get('/', function(){ return view('general.index');});
@@ -58,16 +69,7 @@ Route::get('mn_order', function(){ return view('mn_order');});
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::resource('invitePhotographer', 'RegisterPhotographerController');
-Route::get('regPhotographer', 'RegisterPhotographerController@create');
 
-Route::get('regPhotographerSuccess',function(){
-    $id = Auth::user()->id;
-    $user = \App\User::findOrFail($id);
-    $user->role_id = '2';
-    $user->save();
-    return view('regPhotographerSuccess');
-})->middleware('auth');
 
 Route::get('/portfolioPhotographer',function(){ return view('regforphotographer.portfolio');});
 

@@ -1238,6 +1238,16 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col banner">
+            <a href="/regPhotographer" class="a_getlink">
+            <img class="img-fluid" src="assets/image/banner_invite.png">    
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- //////////////////// -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
