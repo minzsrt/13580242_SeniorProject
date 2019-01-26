@@ -58,3 +58,10 @@ Route::get('mn_order', function(){ return view('mn_order');});
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::resource('invitePhotographer', 'RegisterPhotographerController');
+Route::get('regPhotographer', 'RegisterPhotographerController@create');
+// Route::get('/registerForPhotographer',function(){ return view('regforphotographer.regforphotographer');});
+Route::get('/portfolioPhotographer',function(){ return view('regforphotographer.portfolio');});
+
+

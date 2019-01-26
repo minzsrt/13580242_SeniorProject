@@ -97,7 +97,7 @@ select.select_search {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #72afd3;
     border-top:0;
     border-left:0;
     border-right:0;
@@ -421,6 +421,7 @@ select.select_search {
     border:0;
     box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
     margin: 10px auto;
+    height: 100%;
   }
   .album_show{
     width:100%;
@@ -555,6 +556,11 @@ select.select_search {
       height: 100px;
       margin: 0 auto;
   }
+  .logox2{
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    }
   .btn_width{
       width: 100%;
   }
@@ -585,12 +591,24 @@ select.select_search {
     left: 0;
     right: 5%;
 }
+.top_fixed{
+
+}
 
 .wrap_all{
     width: 100%;
     height: 100%;
     background-image: url(../assets/image/bg_selectlogin.png);
     background-size: cover;
+}
+.wrap_all_reg_photographer{
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/image/bg_regphotographer.png);
+    background-size: cover;
+}
+.wrap_all_reg_photographer .center_fixed{
+    right: 0;
 }
 
 .color_fff{
@@ -675,6 +693,9 @@ select.select_search {
 .margin_bomtom20{
     margin-bottom:20px;
 }
+.margin_top20{
+    margin-top:20px;
+}
 .index_boxcol-12{
     padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
 }
@@ -684,3 +705,60 @@ select.select_search {
 .index_boxcol12_item{
     padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
 }
+
+.img_show_multi{
+    width:100%;
+    height:auto;
+    box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+    padding: 0;
+}
+/* .album_multi_wrap{
+    width:45%;
+    padding: 0;
+    border-radius: 10px;
+    overflow:hidden;
+    border:0;
+    box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+    margin: 5px;
+    position: relative;
+    width: 50%;
+    padding-top: 50%;
+} */
+/* .album_multi_wrap:after{
+    display: block;
+    content: " ";
+    padding-top: 45%;
+} */
+
+/* .wrap_multi{
+    height: 341px;
+} */
+.album_multi_wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+ }
+ .album_multi_wrap_50 {
+    position: relative;
+    width: 45%;
+    padding-top: 45%;
+    border: 1px dashed #a3a3a3; 
+    border-radius: 10px;
+    box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+    margin: 5px;
+ }
+ .multi_wrap_full {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+ }
+ .none_margin{
+     margin-left: 0;
+     margin-right: 0;
+ }
+ .multi_wrap_full .album_show_wrap{
+    margin: 0;
+    box-shadow: none;
+ }
