@@ -8,4 +8,7 @@ class Album extends Model
 {
     protected $fillable = ['name_album','cover_album','id_category'];
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

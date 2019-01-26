@@ -15,7 +15,7 @@ class AddIdFormattimesToPackagesTable extends Migration
     {
         Schema::table('package_cards', function (Blueprint $table) {
             $table->integer('id_formattime')->unsigned();
-            $table->foreign('id', 'formattime_package_foreign')
+            $table->foreign('id_formattime', 'formattime_package_foreign')
                 ->references('id')
                 ->on('format_times')
                 ->onDelete('cascade');
@@ -29,8 +29,9 @@ class AddIdFormattimesToPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('package_cards', function (Blueprint $table) {
-            //
+        Schema::table('package_cards', function(Blueprint $table) {
+            $table->dropForeign('formattime_package_foreign');
+            $table->dropColumn('id_formattime');
         });
     }
 }

@@ -29,8 +29,9 @@ class AddIdCategoriesToAlbumsTable extends Migration
      */
     public function down()
     {
-        Schema::table('albums', function (Blueprint $table) {
-            //
+        Schema::table('albums', function(Blueprint $table) {
+            $table->dropForeign('category_album_foreign');
+            $table->dropColumn('id_category');
         });
     }
 }

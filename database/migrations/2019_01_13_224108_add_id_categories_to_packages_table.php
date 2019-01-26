@@ -15,7 +15,7 @@ class AddIdCategoriesToPackagesTable extends Migration
     {           
         Schema::table('package_cards', function (Blueprint $table) {
             $table->integer('id_category')->unsigned();
-            $table->foreign('id', 'category_package_foreign')
+            $table->foreign('id_category', 'category_package_foreign')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');
@@ -29,8 +29,9 @@ class AddIdCategoriesToPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('package_cards', function (Blueprint $table) {
-            //
+        Schema::table('package_cards', function(Blueprint $table) {
+            $table->dropForeign('category_package_foreign');
+            $table->dropColumn('id_category');
         });
     }
 }

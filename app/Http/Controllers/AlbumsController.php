@@ -6,7 +6,9 @@ use App\Album;
 use App\PackageCard;
 use App\Category;
 use Request;
+use Auth;
 use App\Http\Requests\AlbumRequest;
+
 
 
 class AlbumsController extends Controller
@@ -30,9 +32,9 @@ class AlbumsController extends Controller
     }
     
     public function store(AlbumRequest $request){
-        Album::create($request->all());
+        $album = Album::create($request->all());
+        $album->id_user = Auth::user()->id; $album->save();
         return redirect('createAlbumSuccess'); 
-        
     }
 
     public function edit($id){
