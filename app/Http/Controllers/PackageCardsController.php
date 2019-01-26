@@ -6,6 +6,7 @@ use App\PackageCard;
 use App\Categoly; 
 use App\Format_time; 
 use Request;
+use Auth;
 use App\Http\Requests\PackageCardRequest;
 
 class PackageCardsController extends Controller
@@ -30,7 +31,9 @@ class PackageCardsController extends Controller
     }
     
     public function store(PackageCardRequest $request){
-        PackageCard::create($request->all());
+        $package_card = PackageCard::create($request->all());
+        $package_card->id_user = Auth::user()->id;
+        $package_card->save();
         return redirect('createPackageCardSuccess');  
     }
 

@@ -64,7 +64,7 @@
             </button> 
             </div>
         @foreach($albums as $album)
-            @if( Auth::user()->id === $album->id )
+            @if( Auth::user()->id === $album->id_user )
                 <a href="{{ url("photographer/show/{$album->id}/edit/") }}">
                         <div class="card album_show_wrap">
                                 <div class="album_show">

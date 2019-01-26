@@ -27,18 +27,14 @@
     </div> 
 
     <div class="container">
-            @foreach($package_cards as $package_card)
+        @foreach($package_cards as $package_card)
+            @if( Auth::user()->id === $package_card->id_user )
             <a class="a_getlink"	href="{{ url("photographer/packages/show/{$package_card->id}/edit/") }}">
                 <div class="card-body album_show_wrap padding_card">
                     <div class="row">
                         <div class="col-8" style="font-size:10px;">
                             <h3  style="font-size:18px; padding-right:10px; display: inline;" >
-                            ถ่ายภาพ
-                            @foreach($formattimes as $formattime)
-                                @if( $formattime->id === $package_card->id_formattime)
-                                {{ $formattime->name_format_time }}
-                                @endif
-                            @endforeach
+                            ถ่ายภาพ{{ $package_card->formattime->name_format_time }}
                             </h3>
                         </div>
                         <div class="col-4 text_right">
@@ -53,7 +49,8 @@
                     </div>
                 </div>
             </a>
-            @endforeach
+            @endif
+        @endforeach
             <div class="card btn_create">
                 <button class="btn" onclick="window.location.href='/createPackageCard'">
                     <i class="fas fa-plus-circle"></i>
