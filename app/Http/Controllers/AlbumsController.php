@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Album; 
+use App\ImageAlbum; 
 use App\PackageCard;
 use App\Category;
 use App\User;
@@ -34,8 +35,14 @@ class AlbumsController extends Controller
     public function store(AlbumRequest $request){
         $album = Album::create($request->all());
         $album->id_user = Auth::user()->id;
-        $album->save();
-        return redirect('createAlbumSuccess'); 
+        foreach($request->get('photos') as $key => $val) { 
+            $name_image = $val;
+            ImageAlbum::create([
+                'id_album' => $album->id,
+                'name_image' => $name_image
+            ]);
+        } 
+        return redirect('createAlbumSuccess');
     }
 
     public function edit($id){

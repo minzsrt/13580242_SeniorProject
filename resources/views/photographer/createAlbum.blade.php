@@ -11,6 +11,9 @@
     <link href="css/style.css" rel="stylesheet"> 
 </head>
 <body>
+@if ($errors->any())
+        {{ implode('', $errors->all(':message')) }}
+@endif
 {!! Form::open(['url' => 'profile_photographer']) !!}
     <section style="height:60px; padding:20px;">  
             <div class="row">
@@ -27,8 +30,8 @@
     </section>
 
     <div class="container">
-    <div class="card album_show_wrap album_show_rlt">
-            <div class="album_show">
+    <div class="card album_show_wrap_full">
+            <!-- <div class="album_show">
                 <img src="assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
             </div>
             <div class="wrap_choose_file">
@@ -36,8 +39,20 @@
                     <button class="btn_choose"><span class="hastag_album">Choose Cover Album...</span></button>
                     <input type="file" name="cover_album" id="profile-img"/>
                 </div>
+            </div> -->
+            <div id="dvPreview">
+                <img src="assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
+            </div>
+            <div class="wrap_choose_file">
+                <div class="upload-btn-wrapper">
+                    <button class="btn_choose"><span class="hastag_album">Choose File...</span></button>
+                    <input multiple="multiple" name="photos[]" type="file" id="fileupload"/>
+                </div>
             </div>
     </div>
+
+    
+
     <div class="row">
             <div class="col-md" style="margin-top:10px;">
                 <span class="all_more_link">ชื่ออัลบั้ม</span>
@@ -58,20 +73,37 @@
 {!! Form::close() !!}
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#profile-img-tag').attr('src', e.target.result);
+<script language="javascript" type="text/javascript">
+window.onload = function () {
+    var fileUpload = document.getElementById("fileupload");
+    fileUpload.onchange = function () {
+        if (typeof (FileReader) != "undefined") {
+            var dvPreview = document.getElementById("dvPreview");
+            dvPreview.innerHTML = "";
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+            for (var i = 0; i < fileUpload.files.length; i++) {
+                var file = fileUpload.files[i];
+                if (regex.test(file.name.toLowerCase())) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.createElement("IMG");
+                        img.className = "album_show_wrap_multi";
+                        img.src = e.target.result;
+                        dvPreview.appendChild(img);
+
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    alert(file.name + " is not a valid image file.");
+                    dvPreview.innerHTML = "";
+                    return false;
+                }
             }
-            reader.readAsDataURL(input.files[0]);
+        } else {
+            alert("This browser does not support HTML5 FileReader.");
         }
     }
-    $("#profile-img").change(function(){
-        readURL(this);
-    });
-
+};
 </script>
 
 </body>

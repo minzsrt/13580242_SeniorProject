@@ -759,4 +759,20 @@ select.select_search {
     margin: 0;
     box-shadow: none;
  }
+ .album_show_wrap_full{
+    padding: 0;
+    border:0;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+ }
+ .album_show_wrap_multi{
+    padding: 0;
+    border-radius: 10px;
+    border:0;
+    box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+    margin: 10px auto;
+    width: 100%;
+  }
  

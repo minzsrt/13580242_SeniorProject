@@ -35,6 +35,9 @@ Route::get('regPhotographerSuccess',function(){
     return view('regPhotographerSuccess');
 })->middleware('auth');
 
+Route::get('/upload', 'UploadController@uploadForm');
+Route::post('/upload', 'UploadController@uploadSubmit');
+
 // Unsuccess CRUD
 Route::get('/index', function(){ return view('general.index');});
 Route::get('/', function(){ return view('general.index');});

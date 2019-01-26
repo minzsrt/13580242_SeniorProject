@@ -22,9 +22,19 @@ class AlbumRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        return [
-            'name_album' => 'required|min:5|max:255'
+    {   
+        $rules = [
+            'name_album' => 'required',
         ];
+
+        $photos = count($this->input('photos'));
+        foreach($this->request->get('photos') as $key => $val) { 
+            $rules['photos.'.$key] = 'required'; 
+        } 
+
+        return $rules;
+
+
+        
     }
 }
