@@ -9,6 +9,7 @@ use App\Category;
 use App\User;
 use Request;
 use Auth;
+use Storage;
 use App\Http\Requests\AlbumRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -35,13 +36,22 @@ class AlbumsController extends Controller
     public function store(AlbumRequest $request){
         $album = Album::create($request->all());
         $album->id_user = Auth::user()->id;
-        foreach($request->get('photos') as $key => $val) { 
-            $name_image = $val;
+        // foreach($request->get('photos') as $key => $val) { 
+        //     $name_image = $val;
+        //     ImageAlbum::create([
+        //         'id_album' => $album->id,
+        //         'name_image' => $name_image
+        //     ]);
+
+        // } 
+        foreach ($request->photos as $photo) {
+            $filename = $photo->store('photos');
             ImageAlbum::create([
                 'id_album' => $album->id,
-                'name_image' => $name_image
+                'name_image' => $filename
             ]);
-        } 
+            // Storage::disk('uploads')->put('photos', $filename);
+        }
         return redirect('createAlbumSuccess');
     }
 

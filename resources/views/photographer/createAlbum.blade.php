@@ -14,7 +14,7 @@
 @if ($errors->any())
         {{ implode('', $errors->all(':message')) }}
 @endif
-{!! Form::open(['url' => 'profile_photographer']) !!}
+{!! Form::open(['url' => 'profile_photographer','enctype'=> 'multipart/form-data']) !!}
     <section style="height:60px; padding:20px;">  
             <div class="row">
                 <div class="col-1">
