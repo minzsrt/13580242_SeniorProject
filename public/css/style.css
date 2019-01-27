@@ -422,7 +422,11 @@ select.select_search {
     box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
     margin: 10px auto;
     height: 100%;
+    color: #fff;
+    /* background-image: linear-gradient(to bottom, #72afd3, #4cc0df, #00d0df, #00dfd2, #37ecba); */
+    background: #37ecba;
   }
+  
   .album_show{
     width:100%;
     height:auto;
@@ -774,5 +778,15 @@ select.select_search {
     box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
     margin: 10px auto;
     width: 100%;
+  }
+  .maps{
+    height: 460px;
+    border-radius: 10px;
+  }
+  .maps_wrap{
+    border-radius: 10px;
+    box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+
   }
  

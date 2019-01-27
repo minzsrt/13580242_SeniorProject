@@ -113,7 +113,7 @@
                         <span>รับปริญญา</span>
                     </div>
                     <div class="col text_right price_package">
-                        <span>900 - 4,500 ฿</span>
+                        <!-- <span>900 - 4,500 ฿</span> -->
                     </div>
                     <div class="col-1 text_center">
                         <i class="fas fa-angle-right"></i>
@@ -126,7 +126,7 @@
                         <span>ภาพบุคคล/แฟชั่น</span>
                     </div>
                     <div class="col text_right price_package">
-                        <span>600 - 2,500 ฿</span>
+                        <!-- <span>600 - 2,500 ฿</span> -->
                     </div>
                     <div class="col-1 text_center">
                         <i class="fas fa-angle-right"></i>

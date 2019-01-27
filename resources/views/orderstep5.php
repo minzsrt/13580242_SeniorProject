@@ -34,61 +34,13 @@
         </div>
 
         <span class="all_more_link">สถานที่</span>
-
-        <div class="row">
-            <div class="col">
-                <label class="container_radio container_radio_fix">
-                <div class="row">
-                    <div class="col" style="padding-top: 10px;">
-                    กรุงเทพและปริมลฑล
-                    </div>
-                </div>
-                <input type="radio" checked="checked" name="radio">
-                <span class="checkmark"></span>
-                </label>
-
-                <label class="container_radio container_radio_fix">
-                <div class="row">
-                    <div class="col" style="padding-top: 10px;">
-                    ภาคเหนือ
-                    </div>
-                </div>
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-                </label>
-
-                <label class="container_radio container_radio_fix">
-                <div class="row">
-                    <div class="col" style="padding-top: 10px;">
-                    ภาคกลาง
-                    </div>
-                </div>
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-                </label>
-
-                <label class="container_radio container_radio_fix">
-                <div class="row">
-                    <div class="col" style="padding-top: 10px;">
-                    ภาคตะวันออก
-                    </div>
-                </div>
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-                </label>
-
-                <label class="container_radio container_radio_fix">
-                <div class="row">
-                    <div class="col" style="padding-top: 10px;">
-                    ภาคตะวันออกเฉียงเหนือ
-                    </div>
-                </div>
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-                </label>
-
-            </div>
+        <div class="container">
+        <div class="row maps_wrap">
+            <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5670.061102641878!2d100.54740447622444!3d13.912959569889924!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe45d7fa6ac93bec8!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4Lio4Li04Lil4Lib4Liy4LiB4LijIOC4p-C4tOC4l-C4ouC4suC5gOC4guC4leC4i-C4tOC4leC4teC5ieC5geC4hOC4oeC4m-C4seC4qiDguYDguKHguLfguK3guIfguJfguK3guIfguJjguLLguJnguLU!5e0!3m2!1sen!2sth!4v1548551990806" width="800" frameborder="0"  allowfullscreen>
+            </iframe>
         </div>
+        </div>
+        
         <nav class="container nav_bottom">
         <div class="row">
             <div class="col">

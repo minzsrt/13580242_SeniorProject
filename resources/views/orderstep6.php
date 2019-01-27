@@ -53,7 +53,7 @@
                         <table class="all_more_link" style="width:100%; font-size: 14px; color:#000;">
                         <tr>
                             <th>สถานที่ </th>
-                            <td>กรุงเทพและปริมลฑล</td>
+                            <td>มหาวิทยาลัยศิลปากร วิทยาเขตซิตี้แคมปัส</td>
                         </tr>
                         <tr>
                             <th>วันที่ </th>
@@ -94,7 +94,7 @@
         <nav class="container nav_bottom">
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn_color" onclick="window.location.href='/orderstep4'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                <button type="submit" class="btn_color" onclick="window.location.href='/orderstep5'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
             </div>
             <div class="col">
                 <button type="submit" class="btn_color" onclick="window.location.href='/orderstep7'" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>

@@ -27,84 +27,60 @@
     </div>
 
     <div class="container">
-        <div class="card" style="padding: 0; margin:20px auto; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-            <div style="width:100%; height:250px; overflow: hidden; position:relative; border-top-left-radius: 10px;  border-top-right-radius: 10px;">
-                <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
-                    <div class="col text_right" style="padding-top: 10px; color:#fff;">
-                        <button class="btn_color btn_color_employ">จ้างงาน</button>
+                <div class="card-body album_show_wrap padding_card">
+                    <div class="row">
+                        <div class="col-8" style="font-size:10px;">
+                            <h3  style="font-size:18px; padding-right:10px; display: inline;" >
+                            ถ่ายภาพรายชั่วโมง
+                            </h3>
+                        </div>
+                        <div class="col-4 text_right">
+                            <h3  style="font-size:18px; padding-right:10px;">900 ฿</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="col detail_pack">
+                        <span>สิ่งที่ได้รับ</span><br>
+                        จำนวน 10 รูป ปรับแต่งไฟล์ภาพ แสง สี ตามความเหมาะสม
+                        </p>
                     </div>
                 </div>
-                <img class="card-img-top" src="assets/image/img_show03.jpg">    
-            </div>
-            <div class="card-body" style="padding:20px">
-                <div class="row">
-                    <div class="col-8" style="font-size:10px;">
-                        <h3  style="font-size:18px; padding-right:10px;">ถ่ายภาพรายชั่วโมง</h3>
+                <div class="card-body album_show_wrap padding_card">
+                    <div class="row">
+                        <div class="col-8" style="font-size:10px;">
+                            <h3  style="font-size:18px; padding-right:10px; display: inline;" >
+                            ถ่ายภาพครึ่งวัน
+                            </h3>
+                        </div>
+                        <div class="col-4 text_right">
+                            <h3  style="font-size:18px; padding-right:10px;">3,500 ฿</h3>
+                        </div>
                     </div>
-                    <div class="col-4 text_right">
-                        <h3  style="font-size:18px; padding-right:10px;">900 ฿</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="col detail_pack">
-                    <span>สิ่งที่ได้รับ</span><br>
-                    จำนวน 10 รูป ปรับแต่งไฟล์ภาพ แสง สี ตามความเหมาะสม
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="padding: 0; margin:20px auto; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-            <div style="width:100%; height:250px; overflow: hidden; position:relative; border-top-left-radius: 10px;  border-top-right-radius: 10px;">
-                <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
-                    <div class="col text_right" style="padding-top: 10px; color:#fff;">
-                        <button class="btn_color btn_color_employ">จ้างงาน</button>
+                    <div class="row">
+                        <p class="col detail_pack">
+                        <span>สิ่งที่ได้รับ</span><br>
+                        จำนวน 10 รูป ปรับแต่งไฟล์ภาพ แสง สี ตามความเหมาะสม
+                        </p>
                     </div>
                 </div>
-                <img class="card-img-top" src="assets/image/img_show_0201.jpg">    
-            </div>
-            <div class="card-body" style="padding:20px">
-                <div class="row">
-                    <div class="col-8" style="font-size:10px;">
-                        <h3  style="font-size:18px; padding-right:10px;">ถ่ายภาพครึ่งวัน</h3>
+                <div class="card-body album_show_wrap padding_card">
+                    <div class="row">
+                        <div class="col-8" style="font-size:10px;">
+                            <h3  style="font-size:18px; padding-right:10px; display: inline;" >
+                            ถ่ายภาพเต็มวัน
+                            </h3>
+                        </div>
+                        <div class="col-4 text_right">
+                            <h3  style="font-size:18px; padding-right:10px;">4,500 ฿</h3>
+                        </div>
                     </div>
-                    <div class="col-4 text_right">
-                        <h3  style="font-size:18px; padding-right:10px;">3,500 ฿</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="col detail_pack">
-                    <span>สิ่งที่ได้รับ</span><br>
-                    จำนวน 10 รูป ปรับแต่งไฟล์ภาพ แสง สี ตามความเหมาะสม
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="padding: 0; margin:20px auto; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-            <div style="width:100%; height:250px; overflow: hidden; position:relative; border-top-left-radius: 10px;  border-top-right-radius: 10px;">
-                <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
-                    <div class="col text_right" style="padding-top: 10px; color:#fff;">
-                        <button class="btn_color btn_color_employ">จ้างงาน</button>
+                    <div class="row">
+                        <p class="col detail_pack">
+                        <span>สิ่งที่ได้รับ</span><br>
+                        จำนวน 10 รูป ปรับแต่งไฟล์ภาพ แสง สี ตามความเหมาะสม
+                        </p>
                     </div>
                 </div>
-                <img class="card-img-top" src="assets/image/img_show03.jpg">    
-            </div>
-            <div class="card-body" style="padding:20px">
-                <div class="row">
-                    <div class="col-8" style="font-size:10px;">
-                        <h3  style="font-size:18px; padding-right:10px;">ถ่ายภาพเต็มวัน</h3>
-                    </div>
-                    <div class="col-4 text_right">
-                        <h3  style="font-size:18px; padding-right:10px;">4,500 ฿</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="col detail_pack">
-                    <span>สิ่งที่ได้รับ</span><br>
-                    จำนวน 10 รูป ปรับแต่งไฟล์ภาพ แสง สี ตามความเหมาะสม
-                    </p>
-                </div>
-            </div>
-        </div>
     </div>
 
 

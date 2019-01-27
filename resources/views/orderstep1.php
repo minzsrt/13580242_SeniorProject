@@ -138,13 +138,12 @@
 
             </div>
         </div>
-        <nav class="container nav_bottom nav_bottom">
+        <nav class="container nav_bottom">
         <div class="row">
             <div class="col">
-                
             </div>
             <div class="col">
-                <button type="submit" onclick="window.location.href='/orderstep2'" class="btn_color btn_bottom">ต่อไป</button>
+                <button type="submit" class="btn_color" onclick="window.location.href='/orderstep2'" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
             </div>
         </div>
         </nav>
