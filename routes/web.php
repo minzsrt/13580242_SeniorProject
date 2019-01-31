@@ -35,8 +35,7 @@ Route::get('regPhotographerSuccess',function(){
     return view('regPhotographerSuccess');
 })->middleware('auth');
 
-Route::get('/upload', 'UploadController@uploadForm');
-Route::post('/upload', 'UploadController@uploadSubmit');
+Route::get('/profile/{username}', 'ProfileController@show')->name('general.profile.show')->middleware('auth');
 
 // Unsuccess CRUD
 Route::get('/index', function(){ return view('general.index');});
@@ -44,7 +43,8 @@ Route::get('/', function(){ return view('general.index');});
 Route::get('search', function(){ return view('general.search');});
 Route::get('chatchannel', function(){ return view('general.chatchannel');})->middleware('auth');
 Route::get('notification', function(){ return view('general.notification');})->middleware('auth');
-Route::get('profileEmployer', function () { return view('general.profileEmployer'); })->middleware('auth');
+
+
 Route::get('package', function(){ return view('package');});
 
 Route::get('searchResult', function(){ return view('searchResult');});

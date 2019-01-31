@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\User; 
 use App\Album; 
 use App\PackageCard;
 use App\Category;
@@ -50,9 +52,46 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($username)
+    {   
+        $user = User::whereUsername($username)->first();
+        $authcheck = Auth::user()->username;
+
+        if( $user ){
+
+            if($user->username == $authcheck ){
+                if($user && $user->role_id == 2){
+    
+                    $albums = Album::orderBy('id', 'DESC')->get();
+                    $package_cards = PackageCard::all();
+                    $categories = Category::all();
+                    return view('photographer.profile', compact('albums','package_cards','categories'))->withUser($user);
+    
+                }elseif($user && $user->role_id == 3){
+    
+                    return view('general.profile')->withUser($user);
+    
+                }
+            }elseif($user->username != $authcheck ){
+                if($user->role_id == 2){
+    
+                    $albums = Album::orderBy('id', 'DESC')->get();
+                    $package_cards = PackageCard::all();
+                    $categories = Category::all();
+                    return view('general.viewphotographer',compact('albums','package_cards','categories'))->withUser($user);
+    
+                }elseif($user && $user->role_id == 3){
+    
+                    return view('general.viewgeneral')->withUser($user);
+    
+                }
+            }
+        }else{
+            //รอใส่ Error page
+            // dd($user);   
+            return $username;
+            
+        }
     }
 
     /**

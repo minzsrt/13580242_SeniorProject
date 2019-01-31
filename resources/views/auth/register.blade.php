@@ -13,6 +13,9 @@
                 <h3 class="headder_text text_center margin_box20">
                     {{ __('สร้างบัญชีของคุณ') }}
                 </h3>
+                <p style="color:#000;" class="invalid-feedback"  role="alert">
+                    error
+                </p>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -44,13 +47,15 @@
 
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <input id="password" type="password" class="input_box form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="รหัสผ่าน" required>
+                                <input id="password" type="password" class="input_box 
+                                form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="รหัสผ่าน" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
+
                             </div>
                         </div>
 

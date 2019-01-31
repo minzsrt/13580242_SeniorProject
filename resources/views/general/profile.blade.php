@@ -1,12 +1,11 @@
 @extends('layouts.mainmenu_general')
-@section('page_title', 'Profile Employer')
+@section('page_title', 'Profile')
 @section('content')
-
-    <div class="wrap_container_head">
+<div class="wrap_container_head">
         <div class="row">
             <div class="col-3">
                 <div style="width:80px; height:80px; border-radius:40px; overflow: hidden;">
-                    <img src="assets/image/avatar01.jpg" style="height:100%;">   
+                    <img src="{{url('assets/image/avatar01.jpg')}}" style="height:100%;">   
                 </div>
             </div>
             <div class="col" style="padding-top:30px;">
@@ -23,13 +22,13 @@
         <ul class="nav nav-tabs row" style="padding:0; margin-bottom:20px;">
             <li class="nav-item col text_center" style="padding:0;">
             <a class="nav-link active" data-toggle="tab" href="#home">
-                <img class="menu_list_profile" src="assets/image/heart_layout_black.svg"><br>
+                <img class="menu_list_profile" src="{{url('assets/image/heart_layout_black.svg')}}"><br>
                 <span class="menu_list_profile_text">Favorite</span>
             </a>
             </li>
             <li class="nav-item col text_center" style="padding:0;">
                 <a class="nav-link" data-toggle="tab" href="#menu1">
-                    <img class="menu_list_profile" src="assets/image/user.svg"><br>
+                    <img class="menu_list_profile" src="{{url('assets/image/user.svg')}}"><br>
                     <span class="menu_list_profile_text">Following</span>
                 </a>
             </li>
@@ -37,7 +36,7 @@
 
     </div>
 
-<!-- Tab panes -->
+    <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active container" id="home">
     <div class="card" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
@@ -48,16 +47,16 @@
                         <h3 style="font-size:14px; padding-right:10px; color:#fff; padding-top:5px;">Caption</h3>
                     </div>
                     <div class="col text_right" style="padding-top: 10px; color:#fff;">
-                        <span>614 </span><img class="btn_fav" src="assets/image/heart.svg">
+                        <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart.svg')}}">
                     </div>
                 </div>
-                <img class="card-img-top" src="assets/image/img_show03.jpg">    
+                <img class="card-img-top" src="{{url('assets/image/img_show03.jpg')}}">    
             </div>
             <div class="card-body" style="padding:10px">
                 <div class="row">
                     <div class="col-2">
                         <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                            <img src="assets/image/avatar02.jpg" style="height:100%;">    
+                            <img src="{{url('assets/image/avatar02.jpg')}}" style="height:100%;">    
                         </div>
                     </div>
                     <div class="col-6" style="font-size:10px;">
@@ -158,4 +157,6 @@
 
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
 @stop
