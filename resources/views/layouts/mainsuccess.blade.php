@@ -21,7 +21,7 @@
             <div class="col text_center" style="padding-top: 70%">
                 <img src="assets/image/check.svg" height="35"><br><br>
                 <span class="headder_text">@yield('text_success')</span><br><br>
-                <button class="btn_color btn_color_follow" onclick="window.location.href='@yield('link_page')'">ตกลง</button>
+                <button class="btn_color btn_color_follow" onclick="window.location.href='@yield('link_page'){{Auth::user()->username}}'">ตกลง</button>
             </div>
         </div>
     </div>

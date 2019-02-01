@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User; 
 use App\Album; 
+use App\ImageAlbum; 
 use App\PackageCard;
 use App\Category;
 use Request;
@@ -62,7 +63,8 @@ class ProfileController extends Controller
                     $albums = Album::orderBy('id', 'DESC')->get();
                     $package_cards = PackageCard::all();
                     $categories = Category::all();
-                    return view('photographer.profile', compact('albums','package_cards','categories'))->withUser($user);
+                    $image_albums = ImageAlbum::all();
+                    return view('photographer.profile', compact('albums','package_cards','categories','image_albums'))->withUser($user);
     
                 }elseif($user && $user->role_id == 3){
     

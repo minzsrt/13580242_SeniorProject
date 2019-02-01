@@ -438,6 +438,7 @@ select.select_search {
     position: absolute;
     width:100%;
     padding:10px 0px 10px 10px;
+    z-index: 1;
 }
 .float_left{
     float:left;

@@ -14,7 +14,7 @@ class AddIdUserToAlbumsTable extends Migration
     public function up()
     {
         Schema::table('albums', function (Blueprint $table) { 
-            $table->integer('id_user')->unsigned()->default(1); 
+            $table->integer('id_user')->unsigned(); 
             $table->foreign('id_user', 'id_users_albums_foreign')
             ->references('id')
             ->on('users')

@@ -61,6 +61,10 @@
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
+    <div>
 {!! Form::close() !!}
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>

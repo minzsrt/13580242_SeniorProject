@@ -13,9 +13,9 @@ class AddIdAlbumToImageTable extends Migration
      */
     public function up()
     {
-        Schema::table('images_album', function (Blueprint $table) {
-            $table->integer('id_album')->unsigned()->default(1);
-            $table->foreign('id_album', 'album_image_foreign')
+        Schema::table('image_albums', function (Blueprint $table) {
+            $table->integer('album_id')->unsigned();
+            $table->foreign('album_id', 'album_image_foreign')
                 ->references('id')
                 ->on('albums')
                 ->onDelete('cascade');
@@ -29,9 +29,9 @@ class AddIdAlbumToImageTable extends Migration
      */
     public function down()
     {
-        Schema::table('images_album', function(Blueprint $table) {
+        Schema::table('image_albums', function(Blueprint $table) {
             $table->dropForeign('album_image_foreign');
-            $table->dropColumn('id_album');
+            $table->dropColumn('album_id');
         });
     }
 }

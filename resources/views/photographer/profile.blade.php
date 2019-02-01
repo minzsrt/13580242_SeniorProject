@@ -74,14 +74,30 @@
                                             </span>
                                             <h3 class="caption_album">
                                                 {{ $album->name_album }}
-                                                {{ $album->user->username }}
                                             </h3>
                                         </div>
                                         <div class="col text_right fav_count">
                                             <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">
                                         </div>
                                     </div>
-                                    <img class="card-img-top" src="{{ url('assets/image/img_show_0201.jpg') }}">  
+                                    @foreach($image_albums as $image_album)
+                                        @if( $image_album->album_id === $album->id )
+                                            <img class="card-img-top" src="{{ url($image_album->name_image) }}"> 
+                                        @endif    
+                                    @endforeach
+                                    <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner" style="overflow: inherit; max-height: 220px !important;">            
+                                            @foreach($image_albums as $image_album)
+                                                @if( $image_album->album_id === $album->id )
+                                                {{$image_album->album_id}}
+                                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}" >
+                                                <img class="card-img-top" src="{{ url($image_album->name_image) }}"> 
+                                            </div>
+                                                @endif    
+                                            @endforeach
+                                        </div>
+                                    </div> -->
+                                    
                                 </div>
                         </div>
                 </a>        

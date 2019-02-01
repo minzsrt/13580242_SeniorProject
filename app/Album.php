@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Album extends Model
 {   
-    protected $fillable = ['name_album','cover_album','id_category'];
+    protected $fillable = ['name_album','cover_album','id_category','id_user'];
 
     public function user(){
 
@@ -20,4 +20,11 @@ class Album extends Model
         return $this->belongsTo('App\Category', 'id_category');
 
     }
+
+    public function image_album(){
+
+        return $this->hasMany('App\ImageAlbum');
+        
+    }
+    
 }

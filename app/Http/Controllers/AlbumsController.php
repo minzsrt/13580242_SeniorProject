@@ -12,6 +12,7 @@ use Auth;
 use Storage;
 use App\Http\Requests\AlbumRequest;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\UploadedFile;
 
 class AlbumsController extends Controller
 {
@@ -36,11 +37,14 @@ class AlbumsController extends Controller
     public function store(AlbumRequest $request){
         $album = Album::create($request->all());
         $album->id_user = Auth::user()->id;
+        $album_id = $album->id;
+        // dd($album->id);
         foreach ($request->photos as $photo) {
-            $filename = $photo->store('photos');
+            // $filename = $photo->store('public/images');
+            $filename = $photo->store('photos', ['disk' => 'my_files']);
             ImageAlbum::create([
-                'id_album' => $album->id,
-                'name_image' => $filename
+                'name_image' => $filename,
+                'album_id' => $album_id
             ]);
         }
         return redirect('createAlbumSuccess');
