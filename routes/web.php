@@ -2,8 +2,6 @@
 
 Auth::routes();
 
-Route::resource('photographer/index', 'IndexController');
-Route::get('profilePhotographer', 'ProfileController@index');
 Route::get('photographer/chatchannel', function(){ return view('photographer.chatchannel.chatchannel');});
 Route::get('photographer/notification', function(){ return view('photographer.notification.notification');});
 
@@ -35,15 +33,13 @@ Route::get('regPhotographerSuccess',function(){
     return view('regPhotographerSuccess');
 })->middleware('auth');
 
+Route::resource('/','IndexController');
 Route::get('/profile/{username}', 'ProfileController@show')->name('general.profile.show')->middleware('auth');
 
 // Unsuccess CRUD
-Route::get('/index', function(){ return view('general.index');});
-Route::get('/', function(){ return view('general.index');});
 Route::get('search', function(){ return view('general.search');});
 Route::get('chatchannel', function(){ return view('general.chatchannel');})->middleware('auth');
 Route::get('notification', function(){ return view('general.notification');})->middleware('auth');
-
 
 Route::get('package', function(){ return view('package');});
 
@@ -58,8 +54,8 @@ Route::get('orderstep4', function(){ return view('orderstep4');});
 Route::get('orderstep5', function(){ return view('orderstep5');});
 Route::get('orderstep6', function(){ return view('orderstep6');});
 Route::get('orderstep7', function(){ return view('orderstep7');});
-Route::get('listpayment', function(){ return view('listpayment');});
 
+Route::get('listpayment', function(){ return view('listpayment');});
 Route::get('paymentsuccess', function(){ return view('paymentsuccess');});
 Route::get('internetbanking', function(){ return view('internetbanking');});
 

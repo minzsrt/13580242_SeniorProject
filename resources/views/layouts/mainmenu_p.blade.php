@@ -22,7 +22,7 @@
         <div class="container" style="height:100%;">
             <div class="row" style="height:100%;">
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='{{url('photographer/index')}}'">
+                <button class="btn_menu_list" onclick="window.location.href='{{url('/')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Index'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/profile_photographer'">
-                    @if (trim($__env->yieldContent('page_title')==='Profile Photographer'))
+                    @if (trim($__env->yieldContent('page_title')==='Profile'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/friend.svg')}}" >

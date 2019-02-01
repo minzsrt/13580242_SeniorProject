@@ -19,10 +19,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $albums = Album::orderBy('id', 'DESC')->get();
-        $package_cards = PackageCard::all();
-        $categories = Category::all();
-        return view('profilePhotographer', compact('albums','package_cards','categories'));
+        
     }
 
     /**

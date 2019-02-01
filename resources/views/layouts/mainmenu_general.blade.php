@@ -54,8 +54,8 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='/profileEmployer'">
-                    @if (trim($__env->yieldContent('page_title')==='Profile Employer'))
+                <button class="btn_menu_list" onclick="window.location.href='/profile/{{Auth::user()->username}}'">
+                    @if (trim($__env->yieldContent('page_title')==='Profile'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/friend.svg')}}" >
