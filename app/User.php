@@ -45,4 +45,10 @@ class User extends Authenticatable
         return $this->hasMany('App\PackageCard');
     }
 
+    public function order(){
+        return $this->belongsToMany('App\Order');
+    }
+
+
+
 }

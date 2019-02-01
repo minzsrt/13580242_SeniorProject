@@ -18,7 +18,7 @@
     <section style="height:60px; padding:20px;">  
             <div class="row">
                 <div class="col-1">
-                    <button onclick="window.location.href='/profile_photographer'" class="btn" style="background:#fff;"><</button> 
+                    <button onclick="window.location.href='{{ URL::previous() }}'" class="btn" style="background:#fff;"><</button> 
                 </div>
                 <div class="col-6">
                     <h3 class="headder_text" style="padding: 5px;">สร้างอัลบั้ม</h3>
@@ -31,15 +31,6 @@
 
     <div class="container">
     <div class="card album_show_wrap_full">
-            <!-- <div class="album_show">
-                <img src="assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
-            </div>
-            <div class="wrap_choose_file">
-                <div class="upload-btn-wrapper">
-                    <button class="btn_choose"><span class="hastag_album">Choose Cover Album...</span></button>
-                    <input type="file" name="cover_album" id="profile-img"/>
-                </div>
-            </div> -->
             <div id="dvPreview">
                 <img src="assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
             </div>

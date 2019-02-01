@@ -36,21 +36,12 @@ class AlbumsController extends Controller
     public function store(AlbumRequest $request){
         $album = Album::create($request->all());
         $album->id_user = Auth::user()->id;
-        // foreach($request->get('photos') as $key => $val) { 
-        //     $name_image = $val;
-        //     ImageAlbum::create([
-        //         'id_album' => $album->id,
-        //         'name_image' => $name_image
-        //     ]);
-
-        // } 
         foreach ($request->photos as $photo) {
             $filename = $photo->store('photos');
             ImageAlbum::create([
                 'id_album' => $album->id,
                 'name_image' => $filename
             ]);
-            // Storage::disk('uploads')->put('photos', $filename);
         }
         return redirect('createAlbumSuccess');
     }
