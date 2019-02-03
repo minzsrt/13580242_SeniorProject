@@ -37,7 +37,16 @@ Route::resource('/','IndexController');
 Route::get('/profile/{username}', 'ProfileController@show')->name('general.profile.show')->middleware('auth');
 
 // Unsuccess CRUD
-Route::get('search', function(){ return view('general.search');});
+// Route::any('/search',function(){ 
+//     $q = Input::get ( 'q' );
+//     $user = User::where('username','LIKE','%'.$q.'%')->orWhere('email','LIKE','%'.$q.'%')->get();
+//     if(count($user) > 0)
+//         return view('general.search')->withDetails($user)->withQuery ( $q );
+//         else return view ('general.search')->withMessage('No Details found. Try to search again !');
+//     // return view('general.search');
+// });
+Route::any('search','SearchController@index');
+
 Route::get('chatchannel', function(){ return view('general.chatchannel');})->middleware('auth');
 Route::get('notification', function(){ return view('general.notification');})->middleware('auth');
 

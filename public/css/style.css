@@ -569,6 +569,10 @@ select.select_search {
   .btn_width{
       width: 100%;
   }
+  .btn_transparent{
+      background: none;
+      color: #707070;
+  }
   .margin_box20{
       margin: 20px auto;
   }
@@ -612,9 +616,11 @@ select.select_search {
 .wrap_all_reg_photographer .center_fixed{
     right: 0;
 }
-
-.color_fff{
-    color: #fff;
+.bg_fff{
+    background: #ffffff !important;
+}
+.color_black{
+    color: #000000 !important;
 }
 
 .img_profile{

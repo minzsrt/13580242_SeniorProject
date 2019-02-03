@@ -13,5 +13,10 @@ class Category extends Model
         return $this->hasMany('App\Album','foreign_key');
         
     }
+
+    public function package_card(){
+        return $this->hasMany('App\PackageCard');
+    }
+
     
 }
