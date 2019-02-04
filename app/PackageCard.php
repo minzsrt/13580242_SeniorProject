@@ -19,4 +19,10 @@ class PackageCard extends Model
         return $this->belongsTo('App\Format_time', 'id_formattime');
 
     }
+
+    public function category(){
+
+        return $this->belongsTo('App\Category', 'id_category');
+
+    }
 }
