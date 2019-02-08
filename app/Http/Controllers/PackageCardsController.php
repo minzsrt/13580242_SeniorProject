@@ -11,11 +11,15 @@ use App\Http\Requests\PackageCardRequest;
 
 class PackageCardsController extends Controller
 {
-    public function index(){
+    public function index($id){
+        $package_card = PackageCard::find($id);
+        if(empty($package_card))
+        abort(404);
         $package_cards = PackageCard::orderBy('price', 'ASC')->get();
         $categories = \App\Category::all();
         $formattimes = \App\Format_time::all();
-        return view('photographer.packages.listPackage', compact('package_cards','categories','formattimes'));
+        $data['get_id'] = $id;
+        return view('photographer.packages.listPackage',$data, compact('package_cards','categories','formattimes'));
     }
 
 

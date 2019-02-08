@@ -18,7 +18,7 @@ class AlbumsController extends Controller
 {
     public function index(){
         $albums = Album::orderBy('id', 'DESC')->get();
-        $package_cards = PackageCard::all();
+        $package_cards = PackageCard::all()->groupBy('id_category')->get();
         $categories = Category::all();
         return view('photographer.profile_photographer', compact('albums','package_cards','categories'));
     }

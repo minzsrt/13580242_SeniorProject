@@ -100,6 +100,7 @@
         </div>
 
         <div class="tab-pane container" id="menu2">
+
             <div class="container wrap_container_head">
                 <div class="row">
                     <div class="col">
@@ -107,37 +108,29 @@
                     </div>
                 </div>
             </div>
-            <div onclick="window.location.href='/listPackage'" class="packagecard_box">
-                <div class="row packagecard_box_padding">
-                    <div class="col">
-                        <span>รับปริญญา</span>
+
+            @foreach($package_cards as $package_card)
+                <div onclick="window.location.href='{{ url("listPackage/{$package_card->id_category}") }}'" class="packagecard_box">
+                    <div class="row packagecard_box_padding">
+                        <div class="col">
+                            <span>{{ $package_card->category->name_category }}</span>
+                        </div>
+                        <div class="col text_right price_package">
+                            <span>{{ $package_card->price }} ฿</span>
+                        </div>
+                        <div class="col-1 text_center">
+                            <i class="fas fa-angle-right"></i>
+                        </div>
                     </div>
-                    <div class="col text_right price_package">
-                        <!-- <span>900 - 4,500 ฿</span> -->
-                    </div>
-                    <div class="col-1 text_center">
-                        <i class="fas fa-angle-right"></i>
-                    </div>
-                </div>        
-            </div>
-            <div onclick="window.location.href='/listPackage'" class="packagecard_box">
-                <div class="row packagecard_box_padding">
-                    <div class="col">
-                        <span>ภาพบุคคล/แฟชั่น</span>
-                    </div>
-                    <div class="col text_right price_package">
-                        <!-- <span>600 - 2,500 ฿</span> -->
-                    </div>
-                    <div class="col-1 text_center">
-                        <i class="fas fa-angle-right"></i>
-                    </div>
-                </div>      
-            </div>
+                </div>
+            @endforeach
+
             <div class="card" style="border:0; margin:10px auto; ">
                     <button onclick="window.location.href='/listPackage'" class="btn btn_create">
                         <i class="fas fa-plus-circle"></i>
                     </button> 
-            </div>  
+            </div>
+
             <div class="container wrap_container_head">
                 <div class="row">
                     <div class="col">
@@ -177,9 +170,9 @@
                                 </div>
                                 <div class="col-12">
                                     <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
                                     <span class="fa fa-star"></span>
                                 </div>
                             </div>
