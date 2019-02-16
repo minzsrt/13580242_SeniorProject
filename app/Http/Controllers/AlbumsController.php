@@ -61,13 +61,13 @@ class AlbumsController extends Controller
     public function update($id, AlbumRequest $request){
         $album = Album::findOrFail($id); 
         $album->update($request->all());
-        return redirect('profile_photographer');
+        return redirect('profile/'.Auth::user()->username);
     }
 
     public function destroy($id){
 		$album = Album::findOrFail($id);
 		$album->delete();
-		return redirect('profile_photographer');
+		return redirect('profile/'.Auth::user()->username);
     }
 
      

@@ -6,7 +6,7 @@ Route::get('photographer/chatchannel', function(){ return view('photographer.cha
 Route::get('photographer/notification', function(){ return view('photographer.notification.notification');});
 
 // Success CRUD
-Route::resource('profile_photographer', 'AlbumsController');
+// Route::resource('profile_photographer', 'AlbumsController');
 Route::get('photographer/show/{id}', 'AlbumsController@show');
 Route::get('createAlbum', 'AlbumsController@create');
 Route::get('photographer/show/{id}/edit', 'AlbumsController@edit');

@@ -25,7 +25,24 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/profile_photographer';
+    // protected $redirectTo = '/profile_photographer';
+
+    protected function handleUserWasAuthenticated(Request $request, $throttles)
+    {
+        if ($throttles) {
+            $this->clearLoginAttempts($request);
+        }
+
+        if (method_exists($this, 'authenticated')) {
+            return $this->authenticated($request, Auth::guard($this->getGuard())->user());
+        }
+
+        return redirect()->intended($this->redirectPath());
+    }
+    public function authenticated($request,$user)
+    {
+        return redirect('/profile/'.$user->username);
+    }
 
     /**
      * Create a new controller instance.

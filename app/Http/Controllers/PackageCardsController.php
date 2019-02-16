@@ -132,13 +132,13 @@ class PackageCardsController extends Controller
     public function update($id, PackageCardRequest $request){
         $package_card = PackageCard::findOrFail($id); 
         $package_card->update($request->all());
-        return redirect('listPackage');
+        return redirect('listPackage/'.$package_card->id_category);
     }
 
     public function destroy($id){
 		$package_card = PackageCard::findOrFail($id);
 		$package_card->delete();
-		return redirect('listPackage');
+		return redirect('listPackage/'.$package_card->id_category);
 	}
 
 }
