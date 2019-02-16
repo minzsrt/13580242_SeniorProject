@@ -13,6 +13,9 @@ use App\Http\Requests\PackageCardRequest;
 class PackageCardsController extends Controller
 {
     public function index( $id ){
+
+        
+
         $id_user = Auth::user()->id;
         $package_cards = PackageCard::Where([
             ['id_category','LIKE', $id ],

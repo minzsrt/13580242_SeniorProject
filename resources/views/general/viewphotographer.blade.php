@@ -89,32 +89,22 @@
                     </div>
                 </div>
             </div>
-            <div onclick="window.location.href='/listPackage'" class="packagecard_box">
-                <div class="row packagecard_box_padding">
-                    <div class="col">
-                        <span>รับปริญญา</span>
+            
+            @foreach($package_cards as $id_category => $package_card)
+                <div onclick="window.location.href='{{ url("listPackage/{$package_card->id_category}") }}'" class="packagecard_box">
+                    <div class="row packagecard_box_padding">
+                        <div class="col">
+                            <span>{{ $package_card->category->name_category }}</span>
+                        </div>
+                        <!-- <div class="col text_right price_package">
+                            <span>{{ $package_card->price }} ฿</span>
+                        </div> -->
+                        <div class="col-1 text_center">
+                            <i class="fas fa-angle-right"></i>
+                        </div>
                     </div>
-                    <div class="col text_right price_package">
-                        <!-- <span>900 - 4,500 ฿</span> -->
-                    </div>
-                    <div class="col-1 text_center">
-                        <i class="fas fa-angle-right"></i>
-                    </div>
-                </div>        
-            </div>
-            <div onclick="window.location.href='/listPackage'" class="packagecard_box">
-                <div class="row packagecard_box_padding">
-                    <div class="col">
-                        <span>ภาพบุคคล/แฟชั่น</span>
-                    </div>
-                    <div class="col text_right price_package">
-                        <!-- <span>600 - 2,500 ฿</span> -->
-                    </div>
-                    <div class="col-1 text_center">
-                        <i class="fas fa-angle-right"></i>
-                    </div>
-                </div>      
-            </div>
+                </div>
+            @endforeach
 
             <div class="container wrap_container_head">
                 <div class="row">

@@ -109,7 +109,6 @@
                 </div>
             </div>
             @foreach($package_cards as $id_category => $package_card)
-                @if( Auth::user()->id === $package_card->id_user )
                 <div onclick="window.location.href='{{ url("listPackage/{$package_card->id_category}") }}'" class="packagecard_box">
                     <div class="row packagecard_box_padding">
                         <div class="col">
@@ -123,7 +122,6 @@
                         </div>
                     </div>
                 </div>
-                @endif    
             @endforeach
 
             <div class="card" style="border:0; margin:10px auto; ">
@@ -154,7 +152,7 @@
                 <label class="btn_layout_equipment">External Flash</label>
             </div>
         </div>
-
+ 
         <div class="tab-pane container" id="menu3">
             <div class="card review_box">
                 <div class="card-body review_box_head">

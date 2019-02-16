@@ -11,6 +11,7 @@ use App\Category;
 use Request;
 use DB;
 use App\Http\Requests\AlbumRequest;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -56,7 +57,7 @@ class ProfileController extends Controller
         $user = User::whereUsername($username)->first();
         $authcheck = Auth::user()->username;
 
-        if( $user ){
+        if( $user ){ 
 
             if($user->username == $authcheck ){
                 if($user && $user->role_id == 2){
@@ -76,10 +77,27 @@ class ProfileController extends Controller
                 }
             }elseif($user->username != $authcheck ){
                 if($user->role_id == 2){
-    
+
+                    $url = url()->current();
+                    $slice = Str::after($url , 'http://127.0.0.1:8000/profile/');
+                    // dd($slice);
+
+                    $authall = User::where('username','Like',$slice)->get();
+                    // dd($authall->pluck('id'));
+
+                    $id_user = $authall->pluck('id');
+                    // dd($id_user);
+
                     $albums = Album::orderBy('id', 'DESC')->get();
-                    $package_cards = PackageCard::all();
+                    $package_cards = PackageCard::Where([
+                        ['id_user', 'LIKE', $id_user ],
+                    ])->groupBy('id_category')->get();
+                    // dd($package_cards);
+                    if(empty($package_cards))
+                    abort(404);
+
                     $categories = Category::all();
+
                     return view('general.viewphotographer',compact('albums','package_cards','categories'))->withUser($user);
     
                 }elseif($user && $user->role_id == 3){
