@@ -82,6 +82,7 @@
 
     <div class="container margin_top20">
     @if(isset($details))
+        {{ $alertsearch }}
         @foreach($package_cards as $package_card)
         <div class="row">
             <div class="col">
@@ -90,13 +91,13 @@
         </div>   
         <div class="card album_show_wrap bg_fff color_black">
             <div class="album_show">
-                    <img class="card-img-top" src="{{ url($package_card->id_user) }}">    
             </div>
             <div class="card-body" style="padding:10px">
                 <div class="row">
                     <div class="col-2">
                         <div class="order_img_profile">
-                            <img src="assets/image/avatar01.jpg" style="height:100%;">    
+                            <img src="assets/image/avatar01.jpg" style="height:100%;">  
+                            
                         </div>
                     </div>
                     <div class="col-6" style="font-size:10px;">

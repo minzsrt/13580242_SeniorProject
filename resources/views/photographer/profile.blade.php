@@ -108,8 +108,8 @@
                     </div>
                 </div>
             </div>
-
-            @foreach($package_cards as $package_card)
+            @foreach($package_cards as $id_category => $package_card)
+                @if( Auth::user()->id === $package_card->id_user )
                 <div onclick="window.location.href='{{ url("listPackage/{$package_card->id_category}") }}'" class="packagecard_box">
                     <div class="row packagecard_box_padding">
                         <div class="col">
@@ -123,10 +123,11 @@
                         </div>
                     </div>
                 </div>
+                @endif    
             @endforeach
 
             <div class="card" style="border:0; margin:10px auto; ">
-                    <button onclick="window.location.href='/listPackage'" class="btn btn_create">
+                    <button onclick="window.location.href='/createPackageCard'" class="btn btn_create">
                         <i class="fas fa-plus-circle"></i>
                     </button> 
             </div>

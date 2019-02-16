@@ -9,6 +9,7 @@ use App\ImageAlbum;
 use App\PackageCard;
 use App\Category;
 use Request;
+use DB;
 use App\Http\Requests\AlbumRequest;
 
 class ProfileController extends Controller
@@ -61,7 +62,8 @@ class ProfileController extends Controller
                 if($user && $user->role_id == 2){
     
                     $albums = Album::orderBy('id', 'DESC')->get();
-                    $package_cards = PackageCard::all();
+                    // $package_cards = PackageCard::all();
+                    $package_cards = PackageCard::groupBy('id_category')->get();
                     $categories = Category::all();
                     $image_albums = ImageAlbum::all();
                     return view('photographer.profile', compact('albums','package_cards','categories','image_albums'))->withUser($user);

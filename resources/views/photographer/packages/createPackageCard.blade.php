@@ -11,12 +11,16 @@
     <link href="css/style.css" rel="stylesheet"> 
 </head>
 <body>
+<!-- {!! Form::open(['url'=>'{{URL::previous()}}']) !!} -->
+<!-- <form action="{{URL::previous()}}" method="POST"> -->
+<form action="createPackageCard/store" method="post" >
 {{ csrf_field() }}
-{!! Form::open(['url'=>'listPackage']) !!}
+
+    <!-- {{URL::previous()}} -->
     <section style="height:60px; padding:20px;">  
             <div class="row">
                 <div class="col-1">
-                    <button onclick="window.location.href='/profile_photographer'" class="btn" style="background:#fff;"><</button> 
+                    <button onclick="window.location.href='{{ URL::previous() }}'" class="btn" style="background:#fff;"><</button> 
                 </div>
                 <div class="col-6">
                     <h3 class="headder_text" style="padding: 5px;">สร้างการ์ดค่าบริการ</h3>
@@ -84,8 +88,8 @@
         </div>
     </div>
 
-
-{!! Form::close() !!}
+</form>
+<!-- {!! Form::close() !!} -->
 
 </body>
 </html>

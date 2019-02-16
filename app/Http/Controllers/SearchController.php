@@ -1,12 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
-use App\Album;
-use App\ImageAlbum;
+
+use App\Album; 
+use App\ImageAlbum; 
 use App\PackageCard;
-use Illuminate\Support\Facades\Input;
+use App\Category;
+use App\User;
+use Auth;
+use Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\AlbumRequest;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Input;
 
 class SearchController extends Controller
 {
@@ -22,19 +29,19 @@ class SearchController extends Controller
         $price2 = Input::get ( 'price2' );
         $formattime = Input::get ( 'formattime' );
 
-        $package_cards = PackageCard::join('users', 'users.id', '=', 'package_cards.id_user')->Where([
+        $package_cards = PackageCard::Where([
             ['id_category','LIKE',$category],
             ['id_formattime', 'LIKE', $formattime],
         ])->whereBetween( 'price', [$price1, $price2] )->get();
-            // dd(!empty($package_cards));
-
+        
         if(!empty($package_cards)){
-            // dd($package_cards);
-            return view('general.search',compact('albums','image_albums','package_cards','categories','users'))->withDetails($package_cards);
+            $albums = Album::all();
+            $data['alertsearch'] = '';
+            return view('general.search',$data,compact('albums','image_albums','package_cards','categories','users'))->withDetails($package_cards);
         }
         else {
-            return redirect('general.search')->with('status', 'Test ');
-            // return back()->with('success','Item created successfully!');
+            $data['alertsearch'] = 'Search not found!';
+            return redirect('general.search',$data);
         }
     }
 

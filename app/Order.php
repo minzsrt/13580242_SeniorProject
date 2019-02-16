@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {  
-    protected $fillable = ['price','time_work','date_work','place','detail','transportation_cost','shipping_cost','total','status_order','status_payment'];
+    protected $guarded = [];
+    // protected $fillable = ['price','time_work','date_work','place','detail','transportation_cost','shipping_cost','total','status_order','status_payment'];
 
     public function user(){
         return $this->belongsToMany('App\User')->withPivot('id_employer', 'id_photographer');

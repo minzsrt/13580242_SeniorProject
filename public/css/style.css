@@ -622,6 +622,10 @@ select.select_search {
 .color_black{
     color: #000000 !important;
 }
+.color_white{
+    color: white !important;
+}
+
 
 .img_profile{
     width:80px;
@@ -796,4 +800,6 @@ select.select_search {
     overflow: hidden;
 
   }
- 
+ .input_line{
+    width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;
+ }

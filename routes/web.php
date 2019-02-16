@@ -17,10 +17,11 @@ Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');}
 // Success CRUD
 Route::get('listPackage/{id}', 'PackageCardsController@index')->name('photographer.packages.listPackage');
 Route::get('createPackageCard', 'PackageCardsController@create');
+Route::post('createPackageCard/store', 'PackageCardsController@store');
 Route::get('photographer/packages/show/{id}/edit', 'PackageCardsController@edit');
 Route::get('photographer/packages/show/{id}/update', 'PackageCardsController@update');
 Route::get('photographer/packages/show/{id}/destroy', 'PackageCardsController@destroy');
-Route::get('createPackageCardSuccess', function(){ return view('createPackageCardSuccess');});
+Route::get('createPackageCardSuccess','PackageCardsController@success');
 
 // Success CRUD
 Route::resource('invitePhotographer', 'RegisterPhotographerController');
@@ -48,17 +49,31 @@ Route::get('searchResult', function(){ return view('searchResult');});
 
 Route::get('recommendSetting', function(){ return view('recommendSetting');});
 
-Route::get('orderstep1', function(){ return view('orderstep1');});
-Route::get('orderstep2', function(){ return view('orderstep2');});
-Route::get('orderstep3', function(){ return view('orderstep3');});
-Route::get('orderstep4', function(){ return view('orderstep4');});
-Route::get('orderstep5', function(){ return view('orderstep5');});
-Route::get('orderstep6', function(){ return view('orderstep6');});
+Route::get('/orderstep1', 'OrderController@createStep1');
+Route::post('/orderstep1', 'OrderController@postCreateStep1');
+Route::get('/orderstep2', 'OrderController@createStep2');
+Route::post('/orderstep2', 'OrderController@postCreateStep2');
+Route::get('/orderstep3', 'OrderController@createStep3');
+Route::post('/orderstep3', 'OrderController@postCreateStep3');
+Route::get('/orderstep4', 'OrderController@createStep4');
+Route::post('/orderstep4', 'OrderController@postCreateStep4');
+Route::get('/orderstep5', 'OrderController@createStep5');
+Route::post('/orderstep5', 'OrderController@postCreateStep5');
+Route::get('/orderstep6', 'OrderController@createStep6');
+Route::post('/order/store', 'OrderController@store');
+
+// Route::get('orderstep2', function(){ return view('orderstep2');});
+// Route::get('orderstep3', function(){ return view('orderstep3');});
+// Route::get('orderstep4', function(){ return view('orderstep4');});
+// Route::get('orderstep5', function(){ return view('orderstep5');});
+// Route::get('orderstep6', function(){ return view('orderstep6');});
 Route::get('orderstep7', function(){ return view('orderstep7');});
 
 Route::get('listpayment', function(){ return view('listpayment');});
 Route::get('paymentsuccess', function(){ return view('paymentsuccess');});
 Route::get('internetbanking', function(){ return view('internetbanking');});
+Route::get('paymentCard', function(){ return view('paymentCard');});
+Route::get('checkout', function(){ return view('checkout');});
 
 Route::get('yourBank', function(){ return view('yourBank');});
 Route::get('listTag', function(){ return view('listTag');});

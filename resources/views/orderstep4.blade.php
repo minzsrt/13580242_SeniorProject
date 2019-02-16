@@ -16,7 +16,8 @@
     <section class="text_right" style="height:60px; padding:20px;">    
         <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/index'"><i class="fas fa-times-circle"></i></a>
     </section>
-
+    <form action="/orderstep4" method="post">
+    {{ csrf_field() }}
     <div class="container">
         <div class="row">
             <div class="col">
@@ -38,11 +39,11 @@
 
         <div class="row">
             <div class="col">
-                <input type="date" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                <input type="date" class="input_line" name="date_work">
             </div>
         </div>
 
-        <div class="row" style="margin-top:20px;">
+        <!-- <div class="row" style="margin-top:20px;">
             <div class="col">
             <div class="date_r">
             <div class="row text_center">
@@ -116,7 +117,7 @@
                     </tbody>
             </table>
             </div>
-        </div>
+        </div> -->
 
         <nav class="container nav_bottom nav_bottom">
         <div class="row">
@@ -124,12 +125,12 @@
                 <button type="submit" class="btn_color" onclick="window.location.href='/orderstep3'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
             </div>
             <div class="col">
-                <button type="submit" class="btn_color" onclick="window.location.href='/orderstep5'" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
             </div>
         </div>
         </nav>
 
     </div>
-
+    </form>
 </body>
 </html>

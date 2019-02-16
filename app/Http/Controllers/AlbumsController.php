@@ -13,12 +13,13 @@ use Storage;
 use App\Http\Requests\AlbumRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Collection;
 
 class AlbumsController extends Controller
 {
     public function index(){
         $albums = Album::orderBy('id', 'DESC')->get();
-        $package_cards = PackageCard::all()->groupBy('id_category')->get();
+        $package_cards = PackageCard::all();
         $categories = Category::all();
         return view('photographer.profile_photographer', compact('albums','package_cards','categories'));
     }

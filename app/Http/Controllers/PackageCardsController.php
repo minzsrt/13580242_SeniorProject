@@ -38,7 +38,14 @@ class PackageCardsController extends Controller
         $package_card = PackageCard::create($request->all());
         $package_card->id_user = Auth::user()->id;
         $package_card->save();
+        // dd($package_card);
         return redirect('createPackageCardSuccess');  
+    }
+
+    public function success(){
+        // $dataget = '1';
+        // dd($dataget);
+        return view('createPackageCardSuccess');
     }
 
     public function edit($id){

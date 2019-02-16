@@ -16,6 +16,9 @@
         <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/index'"><i class="fas fa-times-circle"></i></a>
     </section>
 
+    <form action="/order/store" method="post" >
+    {{ csrf_field() }}
+
     <div class="container">
         <div class="row">
             <div class="col">
@@ -38,13 +41,14 @@
                 <label class="container_radio" style="padding-left:20px;">
                 <div class="row">
                     <div class="col" style="font-size:18px; margin-bottom: -0.5rem;">
-                        <span  style="font-size:18px;">ภาพบุคคล/แฟชั่น</span><br>
+                        <span  style="font-size:18px;">ภาพ{{$order->category->name_category}}</span><br>
                         <span style="font-size:14px;">
-                        ถ่ายภาพรายชั่วโมง
+                         ถ่ายภาพ{{$order->formattime->name_format_time}}
                         </span>
                     </div>
                     <div class="col text_right">
                         <h3  style="font-size:18px; padding-right:20px;">2,700 ฿</h3>
+
                     </div>                
                 </div>
                 <hr style="margin-left:-20px;">
@@ -53,16 +57,16 @@
                         <table class="all_more_link" style="width:100%; font-size: 14px; color:#000;">
                         <tr>
                             <th>สถานที่ </th>
-                            <td>มหาวิทยาลัยศิลปากร วิทยาเขตซิตี้แคมปัส</td>
+                            <td>{{$order->place}}</td>
                         </tr>
                         <tr>
                             <th>วันที่ </th>
-                            <td>04 ตุลาคม 2561</td>
+                            <td>{{$order->date_work}}</td>
                             <td class="text_right" style="padding-right:20px;">x2</td>
                         </tr>
                         <tr>
                             <th>ชั่วโมง </th>
-                            <td>2 ชั่วโมงต่อวัน</td>
+                            <td>{{$order->time_work}} ชั่วโมงต่อวัน</td>
                             <td class="text_right" style="padding-right:20px;">900x2</td>
                         </tr>
                         </table>
@@ -91,18 +95,26 @@
 
         </div>
 
+        <input type="hidden" name="id_category" value="{{$order->id_category}}">
+        <input type="hidden" name="id_formattime" value="{{$order->id_formattime}}">
+        <input type="hidden" name="place" value="{{$order->place}}">
+        <input type="hidden" name="date_work" value="{{$order->date_work}}">
+        <input type="hidden" name="time_work" value="{{$order->time_work}}">
+
+
         <nav class="container nav_bottom">
         <div class="row">
             <div class="col">
                 <button type="submit" class="btn_color" onclick="window.location.href='/orderstep5'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
             </div>
             <div class="col">
-                <button type="submit" class="btn_color" onclick="window.location.href='/orderstep7'" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
             </div>
         </div>
         </nav>
 
     </div>
+    </form>
 
 </body>
 </html>

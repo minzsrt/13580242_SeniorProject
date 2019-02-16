@@ -54,12 +54,22 @@
                 </button>
                 </div>
                 <div class="col">
+                @if(Auth::guest())
+                <button class="btn_menu_list" onclick="window.location.href='/home'">
+                    @if (trim($__env->yieldContent('page_title')==='Profile'))
+                        <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
+                    @endif
+                    <img class="menu_list" src="{{url('assets/image/friend.svg')}}" >
+                </button>
+                @else
                 <button class="btn_menu_list" onclick="window.location.href='/profile/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Profile'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/friend.svg')}}" >
                 </button>
+                @endif
+                
                 </div>
             </div>
         </div>

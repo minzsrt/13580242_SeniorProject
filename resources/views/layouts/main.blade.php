@@ -14,12 +14,14 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
     <link href="{{url('css/style.css')}}" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    
+    <link rel="stylesheet" href="css/animsition.min.css">
 
 </head>
-<body style="font-family: 'Prompt', sans-serif;">
+<body class="animsition" style="font-family: 'Prompt', sans-serif;">
 
 <section style="height:60px; padding:20px;">    
-        <button class="btn_layout_back" onclick="window.location.href='{{ URL::previous() }}'" >กลับ</button> 
+        <button class="btn_layout_back animsition-link" onclick="window.location.href='{{ URL::previous() }}'" >กลับ</button> 
 </section>
 
 <div class="container">
