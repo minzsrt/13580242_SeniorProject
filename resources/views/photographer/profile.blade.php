@@ -115,9 +115,9 @@
                         <div class="col">
                             <span>{{ $package_card->category->name_category }}</span>
                         </div>
-                        <div class="col text_right price_package">
+                        <!-- <div class="col text_right price_package">
                             <span>{{ $package_card->price }} ฿</span>
-                        </div>
+                        </div> -->
                         <div class="col-1 text_center">
                             <i class="fas fa-angle-right"></i>
                         </div>
@@ -127,7 +127,7 @@
             @endforeach
 
             <div class="card" style="border:0; margin:10px auto; ">
-                    <button onclick="window.location.href='/createPackageCard'" class="btn btn_create">
+                    <button onclick="window.location.href='/createPackagecardCategory'" class="btn btn_create">
                         <i class="fas fa-plus-circle"></i>
                     </button> 
             </div>

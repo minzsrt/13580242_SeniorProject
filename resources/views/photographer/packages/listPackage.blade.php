@@ -5,14 +5,13 @@
     <div class="container wrap_container_head">
         <div class="row">
             <div class="col">
-                <h3 class="headder_text">ค่าบริการถ่ายภาพรับปริญญา</h3>
+                    <h3 class="headder_text">ค่าบริการถ่ายภาพ{{$head_category}}</h3>
             </div>
         </div>
     </div> 
 
     <div class="container">
         @foreach($package_cards as $package_card)
-            @if( Auth::user()->id == $package_card->id_user && $get_id == $package_card->id_category )
             <a class="a_getlink" href="{{ url("photographer/packages/show/{$package_card->id}/edit/") }}">
                 <div class="card-body album_show_wrap padding_card">
                     <div class="row">
@@ -33,14 +32,18 @@
                     </div>
                 </div>
             </a>
-            @endif
         @endforeach
-        
-            <div class="card btn_create">
-                <button class="btn" onclick="window.location.href='/createPackageCard'">
-                    <i class="fas fa-plus-circle"></i>
+
+        <form action="/createPackagecardCategory" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="id_category" value="{{$get_id}}">
+            <div class="btn_create">
+                <button type="submit" class="btn btn_width color_DBDBDB">
+                    <i class="fas fa-plus-circle "></i>
                 </button> 
             </div>
+        </form>
+        
     </div>
 
 

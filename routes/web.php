@@ -16,6 +16,8 @@ Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');}
 
 // Success CRUD
 Route::get('listPackage/{id}', 'PackageCardsController@index')->name('photographer.packages.listPackage');
+Route::get('createPackagecardCategory', 'PackageCardsController@createPackagecardCategory');
+Route::post('createPackagecardCategory', 'PackageCardsController@postPackagecardCategory');
 Route::get('createPackageCard', 'PackageCardsController@create');
 Route::post('createPackageCard/store', 'PackageCardsController@store');
 Route::get('photographer/packages/show/{id}/edit', 'PackageCardsController@edit');

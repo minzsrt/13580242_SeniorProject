@@ -63,7 +63,8 @@ class ProfileController extends Controller
     
                     $albums = Album::orderBy('id', 'DESC')->get();
                     // $package_cards = PackageCard::all();
-                    $package_cards = PackageCard::groupBy('id_category')->get();
+                    $package_cards = PackageCard::groupBy('id_category', 'id_user' )->get();
+                    // dd($package_cards);
                     $categories = Category::all();
                     $image_albums = ImageAlbum::all();
                     return view('photographer.profile', compact('albums','package_cards','categories','image_albums'))->withUser($user);

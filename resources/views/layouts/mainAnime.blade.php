@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html>
 <head>
-    <title>FINDPHO @yield('page_title')</title>
+	<title>@yield('page_title')</title>
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
+    
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@yield('page_title')</title>
@@ -13,18 +14,21 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
     <link href="{{url('css/style.css')}}" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    
+    <link rel="stylesheet" href="css/animsition.min.css">
+
 </head>
-<body>
+<body class="animsition" style="font-family: 'Prompt', sans-serif;">
 
-    <div class="container">
-        <div class="row">
-            <div class="col text_center" style="padding-top: 70%">
-                <img src="assets/image/check.svg" height="35"><br><br>
-                <span class="headder_text">@yield('text_success')</span><br><br>
-                <button class="btn_color btn_color_follow" onclick="window.location.href='@yield('link_page')'">ตกลง</button>
-            </div>
-        </div>
-    </div>
+<section style="height:60px; padding:20px;">    
+        <button class="btn_layout_back animsition-link" onclick="window.location.href='{{ URL::previous() }}'" >กลับ</button> 
+</section>
 
+<div class="container">
+	@yield('content')
+</div>
+
+ 	<!-- <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script> -->
+	<script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

@@ -11,9 +11,7 @@
     <link href="css/style.css" rel="stylesheet"> 
 </head>
 <body>
-<!-- {!! Form::open(['url'=>'{{URL::previous()}}']) !!} -->
-<!-- <form action="{{URL::previous()}}" method="POST"> -->
-<form action="createPackageCard/store" method="post" >
+<form action="createPackageCard/store" method="post">
 {{ csrf_field() }}
 
     <!-- {{URL::previous()}} -->
@@ -34,6 +32,13 @@
 
     <div class="container">
     <div class="row">
+            <div class="container wrap_container_head">
+                <div class="row">
+                    <div class="col">
+                            <h3 class="headder_text">ค่าบริการถ่าย</h3>
+                    </div>
+                </div>
+            </div> 
             <div class="col-md">
                 <span class="all_more_link">รูปแบบงาน</span>
                 <div class="form-group">
@@ -82,14 +87,13 @@
                 </div>
             </div>
             <div class="form-group">
-            {!! Form::hidden('id_category',1,['class'=>'form-control']) !!}
+            <input type="text" name="id_category" value="{{$package_card->id_category}}">
             </div>
 
         </div>
     </div>
 
 </form>
-<!-- {!! Form::close() !!} -->
 
 </body>
 </html>

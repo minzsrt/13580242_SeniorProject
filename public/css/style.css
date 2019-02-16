@@ -507,6 +507,7 @@ select.select_search {
   }
   .btn_create{
     height:60px;
+    background: none;
     padding: 0;
     border-radius: 10px; 
     border: 1px dashed #a3a3a3; 
@@ -514,6 +515,7 @@ select.select_search {
   }
   .btn_create .btn{
     height:100%;
+    background: none;
   }
 .textarea_edit{
     height: 150px !important;
@@ -624,6 +626,9 @@ select.select_search {
 }
 .color_white{
     color: white !important;
+}
+.color_DBDBDB{
+    color: #DBDBDB !important;
 }
 
 
@@ -802,4 +807,18 @@ select.select_search {
   }
  .input_line{
     width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;
+ }
+
+ :root {
+    var-font14: 14px;
+    var-font18: 18px;
+}
+ .fontsize14{
+    font-size: 14px;
+ }
+ .height60{
+     height: 60px !important;
+ }
+ .padtop20{
+    padding-top: 20px;
  }
