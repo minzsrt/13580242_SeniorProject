@@ -63,9 +63,10 @@ class ProfileController extends Controller
                 if($user && $user->role_id == 2){
     
                     $albums = Album::orderBy('id', 'DESC')->get();
-                    // $package_cards = PackageCard::all();
-                    $package_cards = PackageCard::groupBy('id_category', 'id_user' )->get();
+
+                    $package_cards = PackageCard::where('id_user','LIKE', $user->id)->groupBy('id_category')->get();
                     // dd($package_cards);
+
                     $categories = Category::all();
                     $image_albums = ImageAlbum::all();
                     return view('photographer.profile', compact('albums','package_cards','categories','image_albums'))->withUser($user);
@@ -89,9 +90,7 @@ class ProfileController extends Controller
                     // dd($id_user);
 
                     $albums = Album::orderBy('id', 'DESC')->get();
-                    $package_cards = PackageCard::Where([
-                        ['id_user', 'LIKE', $id_user ],
-                    ])->groupBy('id_category')->get();
+                    $package_cards = PackageCard::Where('id_user', 'LIKE', $id_user)->groupBy('id_category')->get();
                     // dd($package_cards);
                     if(empty($package_cards))
                     abort(404);

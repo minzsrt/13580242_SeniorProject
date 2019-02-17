@@ -65,7 +65,7 @@
                                             </span>
                                             <h3 class="caption_album">
                                                 {{ $album->name_album }}
-                                                {{ $album->user->username }}
+                                                <!-- {{ $album->user->username }} -->
                                             </h3>
                                         </div>
                                         <div class="col text_right fav_count">
@@ -135,7 +135,7 @@
                     <div class="row">
                         <div class="col-2">
                             <div class="review_img_profile">
-                                <img src="assets/image/avatar04.jpg">    
+                                <img src="{{url('assets/image/avatar04.jpg')}}">    
                             </div>
                         </div>
                         <div class="col-6 username_profile">

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainListPackage')
 @section('page_title', 'Profile')
 @section('content')
 
@@ -15,12 +15,12 @@
                             <h3 class="fontsize14">{{$category->name_category}}</h3>
                         </div>
                     </div>
-                    <input type="radio" checked="checked" name="radio">
+                    <input type="radio" name="radio" {{ $loop->first ? 'checked' : '' }}>
                     <span class="checkmark"></span>
                 </label>
             </a>
             @endforeach
-    		<input type="text" name="id_category" id="id_category">
+    		<input type="hidden" name="id_category" id="id_category">
         </div>
         <nav class="container nav_bottom">
         <div class="row">
