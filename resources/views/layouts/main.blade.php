@@ -22,11 +22,12 @@
         <button class="btn_layout_back " onclick="window.location.href='{{ URL::previous() }}'" >กลับ</button> 
 </section>
 
-<div class="container">
+<!-- <div class="container"> -->
+<div>
 	@yield('content')
 </div>
 
- 	<script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
+ 	<!-- <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script> -->
 	<script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

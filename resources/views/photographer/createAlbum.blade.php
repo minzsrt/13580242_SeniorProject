@@ -31,7 +31,7 @@
 
     <div class="container">
     <div class="card album_show_wrap_full">
-            <div id="dvPreview">
+            <div id="dvPreview" class="row" >
                 <img src="assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
             </div>
             <div class="wrap_choose_file">
@@ -82,7 +82,7 @@ window.onload = function () {
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         var img = document.createElement("IMG");
-                        img.className = "album_show_wrap_multi";
+                        img.className = "album_show_wrap_multi col";
                         img.src = e.target.result;
                         dvPreview.appendChild(img);
 

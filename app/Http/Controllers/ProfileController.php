@@ -95,9 +95,10 @@ class ProfileController extends Controller
                     if(empty($package_cards))
                     abort(404);
 
+                    $image_albums = ImageAlbum::all();
                     $categories = Category::all();
 
-                    return view('general.viewphotographer',compact('albums','package_cards','categories'))->withUser($user);
+                    return view('general.viewphotographer',compact('albums','package_cards','categories','image_albums'))->withUser($user);
     
                 }elseif($user && $user->role_id == 3){
     

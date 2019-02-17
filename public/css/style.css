@@ -52,7 +52,7 @@ nav{
 .btn_fav{
     height: 20px;
 }
-.nav-tabs .nav-link.active{
+/* .nav-tabs .nav-link.active{
     border-bottom:2px solid #37ECBA;
     border-top:0; 
     border-right:0; 
@@ -63,7 +63,7 @@ nav{
     border-top:0; 
     border-right:0; 
     border-left:0; 
-}
+} */
 .nav-link{
     color:#000000;
 }
@@ -434,6 +434,13 @@ select.select_search {
     position:relative;
     border-radius: 10px;
   }
+  .album_show_radiustop{
+    border-top-right-radius:10px !important;
+    border-top-left-radius:10px !important;
+    border-bottom-right-radius:0 !important;
+    border-bottom-left-radius:0 !important;
+
+  }
 .album_show_detail_group{
     position: absolute;
     width:100%;
@@ -644,6 +651,15 @@ select.select_search {
 .username_profile{
     font-size:10px;
 }
+.img_profile_sm{
+    width:40px;
+    height:40px;
+    border-radius:20px; 
+    overflow: hidden;
+}
+.img_profile_sm img{
+    width:100%;
+}
 
 .packagecard_box{
     cursor: pointer; 
@@ -816,9 +832,65 @@ select.select_search {
  .fontsize14{
     font-size: 14px;
  }
+ .fontsize10{
+    font-size: 10px;
+ }
  .height60{
      height: 60px !important;
  }
  .padtop20{
     padding-top: 20px;
  }
+ 
+
+ .tab-pane
+{
+  /* padding:15px; */
+  height:300px;
+}
+.nav-tabs
+{
+  position:relative;
+  border:none!important;
+  background-color:#fff;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.05), 0 1px 5px 0 rgba(0,0,0,0.05), 0 3px 1px -2px rgba(0,0,0,0.05);
+  border-radius:6px;
+}
+.nav-tabs li
+{
+  margin:0px!important;
+  cursor: pointer;
+
+}
+.nav-tabs li a
+{
+  position:relative;
+  margin-right:0px!important;
+  padding: 5px !important;
+  border:none!important;
+  color:#333;
+  cursor: pointer;
+}
+.nav-tabs a:hover
+{
+  background-color:#fff!important;
+  border:none;
+}
+.slider
+{
+  display:inline-block;
+  /* width:33%; */
+  height:2px;
+  border-radius:3px;
+  background-color:#37ecba;
+  position:absolute;
+  z-index:1200;
+  bottom:0;
+  transition:all .2s linear;
+  
+}
+.nav-tabs .active
+{
+  background-color:transparent!important;
+  border:none!important;
+}

@@ -5,18 +5,25 @@ namespace App\Http\Controllers;
 use App\PackageCard; 
 use App\Categoly; 
 use App\Format_time; 
+use App\User; 
 use Illuminate\Http\Request;
 // use Request;
 use Auth;
 use App\Http\Requests\PackageCardRequest;
+use Illuminate\Support\Str;
 
 class PackageCardsController extends Controller
 {
     public function index( $id ){
 
-        
+        $url = url()->previous();
+        $username = Str::after($url , 'http://127.0.0.1:8000/profile/');
+        $user = User::whereUsername($username)->first();
+        // dd($user);
+        // $id_user = Auth::user()->id;
+        $id_user = $user->id;
+        // dd($id_user);
 
-        $id_user = Auth::user()->id;
         $package_cards = PackageCard::Where([
             ['id_category','LIKE', $id ],
             ['id_user', 'LIKE', $id_user ],
