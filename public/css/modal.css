@@ -266,16 +266,16 @@ html.pixel-ratio-3 .modal-buttons-vertical .modal-button:after {
 }
 
 .actions-modal.modal-in {
-    -webkit-transition-duration: 300ms;
-    transition-duration: 300ms;
+    -webkit-transition-duration: 200ms;
+    transition-duration: 200ms;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
 .actions-modal.modal-out {
     z-index: 10999;
-    -webkit-transition-duration: 300ms;
-    transition-duration: 300ms;
+    -webkit-transition-duration: 200ms;
+    transition-duration: 200ms;
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
 }

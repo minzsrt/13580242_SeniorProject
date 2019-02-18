@@ -9,6 +9,7 @@ Route::get('photographer/notification', function(){ return view('photographer.no
 // Route::resource('profile_photographer', 'AlbumsController');
 Route::get('photographer/show/{id}', 'AlbumsController@show');
 Route::get('createAlbum', 'AlbumsController@create');
+Route::post('createAlbum/store', 'AlbumsController@store');
 Route::get('photographer/show/{id}/edit', 'AlbumsController@edit');
 Route::get('photographer/show/{id}/update', 'AlbumsController@update');
 Route::get('photographer/show/{id}/destroy', 'AlbumsController@destroy');

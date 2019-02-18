@@ -36,6 +36,7 @@ class AlbumsController extends Controller
     }
     
     public function store(AlbumRequest $request){
+
         $album = Album::create($request->all());
         $album->id_user = Auth::user()->id;
         $album_id = $album->id;

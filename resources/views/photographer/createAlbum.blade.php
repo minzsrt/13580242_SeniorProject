@@ -14,7 +14,9 @@
 @if ($errors->any())
         {{ implode('', $errors->all(':message')) }}
 @endif
-{!! Form::open(['url' => 'profile_photographer','enctype'=> 'multipart/form-data']) !!}
+<form action="createAlbum/store" method="post" enctype="multipart/form-data">
+{{ csrf_field() }}
+
     <section style="height:60px; padding:20px;">  
             <div class="row">
                 <div class="col-1">
@@ -65,7 +67,7 @@
     <div class="form-group">
         <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
     <div>
-{!! Form::close() !!}
+</form>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script language="javascript" type="text/javascript">
