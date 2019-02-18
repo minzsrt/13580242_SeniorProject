@@ -9,7 +9,8 @@ use App\Category;
 use App\User;
 use Request;
 use Auth;
-use Storage;
+// use Storage;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AlbumRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\UploadedFile;
@@ -66,8 +67,16 @@ class AlbumsController extends Controller
     }
 
     public function destroy($id){
-		$album = Album::findOrFail($id);
-		$album->delete();
+        $album = Album::findOrFail($id);
+        $image_albums = ImageAlbum::Where( 'album_id' , 'LIKE' , $id )->get();
+        foreach ($image_albums as $image_album) {
+            if(\File::exists(public_path('/'.$image_album->name_image))){
+                \File::delete(public_path('/'.$image_album->name_image));
+            }else{
+                dd('File does not exists.');
+            }
+        }
+        $album->delete();
 		return redirect('profile/'.Auth::user()->username);
     }
 
