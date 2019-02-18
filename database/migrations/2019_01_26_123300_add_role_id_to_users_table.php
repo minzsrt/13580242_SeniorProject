@@ -14,7 +14,7 @@ class AddRoleIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) { 
-            $table->integer('role_id')->unsigned()->default(1); 
+            $table->integer('role_id')->unsigned()->default(3); 
             $table->foreign('role_id', 'users_role_id_foreign')
             ->references('id')
             ->on('roles')

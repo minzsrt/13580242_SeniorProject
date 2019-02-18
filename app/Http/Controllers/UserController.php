@@ -40,7 +40,7 @@ class UserController extends Controller
 
         // Validate the data submitted by user
         $validator = Validator::make($request->all(), [
-            'username' => 'required|max:255|'. Rule::unique('users')->ignore($user->username),
+            'username' => 'required|max:255|'. Rule::unique('users')->ignore($user->id),
             'email' => 'required|email|max:225|'. Rule::unique('users')->ignore($user->id),
         ]);
 
@@ -61,6 +61,6 @@ class UserController extends Controller
         $user->save();
 
         // Redirect to route
-        return back();
+        return redirect('profile/'.$request->username);
     }
 }

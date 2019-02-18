@@ -14,6 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
     <link href="{{url('css/style.css')}}" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="{{url('css/modal.css')}}">
+    <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{url('js/modal.js')}}"></script>
+    
 
 </head>
 <body style="font-family: 'Prompt', sans-serif;">
@@ -64,7 +69,6 @@
 	@yield('content')
 </div>
 
- 	<script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
+ 	
 </body>
 </html>
