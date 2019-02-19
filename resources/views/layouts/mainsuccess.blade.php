@@ -24,6 +24,7 @@
                 <button class="btn_color btn_color_follow" onclick="window.location.href='@yield('link_page')'">ตกลง</button>
             </div>
         </div>
+        
     </div>
 
 </body>
