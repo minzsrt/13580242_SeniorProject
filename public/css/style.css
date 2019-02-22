@@ -646,7 +646,8 @@ select.select_search {
     overflow: hidden;
 }
 .img_profile img{
-    width:100%;
+    width:auto;
+    height: 100%;
 }
 .username_profile{
     font-size:10px;

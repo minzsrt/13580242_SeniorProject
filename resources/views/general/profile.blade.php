@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-3">
                 <div style="width:80px; height:80px; border-radius:40px; overflow: hidden;">
-                    <img src="{{url('assets/image/avatar01.jpg')}}" style="height:100%;">   
+                    <img src="{{ url(Auth::user()->avatar) }}">   
                 </div>
             </div>
             <div class="col" style="padding-top:30px;">

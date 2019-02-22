@@ -69,12 +69,6 @@ Route::get('/orderstep5', 'OrderController@createStep5');
 Route::post('/orderstep5', 'OrderController@postCreateStep5');
 Route::get('/orderstep6', 'OrderController@createStep6');
 Route::post('/order/store', 'OrderController@store');
-
-// Route::get('orderstep2', function(){ return view('orderstep2');});
-// Route::get('orderstep3', function(){ return view('orderstep3');});
-// Route::get('orderstep4', function(){ return view('orderstep4');});
-// Route::get('orderstep5', function(){ return view('orderstep5');});
-// Route::get('orderstep6', function(){ return view('orderstep6');});
 Route::get('orderstep7', function(){ return view('orderstep7');});
 
 Route::get('listpayment', function(){ return view('listpayment');});

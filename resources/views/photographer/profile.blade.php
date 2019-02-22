@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="img_profile">
-                    <img src="{{url('assets/image/avatar05.jpg')}}">   
+                    <img src="{{ url(Auth::user()->avatar) }}">   
                 </div>
             </div>
             <div class="col" style="padding-top:20px;">
@@ -20,8 +20,6 @@
             </div>
             <div class="col text_right" style="padding-top:20px;">
                 <button id="actions" class="btn_layout_back">ตั้งค่า</button>
-    <!-- <button class="btn btn-primary" id="actions">actions</button> -->
-
             </div>
         </div>
 
@@ -268,41 +266,13 @@
     </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title fontsize14" id="exampleModalLongTitle">ตั้งค่า</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body btn-group-vertical">
-            <a href="{{ url('/profile/'.Auth::user()->username.'/edit') }}">แก้ไข Profile</a>
-            <a class="btn btn-outline-danger" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-                                            {{ __('ออกจากระบบ') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </div>
-        </div>
-    </div>
-    </div>
-
-
-
-    
     <script>
     $(function () {
         $('#actions').click(function () {
             $.actions([
                 [
                     {
-                        text: '<a href="{{ url('/profile/'.Auth::user()->username.'/edit') }}">แก้ไข Profile</a>',
+                        text: '<a href="{{ url('/profile/'.Auth::user()->username.'/edit') }}">แก้ไขข้อมูลส่วนตัว</a>',
                         
                     },
                     {

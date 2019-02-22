@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -50,13 +52,19 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
         // Fill user model
         $user->fill([
             'username' => $request->username,
             'email' => $request->email
         ]);
 
+        if($request->hasFile('avatar')){
+    		$avatar = $request->file('avatar');
+            $filename = $avatar->store('profile', ['disk' => 'profile_files']);
+    		$user->avatar = $filename;
+    		$user->save();
+    	}
+    
         // Save user to database
         $user->save();
 
