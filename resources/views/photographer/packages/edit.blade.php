@@ -4,7 +4,8 @@
 @section('linktoback', '/listPackage')
 @section('content')
 
-{!! Form::model($package_card, ['method' => 'GET','action' => ['PackageCardsController@update',$username,$package_card->id_category,$package_card->id]]) !!}
+{!! Form::model($package_card, ['method' => 'GET','action' => ['PackageCardsController@update', $package_card->id]]) !!}
+
     <div class="container">
         <div class="row">
                 <div class="col-md">
@@ -65,7 +66,7 @@
     <div class="row bottom_fixed">
         <div class="col">
                 <a 	class="btn btn_color btn_layout_bottom" 
-                href="{{ url("profile/{$username}/listPackage/{$package_card->id_category}/{$package_card->id}/destroy") }}" class="btn" id="destroypackagecard" >
+                href="{{ url("photographer/packages/show/{$package_card->id}/destroy") }}" class="btn" id="destroypackagecard" >
                     ลบการ์ด
                 </a>    
         </div>

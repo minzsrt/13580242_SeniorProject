@@ -16,14 +16,14 @@ Route::get('photographer/show/{id}/destroy', 'AlbumsController@destroy');
 Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');});
 
 // Success CRUD
-Route::get('/profile/{username}/listPackage/{id}', 'PackageCardsController@index')->name('photographer.packages.listPackage');
+Route::get('listPackage/{id}', 'PackageCardsController@index')->name('photographer.packages.listPackage');
 Route::get('createPackagecardCategory', 'PackageCardsController@createPackagecardCategory');
 Route::post('createPackagecardCategory', 'PackageCardsController@postPackagecardCategory');
 Route::get('createPackageCard', 'PackageCardsController@create');
 Route::post('createPackageCard/store', 'PackageCardsController@store');
-Route::get('profile/{username}/listPackage/{idcategory}/{id}/edit', 'PackageCardsController@edit');
-Route::get('profile/{username}/listPackage/{idcategory}/{id}/update', 'PackageCardsController@update');
-Route::get('profile/{username}/listPackage/{idcategory}/{id}/destroy', 'PackageCardsController@destroy');
+Route::get('photographer/packages/show/{id}/edit', 'PackageCardsController@edit');
+Route::get('photographer/packages/show/{id}/update', 'PackageCardsController@update');
+Route::get('photographer/packages/show/{id}/destroy', 'PackageCardsController@destroy');
 Route::get('createPackageCardSuccess','PackageCardsController@success');
 
 // Success CRUD
