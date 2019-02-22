@@ -39,11 +39,8 @@ Route::get('regPhotographerSuccess',function(){
 
 Route::resource('/','IndexController');
 Route::get('/profile/{username}', 'ProfileController@show')->name('general.profile.show');
-
-
 Route::get('/profile/{username}/edit', 'UserController@show')->name('auth.edit');
 Route::post('/profile/update', 'UserController@update')->name('auth.update');
-
 
 // Unsuccess CRUD
 Route::any('search','SearchController@index');

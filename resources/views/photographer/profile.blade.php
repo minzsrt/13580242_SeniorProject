@@ -1,7 +1,7 @@
 @extends('layouts.mainmenu_p')
 @section('page_title', 'Profile')
 @section('content')
-    <div class="wrap_container_head">
+    <!-- <div class="wrap_container_head">
         <div class="row">
             <div class="col-3">
                 <div class="img_profile">
@@ -51,55 +51,109 @@
             
         </ul>
                                     
+    </div> -->
+
+    <div class="wrap_container_head">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <div class="img_profile">
+                        <img src="{{ url(Auth::user()->avatar) }}">   
+                    </div>
+                </div>
+                <div class="col" style="padding-top:20px;">
+                    <span>{{ Auth::user()->username }}</span>
+                    <div class="username_profile">
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star"></i>        
+                    </div>        
+                </div>
+                <div class="col text_right" style="padding-top:20px;">
+                    <button id="actions" class="btn_layout_back">ตั้งค่า</button>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <div class="slider"></div>
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#menu1" role="tab" aria-controls="menu1" aria-selected="true">
+                    <img class="menu_list_profile" src="{{url('assets/image/album.svg')}}"><br>
+                    <span class="menu_list_profile_text">Album</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu2" role="tab" aria-controls="menu2" aria-selected="false">
+                    <img class="menu_list_profile" src="{{url('assets/image/camera.svg')}}"><br>
+                    <span class="menu_list_profile_text">About</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu3" role="tab" aria-controls="menu3" aria-selected="false">
+                    <img class="menu_list_profile" src="{{url('assets/image/star.svg')}}"><br>
+                    <span class="menu_list_profile_text">Review</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu4" role="tab" aria-controls="menu4" aria-selected="false">
+                    <img class="menu_list_profile" src="{{url('assets/image/calendar.svg')}}"><br>
+                    <span class="menu_list_profile_text">Calendar</span>
+                </a>
+            </li>
+        </ul>
+                                    
     </div>
 
     <!-- Tab panes -->
     <div class="tab-content">
-        <div class="tab-pane active container" id="menu1">
-
-            <div class="card" style="border:0; margin:10px auto; ">
-            <button class="btn btn_create" onclick="window.location.href='/createAlbum'">
-                <i class="fas fa-plus-circle"></i>
-            </button> 
-            </div>
-        @foreach($albums as $album)
-            @if( Auth::user()->id === $album->id_user )
-                <a href="{{ url("photographer/show/{$album->id}/edit/") }}">
-                <div class="card album_show_wrap">
-                                <div class="album_show">
-                                    <div class="album_show_detail_group">
-                                        <div class="float_left">
-                                            <span class="hastag_album">
-                                                {{ $album->category->name_category }}
-                                            </span>
-                                            <h3 class="caption_album">
-                                                {{ $album->name_album }}
-                                            </h3>
+        <div class="tab-pane fade margin_top20 show active" id="menu1" role="tabpanel" aria-labelledby="menu1-tab">
+            <div class="container">
+                <div class="card" style="border:0; margin:10px auto; ">
+                <button class="btn btn_create" onclick="window.location.href='/createAlbum'">
+                    <i class="fas fa-plus-circle"></i>
+                </button> 
+                </div>
+                @foreach($albums as $album)
+                    @if( Auth::user()->id === $album->id_user )
+                        <a href="{{ url("photographer/show/{$album->id}/edit/") }}">
+                        <div class="card album_show_wrap">
+                                        <div class="album_show">
+                                            <div class="album_show_detail_group">
+                                                <div class="float_left">
+                                                    <span class="hastag_album">
+                                                        {{ $album->category->name_category }}
+                                                    </span>
+                                                    <h3 class="caption_album">
+                                                        {{ $album->name_album }}
+                                                    </h3>
+                                                </div>
+                                                <div class="col text_right fav_count">
+                                                    <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">
+                                                </div>
+                                            </div>
+                                            <div class="carousel slide" data-ride="carousel">
+                                                <div class="carousel-inner" style="overflow: inherit; max-height: 220px !important;">            
+                                                    @php ($i = -1)
+                                                    @foreach($image_albums as $index => $image_album)
+                                                        @if( $album->id === $image_album->album_id )
+                                                            @php ($i++)
+                                                            <img class="card-img-top carousel-item {{ $i == '0' ? 'active' : '' }}" src="{{ url($image_album->name_image) }}"> 
+                                                        @endif    
+                                                    @endforeach
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col text_right fav_count">
-                                            <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">
-                                        </div>
-                                    </div>
-                                    <div class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner" style="overflow: inherit; max-height: 220px !important;">            
-                                            @php ($i = -1)
-                                            @foreach($image_albums as $index => $image_album)
-                                                @if( $album->id === $image_album->album_id )
-                                                    @php ($i++)
-                                                    <img class="card-img-top carousel-item {{ $i == '0' ? 'active' : '' }}" src="{{ url($image_album->name_image) }}"> 
-                                                @endif    
-                                            @endforeach
-                                        </div>
-                                    </div>
                                 </div>
-                        </div>
-                </a>        
-            @endif    
-        @endforeach
-            
+                        </a>        
+                    @endif    
+                @endforeach
+            </div>
         </div>
 
-        <div class="tab-pane container" id="menu2">
+        <div class="tab-pane fade container" id="menu2" role="tabpanel" aria-labelledby="menu2-tab">
 
             <div class="container wrap_container_head">
                 <div class="row">
@@ -153,7 +207,7 @@
             </div>
         </div>
  
-        <div class="tab-pane container" id="menu3">
+        <div class="tab-pane fade margin_top20 container" id="menu3" role="tabpanel" aria-labelledby="menu3-tab">
             <div class="card review_box">
                 <div class="card-body review_box_head">
                     <div class="row">
@@ -190,7 +244,7 @@
             </div>
         </div>
         
-        <div class="tab-pane container" id="menu4">
+        <div class="tab-pane fade margin_top20 container" id="menu4" role="tabpanel" aria-labelledby="menu4-tab">
             <div class="date_r">
                 <div class="row text_center">
                     <div class="col">
@@ -297,6 +351,19 @@
 
             ]);
         });
+
+        $(".nav-tabs a").click(function() {
+            var position = $(this).parent().position();
+            console.log(position);
+            var width = $(this).parent().width();
+            console.log(width);
+            $(".slider").css({"left":+ position.left,"width":width});
+        });
+        var actWidth = $(".nav-tabs").find(".active").parent("li").width();
+            console.log(actWidth);
+        var actPosition = $(".nav-tabs .active").position();
+        $(".slider").css({"left":+ actPosition.left,"width": actWidth});
+
     });
 </script>
 

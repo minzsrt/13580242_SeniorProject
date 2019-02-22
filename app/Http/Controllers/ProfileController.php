@@ -146,10 +146,7 @@ class ProfileController extends Controller
             }else{
                 abort(404);
                 // return $username;
-            }
-
-            //รอใส่ Error page
-            // dd($user);   
+            }   
             
         }
     }
