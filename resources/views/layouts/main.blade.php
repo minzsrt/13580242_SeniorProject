@@ -19,7 +19,7 @@
 <body style="font-family: 'Prompt', sans-serif;">
 
 <section style="height:60px; padding:20px;">    
-        <button class="btn_layout_back " onclick="window.location.href='{{ URL::previous() }}'" >กลับ</button> 
+        <button class="btn_layout_back " onclick="window.location.href='@yield('link_back')'" >กลับ</button> 
 </section>
 
 <!-- <div class="container"> -->

@@ -56,6 +56,7 @@ class ProfileController extends Controller
     {   
         $user = User::whereUsername($username)->first();
         $authcheck = Auth::user()->username;
+        $data['username'] = $username;
 
         if( $user ){ 
 
@@ -69,11 +70,11 @@ class ProfileController extends Controller
 
                     $categories = Category::all();
                     $image_albums = ImageAlbum::all();
-                    return view('photographer.profile', compact('albums','package_cards','categories','image_albums'))->withUser($user);
+                    return view('photographer.profile',$data,compact('albums','package_cards','categories','image_albums'))->withUser($user);
     
                 }elseif($user && $user->role_id == 3){
     
-                    return view('general.profile')->withUser($user);
+                    return view('general.profile',$data)->withUser($user);
     
                 }
             }elseif($user->username != $authcheck ){
@@ -98,11 +99,11 @@ class ProfileController extends Controller
                     $image_albums = ImageAlbum::all();
                     $categories = Category::all();
 
-                    return view('general.viewphotographer',compact('albums','package_cards','categories','image_albums'))->withUser($user);
+                    return view('general.viewphotographer',$data,compact('albums','package_cards','categories','image_albums'))->withUser($user);
     
                 }elseif($user && $user->role_id == 3){
     
-                    return view('general.viewgeneral')->withUser($user);
+                    return view('general.viewgeneral',$data)->withUser($user);
     
                 }
             }

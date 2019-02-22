@@ -14,31 +14,44 @@ use Illuminate\Support\Str;
 
 class PackageCardsController extends Controller
 {
-    public function index( $id ){
+    public function index($username,$id){
 
-        if( url()->previous() == url('/createPackageCardSuccess')){
-            $id_user = Auth::user()->id;
-            $package_cards = PackageCard::Where([
-                ['id_category','LIKE', $id ],
-                ['id_user', 'LIKE', $id_user ],
-            ])->orderBy('price', 'ASC')->get();
-        }else{
-            $url = url()->previous();
-            $username = Str::after($url , 'http://127.0.0.1:8000/profile/');
-            $user = User::whereUsername($username)->first();
-            // dd($user);
-            // $id_user = Auth::user()->id;
-            $id_user = $user->id;
-            // dd($id_user);
-            $package_cards = PackageCard::Where([
-                ['id_category','LIKE', $id ],
-                ['id_user', 'LIKE', $id_user ],
-            ])->orderBy('price', 'ASC')->get();
+        // print_r($username.'<br>');
+        // print_r($id.'<br>');
+        $user = User::whereUsername($username)->first();
+        // dd($user);
+        $id_user = $user->id;
+        // print_r('id_user : '.$id_user.'<br>');
+        $package_cards = PackageCard::Where([
+            ['id_category','LIKE', $id ],
+            ['id_user', 'LIKE', $id_user ],
+        ])->orderBy('price', 'ASC')->get();
+        // dd($package_cards);
+        if($package_cards->isEmpty()){
+            abort(404);
         }
+
+        // if( url()->previous() == url('/createPackageCardSuccess')){
+        //     $id_user = Auth::user()->id;
+        //     $package_cards = PackageCard::Where([
+        //         ['id_category','LIKE', $id ],
+        //         ['id_user', 'LIKE', $id_user ],
+        //     ])->orderBy('price', 'ASC')->get();
+        // }else{
+        //     $url = url()->previous();
+        //     $username = Str::after($url , 'http://127.0.0.1:8000/profile/');
+        //     $user = User::whereUsername($username)->first();
+        //     // dd($user);
+        //     // $id_user = Auth::user()->id;
+        //     $id_user = $user->id;
+        //     // dd($id_user);
+        //     $package_cards = PackageCard::Where([
+        //         ['id_category','LIKE', $id ],
+        //         ['id_user', 'LIKE', $id_user ],
+        //     ])->orderBy('price', 'ASC')->get();
+        // }
     
         // dd($package_cards);
-        if(empty($package_cards))
-        abort(404);
         $categories = \App\Category::all();
         $formattimes = \App\Format_time::all();
         
@@ -64,6 +77,8 @@ class PackageCardsController extends Controller
             $data['head_category'] = 'สินค้า/อาหาร';
             $data['get_id'] = '7';
         }
+
+        $data['username'] = $username;
 
         return view('photographer.packages.listPackage',$data, compact('package_cards','categories','formattimes'));
     }
@@ -140,23 +155,44 @@ class PackageCardsController extends Controller
         return view('createPackageCardSuccess',$data);
     }
 
-    public function edit($id){
+    public function edit($username,$idcategory,$id){
+        // print_r('username : ' . $username . '<br>');
+        // print_r('idcategory : ' . $idcategory . '<br>');
+        // print_r('id : ' . $id . '<br>');
         $package_card = PackageCard::find($id);
+        // dd($package_card);
         if(empty($package_card))
         abort(404);
-        return view('photographer.packages.edit', compact('package_card'));
+        $data['username'] = $username;
+        return view('photographer.packages.edit',$data, compact('package_card'));
     }
 
-    public function update($id, PackageCardRequest $request){
+    public function update($username,$idcategory,$id, PackageCardRequest $request){
+        // print_r('username : ' . $username . '<br>');
+        // print_r('idcategory : ' . $idcategory . '<br>');
+        // print_r('id : ' . $id . '<br>');
         $package_card = PackageCard::findOrFail($id); 
         $package_card->update($request->all());
-        return redirect('listPackage/'.$package_card->id_category);
+        return redirect('/profile/'.$username.'/listPackage/'.$package_card->id_category)->with('alertedit', 'edit your package success!');
     }
 
-    public function destroy($id){
-		$package_card = PackageCard::findOrFail($id);
-		$package_card->delete();
-		return redirect('listPackage/'.$package_card->id_category);
+    public function destroy($username,$idcategory,$id){
+        
+        $user = User::whereUsername($username)->first();
+        $id_user = $user->id;
+        $package_cards = PackageCard::Where([
+            ['id_category','LIKE', $idcategory ],
+            ['id_user', 'LIKE', $id_user ],
+        ])->get();
+        $check = $package_cards->count();
+        $package_card = PackageCard::findOrFail($id);
+        $package_card->delete();
+        
+        if( $check == '1'){
+            return redirect('/profile/'.$username);
+        }else{
+		    return redirect('/profile/'.$username.'/listPackage/'.$package_card->id_category)->with('alertdelete', 'Delete your package success!');
+        }
 	}
 
 }

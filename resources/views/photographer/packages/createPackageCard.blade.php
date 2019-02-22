@@ -35,7 +35,7 @@
             <div class="container wrap_container_head">
                 <div class="row">
                     <div class="col">
-                            <h3 class="headder_text">ค่าบริการถ่าย</h3>
+                            <h3 class="headder_text">ค่าบริการถ่าย{{$head_category}}</h3>
                     </div>
                 </div>
             </div> 
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="form-group">
-            <input type="text" name="id_category" value="{{$package_card->id_category}}">
+            <input type="hidden" name="id_category" value="{{$package_card->id_category}}">
             </div>
 
         </div>
