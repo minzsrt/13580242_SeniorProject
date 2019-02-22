@@ -33,10 +33,7 @@
                             <div class="col-10" style="font-size:10px;">
                                 <div class="row">
                                     <div class="col-12" style="font-size:14px;">
-                                        <!-- <a class="a_getlink" href="{{ url("profilePhotographer") }}"> -->
-                                            <a class="a_getlink" href="profile/testerA">
-                                            <span>Username</span></a>
-                                        <!-- </a> -->
+                                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a></a>
                                     </div>
                                     <div class="col-12">
                                         <i class="fas fa-star checked"></i>
@@ -343,9 +340,7 @@
                                         <div class="col-9" style="font-size:10px;">
                                             <div class="row">
                                                 <div class="col-12" style="font-size:14px;">
-                                                    <a class="a_getlink" href="/profile/testerA">
-                                                    <span>Tester A</span>
-                                                    </a>
+                                                    <a class="a_getlink" href="{{ url("profilePhotographer") }}"><a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a></a>
                                                 </div>
                                                 <div class="col-12">
                                                     <i class="fas fa-star checked"></i>

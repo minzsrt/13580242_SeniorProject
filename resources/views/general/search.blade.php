@@ -16,8 +16,8 @@
                 <div class="col-md">
                     <span class="all_more_link">ประเภทงาน</span>
                     <div class="input-group">
-                    <select class="form-control select_search" name="category" >
-                        <option >เลือกประเภทงาน...</option>
+                    <select class="form-control select_search" name="category">
+                        <option selected>เลือกประเภทงาน...</option>
                         <option value="1">รับปริญญา</option>
                         <option value="2">ภาพบุคคล/แฟชั่น</option>
                         <option value="3">งานแต่งงาน</option>
@@ -32,11 +32,11 @@
                     <span class="all_more_link">งบประมาณ (บาท)</span>
                     <div class="row">
                         <div class="col input-group">
-                            <input name="price1" type="number" value="{{ !empty($price1)? $price1 : $price1 }}" placeholder="0" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                            <input name="price1" type="number" placeholder="0" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
                         </div>
                         <span>-</span>
                         <div class="col input-group">
-                            <input name="price2" type="number" value="{{ !empty($price2)? $price2 : $price2 }}" placeholder="1500" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                            <input name="price2" type="number" placeholder="1500" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
                         </div>
                     </div>
                 </div>
@@ -52,13 +52,13 @@
                                 <a class="btn btn_layout btn_width btn_layout_select active" data-toggle="formattime" data-title="1">ครึ่งวัน</a>
                             </div>
                             <div class="col">
-                                <a class="btn btn_layout btn_width {{ $formattime == '2'? $formattime : 'active' }} notActive" data-toggle="formattime" data-title="2">เต็มวัน</a>
+                                <a class="btn btn_layout btn_width notActive" data-toggle="formattime" data-title="2">เต็มวัน</a>
                             </div>
                             <div class="col">
                                 <a class="btn btn_layout btn_width notActive" data-toggle="formattime" data-title="3">รายชั่วโมง</a>
                             </div>
                         </div>
-    				    <input type="hidden" name="formattime" id="formattime" value="{{ !empty($formattime)? $formattime : $formattime }}">
+    				    <input type="hidden" name="formattime" id="formattime">
     			    </div>   
                 </div>
                 <div class="col-md input-group" style="margin-top:10px;">
@@ -81,10 +81,14 @@
     </form>
 
     <div class="container margin_top20">
-        @if(isset($details))
+    @if(isset($details))
         {{ $alertsearch }}
-        @foreach($package_cards as $package_card) 
-        
+        @foreach($package_cards as $package_card)
+        <div class="row">
+            <div class="col">
+                <h3 class="headder_text">ผลการค้นหาถ่ายภาพ{{ $package_card->category->name_category }}</h3>
+            </div>
+        </div>   
         <div class="card album_show_wrap bg_fff color_black">
             <div class="album_show">
             </div>
