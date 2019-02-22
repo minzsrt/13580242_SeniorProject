@@ -81,7 +81,7 @@
 <section style="height:60px; padding:20px;"></section>
 
 
-<div class="container">
+<div class="">
 	@yield('content')
 </div>
 

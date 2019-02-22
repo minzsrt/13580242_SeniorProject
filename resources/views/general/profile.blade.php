@@ -2,134 +2,146 @@
 @section('page_title', 'Profile')
 @section('content')
 <div class="wrap_container_head">
+    <div class="container">
         <div class="row">
             <div class="col-3">
-                <div style="width:80px; height:80px; border-radius:40px; overflow: hidden;">
+                <div class="img_profile">
                     <img src="{{ url(Auth::user()->avatar) }}">   
                 </div>
             </div>
             <div class="col" style="padding-top:30px;">
                 <a class="a_getlink">
                     <span>
-                    {{Auth::user()->username}} <span class="all_more_link">( {{Auth::user()->role->slug}} )</span>
+                    {{Auth::user()->username}}
                     </span>
-            </a>
+                </a>
             </div>
             <div class="col text_right" style="padding-top:30px;">
                 <button id="actions" class="btn_layout_back">ตั้งค่า</button>
             </div>
         </div>
-        <ul class="nav nav-tabs row" style="padding:0; margin-bottom:20px;">
-            <li class="nav-item col text_center" style="padding:0;">
-            <a class="nav-link active" data-toggle="tab" href="#home">
+    </div>
+
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <div class="slider"></div>
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#menu1" role="tab" aria-controls="menu1" aria-selected="true">
                 <img class="menu_list_profile" src="{{url('assets/image/heart_layout_black.svg')}}"><br>
                 <span class="menu_list_profile_text">Favorite</span>
             </a>
-            </li>
-            <li class="nav-item col text_center" style="padding:0;">
-                <a class="nav-link" data-toggle="tab" href="#menu1">
-                    <img class="menu_list_profile" src="{{url('assets/image/user.svg')}}"><br>
-                    <span class="menu_list_profile_text">Following</span>
-                </a>
-            </li>
-        </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu2" role="tab" aria-controls="profile" aria-selected="false">
+                <img class="menu_list_profile" src="{{url('assets/image/user.svg')}}"><br>
+                <span class="menu_list_profile_text">Following</span>
+            </a>
+        </li>
+    </ul>
 
-    </div>
+</div>
 
-    <!-- Tab panes -->
+<!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active container" id="home">
-    <div class="card" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-            <div style="width:100%; height:250px; overflow: hidden; position:relative; border-top-left-radius: 10px;  border-top-right-radius: 10px;">
-                <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
-                    <div style="float:left;">
-                        <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">ภาพถ่ายบุคคล</span>
-                        <h3 style="font-size:14px; padding-right:10px; color:#fff; padding-top:5px;">Caption</h3>
-                    </div>
-                    <div class="col text_right" style="padding-top: 10px; color:#fff;">
-                        <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart.svg')}}">
-                    </div>
-                </div>
-                <img class="card-img-top" src="{{url('assets/image/img_show03.jpg')}}">    
-            </div>
-            <div class="card-body" style="padding:10px">
-                <div class="row">
-                    <div class="col-2">
-                        <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                            <img src="{{url('assets/image/avatar02.jpg')}}" style="height:100%;">    
-                        </div>
-                    </div>
-                    <div class="col-6" style="font-size:10px;">
-                        <div class="row">
-                            <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
-                                <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
-                            </div>
-                            <div class="col-12">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                    
-                    </div>
-                    <div class="col-4 text_right">
-                        <span style="font-size:10px; padding-right:10px;">เริ่มต้นที่</span>
-                        <h3  style="font-size:14px; padding-right:10px;">900 ฿</h3>
-                    </div>
-                </div>
-            </div>
-    </div>
 
-  </div>
-  <div class="tab-pane container" id="menu1">
-    <div class="card" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-            <div class="card-body" style="padding:10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background:#F2F2F2;">
-                <div class="row">
-                    <div class="col-2">
-                        <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                            <img src="assets/image/avatar02.jpg" style="height:100%;">    
+    <div class="tab-pane fade margin_top20 show active" id="menu1" role="tabpanel" aria-labelledby="menu1-tab">
+        <div class="container">
+            <div class="card" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+                    <div style="width:100%; height:250px; overflow: hidden; position:relative; border-top-left-radius: 10px;  border-top-right-radius: 10px;">
+                        <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
+                            <div style="float:left;">
+                                <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">ภาพถ่ายบุคคล</span>
+                                <h3 style="font-size:14px; padding-right:10px; color:#fff; padding-top:5px;">Caption</h3>
+                            </div>
+                            <div class="col text_right" style="padding-top: 10px; color:#fff;">
+                                <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart.svg')}}">
+                            </div>
                         </div>
+                        <img class="card-img-top" src="{{url('assets/image/img_show03.jpg')}}">    
                     </div>
-                    <div class="col-10" style="font-size:10px;">
+                    <div class="card-body" style="padding:10px">
                         <div class="row">
-                            <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
-                                <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
+                            <div class="col-2">
+                                <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
+                                    <img src="{{url('assets/image/avatar02.jpg')}}" style="height:100%;">    
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
+                            <div class="col-6" style="font-size:10px;">
+                                <div class="row">
+                                    <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
+                                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
+                                    </div>
+                                    <div class="col-12">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            <div class="col-4 text_right">
+                                <span style="font-size:10px; padding-right:10px;">เริ่มต้นที่</span>
+                                <h3  style="font-size:14px; padding-right:10px;">900 ฿</h3>
                             </div>
                         </div>
-                    
                     </div>
-                </div>
-            </div>
-            <div style="width:100%; height:auto; overflow: hidden; padding:10px;">
-                <div style="width:160px; height:160px; border-radius:10px; overflow: hidden; position:relative; float:left; margin-right:10px;">
-                    <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
-                        <div style="float:left;">
-                            <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">ภาพบุคคล/แฟชั่น</span>
-                        </div>
-                    </div>
-                    <img style="height:100%;" src="assets/image/img_show03.jpg">    
-                </div>
-                <div style="width:160px; height:160px; border-radius:10px; overflow: hidden; position:relative;">
-                    <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
-                        <div style="float:left;">
-                            <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">รับปริญญา</span>
-                        </div>
-                    </div>
-                    <img style="height:100%;" src="assets/image/img_show02.jpg">    
-                </div>
             </div>
         </div>
-  </div>
-    
+    </div>
+
+    <div class="tab-pane fade margin_top20" id="menu2" role="tabpanel" aria-labelledby="menu2-tab">
+        <div class="container">
+            <div class="card" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+                    <div class="card-body" style="padding:10px; border-top-left-radius: 10px; border-top-right-radius: 10px; background:#F2F2F2;">
+                        <div class="row">
+                            <div class="col-2">
+                                <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
+                                    <img src="assets/image/avatar02.jpg" style="height:100%;">    
+                                </div>
+                            </div>
+                            <div class="col-10" style="font-size:10px;">
+                                <div class="row">
+                                    <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
+                                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a>
+                                    </div>
+                                    <div class="col-12">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:100%; height:auto; overflow: hidden; padding:10px;">
+                        <div style="width:160px; height:160px; border-radius:10px; overflow: hidden; position:relative; float:left; margin-right:10px;">
+                            <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
+                                <div style="float:left;">
+                                    <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">ภาพบุคคล/แฟชั่น</span>
+                                </div>
+                            </div>
+                            <img style="height:100%;" src="assets/image/img_show03.jpg">    
+                        </div>
+                        <div style="width:160px; height:160px; border-radius:10px; overflow: hidden; position:relative;">
+                            <div style="position: absolute; width:100%; padding:10px 0px 10px 10px;">
+                                <div style="float:left;">
+                                    <span style="font-size:10px; border:1px solid #fff; border-radius:20px; padding:3px 8px; color:#fff;">รับปริญญา</span>
+                                </div>
+                            </div>
+                            <img style="height:100%;" src="assets/image/img_show02.jpg">    
+                        </div>
+                    </div>
+            </div>           
+        </div>
+
+    </div>
+
+</div>
+
     <a style="display: none;" id="logout" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         {{ __('Logout') }}
     </a>
@@ -161,6 +173,17 @@
 
             ]);
         });
+        $(".nav-tabs a").click(function() {
+            var position = $(this).parent().position();
+            console.log(position);
+            var width = $(this).parent().width();
+            console.log(width);
+            $(".slider").css({"left":+ position.left,"width":width});
+        });
+        var actWidth = $(".nav-tabs").find(".active").parent("li").width();
+            console.log(actWidth);
+        var actPosition = $(".nav-tabs .active").position();
+        $(".slider").css({"left":+ actPosition.left,"width": actWidth});
     });
 </script>
 
