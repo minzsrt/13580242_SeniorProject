@@ -16,7 +16,7 @@
             </a>
             </div>
             <div class="col text_right" style="padding-top:30px;">
-                <button class="btn_layout_back" data-toggle="modal" data-target="#exampleModalCenter">ตั้งค่า</button>
+                <button id="actions" class="btn_layout_back">ตั้งค่า</button>
             </div>
         </div>
         <ul class="nav nav-tabs row" style="padding:0; margin-bottom:20px;">
@@ -129,34 +129,40 @@
             </div>
         </div>
   </div>
-  
-
-<!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">ตั้งค่า</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <a class="btn btn_color btn_layout_bottom" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-                                            {{ __('ออกจากระบบ') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </div>
-        </div>
-    </div>
-    </div>
-
     
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <a style="display: none;" id="logout" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        {{ __('Logout') }}
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
+<script>
+    $(function () {
+        $('#actions').click(function () {
+            $.actions([
+                [
+                    {
+                        text: '<a href="{{ url('/profile/'.Auth::user()->username.'/edit') }}">แก้ไขข้อมูลส่วนตัว</a>',
+                        
+                    },
+                    {
+                        text: '<font style="color:red;">ออกจากระบบ</font>',
+                        onClick: function () {
+                            document.getElementById('logout').click();
+                        }
+                    }
+                ],
+                [
+                    {
+                        text: 'ยกเลิก',
+                    }
+                ],
+
+            ]);
+        });
+    });
+</script>
 
 
 @stop
