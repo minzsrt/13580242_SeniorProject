@@ -38,7 +38,7 @@ Route::get('regPhotographerSuccess',function(){
 })->middleware('auth');
 
 Route::resource('/','IndexController');
-Route::get('/profile/{username}', 'ProfileController@show')->name('general.profile.show')->middleware('auth');
+Route::get('/profile/{username}', 'ProfileController@show')->name('general.profile.show');
 
 
 Route::get('/profile/{username}/edit', 'UserController@show')->name('auth.edit');

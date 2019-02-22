@@ -55,12 +55,13 @@ class ProfileController extends Controller
     public function show($username)
     {   
         $user = User::whereUsername($username)->first();
-        $authcheck = Auth::user()->username;
         $data['username'] = $username;
 
-        if( $user ){ 
+        if(Auth::check() && $user ){ 
 
-            if($user->username == $authcheck ){
+            $authcheck = Auth::user()->username;
+
+            if( $user->username == $authcheck ){
                 if($user && $user->role_id == 2){
     
                     $albums = Album::orderBy('id', 'DESC')->get();
@@ -108,9 +109,47 @@ class ProfileController extends Controller
                 }
             }
         }else{
+
+            if($user){
+                if($user->role_id == 2){
+
+                    $url = url()->current();
+                    $slice = Str::after($url , 'http://127.0.0.1:8000/profile/');
+                    // dd($slice);
+
+                    $authall = User::where('username','Like',$slice)->get();
+                    // dd($authall->pluck('id'));
+
+                    $id_user = $authall->pluck('id');
+                    // dd($id_user);
+
+                    $albums = Album::orderBy('id', 'DESC')->get();
+                    $package_cards = PackageCard::Where('id_user', 'LIKE', $id_user)->groupBy('id_category')->get();
+                    // dd($package_cards);
+                    if(empty($package_cards))
+                    abort(404);
+
+                    $image_albums = ImageAlbum::all();
+                    $categories = Category::all();
+
+                    return view('general.viewphotographer',$data,compact('albums','package_cards','categories','image_albums'))->withUser($user);
+
+                }elseif($user && $user->role_id == 3){
+
+                    return view('general.viewgeneral',$data)->withUser($user);
+
+                }else{
+                    abort(404);
+                    // return $username;
+                }
+
+            }else{
+                abort(404);
+                // return $username;
+            }
+
             //รอใส่ Error page
             // dd($user);   
-            return $username;
             
         }
     }
