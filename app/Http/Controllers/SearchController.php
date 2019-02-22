@@ -31,12 +31,19 @@ class SearchController extends Controller
 
         $package_cards = PackageCard::Where([
             ['id_category','LIKE',$category],
-            ['id_formattime', 'LIKE', $formattime],
+            ['id_formattime', 'LIKE', $formattime], 
         ])->whereBetween( 'price', [$price1, $price2] )->get();
         
+        $data['category'] = $category;
+        $data['price1'] = $price1;
+        $data['price2'] = $price2;
+        $data['formattime'] = $formattime;
+
         if(!empty($package_cards)){
             $albums = Album::all();
             $data['alertsearch'] = '';
+            // $categories = Category::Where('id','LIKE',$category)->get();
+            // $data['name_category'] = $categories;
             return view('general.search',$data,compact('albums','image_albums','package_cards','categories','users'))->withDetails($package_cards);
         }
         else {

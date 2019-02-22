@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
     <link href="css/style.css" rel="stylesheet"> 
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBINeYvHLmwpkkSruROByI3sBP0v77-VIw&libraries=places&callback=activatePlacesSearch"></script>
+    <script type="text/javascript">
+        function activatePlacesSearch(){
+            var input = document.getElementById('search_term');
+            var auto_complete = google.maps.places.Autocomplete(input);
+        }
+    </script> -->
 </head>
 <body>
 
@@ -37,10 +44,9 @@
         <span class="all_more_link">สถานที่</span>
         <div class="container">
         <div class="row maps_wrap">
-            <input type="text" name="place">
+            <input type="text" name="place" id="search_term">
             <iframe class="maps" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5670.061102641878!2d100.54740447622444!3d13.912959569889924!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe45d7fa6ac93bec8!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4Lio4Li04Lil4Lib4Liy4LiB4LijIOC4p-C4tOC4l-C4ouC4suC5gOC4guC4leC4i-C4tOC4leC4teC5ieC5geC4hOC4oeC4m-C4seC4qiDguYDguKHguLfguK3guIfguJfguK3guIfguJjguLLguJnguLU!5e0!3m2!1sen!2sth!4v1548551990806" width="800" frameborder="0"  allowfullscreen>
             </iframe>
-
         </div>
         </div>
         
