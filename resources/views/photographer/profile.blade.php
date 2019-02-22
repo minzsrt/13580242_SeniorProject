@@ -266,9 +266,12 @@
     </div>
     </div>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
+    <a style="display: none;" id="logout" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        {{ __('Logout') }}
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 
     <script>
     $(function () {
@@ -282,8 +285,7 @@
                     {
                         text: '<font style="color:red;">ออกจากระบบ</font>',
                         onClick: function () {
-                            event.preventDefault();
-                            document.getElementById('logout-form').submit();
+                            document.getElementById('logout').click();
                         }
                     }
                 ],
