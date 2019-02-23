@@ -179,9 +179,9 @@ class OrderController extends Controller
         $order->price = $request->price;
         $order->detail = $request->detail;
 
-        if($order->id_formattime == '3'){
+        // if($order->id_formattime == '3'){
             return redirect($username.'/order/step3')->with('username',$username);
-        }
+        // }
 
     }
     /**
@@ -318,7 +318,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {   
         $order = Order::create($request->all());
-        $tatal = $order->price*$order->time_work;
+        $tatal = $order->price;
         $order->id_employer = Auth::user()->id;
         $order->status_order = 'รอการตอบรับ';
         $order->status_payment = 'Unpaid';

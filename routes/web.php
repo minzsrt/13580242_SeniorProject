@@ -77,10 +77,14 @@ Route::get('invoiceSuccess', function(){ return view('invoiceSuccess');});
 Route::get('listpayment', function(){ return view('listpayment');});
 Route::get('paymentsuccess', function(){ return view('paymentsuccess');});
 Route::get('internetbanking', function(){ return view('internetbanking');});
-Route::get('paymentCard', function(){ return view('paymentCard');});
+Route::get('paymentCard', function(){ 
+    return view('paymentCard');
+});
 Route::get('checkout', function(){ return view('checkout');});
 
-Route::get('yourBank', function(){ return view('yourBank');});
+Route::get('/credits/{username}', 'DepositAccountController@index');
+Route::get('/credits/{username}/create', 'DepositAccountController@create');
+Route::post('/credits/{username}/store', 'DepositAccountController@store');
 Route::get('listTag', function(){ return view('listTag');});
 Route::get('mn_order', function(){ return view('mn_order');});
 

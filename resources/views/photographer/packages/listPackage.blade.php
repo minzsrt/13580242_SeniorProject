@@ -48,6 +48,7 @@
             </a>
         @endforeach
 
+        @if($username == Auth::user()->username)
         <form action="/createPackagecardCategory" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="id_category" value="{{$get_id}}">
@@ -57,7 +58,7 @@
                 </button> 
             </div>
         </form>
-        
+        @endif
     </div>
 
 

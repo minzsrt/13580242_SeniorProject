@@ -47,7 +47,7 @@
                         </span>
                     </div>
                     <div class="col text_right">
-                        <h3  style="font-size:18px; padding-right:20px;">{{$order->price*$order->time_work}} ฿</h3>
+                        <h3  style="font-size:18px; padding-right:20px;">{{$order->price}} ฿</h3>
 
                     </div>                
                 </div>
@@ -67,7 +67,7 @@
                         <tr>
                             <th>ชั่วโมง </th>
                             <td>{{$order->time_work}} ชั่วโมงต่อวัน</td>
-                            <td class="text_right" style="padding-right:20px;">{{$order->price}}x{{$order->time_work}}</td>
+                            <td class="text_right" style="padding-right:20px;">{{$order->price}}</td>
                         </tr>
                         </table>
                         <br>

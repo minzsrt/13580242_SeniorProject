@@ -5,14 +5,16 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <label onclick="window.location.href='/yourBank'" class="container_radio" style="height:60px; background:#37ECBA; margin-top:20px; padding-left:20px;">
+            <label onclick="window.location.href='{{url('credits/'.Auth::user()->username)}}'" class="container_radio" style="height:60px; background:#37ECBA; margin-top:20px; padding-left:20px;">
                     <div class="row">
                         <div class="col" style="padding-top: 10px;">
                         กระเป๋าตังช่างภาพ
                         </div>
                         <div class="col text_right" style="padding-top: 10px;">
-                            <h3  class="listtag_price">600.00 ฿</h3>
-                        </div>
+                            @foreach($deposits as $deposit)
+                                <h3  class="listtag_price">{{$deposit->total}} ฿</h3>
+                            @endforeach
+                            </div>
                     </div>
             </label>
         </div>

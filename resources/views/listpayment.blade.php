@@ -13,7 +13,7 @@
 <body>
 
     <section class="text_right" style="height:60px; padding:20px;">    
-        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/index'"><i class="fas fa-times-circle"></i></a>
+        <a style="cursor:pointer; color:#aeaeae;"  onclick="window.location.href='/notification/{{Auth::user()->username}}'"><i class="fas fa-times-circle"></i></a>
     </section>
 
     <div class="container">
@@ -33,7 +33,7 @@
 
         <div class="row">
             <div class="col">
-                <label class="container_radio container_radio_fix">
+                <label class="container_radio container_radio_fix" onclick="window.location.href='/paymentsuccess'">
                 <div class="row">
                     <div class="col" style="padding-top: 10px;">
                     Credit/debit card
@@ -43,7 +43,7 @@
                 <span class="checkmark"></span>
                 </label>
 
-                <label class="container_radio container_radio_fix">
+                <!-- <label class="container_radio container_radio_fix">
                 <div class="row">
                     <div class="col" style="padding-top: 10px;">
                     Internet Banking
@@ -51,7 +51,7 @@
                 </div>
                 <input type="radio" name="radio">
                 <span class="checkmark"></span>
-                </label>
+                </label> -->
             </div>
         </div>
 
@@ -60,14 +60,29 @@
             <div class="col">
             </div>
             <div class="col">
-                <button type="submit" class="btn_color" onclick="window.location.href='/paymentCard'" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                    <div class="row" id="payment">
+                    <form name="checkoutForm" method="POST" action="/checkout">
+                    <script type="text/javascript" src="https://cdn.omise.co/omise.js"
+                        data-key="pkey_test_5e3gl9x2200jvt571vo"
+                        data-image="{{url('assets/image/logo.png')}}"
+                        data-frame-label="ชำระเงิน"
+                        data-button-label="ชำระเงิน"
+                        data-submit-label="Submit"
+                        data-location="no"
+                        data-amount="490000"
+                        data-currency="thb"
+                        >
+                    </script>
+                    <!--the script will render <input type="hidden" name="omiseToken"> for you automatically-->
+                    </form>
+                    <!-- data-key="pkey_test_5e3gl9x2200jvt571vo" -->
+                </div>
+                <!-- <button type="submit" class="btn_color" onclick="window.location.href='/paymentCard'" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button> -->
             </div>
         </div>
         </nav>
 
     </div>
-
-    
 
 </body>
 </html>

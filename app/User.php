@@ -49,6 +49,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Order');
     }
 
+    public function deposit(){
+        return $this->hasMany('App\DepositAccount');
+    }
 
 
 }

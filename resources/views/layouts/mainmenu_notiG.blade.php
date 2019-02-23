@@ -16,7 +16,6 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
-
 </head>
 <body style="font-family: 'Prompt', sans-serif;">
 
@@ -32,7 +31,15 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='{{url('photographer/chatchannel')}}'">
+                <button class="btn_menu_list" onclick="window.location.href='{{url('/search')}}'">
+                    @if (trim($__env->yieldContent('page_title')==='Search'))
+                        <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
+                    @endif
+                    <img class="menu_list" src="{{url('assets/image/search.svg')}}">
+                </button>
+                </div>
+                <div class="col">
+                <button class="btn_menu_list" onclick="window.location.href='{{url('/chatchannel')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Chatchannel'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
@@ -40,7 +47,7 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list"  onclick="window.location.href='/notification/{{Auth::user()->username}}'">
+                <button class="btn_menu_list" onclick="window.location.href='/notification/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
@@ -48,12 +55,22 @@
                 </button>
                 </div>
                 <div class="col">
+                @if(Auth::guest())
+                <button class="btn_menu_list" onclick="window.location.href='/home'">
+                    @if (trim($__env->yieldContent('page_title')==='Profile'))
+                        <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
+                    @endif
+                    <img class="menu_list" src="{{url('assets/image/friend.svg')}}" >
+                </button>
+                @else
                 <button class="btn_menu_list" onclick="window.location.href='/profile/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Profile'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/friend.svg')}}" >
                 </button>
+                @endif
+                
                 </div>
             </div>
         </div>
@@ -66,6 +83,5 @@
 	@yield('content')
 </div>
 
- 	
 </body>
 </html>

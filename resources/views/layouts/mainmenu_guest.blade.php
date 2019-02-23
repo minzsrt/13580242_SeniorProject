@@ -38,7 +38,7 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='{{url('/chatchannel')}}'">
+                <button class="btn_menu_list" onclick="window.location.href='{{url('/home')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Chatchannel'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
@@ -46,7 +46,7 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='{{url('/notification')}}'">
+                <button class="btn_menu_list" onclick="window.location.href='{{url('/home')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif

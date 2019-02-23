@@ -3,21 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Order; 
-use App\Album; 
-use App\ImageAlbum; 
-use App\PackageCard;
-use App\Category;
-use App\User;
-// use Request;
-use Auth;
-use Storage;
+use App\User; 
+use App\DepositAccount; 
+use App\Bank; 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AlbumRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 
-class NotificationController extends Controller
+class DepositAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,22 +22,8 @@ class NotificationController extends Controller
     public function index($username)
     {
         $user = User::whereUsername($username)->first();
-
-        if(Auth::user()->role_id == '2'){
-            $orders = Order::where('id_photographer','Like',$user->id)->get();
-            foreach ($orders as $order){
-                $employer = User::where('id','like',$order->id_employer)->get();
-            }
-            return view('photographer.notifications.notification',compact('user','orders','employer'))->with('username',$username);
-        }else{
-            $orders = Order::where('id_employer','Like',$user->id)->get();
-            foreach ($orders as $order){
-                $photographer = User::where('id','like',$order->id_photographer)->get();
-            }
-            // dd($orders);
-            return view('general.notification',compact('user','orders','photographer'))->with('username',$username);
-        }
-      
+        $deposits = DepositAccount::where('id_photographer','LIKE',$user->id)->get();
+        return view('photographer.credit.credits',compact('user','deposits'));
     }
 
     /**
@@ -50,9 +31,11 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($username)
     {
-        //
+        $banks = Bank::all();
+        return view('photographer.credit.create',compact('banks'))->with('username',$username);
+        
     }
 
     /**
@@ -61,9 +44,18 @@ class NotificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($username,Request $request)
     {
-        //
+        $deposit_account = DepositAccount::create($request->all());
+        if($request->hasFile('book_bank_copy')){
+    		$book_bank_copy = $request->file('book_bank_copy');
+            $filename = $book_bank_copy->store('bookbank', ['disk' => 'profile_files']);
+    		$deposit_account->book_bank_copy = $filename;
+    		$deposit_account->save();
+        }
+        $deposit_account->save();
+        return redirect('credits/'.$username);  
+
     }
 
     /**

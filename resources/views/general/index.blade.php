@@ -4,151 +4,38 @@
 
     <section>
         <div class="container wrap_container_head">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     <h3 class="headder_text">ช่างภาพแนะนำ</h3>
                 </div>
                 <div class="col text_right">
                     <a class="all_more_link" href="/recommendSetting"><i class="fas fa-ellipsis-v"></i></a> 
                 </div>
-            </div>
+            </div> -->
         </div>
 
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="padding:10px;">
-        <div class="carousel-inner" style="overflow: inherit;">
-            <div class="carousel-item active">
-                <div class="card col-12" style="magin:10px; padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-                    
-                    <div style="width:100%; height:210px; text-align:center; overflow: hidden; border-radius: 10px 10px 0 0;">
-                        <img class="card-img-top" src="assets/image/img_show01.png">    
-                    </div>
-
-                    <div class="card-body" style="padding:10px">
-                        <div class="row">
-                            <div class="col-2">
-                                <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                                    <img src="assets/image/avatar01.jpg" style="height:100%;">    
-                                </div>
+        <div class="container">
+                        @foreach($albums as $album)
+                            <div class="card album_show_wrap">
+                                            <div class="album_show">
+                                                <div class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner" style="overflow: inherit; max-height: 220px !important;">            
+                                                        @php ($i = -1)
+                                                        @foreach($image_albums as $index => $image_album)
+                                                            @if( $album->id === $image_album->album_id )
+                                                                @php ($i++)
+                                                                <img class="card-img-top carousel-item {{ $i == '0' ? 'active' : '' }}" src="{{ url($image_album->name_image) }}"> 
+                                                            @endif    
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
                             </div>
-                            <div class="col-10" style="font-size:10px;">
-                                <div class="row">
-                                    <div class="col-12" style="font-size:14px;">
-                                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a></a>
-                                    </div>
-                                    <div class="col-12">
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
 
-                </div>    
-            </div>
-            <div class="carousel-item">
-                <div class="card col-12" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-                    
-                    <div style="width:100%; height:210px; text-align:center; overflow: hidden; border-radius: 10px 10px 0 0;">
-                        <img class="card-img-top" src="assets/image/img_show02.jpg">    
-                    </div>
-
-                    <div class="card-body" style="padding:10px">
-                        <div class="row">
-                            <div class="col-2">
-                                <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                                    <img src="assets/image/avatar02.jpg" style="height:100%;">    
-                                </div>
-                            </div>
-                            <div class="col-10" style="font-size:10px;">
-                                <div class="row">
-                                    <div class="col-12" style="font-size:14px;">
-                                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a></a>
-                                    </div>
-                                    <div class="col-12">
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>    
-            </div>
-            <div class="carousel-item">
-                <div class="card col-12" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-                    
-                    <div style="width:100%; height:210px; text-align:center; overflow: hidden; border-radius: 10px 10px 0 0;">
-                        <img class="card-img-top" src="assets/image/img_show03.jpg">    
-                    </div>
-
-                    <div class="card-body" style="padding:10px">
-                        <div class="row">
-                            <div class="col-2">
-                                <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                                    <img src="assets/image/avatar03.jpg" style="height:100%;">    
-                                </div>
-                            </div>
-                            <div class="col-10" style="font-size:10px;">
-                                <div class="row">
-                                    <div class="col-12" style="font-size:14px;">
-                                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a></a>
-                                    </div>
-                                    <div class="col-12">
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star checked"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>    
-            </div>
+            </div> 
         </div>
-    </div>
     </section>
-
-    <!-- <div class="card col-11" style="padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
-        <div style="width:100%; height:210px; text-align:center; overflow: hidden;">
-        <img class="card-img-top" src="assets/image/img_show01.png">    
-        </div>
-        <div class="card-body" style="padding:10px">
-        <div class="row">
-            <div class="col-2">
-                <div style="width:40px; height:40px; border-radius:20px; overflow: hidden;">
-                    <img src="assets/image/avatar01.jpg" style="height:100%;">    
-                </div>
-            </div>
-            <div class="col-10" style="font-size:10px;">
-                <div class="row">
-                    <div class="col-12" style="font-size:14px; font-family: 'Prompt', Regular;">
-                        <a class="a_getlink" href="{{ url("profilePhotographer") }}"><a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a></a>
-                    </div>
-                    <div class="col-12">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </div>
-               
-            </div>
-        </div>
-        
-        </div>
-    </div> -->
 
 <div>
 
@@ -307,7 +194,7 @@
 
 <!-- //////////////////// -->
 
-<div>
+<!-- <div>
     <div class="container wrap_container_head">
         <div class="row">
             <div class="col">
@@ -459,11 +346,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- //////////////////// -->
 
-<div>
+<!-- <div>
     <div class="container wrap_container_head">
         <div class="row">
             <div class="col">
@@ -615,11 +502,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- //////////////////// -->
 
-<div>
+<!-- <div>
     <div class="container wrap_container_head">
         <div class="row">
             <div class="col">
@@ -771,11 +658,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- //////////////////// -->
 
-<div>
+<!-- <div>
     <div class="container" style="margin: 20px 0 0 !important;">
         <div class="row">
             <div class="col">
@@ -924,11 +811,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- //////////////////// -->
 
-<div>
+<!-- <div>
     <div class="container wrap_container_head">
         <div class="row">
             <div class="col">
@@ -1080,11 +967,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- //////////////////// -->
 
-<div>
+<!-- <div>
     <div class="container wrap_container_head">
         <div class="row">
             <div class="col">
@@ -1236,9 +1123,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col banner">
             <a href="/regPhotographer" class="a_getlink">
@@ -1246,7 +1133,7 @@
             </a>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- //////////////////// -->
 

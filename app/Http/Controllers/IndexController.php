@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User; 
 use App\Album; 
+use App\ImageAlbum; 
 use App\PackageCard;
 use App\Category;
+use App\DepositAccount; 
 use Illuminate\Http\Request;
 
 
@@ -29,13 +31,15 @@ class IndexController extends Controller
                 $albums = Album::orderBy('id', 'DESC')->get();
                 $package_cards = PackageCard::all();
                 $categories = Category::all();
-                return view('photographer.index', compact('albums','package_cards','categories'));
+                $deposits = DepositAccount::where('id_photographer','LIKE',Auth::user()->id)->get();
+                return view('photographer.index', compact('albums','package_cards','categories','deposits'));
     
             }elseif($checkrole == 3){
                 $albums = Album::orderBy('id', 'DESC')->get();
                 $package_cards = PackageCard::all();
                 $categories = Category::all();
-                return view('general.index', compact('albums','package_cards','categories'));
+                $image_albums = ImageAlbum::all();
+                return view('general.index', compact('albums','package_cards','categories','image_albums'));
     
             }
            

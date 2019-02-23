@@ -76,9 +76,9 @@
                                 </a>
                             @endforeach
                         </div>
-    				    <input type="text" name="id_formattime" id="id_formattime">
-    				    <input type="text" name="price" id="price">
-    				    <input type="text" name="detail" id="detail">
+    				    <input type="hidden" name="id_formattime" id="id_formattime">
+    				    <input type="hidden" name="price" id="price">
+    				    <input type="hidden" name="detail" id="detail">
             </div>
         </div>
         <nav class="container nav_bottom nav_bottom">

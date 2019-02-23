@@ -13,7 +13,7 @@
 <body>
 
     <section class="text_right" style="height:60px; padding:20px;">    
-        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/index'"><i class="fas fa-times-circle"></i></a>
+        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/notification/{{Auth::user()->username}}'"><i class="fas fa-times-circle"></i></a>
     </section>
 
     <div class="container">

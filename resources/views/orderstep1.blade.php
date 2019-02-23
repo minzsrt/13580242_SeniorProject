@@ -56,7 +56,7 @@
                             </a>
                             @endforeach
                         </div>
-    				    <input type="text" name="id_category" id="id_category">
+    				    <input type="hidden" name="id_category" id="id_category">
             </div>
         </div>
         <nav class="container nav_bottom">

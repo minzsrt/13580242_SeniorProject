@@ -304,9 +304,9 @@
             <div class="col" style="display: inherit; padding-top:10px;">
                 <form action="/orderstep1" method="post">
                     {{ csrf_field() }}
-                    <input type="text" value="{{$user->id}}" name="id_user">
+                    <input type="hidden" value="{{$user->id}}" name="id_user">
                 </form>
-                <button type="submit" onclick="window.location.href='/orderstep1'" class="btn_color" style="width:100%; margin:0;">จ้างช่างภาพ</button>
+                <button type="submit" onclick="window.location.href='/{{$user->username}}/order/step1'" class="btn_color" style="width:100%; margin:0;">จ้างช่างภาพ</button>
             </div>
             <div class="col"  style="display: inherit; padding-top:10px;">
                 <button type="submit" class="btn_color" style="background: #fff; color:#72AFD3; border:1px solid #72AFD3; width:100%; margin:0;">ติดต่อสอบถาม</button>

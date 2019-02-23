@@ -1,6 +1,6 @@
 
 @extends('layouts.main')
-
+@section('link_back', '/profile/'.Auth::user()->username)
 @section('content')
     <div class="container">
     {!! Form::model($user, ['route' => ['auth.update'], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
