@@ -73,7 +73,7 @@
                             </div>
                         </div>
 
-                        <input type="text" name="avatar" value="profile/profile-default.svg">
+                        <input type="hinden" name="avatar" value="profile/profile-default.svg">
 
                         <!-- <div class="form-group row mb-0 bottom_fixed">
                                 <div class="col-md-8 offset-md-4 text_center">
@@ -87,6 +87,7 @@
                                     </button>
                                 </div>
                         </div> -->
+                        
                     </form>
                 </div>
             

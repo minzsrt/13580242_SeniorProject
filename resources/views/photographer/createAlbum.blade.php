@@ -44,8 +44,6 @@
             </div>
     </div>
 
-    
-
     <div class="row">
             <div class="col-md" style="margin-top:10px;">
                 <span class="all_more_link">ชื่ออัลบั้ม</span>
@@ -84,7 +82,7 @@ window.onload = function () {
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         var img = document.createElement("IMG");
-                        img.className = "album_show_wrap_multi col";
+                        img.className = "album_show_wrap_multi";
                         img.src = e.target.result;
                         dvPreview.appendChild(img);
 

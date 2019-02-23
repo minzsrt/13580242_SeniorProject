@@ -2,6 +2,7 @@
 @section('page_title', 'Index')
 @section('content')
 
+<div class="container">
     <div class="row">
         <div class="col">
             <label onclick="window.location.href='/yourBank'" class="container_radio" style="height:60px; background:#37ECBA; margin-top:20px; padding-left:20px;">
@@ -65,5 +66,5 @@
             </label>
         </div>
     </div>
-
+</div>
 @stop
