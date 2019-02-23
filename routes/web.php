@@ -49,7 +49,7 @@ Route::post('/profile/update', 'UserController@update')->name('auth.update');
 Route::any('search','SearchController@index');
 
 Route::get('chatchannel', function(){ return view('general.chatchannel');})->middleware('auth');
-Route::get('notification', function(){ return view('general.notification');})->middleware('auth');
+Route::get('/notification/{username}', 'NotificationController@index');
 
 Route::get('package', function(){ return view('package');});
 
@@ -70,6 +70,9 @@ Route::post('{username}/order/step5', 'OrderController@postCreateStep5');
 Route::get('{username}/order/step6', 'OrderController@createStep6');
 Route::post('/order/store', 'OrderController@store');
 Route::get('orderstep7', function(){ return view('orderstep7');});
+Route::get('/order/{id}/invoice', 'OrderController@edit');
+Route::get('/order/{id}/update', 'OrderController@update');
+Route::get('invoiceSuccess', function(){ return view('invoiceSuccess');});
 
 Route::get('listpayment', function(){ return view('listpayment');});
 Route::get('paymentsuccess', function(){ return view('paymentsuccess');});

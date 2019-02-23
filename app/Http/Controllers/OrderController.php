@@ -49,7 +49,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -60,7 +60,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::find($id);
+        // dd($order);     
+        return view('photographer.notifications.orders.invoice',compact('order'));
+
     }
 
     /**
@@ -72,7 +75,11 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::findOrFail($id); 
+        $order->total = $request->price+$request->transportation_cost+$request->shipping_cost;
+        $order->status_order = 'รอชำระเงิน';
+        $order->update($request->all());
+        return redirect('invoiceSuccess');
     }
 
     /**
@@ -313,7 +320,7 @@ class OrderController extends Controller
         $order = Order::create($request->all());
         $tatal = $order->price*$order->time_work;
         $order->id_employer = Auth::user()->id;
-        $order->status_order = 'Waiting for confirmation';
+        $order->status_order = 'รอการตอบรับ';
         $order->status_payment = 'Unpaid';
         $order->total = $tatal;
         $order->save();
