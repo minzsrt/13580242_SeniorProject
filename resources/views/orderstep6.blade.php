@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Step 6</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{url('bootstrap/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
-    <link href="css/style.css" rel="stylesheet"> 
+    <link href="{{url('css/style.css')}}" rel="stylesheet"> 
 </head>
 <body>
 
@@ -16,16 +16,16 @@
         <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/index'"><i class="fas fa-times-circle"></i></a>
     </section>
 
-    <form action="/order/store" method="post" >
+    <form action="/order/store" method="post">
     {{ csrf_field() }}
 
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="order_img_profile">
-                    <img src="assets/image/avatar01.jpg">    
+                    <img src="{{url($user->avatar)}}"> 
                 </div>
-                <h3 class="headder_text text_center" style="padding: 5px; font-size:14px;">จ้างงาน Username</h3>
+                <h3 class="headder_text text_center review_username">จ้างงาน {{$user->username}}</h3>
             </div>
         </div>
         <div class="row margin_bomtom20">
@@ -47,7 +47,7 @@
                         </span>
                     </div>
                     <div class="col text_right">
-                        <h3  style="font-size:18px; padding-right:20px;">2,700 ฿</h3>
+                        <h3  style="font-size:18px; padding-right:20px;">{{$order->price*$order->time_work}} ฿</h3>
 
                     </div>                
                 </div>
@@ -62,12 +62,12 @@
                         <tr>
                             <th>วันที่ </th>
                             <td>{{$order->date_work}}</td>
-                            <td class="text_right" style="padding-right:20px;">x2</td>
+                            <!-- <td class="text_right" style="padding-right:20px;">x2</td> -->
                         </tr>
                         <tr>
                             <th>ชั่วโมง </th>
                             <td>{{$order->time_work}} ชั่วโมงต่อวัน</td>
-                            <td class="text_right" style="padding-right:20px;">900x2</td>
+                            <td class="text_right" style="padding-right:20px;">{{$order->price}}x{{$order->time_work}}</td>
                         </tr>
                         </table>
                         <br>
@@ -75,7 +75,7 @@
                             สิ่งที่ได้รับ
                         </span>
                         <p class="all_more_link" style="font-size: 12px; color:#000;">
-                        จำนวน 10 รูป ปรับแต่งไฟล์ภาพ แสง สี ตามความเหมาะสม
+                        {{$order->detail}}
                         </p>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col">
                 <span class="all_more_link">ส่วนลด</span>
                 <input type="text" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
@@ -93,10 +93,12 @@
                 <span class="headder_text ">-100 ฿</span>
             </div>
 
-        </div>
+        </div> -->
 
         <input type="hidden" name="id_category" value="{{$order->id_category}}">
         <input type="hidden" name="id_formattime" value="{{$order->id_formattime}}">
+        <input type="hidden" name="price" value="{{$order->price}}">
+        <input type="hidden" name="detail" value="{{$order->detail}}">
         <input type="hidden" name="place" value="{{$order->place}}">
         <input type="hidden" name="date_work" value="{{$order->date_work}}">
         <input type="hidden" name="time_work" value="{{$order->time_work}}">

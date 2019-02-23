@@ -23,34 +23,6 @@
             </div>
         </div>
 
-        <!-- <ul class="nav nav-tabs row" style="padding:0; margin-bottom:20px;">
-            <li class="nav-item col text_center" style="padding:0;">
-            <a class="nav-link active" data-toggle="tab" href="#menu1">
-                <img class="menu_list_profile" src="{{url('assets/image/album.svg')}}"><br>
-                <span class="menu_list_profile_text">Album</span>
-            </a>
-            </li>
-            <li class="nav-item col text_center" style="padding:0;">
-                <a class="nav-link" data-toggle="tab" href="#menu2">
-                    <img class="menu_list_profile" src="{{url('assets/image/camera.svg')}}"><br>
-                    <span class="menu_list_profile_text">About</span>
-                </a>
-            </li>
-            <li class="nav-item col text_center" style="padding:0;">
-            <a class="nav-link" data-toggle="tab" href="#menu3">
-                <img class="menu_list_profile" src="{{url('assets/image/star.svg')}}"><br>
-                <span class="menu_list_profile_text">Review</span>
-            </a>
-            </li>
-            <li class="nav-item col text_center" style="padding:0;">
-                <a class="nav-link" data-toggle="tab" href="#menu4">
-                    <img class="menu_list_profile" src="{{url('assets/image/calendar.svg')}}"><br>
-                    <span class="menu_list_profile_text">Calendar</span>
-                </a>
-            </li>
-            
-        </ul> -->
-
         <ul class="nav nav-tabs nav-justified" role="tablist">
             <div class="slider"></div>
             <li class="nav-item">
@@ -326,6 +298,21 @@
                     </table>
         </div><!-- end menu 4 -->
     </div><!-- end tab-content -->
+
+    <nav class="container nav_bottom nav_bottom_profile">
+        <div class="row">
+            <div class="col" style="display: inherit; padding-top:10px;">
+                <form action="/orderstep1" method="post">
+                    {{ csrf_field() }}
+                    <input type="text" value="{{$user->id}}" name="id_user">
+                </form>
+                <button type="submit" onclick="window.location.href='/orderstep1'" class="btn_color" style="width:100%; margin:0;">จ้างช่างภาพ</button>
+            </div>
+            <div class="col"  style="display: inherit; padding-top:10px;">
+                <button type="submit" class="btn_color" style="background: #fff; color:#72AFD3; border:1px solid #72AFD3; width:100%; margin:0;">ติดต่อสอบถาม</button>
+            </div>
+        </div>
+    </nav>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

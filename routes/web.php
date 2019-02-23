@@ -54,17 +54,17 @@ Route::get('searchResult', function(){ return view('searchResult');});
 
 Route::get('recommendSetting', function(){ return view('recommendSetting');});
 
-Route::get('/orderstep1', 'OrderController@createStep1');
-Route::post('/orderstep1', 'OrderController@postCreateStep1');
-Route::get('/orderstep2', 'OrderController@createStep2');
-Route::post('/orderstep2', 'OrderController@postCreateStep2');
-Route::get('/orderstep3', 'OrderController@createStep3');
-Route::post('/orderstep3', 'OrderController@postCreateStep3');
-Route::get('/orderstep4', 'OrderController@createStep4');
-Route::post('/orderstep4', 'OrderController@postCreateStep4');
-Route::get('/orderstep5', 'OrderController@createStep5');
-Route::post('/orderstep5', 'OrderController@postCreateStep5');
-Route::get('/orderstep6', 'OrderController@createStep6');
+Route::get('{username}/order/step1', 'OrderController@createStep1');
+Route::post('{username}/order/step1', 'OrderController@postCreateStep1');
+Route::get('{username}/order/step2', 'OrderController@createStep2');
+Route::post('{username}/order/step2', 'OrderController@postCreateStep2');
+Route::get('{username}/order/step3', 'OrderController@createStep3');
+Route::post('{username}/order/step3', 'OrderController@postCreateStep3');
+Route::get('{username}/order/step4', 'OrderController@createStep4');
+Route::post('{username}/order/step4', 'OrderController@postCreateStep4');
+Route::get('{username}/order/step5', 'OrderController@createStep5');
+Route::post('{username}/order/step5', 'OrderController@postCreateStep5');
+Route::get('{username}/order/step6', 'OrderController@createStep6');
 Route::post('/order/store', 'OrderController@store');
 Route::get('orderstep7', function(){ return view('orderstep7');});
 

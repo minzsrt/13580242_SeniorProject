@@ -1,57 +1,6 @@
 @extends('layouts.mainmenu_p')
 @section('page_title', 'Profile')
 @section('content')
-    <!-- <div class="wrap_container_head">
-        <div class="row">
-            <div class="col-3">
-                <div class="img_profile">
-                    <img src="{{ url(Auth::user()->avatar) }}">   
-                </div>
-            </div>
-            <div class="col" style="padding-top:20px;">
-                <span>{{ Auth::user()->username }}</span>
-                <div class="username_profile">
-                    <i class="fas fa-star checked"></i>
-                    <i class="fas fa-star checked"></i>
-                    <i class="fas fa-star checked"></i>
-                    <i class="fas fa-star checked"></i>
-                    <i class="fas fa-star"></i>        
-                </div>        
-            </div>
-            <div class="col text_right" style="padding-top:20px;">
-                <button id="actions" class="btn_layout_back">ตั้งค่า</button>
-            </div>
-        </div>
-
-        <ul class="nav nav-tabs row" style="padding:0; margin-bottom:20px;">
-            <li class="nav-item col text_center" style="padding:0;">
-            <a class="nav-link active" data-toggle="tab" href="#menu1">
-                <img class="menu_list_profile" src="{{url('assets/image/album.svg')}}"><br>
-                <span class="menu_list_profile_text">Album</span>
-            </a>
-            </li>
-            <li class="nav-item col text_center" style="padding:0;">
-                <a class="nav-link" data-toggle="tab" href="#menu2">
-                    <img class="menu_list_profile" src="{{url('assets/image/camera.svg')}}"><br>
-                    <span class="menu_list_profile_text">About</span>
-                </a>
-            </li>
-            <li class="nav-item col text_center" style="padding:0;">
-            <a class="nav-link" data-toggle="tab" href="#menu3">
-                <img class="menu_list_profile" src="{{url('assets/image/star.svg')}}"><br>
-                <span class="menu_list_profile_text">Review</span>
-            </a>
-            </li>
-            <li class="nav-item col text_center" style="padding:0;">
-                <a class="nav-link" data-toggle="tab" href="#menu4">
-                    <img class="menu_list_profile" src="{{url('assets/image/calendar.svg')}}"><br>
-                    <span class="menu_list_profile_text">Calendar</span>
-                </a>
-            </li>
-            
-        </ul>
-                                    
-    </div> -->
 
     <div class="wrap_container_head">
         <div class="container">
