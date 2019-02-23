@@ -1,5 +1,8 @@
 <?php
 
+use App\Events\FormSubmited;
+
+
 Auth::routes();
 
 Route::get('photographer/chatchannel', function(){ return view('photographer.chatchannel.chatchannel');});
@@ -88,3 +91,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/portfolioPhotographer',function(){ return view('regforphotographer.portfolio');});
 
 
+Route::get('counter', function(){ return view('counter');});
+Route::get('sender', function(){ return view('sender');});
+Route::post('sender', function(){ 
+    $text = request()->text;
+    event(new FormSubmited($text));
+    return $text;
+});
