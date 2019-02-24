@@ -36,8 +36,9 @@ class SearchController extends Controller
         
         if(!empty($package_cards)){
             $albums = Album::all();
-            $data['alertsearch'] = '';
-            return view('general.search',$data,compact('albums','image_albums','package_cards','categories','users'))->withDetails($package_cards);
+            $data['price1'] =  $price1 ;
+            $data['price2'] =  $price2 ;
+            return view('general.search',$data,compact('albums','image_albums','package_cards','categories','users','imgusers'))->withDetails($package_cards);
         }
         else {
             $data['alertsearch'] = 'Search not found!';

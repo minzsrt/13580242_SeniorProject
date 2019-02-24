@@ -1,4 +1,4 @@
-@extends('layouts.mainmenu_guest')
+@extends('layouts.mainmenu_general')
 @section('page_title', 'Search')
 @section('content')
 
@@ -32,11 +32,11 @@
                     <span class="all_more_link">งบประมาณ (บาท)</span>
                     <div class="row">
                         <div class="col input-group">
-                            <input name="price1" type="number" placeholder="0" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                            <input name="price1" type="number" value="{{ !empty($price1)? $price1 : $price1 }}" placeholder="0" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
                         </div>
                         <span>-</span>
                         <div class="col input-group">
-                            <input name="price2" type="number" placeholder="1500" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                            <input name="price2" type="number" value="{{ !empty($price2)? $price2 : $price2 }}" placeholder="1500" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
                         </div>
                     </div>
                 </div>
@@ -82,13 +82,13 @@
 
     <div class="container margin_top20">
     @if(isset($details))
-        {{ $alertsearch }}
-        @foreach($package_cards as $package_card)
-        <div class="row">
+        <!-- <div class="row">
             <div class="col">
-                <h3 class="headder_text">ผลการค้นหาถ่ายภาพ{{ $package_card->category->name_category }}</h3>
+                <h3 class="headder_text">ผลการค้นหา</h3>
             </div>
-        </div>   
+        </div>   -->
+        @foreach($package_cards as $package_card) 
+        <a href="profile/{{$package_card->user->username}}">
         <div class="card album_show_wrap bg_fff color_black">
             <div class="album_show">
             </div>
@@ -96,8 +96,7 @@
                 <div class="row">
                     <div class="col-2">
                         <div class="order_img_profile">
-                            <img src="assets/image/avatar01.jpg" style="height:100%;">  
-                            
+                            <img src="{{$package_card->user->avatar}}" style="height:100%;">
                         </div>
                     </div>
                     <div class="col-6" style="font-size:10px;">
@@ -122,6 +121,7 @@
                 </div>
             </div>
         </div>
+        </a>
         @endforeach
     @endif
 
