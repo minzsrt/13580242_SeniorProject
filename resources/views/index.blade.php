@@ -1,4 +1,4 @@
-@extends('layouts.mainmenu_general')
+@extends('layouts.mainmenu_guest')
 @section('page_title', 'Index')
 @section('content')
 
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div id="carouselExampleSlidesOnly" data-interval="3000" class="carousel slide" data-ride="carousel" style="padding:10px;">
+    <div id="carouselExampleSlidesOnly" data-interval="false" data-interval="3000" class="carousel slide" data-ride="carousel" style="padding:10px;">
         <div class="carousel-inner" style="overflow: inherit;">
             <div class="carousel-item active">
                 <div class="container">
@@ -102,7 +102,9 @@
                                         <div class="col-9" style="font-size:10px;">
                                             <div class="row">
                                                 <div class="col-12" style="font-size:14px;">
-                                                    <a class="a_getlink" href="{{ url("profilePhotographer") }}"><a class="a_getlink" href="{{ url("profilePhotographer") }}"><span>Username</span></a></a>
+                                                <a class="a_getlink" href="{{ url('profile/Astudio') }}">
+                                                <span>Astudio</span>
+                                                </a>
                                                 </div>
                                                 <div class="col-12">
                                                     <i class="fas fa-star checked"></i>

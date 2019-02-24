@@ -53,7 +53,7 @@ Route::get('/notification/{username}', 'NotificationController@index');
 
 Route::get('package', function(){ return view('package');});
 
-Route::get('searchResult', function(){ return view('searchResult');});
+// Route::get('searchResult', function(){ return view('searchResult');});
 
 Route::get('recommendSetting', function(){ return view('recommendSetting');});
 

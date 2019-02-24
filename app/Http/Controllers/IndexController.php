@@ -48,7 +48,8 @@ class IndexController extends Controller
             $albums = Album::orderBy('id', 'DESC')->get();
             $package_cards = PackageCard::all();
             $categories = Category::all();
-            return view('general.index', compact('albums','package_cards','categories'));
+            $image_albums = ImageAlbum::all();
+            return view('index', compact('albums','package_cards','categories','image_albums'));
         }
         
 

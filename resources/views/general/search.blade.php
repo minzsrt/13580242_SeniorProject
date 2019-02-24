@@ -1,4 +1,4 @@
-@extends('layouts.mainmenu_general')
+@extends('layouts.mainmenu_guest')
 @section('page_title', 'Search')
 @section('content')
 
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md" style="margin-top:10px;">
                     <span class="all_more_link">วันที่</span>
-                    <input type="date" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                    <input type="date" style="background: none; width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
                 </div>
                 <div class="col-md" style="margin-top:10px; font-size:14px;">
                     <span class="all_more_link">เวลา</span>
@@ -65,9 +65,13 @@
                     <span class="all_more_link">สถานที่</span>
                     <select class=" select_search">
                         <option selected>เลือกสถานที่...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="1">กรุงเทพและปริมลฑล</option>
+                        <option value="2">ภาคเหนือ</option>
+                        <option value="3">ภาคกลาง</option>
+                        <option value="1">ภาคตะวันออก</option>
+                        <option value="2">ภาคตะวันออกเฉียงเหนือ</option>
+                        <option value="3">ภาคตะวันตก</option>
+                        <option value="3">ภาคใต้</option>
                     </select>
                 </div>
                     <button class="btn_color" type="submit">Search</button>            

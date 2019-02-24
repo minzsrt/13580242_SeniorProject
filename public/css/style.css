@@ -101,6 +101,7 @@ select.select_search {
     border-top:0;
     border-left:0;
     border-right:0;
+    background: none;
 }
 .btn_color{
     width:200px;
