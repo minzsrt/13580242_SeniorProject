@@ -327,4 +327,10 @@ class OrderController extends Controller
         return redirect('/');
     }
 
+    public function __construct(){
+
+        $this->middleware('auth');
+
+    }
+
 }

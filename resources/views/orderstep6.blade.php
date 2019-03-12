@@ -65,9 +65,9 @@
                             <!-- <td class="text_right" style="padding-right:20px;">x2</td> -->
                         </tr>
                         <tr>
-                            <th>ชั่วโมง </th>
-                            <td>{{$order->time_work}} ชั่วโมงต่อวัน</td>
-                            <td class="text_right" style="padding-right:20px;">{{$order->price}}</td>
+                            <th>เวลา </th>
+                            <td>{{$order->time_work}}</td>
+                            <!-- <td class="text_right" style="padding-right:20px;">{{$order->price}}</td> -->
                         </tr>
                         </table>
                         <br>

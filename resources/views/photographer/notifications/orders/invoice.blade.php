@@ -53,9 +53,9 @@
                             <!-- <td class="text_right" style="padding-right:20px;">x2</td> -->
                         </tr>
                         <tr>
-                            <th>ชั่วโมง </th>
-                            <td>{{$order->time_work}} ชั่วโมงต่อวัน</td>
-                            <td class="text_right" style="padding-right:20px;">{{$order->price}}x{{$order->time_work}}</td>
+                            <th>เวลา </th>
+                            <td>{{$order->time_work}}</td>
+                            <!-- <td class="text_right" style="padding-right:20px;">{{$order->price}}</td> -->
                         </tr>
                         </table>
                         <br>
@@ -76,10 +76,9 @@
                                 <span class="all_more_link fontsize14" style="color:#000; font-weight: bold;">
                                     ราคางาน
                                 </span>
-                                {!! Form::text('price',null,['class'=>'form-control','id'=>'input_price']) !!}
+                                {!! Form::text('price',null,['disabled','class'=>'form-control','id'=>'input_price']) !!}
                             </div>
                             <div class="col text_right padtop30">
-                                <!-- <h3 class="fontsize18">{{$order->price*$order->time_work}} ฿</h3> -->
                                 <div class="input-group">
                                     <input type="text" id="output_price" class="form-control fontsize18 textinput_none text_right" disabled>
                                     <div class="input-group-prepend">
@@ -95,7 +94,8 @@
                                 </span>
                                 {!! Form::text('transportation_cost',null,['class'=>'form-control','id'=>'input_transportation_cost', 'name' => 'transportation_cost']) !!}
                             </div>
-                            <div class="col text_right padtop30">                                       <div class="input-group">
+                            <div class="col text_right padtop30">                                      
+                                <div class="input-group">
                                     <input type="text" id="output_transportation_cost" class="form-control fontsize18 textinput_none text_right" disabled>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text textinput_none">฿</span>

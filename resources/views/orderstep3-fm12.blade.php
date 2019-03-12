@@ -36,17 +36,18 @@
             </div>
         </div>
 
-        <span class="all_more_link">ชั่วโมง</span>
+        <span class="all_more_link">เวลางาน</span>
 
         <div class="row">
             <div class="col form-group">
-            <input type="range" min="1" max="4" name="time_work" style="width:100%;">
-            <div class="row all_more_link text_center">
+            <input type="time" name="time_work" style="width:100%;">
+            <!-- <input type="range" min="1" max="4" name="time_work" style="width:100%;"> -->
+            <!-- <div class="row all_more_link text_center">
                 <div class="col">30 นาที</div>
                 <div class="col ">1 ชั่วโมง</div>
                 <div class="col ">2 ชั่วโมง</div>
                 <div class="col ">3 ชั่วโมง</div>
-            </div>
+            </div> -->
             </div>
         </div>
         <nav class="container nav_bottom nav_bottom">

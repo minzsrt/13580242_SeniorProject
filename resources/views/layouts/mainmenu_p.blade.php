@@ -42,7 +42,7 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='{{url('photographer/notification')}}'">
+                <button class="btn_menu_list" onclick="window.location.href='/notification/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif

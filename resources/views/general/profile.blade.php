@@ -53,9 +53,9 @@
                                     <span class="hastag_album">ภาพถ่ายบุคคล</span>
                                     <h3 class="caption_album">Caption</h3>
                                 </div>
-                                <div class="col text_right fav_count">
+                                <!-- <div class="col text_right fav_count">
                                     <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart.svg')}}">
-                                </div>
+                                </div> -->
                             </div>
                             <img class="card-img-top" src="{{url('assets/image/img_show03.jpg')}}">    
                         </div>

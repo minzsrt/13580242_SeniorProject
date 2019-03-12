@@ -86,7 +86,7 @@ Route::get('/credits/{username}', 'DepositAccountController@index');
 Route::get('/credits/{username}/create', 'DepositAccountController@create');
 Route::post('/credits/{username}/store', 'DepositAccountController@store');
 Route::get('listTag', function(){ return view('listTag');});
-Route::get('mn_order', function(){ return view('mn_order');});
+Route::get('management', function(){ return view('mn_order');});
 
 
 

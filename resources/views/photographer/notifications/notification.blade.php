@@ -2,6 +2,24 @@
 @section('page_title', 'Notification')
 @section('content')
 <div class="container">
+    @foreach($orders as $order)
+        <div class="row margin_box10">
+            <div class="col-12 noti_card noti_active">
+                <div class="row">
+                    <div class="col-12" >
+                        <span class="fontsize10">วันนี้</span><br>
+                        @foreach($employer as $employ)
+                            <span class="fontsize14">{{$employ->username}} ชำระเงินเรียบร้อย</span>
+                        @endforeach
+                    </div>
+                    <div class="col-12 text_center">
+                        <button class="btn_color" onclick="window.location.href='/management'"}}'">จัดการออร์เดอร์</button>
+                    </div>
+            </div>
+            </div>
+        </div>
+    @endforeach
+
         @foreach($orders as $order)
         <div class="row margin_box10">
             <div class="col-12 noti_card noti_active">
@@ -51,9 +69,9 @@
                                 <td>{{$order->date_work}}</td>
                             </tr>
                             <tr>
-                                <th>ชั่วโมง </th>
-                                <td>{{$order->time_work}} ชั่วโมงต่อวัน</td>
-                                <td class="text_right" style="padding-right:20px;">{{$order->price}}x{{$order->time_work}}</td>
+                                <th>เวลา </th>
+                                <td>{{$order->time_work}}</td>
+                                <!-- <td class="text_right" style="padding-right:20px;">{{$order->price}}x{{$order->time_work}}</td> -->
                             </tr>
                             </table>
                             <span class="all_more_link fontsize14" style="color:#000; font-weight: bold;">
@@ -65,15 +83,11 @@
                         </div>
                     </div>
                 </div>
-                @if($order->status_order == 'รอชำระเงิน')
+                @if($order->status_order == 'รอการตอบรับ')
                 <div class="modal-footer">
                     <button type="button" class="btn btn_layout_back" data-dismiss="modal">ยกเลิก</button>
                     <button class="btn_layout_next" onclick="window.location.href='/order/{{$order->id}}/invoice'"}}'">
-                    @if($order->status_order == 'รอการตอบกลับ')
                         ส่งใบเสนอราคา
-                    @elseif($order->status_order == 'รอการตอบกลับ')
-                        แก้ไขใบเสนอราคา
-                    @endif
                     </button>
                 </div>
                 @endif

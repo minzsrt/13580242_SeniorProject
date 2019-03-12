@@ -79,9 +79,9 @@
                                                         {{ $album->name_album }}
                                                     </h3>
                                                 </div>
-                                                <div class="col text_right fav_count">
+                                                <!-- <div class="col text_right fav_count">
                                                     <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner" style="overflow: inherit; max-height: 220px !important;">            
@@ -133,7 +133,7 @@
                     </button> 
             </div>
 
-            <div class="container wrap_container_head">
+            <!-- <div class="container wrap_container_head">
                 <div class="row">
                     <div class="col">
                         <h3 class="headder_text">อุปกรณ์ที่ใช้ในการถ่ายภาพ</h3>
@@ -153,7 +153,7 @@
                 <span class="all_more_link">แฟลช</span><br>
                 <label class="btn_layout_equipment">Pop-Up Flash</label>
                 <label class="btn_layout_equipment">External Flash</label>
-            </div>
+            </div> -->
         </div>
  
         <div class="tab-pane fade margin_top20 container" id="menu3" role="tabpanel" aria-labelledby="menu3-tab">
