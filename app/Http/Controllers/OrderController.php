@@ -326,6 +326,15 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        dd(json_decode($request->place));
+        // json_decode($request->place) store google map data like
+        // 'place_id' รหัสสถานที่
+        // 'lat' ละติจูด
+        // 'lng' ลองติจูด
+        // 'address' ชื่อที่อยู่
+        // 'url' ลิงก์สำหรับกดไป google map ถ้าเข้าผ่านมือถือจะลิงก์เข้า app google map ทันที
+        // สามารถ edit migration orders แล้วเก็บข้อมูลพวกนี้แยก field แทน field place ได้เลยครับ
+
         $order = Order::create($request->all());
         $tatal = $order->price;
         $order->id_employer = Auth::user()->id;

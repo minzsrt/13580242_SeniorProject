@@ -104,11 +104,7 @@
         <input type="hidden" name="id_formattime" value="{{$order->id_formattime}}">
         <input type="hidden" name="price" value="{{$order->price}}">
 		<input type="hidden" name="detail" value="{{$order->detail}}">
-		
-		{{-- 
-			now $order->place is store object about address change to get it on backend from session order 
-		--}}
-			{{-- <input type="hidden" name="place" value="{{ $order->place }}"> --}}
+		<input type="hidden" name="place" value="{{ json_encode($order->place) }}">
         <input type="hidden" name="date_work" value="{{$order->date_work}}">
 		<input type="hidden" name="time_work" value="{{$order->time_work}}">
 		
