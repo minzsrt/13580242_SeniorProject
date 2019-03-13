@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Order; 
-use App\Album; 
-use App\ImageAlbum; 
-use App\PackageCard;
+use App\Album;
 use App\Category;
+use App\Http\Requests\AlbumRequest;
+use App\ImageAlbum;
+use App\Order;
+use App\PackageCard;
 use App\User;
 // use Request;
 use Auth;
-use Storage;
-use App\Http\Requests\AlbumRequest;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Gate;
+use Storage;
 
 class OrderController extends Controller
 {
@@ -39,8 +39,6 @@ class OrderController extends Controller
         //
     }
 
-
-
     /**
      * Display the specified resource.
      *
@@ -61,8 +59,8 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::find($id);
-        // dd($order);     
-        return view('photographer.notifications.orders.invoice',compact('order'));
+        // dd($order);
+        return view('photographer.notifications.orders.invoice', compact('order'));
 
     }
 
@@ -75,8 +73,8 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order = Order::findOrFail($id); 
-        $order->total = $request->price+$request->transportation_cost+$request->shipping_cost;
+        $order = Order::findOrFail($id);
+        $order->total = $request->price + $request->transportation_cost + $request->shipping_cost;
         $order->status_order = 'รอชำระเงิน';
         $order->update($request->all());
         return redirect('invoiceSuccess');
@@ -93,7 +91,7 @@ class OrderController extends Controller
         //
     }
 
-     /**
+    /**
      *
      * @return \Illuminate\Http\Response
      */
@@ -101,10 +99,10 @@ class OrderController extends Controller
     {
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
-        $package_cards = PackageCard::where('id_user','LIKE', $user->id)->groupBy('id_category')->get();
+        $package_cards = PackageCard::where('id_user', $user->id)->groupBy('id_category')->get();
 
         // dd($package_cards);
-        return view('/orderstep1',compact('order', $order,'user','package_cards'))->with('username',$username);
+        return view('/orderstep1', compact('order', $order, 'user', 'package_cards'))->with('username', $username);
     }
 
     /**
@@ -121,14 +119,14 @@ class OrderController extends Controller
             'id_category' => 'required',
         ]);
 
-        if(empty($request->session()->get('order'))){
+        if (empty($request->session()->get('order'))) {
             $order = new Order();
             $order->fill($validatedData);
             $request->session()->put('order', $order);
             $order->id_category = $request->id_category;
             $order->id_photographer = $user->id;
             // dd($request->id_category);
-        }else{
+        } else {
             $order = $request->session()->get('order');
             $order->fill($validatedData);
             $request->session()->put('order', $order);
@@ -136,8 +134,8 @@ class OrderController extends Controller
             $order->id_photographer = $user->id;
             // dd($order->id_category);
         }
-        
-        return redirect($username.'/order/step2')->with('username',$username);
+
+        return redirect($username.'/order/step2')->with('username', $username);
 
     }
 
@@ -151,14 +149,14 @@ class OrderController extends Controller
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
         $package_cards = PackageCard::Where([
-            ['id_category','LIKE', $order->id_category ],
-            ['id_user', 'LIKE', $order->id_photographer ],
+            ['id_category', 'LIKE', $order->id_category],
+            ['id_user', 'LIKE', $order->id_photographer],
         ])->orderBy('id_formattime', 'ASC')->get();
         // dd($package_cards);
         // print_r('category : '.$order->id_category.'<br>');
         // print_r('id_photographer : '.$order->id_photographer);
 
-        return view('/orderstep2',compact('order',$order,'package_cards','user'))->with('username',$username);
+        return view('/orderstep2', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
     }
     /**
      * Post Request to store step1 info in session
@@ -180,7 +178,7 @@ class OrderController extends Controller
         $order->detail = $request->detail;
 
         // if($order->id_formattime == '3'){
-            return redirect($username.'/order/step3')->with('username',$username);
+        return redirect($username.'/order/step3')->with('username', $username);
         // }
 
     }
@@ -189,7 +187,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createStep3($username,Request $request)
+    public function createStep3($username, Request $request)
     {
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
@@ -197,12 +195,12 @@ class OrderController extends Controller
         // print_r('id_photographer : '.$order->id_photographer.'<br>');
         // print_r('id_formattime : '.$order->id_formattime.'<br>');
         // print_r('price : '.$order->price.'<br>');
-        if($order->id_formattime == '3'){
+        if ($order->id_formattime == '3') {
             // print_r($order->id_formattime);
-            return view('/orderstep3-fm3',compact('order',$order,'package_cards','user'))->with('username',$username);
-        }else{
+            return view('/orderstep3-fm3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+        } else {
             // print_r($order->id_formattime);
-            return view('/orderstep3-fm12',compact('order',$order,'package_cards','user'))->with('username',$username);
+            return view('/orderstep3-fm12', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
         }
     }
     /**
@@ -211,7 +209,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postCreateStep3($username,Request $request)
+    public function postCreateStep3($username, Request $request)
     {
         $validatedData = $request->validate([
             'time_work' => 'required',
@@ -219,8 +217,7 @@ class OrderController extends Controller
         $order = $request->session()->get('order');
         $request->session()->put('order', $order);
         $order->time_work = $request->time_work;
-        return redirect($username.'/order/step4')->with('username',$username);
-
+        return redirect($username.'/order/step4')->with('username', $username);
 
     }
     /**
@@ -228,7 +225,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createStep4($username,Request $request)
+    public function createStep4($username, Request $request)
     {
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
@@ -237,7 +234,7 @@ class OrderController extends Controller
         // print_r('id_formattime : '.$order->id_formattime.'<br>');
         // print_r('price : '.$order->price.'<br>');
         // print_r('time_work : '.$order->time_work.'<br>');
-        return view('/orderstep4',compact('order',$order,'package_cards','user'))->with('username',$username);
+        return view('/orderstep4', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
 
     }
     /**
@@ -246,7 +243,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postCreateStep4($username,Request $request)
+    public function postCreateStep4($username, Request $request)
     {
         $validatedData = $request->validate([
             'date_work' => 'required',
@@ -254,7 +251,7 @@ class OrderController extends Controller
         $order = $request->session()->get('order');
         $request->session()->put('order', $order);
         $order->date_work = $request->date_work;
-        return redirect($username.'/order/step5')->with('username',$username);
+        return redirect($username.'/order/step5')->with('username', $username);
 
     }
     /**
@@ -262,7 +259,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createStep5($username,Request $request)
+    public function createStep5($username, Request $request)
     {
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
@@ -272,7 +269,7 @@ class OrderController extends Controller
         // print_r('price : '.$order->price.'<br>');
         // print_r('time_work : '.$order->time_work.'<br>');
         // print_r('date_work : '.$order->date_work.'<br>');
-        return view('/orderstep5',compact('order',$order,'package_cards','user'))->with('username',$username);
+        return view('/orderstep5', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
     }
     /**
      * Post Request to store step1 info in session
@@ -280,15 +277,26 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postCreateStep5($username,Request $request)
+    public function postCreateStep5($username, Request $request)
     {
         $validatedData = $request->validate([
-            'place' => 'required',
+            'place_id' => 'required|string',
+            'lat' => 'required|string',
+            'lng' => 'required|string',
+            'address' => 'required|string',
+            'url' => 'required|string',
         ]);
+
         $order = $request->session()->get('order');
         $request->session()->put('order', $order);
-        $order->place = $request->place;
-        return redirect($username.'/order/step6')->with('username',$username);
+        $order->place = $request->only([
+            'place_id',
+            'lat',
+            'lng',
+            'address',
+            'url',
+        ]);
+        return redirect($username.'/order/step6')->with('username', $username);
 
     }
 
@@ -297,16 +305,17 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createStep6($username,Request $request)
+    public function createStep6($username, Request $request)
     {
         $order = $request->session()->get('order');
+        // dd($order);
         $user = User::whereUsername($username)->first();
         // dd($order->id_category);
         // dd($order->id_formattime);
         // dd($order->time_work);
         // dd($order->date_work);
         // dd($order->place);
-        return view('/orderstep6',compact('order',$order,'package_cards','user'))->with('username',$username);
+        return view('/orderstep6', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
     }
 
     /**
@@ -316,7 +325,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $order = Order::create($request->all());
         $tatal = $order->price;
         $order->id_employer = Auth::user()->id;
@@ -327,7 +336,8 @@ class OrderController extends Controller
         return redirect('/');
     }
 
-    public function __construct(){
+    public function __construct()
+    {
 
         $this->middleware('auth');
 
