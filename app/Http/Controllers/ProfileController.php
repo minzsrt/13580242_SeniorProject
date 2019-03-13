@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\User; 
-use App\Album; 
-use App\ImageAlbum; 
-use App\PackageCard;
+use App\Album;
 use App\Category;
-use Request;
-use DB;
 use App\Http\Requests\AlbumRequest;
+use App\ImageAlbum;
+use App\PackageCard;
+use App\User;
+use Auth;
+use DB;
 use Illuminate\Support\Str;
+use Request;
 
 class ProfileController extends Controller
 {
@@ -22,7 +22,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -53,71 +53,57 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($username)
-    {   
+    {
         $user = User::whereUsername($username)->first();
+        if (!$user) {
+            return abort(404);
+        }
         $data['username'] = $username;
 
-        if(Auth::check() && $user ){ 
+        if (Auth::check() && $user) {
 
             $authcheck = Auth::user()->username;
 
-            if( $user->username == $authcheck ){
-                if($user && $user->role_id == 2){
-    
+            if ($user->username == $authcheck) {
+                if ($user && $user->role_id == 2) {
+
                     $albums = Album::orderBy('id', 'DESC')->get();
 
-                    $package_cards = PackageCard::where('id_user','LIKE', $user->id)->groupBy('id_category')->get();
+                    $package_cards = PackageCard::where('id_user', 'LIKE', $user->id)->groupBy('id_category')->get();
                     // dd($package_cards);
 
                     $categories = Category::all();
                     $image_albums = ImageAlbum::all();
-                    return view('photographer.profile',$data,compact('albums','package_cards','categories','image_albums'))->withUser($user);
-    
-                }elseif($user && $user->role_id == 3){
-    
-                    return view('general.profile',$data)->withUser($user);
-    
+                    return view('photographer.profile', $data, compact('albums', 'package_cards', 'categories', 'image_albums'))->withUser($user);
+
+                } elseif ($user && $user->role_id == 3) {
+                    return view('general.profile', $data)->withUser($user);
+
                 }
-            }elseif($user->username != $authcheck ){
-                if($user->role_id == 2){
-
-                    $url = url()->current();
-                    $slice = Str::after($url , 'http://127.0.0.1:8000/profile/');
-                    // dd($slice);
-
-                    $authall = User::where('username','Like',$slice)->get();
-                    // dd($authall->pluck('id'));
-
-                    $id_user = $authall->pluck('id');
-                    // dd($id_user);
-
+            } elseif ($user->username != $authcheck) {
+                if ($user->role_id == 2) {
                     $albums = Album::orderBy('id', 'DESC')->get();
-                    $package_cards = PackageCard::Where('id_user', 'LIKE', $id_user)->groupBy('id_category')->get();
-                    // dd($package_cards);
-                    if(empty($package_cards))
-                    abort(404);
+                    $package_cards = PackageCard::Where('id_user', $user->id)->groupBy('id_category')->get();
+                    if (empty($package_cards)) {
+                        abort(404);
+                    }
 
                     $image_albums = ImageAlbum::all();
                     $categories = Category::all();
 
-                    return view('general.viewphotographer',$data,compact('albums','package_cards','categories','image_albums'))->withUser($user);
-    
-                }elseif($user && $user->role_id == 3){
-    
-                    return view('general.viewgeneral',$data)->withUser($user);
-    
+                    return view('general.viewphotographer', $data, compact('albums', 'package_cards', 'categories', 'image_albums'))->withUser($user);
+
+                } elseif ($user && $user->role_id == 3) {
+
+                    return view('general.viewgeneral', $data)->withUser($user);
+
                 }
             }
-        }else{
+        } else {
 
-            if($user){
-                if($user->role_id == 2){
-
-                    $url = url()->current();
-                    $slice = Str::after($url , 'http://127.0.0.1:8000/profile/');
-                    // dd($slice);
-
-                    $authall = User::where('username','Like',$slice)->get();
+            if ($user) {
+                if ($user->role_id == 2) {
+                    $authall = User::where('username', 'Like', $user->username)->get();
                     // dd($authall->pluck('id'));
 
                     $id_user = $authall->pluck('id');
@@ -126,28 +112,29 @@ class ProfileController extends Controller
                     $albums = Album::orderBy('id', 'DESC')->get();
                     $package_cards = PackageCard::Where('id_user', 'LIKE', $id_user)->groupBy('id_category')->get();
                     // dd($package_cards);
-                    if(empty($package_cards))
-                    abort(404);
+                    if (empty($package_cards)) {
+                        abort(404);
+                    }
 
                     $image_albums = ImageAlbum::all();
                     $categories = Category::all();
 
-                    return view('general.viewphotographer',$data,compact('albums','package_cards','categories','image_albums'))->withUser($user);
+                    return view('general.viewphotographer', $data, compact('albums', 'package_cards', 'categories', 'image_albums'))->withUser($user);
 
-                }elseif($user && $user->role_id == 3){
+                } elseif ($user && $user->role_id == 3) {
 
-                    return view('general.viewgeneral',$data)->withUser($user);
+                    return view('general.viewgeneral', $data)->withUser($user);
 
-                }else{
+                } else {
                     abort(404);
                     // return $username;
                 }
 
-            }else{
+            } else {
                 abort(404);
                 // return $username;
-            }   
-            
+            }
+
         }
     }
 
