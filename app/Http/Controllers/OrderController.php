@@ -326,7 +326,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd(json_decode($request->place));
+        // dd(json_decode($request->place));
         // json_decode($request->place) store google map data like
         // 'place_id' รหัสสถานที่
         // 'lat' ละติจูด
@@ -335,12 +335,25 @@ class OrderController extends Controller
         // 'url' ลิงก์สำหรับกดไป google map ถ้าเข้าผ่านมือถือจะลิงก์เข้า app google map ทันที
         // สามารถ edit migration orders แล้วเก็บข้อมูลพวกนี้แยก field แทน field place ได้เลยครับ
 
-        $order = Order::create($request->all());
-        $tatal = $order->price;
+        // $order = Order::create($request->all());
+        $place = json_decode($request->place);
+        $order = new Order;
+        $order->price = $request->price;
+        $order->detail = $request->detail;
+        $order->date_work = $request->date_work;
+        $order->time_work = $request->time_work;
+        $order->id_category = $request->id_category;
+        $order->id_formattime = $request->id_formattime;
         $order->id_employer = Auth::user()->id;
+        $order->id_photographer = $request->id_photographer;
         $order->status_order = 'รอการตอบรับ';
         $order->status_payment = 'Unpaid';
-        $order->total = $tatal;
+        $order->total = $order->price;
+        $order->place_id = $place->place_id;
+        $order->lat = $place->lat;
+        $order->lng = $place->lng;
+        $order->address = $place->address;
+        $order->url = $place->url;
         $order->save();
         return redirect('/');
     }
