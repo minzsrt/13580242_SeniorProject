@@ -107,13 +107,12 @@
 		<input type="hidden" name="place" value="{{ json_encode($order->place) }}">
         <input type="hidden" name="date_work" value="{{$order->date_work}}">
 		<input type="hidden" name="time_work" value="{{$order->time_work}}">
+		<input type="hidden" name="id_photographer" value="{{ $user->id }}">
 		
-
-
         <nav class="container nav_bottom">
         <div class="row">
             <div class="col">
-                <button type="submit" class="btn_color" onclick="window.location.href='/orderstep5'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                <button class="btn_color" onclick="window.location.href='/orderstep5'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
             </div>
             <div class="col">
                 <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
