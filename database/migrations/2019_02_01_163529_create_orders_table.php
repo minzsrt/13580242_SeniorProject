@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateOrdersTable extends Migration
 {
@@ -18,11 +18,15 @@ class CreateOrdersTable extends Migration
             $table->integer('price');
             $table->time('time_work');
             $table->date('date_work');
-            $table->text('place');
             $table->text('detail');
             $table->integer('transportation_cost')->nullable();
             $table->integer('shipping_cost')->nullable();
             $table->integer('total');
+            $table->string('place_id');
+            $table->string('lat');
+            $table->string('lng');
+            $table->text('address');
+            $table->text('url');
             $table->text('status_order');
             $table->text('status_payment');
             $table->timestamps();
