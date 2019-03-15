@@ -64,7 +64,7 @@
             <div class="col">
             </div>
             <div class="col">
-                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                <button type="button" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
             </div>
         </div>
         </nav>

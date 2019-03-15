@@ -14,7 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
     <link href="{{url('css/style.css')}}" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
+    
+    <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
 </head>
 <body style="font-family: 'Prompt', sans-serif;">
 
@@ -24,5 +25,18 @@
 
  	<script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+    <script type="text/javascript">
+        $.Thailand({ 
+            database: './assets/json/db.json', // path หรือ url ไปยัง database
+            $district: $('#district'), // input ของตำบล
+            $amphoe: $('#amphoe'), // input ของอำเภอ
+            $province: $('#province'), // input ของจังหวัด
+            $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
+        });
+    </script>
+
 </body>
 </html>

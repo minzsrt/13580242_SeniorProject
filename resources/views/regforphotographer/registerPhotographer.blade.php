@@ -59,22 +59,22 @@
 
                         <div class="row">
                             <div class="form-group col">
-                                {!! Form::text('sub_district', null, ['class'=>'form-control input_box','placeholder' => 'ตำบล']) !!} 
+                                {!! Form::text('sub_district', null, ['id'=>'district','class'=>'form-control input_box','placeholder' => 'ตำบล']) !!} 
                             </div>
                             <div class="form-group col">
-                                {!! Form::text('district', null, ['class'=>'form-control input_box','placeholder' => 'อำเภอ']) !!} 
+                                {!! Form::text('district', null, ['id'=>'amphoe','class'=>'form-control input_box','placeholder' => 'อำเภอ']) !!} 
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
-                                {!! Form::text('province', null, ['class'=>'form-control input_box','placeholder' => 'จังหวัด']) !!} 
+                                {!! Form::text('province', null, ['id'=>'province','class'=>'form-control input_box','placeholder' => 'จังหวัด']) !!} 
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-6">
-                                {!! Form::text('zipcode', null, ['class'=>'form-control input_box','placeholder' => 'รหัสไปรษณีย์']) !!} 
+                                {!! Form::text('zipcode', null, ['id'=>'zipcode','class'=>'form-control input_box','placeholder' => 'รหัสไปรษณีย์']) !!} 
                             </div>
                         </div>
 
@@ -99,69 +99,13 @@
                         </div>
                     {!! Form::close() !!}
                 </div>
+
+                
             
         </div>
     </div>
 </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<!-- <script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#profile-img-tag').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-        
-        var cars = ["BMW", "Volvo", "Saab", "Ford"];
-        var i, len, text;
-        for (i = 0, len = cars.length, text = ""; i < len; i++)
-        {
-        text += cars[i] + "<br>";
-        }
-        document.getElementById("demo").innerHTML = text;
-
-    }
-    $("#profile-img").change(function(){
-        readURL(this);
-    });
-
-</script> -->
-
-<script language="javascript" type="text/javascript">
-window.onload = function () {
-    var fileUpload = document.getElementById("fileupload");
-    fileUpload.onchange = function () {
-        if (typeof (FileReader) != "undefined") {
-            var dvPreview = document.getElementById("dvPreview");
-            dvPreview.innerHTML = "";
-            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
-            for (var i = 0; i < fileUpload.files.length; i++) {
-                var file = fileUpload.files[i];
-                if (regex.test(file.name.toLowerCase())) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        var img = document.createElement("IMG");
-                        img.className = "img_show_multi col-6";
-                        img.src = e.target.result;
-                        dvPreview.appendChild(img);
-
-                    }
-                    reader.readAsDataURL(file);
-                } else {
-                    alert(file.name + " is not a valid image file.");
-                    dvPreview.innerHTML = "";
-                    return false;
-                }
-            }
-        } else {
-            alert("This browser does not support HTML5 FileReader.");
-        }
-    }
-};
-</script>
 
 
 @endsection
