@@ -30,7 +30,9 @@ class AddIdBankToDepositsTable extends Migration
     public function down()
     {
         Schema::table('deposit_accounts', function (Blueprint $table) {
-            //
+            $table->dropForeign('id_bank_deposits_foreign');
+            $table->dropColumn('id_bank');
         });
+        
     }
 }
