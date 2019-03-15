@@ -281,6 +281,7 @@ class OrderController extends Controller
     {
         $validatedData = $request->validate([
             'place_id' => 'required|string',
+            'place_name' => 'required|string',
             'lat' => 'required|string',
             'lng' => 'required|string',
             'address' => 'required|string',
@@ -291,6 +292,7 @@ class OrderController extends Controller
         $request->session()->put('order', $order);
         $order->place = $request->only([
             'place_id',
+            'place_name',
             'lat',
             'lng',
             'address',
@@ -329,6 +331,7 @@ class OrderController extends Controller
         // dd(json_decode($request->place));
         // json_decode($request->place) store google map data like
         // 'place_id' รหัสสถานที่
+        // 'place_name' ชื่อสถานที่
         // 'lat' ละติจูด
         // 'lng' ลองติจูด
         // 'address' ชื่อที่อยู่
@@ -350,6 +353,7 @@ class OrderController extends Controller
         $order->status_payment = 'Unpaid';
         $order->total = $order->price;
         $order->place_id = $place->place_id;
+        $order->place_name = $place->place_name;
         $order->lat = $place->lat;
         $order->lng = $place->lng;
         $order->address = $place->address;
