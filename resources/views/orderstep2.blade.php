@@ -84,10 +84,10 @@
         <nav class="container nav_bottom nav_bottom">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn_color" onclick="window.location.href='/orderstep1'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step1'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
             </div>
             <div class="col">
-                <button type="submit" class="btn_color" onclick="window.location.href='/orderstep3'" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
             </div>
         </div>
         </nav>
