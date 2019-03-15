@@ -62,6 +62,7 @@
 			{{ csrf_field() }}
 			
 			<input type="hidden" name="place_id">
+			<input type="hidden" name="place_name">
 			<input type="hidden" name="lat">
 			<input type="hidden" name="lng">
 			<input type="hidden" name="url">
@@ -105,6 +106,7 @@
 			
 			$(input).on('change paste keyup', function () {
 				$('input[name="place_id"]').val('')
+				$('input[name="place_name"]').val('')
 				$('input[name="lat"]').val('')
 				$('input[name="lng"]').val('')
 				$('input[name="address"]').val('')
@@ -121,6 +123,7 @@
                     return;
 				}
 				$('input[name="place_id"]').val(place.place_id)
+				$('input[name="place_name"]').val(place.name)
 				$('input[name="lat"]').val(place.geometry.location.lat())
 				$('input[name="lng"]').val(place.geometry.location.lng())
 				$('input[name="address"]').val(place.formatted_address)

@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->integer('shipping_cost')->nullable();
             $table->integer('total');
             $table->string('place_id');
+            $table->string('place_name');
             $table->string('lat');
             $table->string('lng');
             $table->text('address');
