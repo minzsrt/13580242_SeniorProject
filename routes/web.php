@@ -1,12 +1,20 @@
 <?php
 
 use App\Events\FormSubmited;
+use App\Events\TriggerNotification;
 
+Route::get('echo/{id}', function ($id) {
+    \App\Notification::create([
+        'user_id' => $id,
+        'message' => 'ทดสอบ',
+    ]);
+    event(new TriggerNotification($id));
+});
 
 Auth::routes();
 
-Route::get('photographer/chatchannel', function(){ return view('photographer.chatchannel.chatchannel');});
-Route::get('photographer/notification', function(){ return view('photographer.notification.notification');});
+Route::get('photographer/chatchannel', function () {return view('photographer.chatchannel.chatchannel');});
+Route::get('photographer/notification', function () {return view('photographer.notification.notification');});
 
 // Success CRUD
 // Route::resource('profile_photographer', 'AlbumsController');
@@ -16,7 +24,7 @@ Route::post('createAlbum/store', 'AlbumsController@store');
 Route::get('photographer/show/{id}/edit', 'AlbumsController@edit');
 Route::get('photographer/show/{id}/update', 'AlbumsController@update');
 Route::get('photographer/show/{id}/destroy', 'AlbumsController@destroy');
-Route::get('createAlbumSuccess', function(){ return view('createAlbumSuccess');});
+Route::get('createAlbumSuccess', function () {return view('createAlbumSuccess');});
 
 // Success CRUD
 Route::get('/profile/{username}/listPackage/{id}', 'PackageCardsController@index')->name('photographer.packages.listPackage');
@@ -27,12 +35,12 @@ Route::post('createPackageCard/store', 'PackageCardsController@store');
 Route::get('profile/{username}/listPackage/{idcategory}/{id}/edit', 'PackageCardsController@edit');
 Route::get('profile/{username}/listPackage/{idcategory}/{id}/update', 'PackageCardsController@update');
 Route::get('profile/{username}/listPackage/{idcategory}/{id}/destroy', 'PackageCardsController@destroy');
-Route::get('createPackageCardSuccess','PackageCardsController@success');
+Route::get('createPackageCardSuccess', 'PackageCardsController@success');
 
 // Success CRUD
 Route::resource('invitePhotographer', 'RegisterPhotographerController');
 Route::get('regPhotographer', 'RegisterPhotographerController@create');
-Route::get('regPhotographerSuccess',function(){
+Route::get('regPhotographerSuccess', function () {
     $id = Auth::user()->id;
     $user = \App\User::findOrFail($id);
     $user->role_id = '2';
@@ -40,22 +48,23 @@ Route::get('regPhotographerSuccess',function(){
     return view('regPhotographerSuccess');
 })->middleware('auth');
 
-Route::resource('/','IndexController');
+Route::resource('/', 'IndexController');
 Route::get('/profile/{username}', 'ProfileController@show')->name('general.profile.show');
 Route::get('/profile/{username}/edit', 'UserController@show')->name('auth.edit');
 Route::post('/profile/update', 'UserController@update')->name('auth.update');
 
 // Unsuccess CRUD
-Route::any('search','SearchController@index');
+Route::any('search', 'SearchController@index');
 
-Route::get('chatchannel', function(){ return view('general.chatchannel');})->middleware('auth');
+Route::get('chatchannel', function () {return view('general.chatchannel');})->middleware('auth');
 Route::get('/notification/{username}', 'NotificationController@index');
+Route::post('/notification/clear', 'NotificationController@clearNoti');
 
-Route::get('package', function(){ return view('package');});
+Route::get('package', function () {return view('package');});
 
 // Route::get('searchResult', function(){ return view('searchResult');});
 
-Route::get('recommendSetting', function(){ return view('recommendSetting');});
+Route::get('recommendSetting', function () {return view('recommendSetting');});
 
 Route::get('{username}/order/step1', 'OrderController@createStep1');
 Route::post('{username}/order/step1', 'OrderController@postCreateStep1');
@@ -69,38 +78,32 @@ Route::get('{username}/order/step5', 'OrderController@createStep5');
 Route::post('{username}/order/step5', 'OrderController@postCreateStep5');
 Route::get('{username}/order/step6', 'OrderController@createStep6');
 Route::post('/order/store', 'OrderController@store');
-Route::get('orderstep7', function(){ return view('orderstep7');});
+Route::get('orderstep7', function () {return view('orderstep7');});
 Route::get('/order/{id}/invoice', 'OrderController@edit');
 Route::get('/order/{id}/update', 'OrderController@update');
-Route::get('invoiceSuccess', function(){ return view('invoiceSuccess');});
+Route::get('invoiceSuccess', function () {return view('invoiceSuccess');});
 
-Route::get('listpayment', function(){ return view('listpayment');});
-Route::get('paymentsuccess', function(){ return view('paymentsuccess');});
-Route::get('internetbanking', function(){ return view('internetbanking');});
-Route::get('paymentCard', function(){ 
+Route::get('listpayment', function () {return view('listpayment');});
+Route::get('paymentsuccess', function () {return view('paymentsuccess');});
+Route::get('internetbanking', function () {return view('internetbanking');});
+Route::get('paymentCard', function () {
     return view('paymentCard');
 });
-Route::get('checkout', function(){ return view('checkout');});
+Route::get('checkout', function () {return view('checkout');});
 
 Route::get('/credits/{username}', 'DepositAccountController@index');
 Route::get('/credits/{username}/create', 'DepositAccountController@create');
 Route::post('/credits/{username}/store', 'DepositAccountController@store');
-Route::get('listTag', function(){ return view('listTag');});
-Route::get('management', function(){ return view('mn_order');});
-
-
+Route::get('listTag', function () {return view('listTag');});
+Route::get('management', function () {return view('mn_order');});
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/portfolioPhotographer', function () {return view('regforphotographer.portfolio');});
 
-
-
-Route::get('/portfolioPhotographer',function(){ return view('regforphotographer.portfolio');});
-
-
-Route::get('counter', function(){ return view('counter');});
-Route::get('sender', function(){ return view('sender');});
-Route::post('sender', function(){ 
+Route::get('counter', function () {return view('counter');});
+Route::get('sender', function () {return view('sender');});
+Route::post('sender', function () {
     $text = request()->text;
     event(new FormSubmited($text));
     return $text;
