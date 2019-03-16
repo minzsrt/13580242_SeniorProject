@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
     <link href="{{url('css/style.css')}}" rel="stylesheet"> 
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="{{url('css/modal.css')}}">
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
@@ -41,20 +42,23 @@
                     <img class="menu_list" src="{{url('assets/image/search.svg')}}">
                 </button>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='{{url('/chatchannel')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Chatchannel'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/speech-bubbles.svg')}}" >
                 </button>
-                </div>
+                </div> -->
                 <div class="col">
-                <button class="btn_menu_list"  onclick="window.location.href='/notification/{{Auth::user()->username}}'">
+                <button class="btn_menu_list _pst-rlt"  onclick="window.location.href='/notification/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/notification.svg')}}" >
+                    <div class="noti-badge {{ $notification_count > 0 ? '' : '_dp-n' }}">
+						{{ $notification_count }}
+					</div>
                 </button>
                 </div>
                 <div class="col">

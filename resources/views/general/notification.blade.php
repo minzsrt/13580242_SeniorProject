@@ -103,3 +103,9 @@
         @endforeach
 </div> 
 @stop
+
+@push('scripts')
+	<script>
+		clearNoti()
+	</script>
+@endpush

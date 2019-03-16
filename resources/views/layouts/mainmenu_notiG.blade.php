@@ -39,14 +39,14 @@
                     <img class="menu_list" src="{{url('assets/image/search.svg')}}">
                 </button>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='{{url('/chatchannel')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Chatchannel'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/speech-bubbles.svg')}}" >
                 </button>
-                </div>
+                </div> -->
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/notification/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
@@ -83,6 +83,12 @@
 <div class="">
 	@yield('content')
 </div>
+
+    <script>
+		const userID = {!! Auth::id() !!}
+	</script>
+	<script src="{{ mix('js/app.js') }}"></script>
+	@stack('scripts')
 
 </body>
 </html>

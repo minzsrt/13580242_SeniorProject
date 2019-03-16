@@ -94,6 +94,7 @@ Route::get('checkout', function () {return view('checkout');});
 Route::get('/credits/{username}', 'DepositAccountController@index');
 Route::get('/credits/{username}/create', 'DepositAccountController@create');
 Route::post('/credits/{username}/store', 'DepositAccountController@store');
+
 Route::get('listTag', function () {return view('listTag');});
 Route::get('management', function () {return view('mn_order');});
 
@@ -101,10 +102,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/portfolioPhotographer', function () {return view('regforphotographer.portfolio');});
 
-Route::get('counter', function () {return view('counter');});
-Route::get('sender', function () {return view('sender');});
-Route::post('sender', function () {
-    $text = request()->text;
-    event(new FormSubmited($text));
-    return $text;
-});

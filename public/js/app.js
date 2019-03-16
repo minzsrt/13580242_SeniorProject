@@ -13829,7 +13829,7 @@ window.Pusher = __webpack_require__(35);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
   broadcaster: 'pusher',
-  key: "5d6a2afd18d25ee7fb3f",
+  key: "82b108e53ec41a189b0a",
   cluster: "ap1",
   host: window.location.hostname,
   encrypted: true
