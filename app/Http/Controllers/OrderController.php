@@ -7,7 +7,8 @@ use App\Category;
 use App\Events\TriggerNotification;
 use App\Http\Requests\AlbumRequest;
 use App\ImageAlbum;
-use App\Notification;
+use App\Notification as NotificationModel;
+use App\Notifications\OrderCreatedEmail;
 use App\Order;
 // use Request;
 use App\PackageCard;
@@ -17,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
+use Notification;
 use Storage;
 
 class OrderController extends Controller
@@ -342,6 +344,7 @@ class OrderController extends Controller
 
         // $order = Order::create($request->all());
         $user = Auth::user();
+        $photographer = User::find($request->id_photographer);
         $place = json_decode($request->place);
         $order = new Order;
         $order->price = $request->price;
@@ -362,11 +365,13 @@ class OrderController extends Controller
         $order->address = $place->address;
         $order->url = $place->url;
         $order->save();
-        Notification::create([
+        NotificationModel::create([
             'user_id' => $order->id_photographer,
             'message' => 'คุณได้รับงานใหม่จาก '.$user->username,
         ]);
         event(new TriggerNotification($order->id_photographer));
+        Notification::route('mail', $photographer->email)
+            ->notify(new OrderCreatedEmail($photographer));
         return redirect('/');
     }
 
