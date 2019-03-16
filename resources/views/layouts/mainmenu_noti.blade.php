@@ -11,8 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
-    <link href="{{url('css/style.css')}}" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
+	<link href="{{url('css/style.css')}}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
@@ -40,11 +41,15 @@
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list"  onclick="window.location.href='/notification/{{Auth::user()->username}}'">
+                <button class="btn_menu_list _pst-rlt"  onclick="window.location.href='/notification/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
-                    <img class="menu_list" src="{{url('assets/image/notification.svg')}}" >
+					<img class="menu_list" src="{{url('assets/image/notification.svg')}}" >
+
+					<div class="noti-badge {{ $notification_count > 0 ? '' : '_dp-n' }}">
+						{{ $notification_count }}
+					</div>
                 </button>
                 </div>
                 <div class="col">
