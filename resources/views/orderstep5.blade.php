@@ -80,6 +80,9 @@
         </form>
     </div>
 
+	<script>
+		const userID = {!! Auth::id() !!}
+	</script>
 	<script src="{{ mix('js/app.js') }}"></script>
     <script>
         function initMap() {

@@ -1,0 +1,22 @@
+._pst-rlt {
+	position: relative !important;
+}
+
+._dp-n {
+	display: none !important;
+}
+
+.noti-badge {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 7px;
+	width: 22px;
+	height: 22px;
+	right: 0;
+	background-color: red;
+	color: #fff;
+	border-radius: 999999px;
+	font-size: 13px;
+}

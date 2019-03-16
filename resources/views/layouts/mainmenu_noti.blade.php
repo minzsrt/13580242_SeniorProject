@@ -4,7 +4,7 @@
 	<title>@yield('page_title')</title>
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@yield('page_title')</title>
@@ -66,6 +66,10 @@
 	@yield('content')
 </div>
 
- 	
+	<script>
+		const userID = {!! Auth::id() !!}
+	</script>
+	<script src="{{ mix('js/app.js') }}"></script>
+	@stack('scripts')
 </body>
 </html>
