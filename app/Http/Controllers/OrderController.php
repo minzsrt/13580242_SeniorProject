@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Album;
 use App\Category;
+use App\Events\TriggerNotification;
 use App\Http\Requests\AlbumRequest;
 use App\ImageAlbum;
+use App\Notification;
 use App\Order;
+// use Request;
 use App\PackageCard;
 use App\User;
-// use Request;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -339,6 +341,7 @@ class OrderController extends Controller
         // สามารถ edit migration orders แล้วเก็บข้อมูลพวกนี้แยก field แทน field place ได้เลยครับ
 
         // $order = Order::create($request->all());
+        $user = Auth::user();
         $place = json_decode($request->place);
         $order = new Order;
         $order->price = $request->price;
@@ -347,7 +350,7 @@ class OrderController extends Controller
         $order->time_work = $request->time_work;
         $order->id_category = $request->id_category;
         $order->id_formattime = $request->id_formattime;
-        $order->id_employer = Auth::user()->id;
+        $order->id_employer = $user->id;
         $order->id_photographer = $request->id_photographer;
         $order->status_order = 'รอการตอบรับ';
         $order->status_payment = 'Unpaid';
@@ -359,6 +362,11 @@ class OrderController extends Controller
         $order->address = $place->address;
         $order->url = $place->url;
         $order->save();
+        Notification::create([
+            'user_id' => $order->id_photographer,
+            'message' => 'คุณได้รับงานใหม่จาก '.$user->username,
+        ]);
+        event(new TriggerNotification($order->id_photographer));
         return redirect('/');
     }
 
