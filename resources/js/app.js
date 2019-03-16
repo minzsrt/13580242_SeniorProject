@@ -31,3 +31,22 @@ require('./bootstrap');
 // const app = new Vue({
 //     el: '#app'
 // });
+
+Echo.private(`user.${userID}`)
+.listen('TriggerNotification', (e) => {
+	let noti = e.notification_count
+	const $elem = $('.noti-badge')
+	if (noti >= 1) {
+		$elem.removeClass('_dp-n')
+		$elem.text(noti)
+	} else {
+		$elem.addClass('_dp-n')
+		$elem.text('')
+	}
+});
+
+window.clearNoti = () => {
+	axios.post('/notification/clear').then(() => {
+		$('.noti-badge').addClass('_dp-n')
+	})
+}

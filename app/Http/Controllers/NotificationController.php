@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Order; 
-use App\Album; 
-use App\ImageAlbum; 
-use App\PackageCard;
+use App\Album;
 use App\Category;
-use App\User;
-// use Request;
-use Auth;
-use Storage;
 use App\Http\Requests\AlbumRequest;
-use Illuminate\Support\Facades\Gate;
+use App\ImageAlbum;
+use App\Notification;
+use App\Order;
+use App\PackageCard;
+// use Request;
+use App\User;
+use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Gate;
+use Storage;
 
 class NotificationController extends Controller
 {
@@ -28,21 +29,21 @@ class NotificationController extends Controller
     {
         $user = User::whereUsername($username)->first();
 
-        if(Auth::user()->role_id == '2'){
-            $orders = Order::where('id_photographer','Like',$user->id)->get();
-            foreach ($orders as $order){
-                $employer = User::where('id','like',$order->id_employer)->get();
+        if (Auth::user()->role_id == '2') {
+            $orders = Order::where('id_photographer', 'Like', $user->id)->get();
+            foreach ($orders as $order) {
+                $employer = User::where('id', 'like', $order->id_employer)->get();
             }
-            return view('photographer.notifications.notification',compact('user','orders','employer'))->with('username',$username);
-        }else{
-            $orders = Order::where('id_employer','Like',$user->id)->get();
-            foreach ($orders as $order){
-                $photographer = User::where('id','like',$order->id_photographer)->get();
+            return view('photographer.notifications.notification', compact('user', 'orders', 'employer'))->with('username', $username);
+        } else {
+            $orders = Order::where('id_employer', 'Like', $user->id)->get();
+            foreach ($orders as $order) {
+                $photographer = User::where('id', 'like', $order->id_photographer)->get();
             }
             // dd($orders);
-            return view('general.notification',compact('user','orders','photographer'))->with('username',$username);
+            return view('general.notification', compact('user', 'orders', 'photographer'))->with('username', $username);
         }
-      
+
     }
 
     /**
@@ -109,5 +110,16 @@ class NotificationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function clearNoti()
+    {
+        Notification::where('user_id', Auth::id())
+            ->where('status', 0)
+            ->update([
+                'status' => 1,
+            ]);
+
+        return response()->json(null, 204);
     }
 }

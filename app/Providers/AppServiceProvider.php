@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Notification;
+use Auth;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        $this->shareView();
     }
 
     /**
@@ -25,5 +29,18 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    public function shareView()
+    {
+        View::composer('*', function ($view) {
+            $notification_count = Notification::where('user_id', Auth::id())
+                ->where('status', 0)->count();
+            $view->with(
+                compact(
+                    'notification_count'
+                )
+            );
+        });
     }
 }
