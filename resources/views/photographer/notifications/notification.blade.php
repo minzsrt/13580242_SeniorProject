@@ -97,6 +97,10 @@
         </div>
         @endforeach
 </div> 
+@endsection
 
-
-@stop
+@push('scripts')
+	<script>
+		clearNoti()
+	</script>
+@endpush
