@@ -45,7 +45,7 @@
                         <table class="all_more_link" style="width:100%; font-size: 14px; color:#000;">
                         <tr>
                             <th>สถานที่ </th>
-                            <td>{{$order->place}}</td>
+                            <td>{{$order->place_name}}</td>
                         </tr>
                         <tr>
                             <th>วันที่ </th>
@@ -125,7 +125,7 @@
         </div>
         <input type="hidden" name="id_category" value="{{$order->id_category}}">
         <input type="hidden" name="id_formattime" value="{{$order->id_formattime}}">
-        <input type="hidden" name="place" value="{{$order->place}}">
+        <input type="hidden" name="place_name" value="{{$order->place_name}}">
         <input type="hidden" name="shipping_cost" value="{{$order->shipping_cost}}">
         <input type="hidden" name="date_work" value="{{$order->date_work}}">
         <input type="hidden" name="time_work" value="{{$order->time_work}}">
