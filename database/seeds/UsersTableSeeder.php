@@ -71,7 +71,7 @@ class UsersTableSeeder extends Seeder
                 'username' => 'duodeep',
                 'email' => 'service@duodeep.com',
                 'password' => bcrypt('12345678'),
-                'role_id' => '2',
+                'role_id' => '3',
                 'remember_token' => str_random(10),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
