@@ -2,3 +2,12 @@
 button:disabled {
 	opacity: 0.3;
 }
+
+.btn_color.link {
+	display: block;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}

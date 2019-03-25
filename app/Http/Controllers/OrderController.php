@@ -9,6 +9,7 @@ use App\Http\Requests\AlbumRequest;
 use App\ImageAlbum;
 use App\Notification as NotificationModel;
 use App\Notifications\OrderCreatedEmail;
+use App\Notifications\OrderFreelanceAcceptEmail;
 use App\Order;
 // use Request;
 use App\PackageCard;
@@ -81,6 +82,13 @@ class OrderController extends Controller
         $order->total = $request->price + $request->transportation_cost + $request->shipping_cost;
         $order->status_order = 'รอชำระเงิน';
         $order->update($request->all());
+        NotificationModel::create([
+            'user_id' => $order->id_employer,
+            'message' => 'Freelance '.$order->photographer->username.' ได้รับงานของคุณ ',
+        ]);
+        event(new TriggerNotification($order->id_employer));
+        Notification::route('mail', $order->employer->email)
+            ->notify(new OrderFreelanceAcceptEmail($order->photographer));
         return redirect('invoiceSuccess');
     }
 
@@ -417,7 +425,7 @@ class OrderController extends Controller
         ]);
         event(new TriggerNotification($order->id_photographer));
         Notification::route('mail', $photographer->email)
-            ->notify(new OrderCreatedEmail($photographer));
+            ->notify(new OrderCreatedEmail($user));
         return redirect('/');
     }
 

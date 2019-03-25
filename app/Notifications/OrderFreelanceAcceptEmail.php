@@ -7,19 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OrderComfirmPaymentEmail extends Notification
+class OrderFreelanceAcceptEmail extends Notification
 {
     use Queueable;
-    private $order;
+    private $photographer;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct($photographer)
     {
-        $this->order = $order;
+        $this->photographer = $photographer;
     }
 
     /**
@@ -42,9 +42,8 @@ class OrderComfirmPaymentEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('ชำระเงินเรียบร้อยแล้ว order #'.$this->order->id)
-            ->greeting('คุณได้ชำระเงินเรียบร้อยแล้ว')
-            ->line('order #'.$this->order->id.' สำเร็จ')
+            ->subject('Freelance '.$this->photographer->username.' ได้รับงานของคุณ')
+            ->greeting('ยินดีด้วย Freelance รับงานของคุณ')
             ->line('กรุณาตรวจสอบข้อมูลในเว็บไซต์')
             ->action('เข้าสู่เว็บไซต์', url('/'));
     }
