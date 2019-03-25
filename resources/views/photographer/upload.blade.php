@@ -1,62 +1,48 @@
 @extends('layouts.mainprofile')
-@section('page_title', 'Edit')
-@section('btn_name', 'แก้ไขอัลบั้ม')
+@section('page_title', 'Upload')
 @section('linktoback', URL::previous() )
 @section('content')
 
-<form action="createAlbum/store" method="post" enctype="multipart/form-data">
+<form action="/createAlbum/{{$album->id}}/upload/store" method="post" enctype="multipart/form-data">
 {{ csrf_field() }}
 
-    <div class="col-6">
-        <h3 class="headder_text" style="padding: 5px;">สร้างอัลบั้ม</h3>
+    <div class="col">
+        <p class="headder_text" style="padding: 5px;">
+        {{$album->name_album}}<br>
+        <span class="btn badge bg_aeaeae color_white" style="border-radius: 15px;">
+        {{$album->category->name_category}}
+        </span>
+        </p>   
     </div>
 
     <div class="container">
-    <span class="all_more_link">หน้าปกอัลบั้ม</span>
     <div class="card album_show_wrap_full" style="height:auto !important;">
             <div id="dvPreview">
-                <img src="assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
+                <img src="{{url('assets/image/color_aeaeae.svg')}}" id="profile-img-tag" class="card-img-top"/>
             </div>
             <div class="wrap_choose_file">
                 <div class="upload-btn-wrapper">
                     <button class="btn_choose"><span class="hastag_album">Choose File...</span></button>
-                    <input name="cover_album" type="file" id="fileupload"/>
-                    <!-- <input multiple="multiple" name="photos[]" type="file" id="fileupload"/> -->
+                    <!-- <input name="cover_album" type="file" id="fileupload"/> -->
+                    <input multiple="multiple" name="photos[]" type="file" id="fileupload"/>
                 </div>
             </div>
     </div>
-
-    <div class="row">
-            <div class="col-md margin_top10">
-                <span class="all_more_link">ชื่ออัลบั้ม</span>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                        {!! Form::text('name_album', null, ['class'=>'form-control']) !!}
-                        <div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md margin_top10">
-                <span class="all_more_link">แท็ก</span>
-                {!! Form::select('id_category',['1' => 'รับปริญญา', '2' => 'ภาพบุคคล/แฟชั่น', '3' => 'งานแต่งงาน', '4' => 'พรีเวดดิ้ง', '5' => 'งานอีเวนต์', '6' => 'สถาปัตยกรรม', '7' => 'สินค้า/อาหาร'],null,['class'=>'form-control select_search'],['placeholder' => 'เลือกประเภทงาน...']) !!}
-            </div>
-        </div>
-    </div>
-
-    <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
+    
+    <input name="album_id" type="hidden" value="{{$album->id}}"/>
 
     <section style="height:250px;"></section>
 
-    <nav class="container nav_bottom">
+        <nav class="container nav_bottom">
         <div class="row">
             <div class="col">
+                <button type="button" class="btn_color" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
             </div>
             <div class="col">
-                <button type="submit" class="btn_color" style="margin:0;">ต่อไป</button>
+                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
             </div>
         </div>
-    </nav>
+        </nav>
 
 </form>
 
