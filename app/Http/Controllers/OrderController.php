@@ -84,10 +84,10 @@ class OrderController extends Controller
         $order->update($request->all());
         NotificationModel::create([
             'user_id' => $order->id_employer,
-            'message' => 'Freelance '.$order->employer->username.' ได้รับงานของคุณ ',
+            'message' => 'Freelance '.$order->photographer->username.' ได้รับงานของคุณ ',
         ]);
         event(new TriggerNotification($order->id_employer));
-        Notification::route('mail', $order->photographer->email)
+        Notification::route('mail', $order->employer->email)
             ->notify(new OrderFreelanceAcceptEmail($order->photographer));
         return redirect('invoiceSuccess');
     }
@@ -379,7 +379,7 @@ class OrderController extends Controller
         ]);
         event(new TriggerNotification($order->id_photographer));
         Notification::route('mail', $photographer->email)
-            ->notify(new OrderCreatedEmail($photographer));
+            ->notify(new OrderCreatedEmail($user));
         return redirect('/');
     }
 
