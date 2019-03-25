@@ -8,6 +8,8 @@ use App\Http\Requests\AlbumRequest;
 use App\ImageAlbum;
 use App\PackageCard;
 use App\User;
+use App\Order;
+use App\Review;
 use Auth;
 use DB;
 use Illuminate\Support\Str;
@@ -72,9 +74,11 @@ class ProfileController extends Controller
                     $package_cards = PackageCard::where('id_user', 'LIKE', $user->id)->groupBy('id_category')->get();
                     // dd($package_cards);
 
+                    $reviews = Review::where('id_photographer', $user->id)->get();
+
                     $categories = Category::all();
                     $image_albums = ImageAlbum::all();
-                    return view('photographer.profile', $data, compact('albums', 'package_cards', 'categories', 'image_albums'))->withUser($user);
+                    return view('photographer.profile', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
                     return view('general.profile', $data)->withUser($user);
@@ -90,8 +94,9 @@ class ProfileController extends Controller
 
                     $image_albums = ImageAlbum::all();
                     $categories = Category::all();
+                    $reviews = Review::where('id_photographer', $user->id)->get();
 
-                    return view('general.viewphotographer', $data, compact('albums', 'package_cards', 'categories', 'image_albums'))->withUser($user);
+                    return view('general.viewphotographer', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
 
@@ -119,7 +124,9 @@ class ProfileController extends Controller
                     $image_albums = ImageAlbum::all();
                     $categories = Category::all();
 
-                    return view('general.viewphotographer', $data, compact('albums', 'package_cards', 'categories', 'image_albums'))->withUser($user);
+                    $reviews = Review::where('id_photographer', $user->id)->get();
+
+                    return view('general.viewphotographer', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
 
