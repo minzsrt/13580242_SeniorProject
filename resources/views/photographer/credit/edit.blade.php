@@ -2,7 +2,7 @@
 @section('page_title', 'Deposit Account')
 @section('link_back', '/')
 @section('content')
-<form action="{{url('credits/'.Auth::user()->username.'/store')}}" method="post"  enctype="multipart/form-data">
+{!! Form::model($credit, ['url' => ['credits/'.Auth::user()->username.'/update'], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 {{ csrf_field() }}
     <div class="container">
         <div class="row">
@@ -16,11 +16,8 @@
                         <div class="row">
                             <div class="col">
                             <span class="all_more_link">บัญชีธนาคาร</span> 
-                            <select name="id_bank" class="select_search">
-                                @foreach($banks as $bank)
-                                <option value="{{$bank->id}}">{{$bank->name_bank}}</option>
-                                @endforeach
-                            </select>
+                           
+                            {!! Form::select('id_bank', $banks, null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="row">
@@ -32,9 +29,9 @@
                         <div class="row">
                             <div class="col">
                             <span class="all_more_link">รูปสมุดบัญชีหน้าแรก</span> 
-                            <div class="album_show_wrap_full">
+                            <div class="album_show_wrap_full" style="height:auto !important;">
                                     <div id="dvPreview" class="row" >
-                                        <img src="{{url('assets/image/color_aeaeae.svg')}}" id="profile-img-tag" class="card-img-top"/>
+                                        <img src="{{url($credit->book_bank_copy)}}" id="profile-img-tag" class="card-img-top" style="height:100% !important;"/>
                                     </div>
                                     <div class="wrap_choose_file">
                                         <div class="upload-btn-wrapper">
@@ -48,7 +45,7 @@
                         <input type="hidden" name="id_photographer" value="{{Auth::user()->id}}">
                         <div class="row">
                             <div class="col-12 text_center">
-                                <button class="btn_color">บันทึก</button>
+                                <button type="submit" class="btn_color">บันทึก</button>
                             </div>
                         </div>
                 </label>
