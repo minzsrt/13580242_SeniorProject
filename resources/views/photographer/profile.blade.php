@@ -67,7 +67,7 @@
                 </div>
                 @foreach($albums as $album)
                     @if( Auth::user()->id === $album->id_user )
-                        <a href="{{ url("photographer/show/{$album->id}/edit/") }}">
+                        <a href="{{ url("profile/{$username}/album/{$album->id}") }}">
                         <div class="card album_show_wrap">
                                         <div class="album_show">
                                             <div class="album_show_detail_group">
@@ -79,11 +79,11 @@
                                                         {{ $album->name_album }}
                                                     </h3>
                                                 </div>
-                                                <!-- <div class="col text_right fav_count">
-                                                    <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">
-                                                </div> -->
                                             </div>
-                                            <div class="carousel slide" data-ride="carousel">
+                                            
+                                            <img class="card-img-top" src="{{url($album->cover_album)}}">    
+
+                                            <!-- <div class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner" style="overflow: inherit; max-height: 220px !important;">            
                                                     @php ($i = -1)
                                                     @foreach($image_albums as $index => $image_album)
@@ -93,7 +93,7 @@
                                                         @endif    
                                                     @endforeach
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                 </div>
                         </a>        
@@ -157,42 +157,45 @@
         </div>
  
         <div class="tab-pane fade margin_top20 container" id="menu3" role="tabpanel" aria-labelledby="menu3-tab">
-            <div class="card review_box">
-                <div class="card-body review_box_head">
-                    <div class="row">
-                        <div class="col-2">
-                            <div class="review_img_profile">
-                                <img src="{{url('assets/image/avatar04.jpg')}}">    
-                            </div>
-                        </div>
-                        <div class="col-6 username_profile">
-                            <div class="row">
-                                <div class="col-12">
-                                    <span class="review_username">Username</span>
-                                </div>
-                                <div class="col-12">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
+            @foreach($reviews as $review)            
+                <div class="card review_box margin_box20">
+                    <div class="card-body review_box_head">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="review_img_profile">
+                                    <img src="{{url($review->user->avatar)}}">    
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 all_more_link text_right">
-                            <span>ตุลาคม 2561</span>
+                            <div class="col-6 username_profile">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span class="review_username">{{$review->user->username}}</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="star-rating" id="rating{{$review->id}}">
+                                            <span class="fas fa-star" data-rating{{$review->id}}="1"></span>
+                                            <span class="fas fa-star" data-rating{{$review->id}}="2"></span>
+                                            <span class="fas fa-star" data-rating{{$review->id}}="3"></span>
+                                            <span class="fas fa-star" data-rating{{$review->id}}="4"></span>
+                                            <span class="fas fa-star" data-rating{{$review->id}}="5"></span>
+                                            <input type="hidden" id="rating{{$review->id}}" class="rating-value{{$review->id}}" value="{{$review->rating}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 all_more_link text_right">
+                                <span>{{date_format($review->created_at, 'j F Y')}}</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="review_body">
+                        <p>
+                        {{$review->comment}}
+                        </p>
+                    </div>
                 </div>
-                <div class="review_body">
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper
-                    arcu sed purus aliquet venenatis. Sed a fermentum risus
-                    </p>
-                </div>
-            </div>
+            @endforeach        
         </div>
-        
         <div class="tab-pane fade margin_top20 container" id="menu4" role="tabpanel" aria-labelledby="menu4-tab">
             <div class="date_r">
                 <div class="row text_center">
@@ -301,6 +304,7 @@
             ]);
         });
 
+        // slide tab
         $(".nav-tabs a").click(function() {
             var position = $(this).parent().position();
             console.log(position);
@@ -312,6 +316,19 @@
             console.log(actWidth);
         var actPosition = $(".nav-tabs .active").position();
         $(".slider").css({"left":+ actPosition.left,"width": actWidth});
+
+        // rating
+        var $star_rating = $(' .star-rating .fas');
+        var SetRatingStar = function() {
+            return $star_rating.each(function() {
+                @foreach($reviews as $review)            
+                if (parseInt($star_rating.siblings('input.rating-value{{$review->id}}').val()) >= parseInt($(this).data('rating{{$review->id}}'))) {
+                    return $(this).addClass('checked');
+                }
+                @endforeach
+            });
+        };
+        SetRatingStar();
 
     });
 </script>
