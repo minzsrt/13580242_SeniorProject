@@ -83,7 +83,8 @@ Route::get('/order/{id}/invoice', 'OrderController@edit');
 Route::get('/order/{id}/update', 'OrderController@update');
 Route::get('invoiceSuccess', function () {return view('invoiceSuccess');});
 
-Route::get('listpayment', function () {return view('listpayment');});
+Route::get('listpayment/{id}', 'PaymentController@index');
+Route::post('listpayment', 'PaymentController@requestCharge');
 Route::get('paymentsuccess', function () {return view('paymentsuccess');});
 Route::get('internetbanking', function () {return view('internetbanking');});
 Route::get('paymentCard', function () {
@@ -101,4 +102,3 @@ Route::get('management', function () {return view('mn_order');});
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/portfolioPhotographer', function () {return view('regforphotographer.portfolio');});
-

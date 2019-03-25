@@ -70,6 +70,21 @@ button:disabled {
   opacity: 0.3;
 }
 
+.btn_color.link {
+  display: block;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+}
+
 ._pst-rlt {
   position: relative !important;
 }
@@ -92,9 +107,8 @@ button:disabled {
   padding: 0 7px;
   width: 22px;
   height: 22px;
-  right: 15px;
-  top: 14px;
-  background-image: linear-gradient(to bottom, #72afd3, #4cc0df, #00d0df, #00dfd2, #37ecba);
+  right: 0;
+  background-color: red;
   color: #fff;
   border-radius: 999999px;
   font-size: 13px;

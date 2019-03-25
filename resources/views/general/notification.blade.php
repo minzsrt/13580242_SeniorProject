@@ -14,7 +14,7 @@
                         @endforeach
                     </div>
                     <div class="col-12 text_center">
-                        <button class="btn_color" onclick="window.location.href='/listpayment'">ชำระเงิน</button>
+                        <a href="/listpayment/{{ $order->id }}" class="btn_color link">ชำระเงิน</a>
                     </div>
                 </div>
             </div>
