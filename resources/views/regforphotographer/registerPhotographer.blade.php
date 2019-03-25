@@ -87,6 +87,8 @@
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <input class="form-control input_box" type="hidden" name="id_user" value="{{Auth::user()->id}}">  
+                                <input type="hidden" name="id_status" value="4">  
+                                <input type="hidden" name="copy_id_card" value="verify/idcard.jpg">  
                             </div>
                         </div>
 

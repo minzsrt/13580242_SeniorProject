@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Photographer;
-use Request;
+use App\VerifyCard;
+use Illuminate\Http\Request;
+// use Request;
 use Auth;
 use App\Http\Requests\PhotographerRequest;
 
@@ -36,9 +38,12 @@ class RegisterPhotographerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PhotographerRequest $request){
+    public function store(Request $request){
+        // dd($request->all());
         $photographer = Photographer::create($request->all());
         $photographer->save();
+        $verify = VerifyCard::create($request->all());
+        $verify->save();
         return redirect('regPhotographerSuccess'); 
     }
 
