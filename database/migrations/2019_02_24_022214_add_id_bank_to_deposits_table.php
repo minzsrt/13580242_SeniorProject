@@ -14,7 +14,7 @@ class AddIdBankToDepositsTable extends Migration
     public function up()
     {
         Schema::table('deposit_accounts', function (Blueprint $table) {
-            $table->integer('id_bank')->unsigned()->unique(); 
+            $table->integer('id_bank')->unsigned(); 
             $table->foreign('id_bank', 'id_bank_deposits_foreign')
             ->references('id')
             ->on('banks')

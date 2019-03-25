@@ -9,11 +9,16 @@ class Order extends Model
     protected $guarded = [];
     // protected $fillable = ['price','time_work','date_work','place','detail','transportation_cost','shipping_cost','total','status_order','status_payment'];
 
-    // relation
-    public function user()
-    {
-        return $this->belongsToMany('App\User')->withPivot('id_employer', 'id_photographer');
+    public function employer(){
+
+        return $this->belongsTo('App\User', 'id_employer');
+
     }
+
+    public function photographer(){
+
+        return $this->belongsTo('App\User', 'id_photographer');
+
 
     public function employer()
     {
@@ -39,4 +44,5 @@ class Order extends Model
     {
         return $this->hasOne('App\Payment');
     }
+
 }

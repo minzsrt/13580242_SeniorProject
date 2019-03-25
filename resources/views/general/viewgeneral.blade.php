@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainprofile')
 @section('page_title', 'Profile')
 @section('content')
 
@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="img_profile">
-                    <img src="{{url('assets/image/avatar01.jpg')}}">   
+                    <img src="{{ url($user->avatar) }}">   
                 </div>
             </div>
             <div class="col" style="padding-top:30px;">

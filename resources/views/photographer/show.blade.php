@@ -1,28 +1,48 @@
-@extends('layouts.main')
+@extends('layouts.mainprofile')
 @section('page_title', 'Show')
 @section('content')
-        <div class="card album_show_wrap">
-            <div class="album_show">
-                <div class="album_show_detail_group">
-                    <div class="float_left">
-                        <span class="hastag_album">ภาพถ่ายบุคคล</span>
-                    </div>
-                    <div class="col text_right fav_count">
-                        <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">
-                    </div>
-                </div>
-                <img class="card-img-top" src="{{ url('assets/image/img_show_020'.$album->id.'.jpg') }}">    
+    <div class="container">
+
+        <p class="headder_text" style="padding: 5px;">
+        {{$album->name_album}}<br>
+        <span class="btn badge bg_aeaeae color_white" style="border-radius: 15px;">
+        {{$album->category->name_category}}
+        </span>
+        </p>   
+
+        <div class="wf-container">
+            @foreach($photos as $photo)
+            <div class="wf-box">
+                <img class="radius10" src="{{ url($photo->name_image) }}">
             </div>
-            <div class="card-body" style="padding:20px">
-                <div class="row">
-                    <div class="col-8" style="font-size:10px;">
-                        <span class="hastag_album" style="color:#000;">ภาพถ่ายบุคคล</span>
-                        <h3 class="headder_text" style="color:#000;">{{ $album->name_album }}</h3>
-                    </div>
-                    <div class="col text_right fav_count">
-                        <span style="color:#000;">614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">
-                    </div>
-                </div>
+            @endforeach
+        </div>
+
+        <!-- <section style="height:250px;"></section> -->
+
+    </div>
+
+    <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+        <div class="row">
+            <div class="col" style="display: inherit; padding-top:10px;">
+                <a 	class="btn btn_layout_bottom" 
+                    href="{{ url("photographer/show/{$album->id}/destroy/") }}" id="destroyalbum" >
+                    ลบอัลบั้ม
+                </a>  
+            </div>
+            <div class="col" style="display: inherit; padding-top:10px;">
+                <a href="{{ url("profile/{$username}/album/{$album->id}/edit/") }}" class="btn_color btn_bottom" style="width:100%; margin:0; padding-top:10px;">แก้ไข</a>
             </div>
         </div>
+    </nav>
+
+<script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
+<script src="{{ URL::asset('js/responsive_waterfall.js') }}"></script>
+<script>
+    var waterfall = new Waterfall({ 
+        containerSelector: '.wf-container',
+        boxSelector: '.wf-box',
+        minBoxWidth: 250
+    });
+</script>
 @stop

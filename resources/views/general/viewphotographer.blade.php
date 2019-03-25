@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainprofile')
 @section('page_title', 'Profile')
 @section('content')
 
@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-3">
                     <div class="img_profile">
-                        <img src="{{ url('assets/image/avatar05.jpg') }}">   
+                        <img src="{{ url($user->avatar) }}">   
                     </div>
                 </div>
                 <div class="col" style="padding-top:20px;">
@@ -114,11 +114,12 @@
                                                             {{ $album->name_album }}
                                                         </h3>
                                                     </div>
-                                                    <div class="col text_right fav_count">
+                                                    <!-- <div class="col text_right fav_count">
                                                         <span>614 </span><img class="btn_fav" src="{{url('assets/image/heart_layout.svg')}}">
-                                                    </div>
+                                                    </div> -->
                                                 </div>
-                                                <div class="carousel slide" data-ride="carousel">
+                                                <img class="card-img-top" src="{{url($album->cover_album)}}">    
+                                                <!-- <div class="carousel slide" data-ride="carousel">
                                                     <div class="carousel-inner" style="overflow: inherit; max-height: 220px !important;">            
                                                         @php ($i = -1)
                                                         @foreach($image_albums as $index => $image_album)
@@ -128,7 +129,7 @@
                                                             @endif    
                                                         @endforeach
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                 </a>        
@@ -164,64 +165,47 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="container wrap_container_head">
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="headder_text">อุปกรณ์ที่ใช้ในการถ่ายภาพ</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <span class="all_more_link">กล้อง</span><br>
-                    <label class="btn_layout_equipment">Canon EOS 1D X Mark II</label>
-                </div>
-                <div class="container">
-                    <span class="all_more_link">เลนส์</span><br>
-                    <label class="btn_layout_equipment">Canon 40mm f/2.8</label>
-                    <label class="btn_layout_equipment">Canon 50mm f/1.4</label>
-                </div>
-                <div class="container">
-                    <span class="all_more_link">แฟลช</span><br>
-                    <label class="btn_layout_equipment">Pop-Up Flash</label>
-                    <label class="btn_layout_equipment">External Flash</label>
-                </div>
         </div><!-- end menu 2 -->
 
         <div class="tab-pane fade margin_top20 container" id="menu3" role="tabpanel" aria-labelledby="menu3-tab">
-                <div class="card review_box">
+            @foreach($reviews as $review)            
+                <div class="card review_box margin_box20">
                     <div class="card-body review_box_head">
                         <div class="row">
                             <div class="col-2">
                                 <div class="review_img_profile">
-                                    <img src="{{url('assets/image/avatar04.jpg')}}">    
+                                    <img src="{{url($review->user->avatar)}}">    
                                 </div>
                             </div>
                             <div class="col-6 username_profile">
                                 <div class="row">
                                     <div class="col-12">
-                                        <span class="review_username">Username</span>
+                                        <span class="review_username">{{$review->user->username}}</span>
                                     </div>
                                     <div class="col-12">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
+                                        <div class="star-rating" id="rating{{$review->id}}">
+                                            <span class="fas fa-star" data-rating{{$review->id}}="1"></span>
+                                            <span class="fas fa-star" data-rating{{$review->id}}="2"></span>
+                                            <span class="fas fa-star" data-rating{{$review->id}}="3"></span>
+                                            <span class="fas fa-star" data-rating{{$review->id}}="4"></span>
+                                            <span class="fas fa-star" data-rating{{$review->id}}="5"></span>
+                                            <input type="hidden" id="rating{{$review->id}}" class="rating-value{{$review->id}}" value="{{$review->rating}}">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-4 all_more_link text_right">
-                                <span>ตุลาคม 2561</span>
+                                <span>{{date_format($review->created_at, 'j F Y')}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="review_body">
                         <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper
-                        arcu sed purus aliquet venenatis. Sed a fermentum risus
+                        {{$review->comment}}
                         </p>
                     </div>
                 </div>
+            @endforeach   
         </div><!-- end menu 3 -->
 
         <div class="tab-pane fade margin_top20 container" id="menu4" role="tabpanel" aria-labelledby="menu4-tab">
@@ -353,6 +337,19 @@
             console.log(actWidth);
         var actPosition = $(".nav-tabs .active").position();
         $(".slider").css({"left":+ actPosition.left,"width": actWidth});
+
+        // rating
+        var $star_rating = $(' .star-rating .fas');
+        var SetRatingStar = function() {
+            return $star_rating.each(function() {
+                @foreach($reviews as $review)            
+                if (parseInt($star_rating.siblings('input.rating-value{{$review->id}}').val()) >= parseInt($(this).data('rating{{$review->id}}'))) {
+                    return $(this).addClass('checked');
+                }
+                @endforeach
+            });
+        };
+        SetRatingStar();
 
     });
   </script>

@@ -1,51 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Create Album</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
-    <link href="css/style.css" rel="stylesheet"> 
-</head>
-<body>
-@if ($errors->any())
-        {{ implode('', $errors->all(':message')) }}
-@endif
+@extends('layouts.mainprofile')
+@section('page_title', 'Edit')
+@section('btn_name', 'แก้ไขอัลบั้ม')
+@section('linktoback', URL::previous() )
+@section('content')
+
 <form action="createAlbum/store" method="post" enctype="multipart/form-data">
 {{ csrf_field() }}
 
-    <section style="height:60px; padding:20px;">  
-            <div class="row">
-                <div class="col-1">
-                    <button onclick="window.location.href='{{ URL::previous() }}'" class="btn" style="background:#fff;"><</button> 
-                </div>
-                <div class="col-6">
-                    <h3 class="headder_text" style="padding: 5px;">สร้างอัลบั้ม</h3>
-                </div>
-                <div class="col">
-                {!! Form::submit('สร้างอัลบั้ม',['class' => 'btn_color btn_color_bar']) !!}
-                </div>
-            </div>
-    </section>
+    <div class="col-6">
+        <h3 class="headder_text" style="padding: 5px;">สร้างอัลบั้ม</h3>
+    </div>
 
     <div class="container">
-    <div class="card album_show_wrap_full">
-            <div id="dvPreview" class="row" >
+    <span class="all_more_link">หน้าปกอัลบั้ม</span>
+    <div class="card album_show_wrap_full" style="height:auto !important;">
+            <div id="dvPreview">
                 <img src="assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
             </div>
             <div class="wrap_choose_file">
                 <div class="upload-btn-wrapper">
                     <button class="btn_choose"><span class="hastag_album">Choose File...</span></button>
-                    <input multiple="multiple" name="photos[]" type="file" id="fileupload"/>
+                    <input name="cover_album" type="file" id="fileupload"/>
+                    <!-- <input multiple="multiple" name="photos[]" type="file" id="fileupload"/> -->
                 </div>
             </div>
     </div>
 
     <div class="row">
-            <div class="col-md" style="margin-top:10px;">
+            <div class="col-md margin_top10">
                 <span class="all_more_link">ชื่ออัลบั้ม</span>
                 <div class="row">
                     <div class="col">
@@ -55,17 +37,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md" style="margin-top:10px;">
+            <div class="col-md margin_top10">
                 <span class="all_more_link">แท็ก</span>
                 {!! Form::select('id_category',['1' => 'รับปริญญา', '2' => 'ภาพบุคคล/แฟชั่น', '3' => 'งานแต่งงาน', '4' => 'พรีเวดดิ้ง', '5' => 'งานอีเวนต์', '6' => 'สถาปัตยกรรม', '7' => 'สินค้า/อาหาร'],null,['class'=>'form-control select_search'],['placeholder' => 'เลือกประเภทงาน...']) !!}
             </div>
         </div>
     </div>
 
-    <div class="form-group">
-        <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
-    <div>
+    <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
+
+    <section style="height:250px;"></section>
+
+    <nav class="container nav_bottom">
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn_color" style="margin:0;">ต่อไป</button>
+            </div>
+        </div>
+    </nav>
+
 </form>
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script language="javascript" type="text/javascript">
@@ -100,6 +94,4 @@ window.onload = function () {
     }
 };
 </script>
-
-</body>
-</html>
+@stop

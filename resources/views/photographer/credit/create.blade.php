@@ -2,7 +2,7 @@
 @section('page_title', 'Deposit Account')
 @section('link_back', '/')
 @section('content')
-<form action="{{url('credits/'.$username.'/store')}}" method="post"  enctype="multipart/form-data">
+<form action="{{url('credits/'.Auth::user()->username.'/store')}}" method="post"  enctype="multipart/form-data">
 {{ csrf_field() }}
     <div class="container">
         <div class="row">

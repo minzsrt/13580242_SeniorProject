@@ -46,12 +46,17 @@ class User extends Authenticatable
     }
 
     public function order(){
-        return $this->belongsToMany('App\Order');
+        return $this->hasMany('App\Review');
     }
 
     public function deposit(){
         return $this->hasMany('App\DepositAccount');
     }
+
+    public function review(){
+        return $this->hasMany('App\Review');
+    }
+
 
 
 }

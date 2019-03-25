@@ -59,8 +59,8 @@
                         <tr>
                             <th>สถานที่ </th>
 							<td>
-								{{ $order->place['address'] }}
-								<a class="ml-4" href="{{ $order->place['url'] }}" target="_blank">ดูแผนที่</a>
+								{{ $order->place['place_name'] }}
+								<a class="ml-4 btn btn_layout_next" href="{{ $order->place['url'] }}" target="_blank">ดูแผนที่</a>
 							</td>
 						</tr>
                         <tr>
@@ -71,7 +71,7 @@
                         </tr>
                         <tr>
 							<th>เวลา </th>
-                            <td>{{$order->time_work}}</td>
+                            <td>{{$order->start_time.' - '.$order->end_time}}</td>
                             <!-- <td class="text_right" style="padding-right:20px;">{{$order->price}}</td> -->
                         </tr>
 					</table>
@@ -97,7 +97,6 @@
             <div class="col text_right" style="padding-top:18px;">
                 <span class="headder_text ">-100 ฿</span>
             </div>
-
         </div> -->
 
         <input type="hidden" name="id_category" value="{{$order->id_category}}">
@@ -106,13 +105,14 @@
 		<input type="hidden" name="detail" value="{{$order->detail}}">
 		<input type="hidden" name="place" value="{{ json_encode($order->place) }}">
         <input type="hidden" name="date_work" value="{{$order->date_work}}">
-		<input type="hidden" name="time_work" value="{{$order->time_work}}">
+		<input type="hidden" name="start_time" value="{{$order->start_time}}">
+		<input type="hidden" name="end_time" value="{{$order->end_time}}">
 		<input type="hidden" name="id_photographer" value="{{ $user->id }}">
 		
         <nav class="container nav_bottom">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step5'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step4'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
             </div>
             <div class="col">
                 <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>

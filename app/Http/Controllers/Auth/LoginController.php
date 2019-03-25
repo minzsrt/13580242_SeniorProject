@@ -42,7 +42,13 @@ class LoginController extends Controller
     }
     public function authenticated($request,$user)
     {
-        return redirect('/profile/'.$user->username);
+        // 1 = admin
+        if($user->role_id == '1'){
+            return redirect('/');
+        }
+        else{
+            return redirect('/profile/'.$user->username);
+        }
     }
 
     /**

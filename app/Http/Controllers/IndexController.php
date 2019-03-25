@@ -9,6 +9,16 @@ use App\ImageAlbum;
 use App\PackageCard;
 use App\Category;
 use App\DepositAccount; 
+use App\Order; 
+use App\Format_time;
+use App\Events\TriggerNotification;
+use App\Http\Requests\AlbumRequest;
+use App\Notification as NotificationModel;
+use App\Notifications\OrderCreatedEmail;
+use App\Photographer;
+use App\Bank;
+use App\VerifyCard;
+use App\Statusverify;
 use Illuminate\Http\Request;
 
 
@@ -40,6 +50,22 @@ class IndexController extends Controller
                 $categories = Category::all();
                 $image_albums = ImageAlbum::all();
                 return view('general.index', compact('albums','package_cards','categories','image_albums'));
+    
+            }
+            elseif($checkrole == 1){
+                $albums = Album::orderBy('id', 'DESC')->get();
+                $package_cards = PackageCard::all();
+                $categories = Category::all();
+                $image_albums = ImageAlbum::all();
+
+                $allusercount = User::Where(function ($query) {
+                    $query->where('role_id', '=', 2)
+                          ->orWhere('role_id', '=', 3);
+                })->count();
+                $ptusercount = User::where('role_id','2')->count();
+                $gnusercount = User::where('role_id','3')->count();
+                // dd($allusercount);
+                return view('admin.index', compact('albums','package_cards','categories','image_albums','allusercount','ptusercount','gnusercount'));
     
             }
            

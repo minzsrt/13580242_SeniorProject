@@ -22,8 +22,9 @@ class DepositAccountController extends Controller
     public function index($username)
     {
         $user = User::whereUsername($username)->first();
-        $deposits = DepositAccount::where('id_photographer','LIKE',$user->id)->get();
-        return view('photographer.credit.credits',compact('user','deposits'));
+        $deposit = DepositAccount::where('id_photographer','LIKE',$user->id)->first();
+        // dd($deposit);
+        return view('photographer.credit.credits',compact('user','deposit'))->with('username',$username);
     }
 
     /**
@@ -34,7 +35,7 @@ class DepositAccountController extends Controller
     public function create($username)
     {
         $banks = Bank::all();
-        return view('photographer.credit.create',compact('banks'))->with('username',$username);
+        return view('photographer.credit.create',compact('banks'));
         
     }
 
@@ -54,7 +55,7 @@ class DepositAccountController extends Controller
     		$deposit_account->save();
         }
         $deposit_account->save();
-        return redirect('credits/'.$username);  
+        return redirect('credits/'.$username)->with('alertpost', 'เพิ่มข้อมูลบัญชีและการเงินสำเร็จ!');  
 
     }
 
@@ -75,9 +76,12 @@ class DepositAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($username)
     {
-        //
+        $user = User::whereUsername($username)->first();
+        $credit = DepositAccount::where('id_photographer',$user->id)->first();
+        $banks = Bank::pluck('name_bank','id');
+        return view('photographer.credit.edit',compact('credit','banks'));
     }
 
     /**
@@ -87,9 +91,27 @@ class DepositAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($username , Request $request)
     {
-        //
+        $user = User::whereUsername($username)->first();
+        $credit = DepositAccount::where('id_photographer',$user->id)->first();   
+        
+        $credit->fill([
+            'deposit_account_number' => $request->deposit_account_number,
+            'id_bank' => $request->id_bank,
+            'id_photographer' => $request->id_photographer
+        ]);
+
+        if($request->hasFile('book_bank_copy')){
+            $book_bank_copy = $request->file('book_bank_copy');
+            $filename = $book_bank_copy->store('bookbank', ['disk' => 'profile_files']);
+            $credit->book_bank_copy = $filename;
+            $credit->save();
+        }
+        
+        $credit->save();        
+        return redirect('credits/'.$username)->with('alertedit', 'แก้ไขข้อมูลบัญชีและการเงินสำเร็จ!');  
+
     }
 
     /**

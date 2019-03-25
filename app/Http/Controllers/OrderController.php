@@ -207,13 +207,22 @@ class OrderController extends Controller
         // print_r('id_photographer : '.$order->id_photographer.'<br>');
         // print_r('id_formattime : '.$order->id_formattime.'<br>');
         // print_r('price : '.$order->price.'<br>');
-        if ($order->id_formattime == '3') {
-            // print_r($order->id_formattime);
-            return view('/orderstep3-fm3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-        } else {
-            // print_r($order->id_formattime);
-            return view('/orderstep3-fm12', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-        }
+        // print_r('time_work : '.$order->time_work.'<br>');
+        return view('/orderstep3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+
+        // $order = $request->session()->get('order');
+        // $user = User::whereUsername($username)->first();
+        // // print_r('category : '.$order->id_category.'<br>');
+        // // print_r('id_photographer : '.$order->id_photographer.'<br>');
+        // // print_r('id_formattime : '.$order->id_formattime.'<br>');
+        // // print_r('price : '.$order->price.'<br>');
+        // if ($order->id_formattime == '3') {
+        //     // print_r($order->id_formattime);
+        //     return view('/orderstep3-fm3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+        // } else {
+        //     // print_r($order->id_formattime);
+        //     return view('/orderstep3-fm12', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+        // }
     }
     /**
      * Post Request to store step1 info in session
@@ -223,55 +232,91 @@ class OrderController extends Controller
      */
     public function postCreateStep3($username, Request $request)
     {
+
         $validatedData = $request->validate([
-            'time_work' => 'required',
+            'date_work' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
         ]);
         $order = $request->session()->get('order');
         $request->session()->put('order', $order);
-        $order->time_work = $request->time_work;
+        $order->date_work = $request->date_work;
+        $order->start_time = $request->start_time;
+        $order->end_time = $request->end_time;
         return redirect($username.'/order/step4')->with('username', $username);
 
+        // $validatedData = $request->validate([
+        //     'time_work' => 'required',
+        // ]);
+        // $order = $request->session()->get('order');
+        // $request->session()->put('order', $order);
+        // $order->time_work = $request->time_work;
+        // return redirect($username.'/order/step4')->with('username', $username);
+
     }
+    /**
+     * Show the Product Review page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // public function createStep4($username, Request $request)
+    // {
+
+    //     $order = $request->session()->get('order');
+    //     $user = User::whereUsername($username)->first();
+    //     // print_r('category : '.$order->id_category.'<br>');
+    //     // print_r('id_photographer : '.$order->id_photographer.'<br>');
+    //     // print_r('id_formattime : '.$order->id_formattime.'<br>');
+    //     // print_r('price : '.$order->price.'<br>');
+    //     if ($order->id_formattime == '3') {
+    //         // print_r($order->id_formattime);
+    //         return view('/orderstep3-fm3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+    //     } else {
+    //         // print_r($order->id_formattime);
+    //         return view('/orderstep3-fm12', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+    //     }
+
+    //     // $order = $request->session()->get('order');
+    //     // $user = User::whereUsername($username)->first();
+    //     // // print_r('category : '.$order->id_category.'<br>');
+    //     // // print_r('id_photographer : '.$order->id_photographer.'<br>');
+    //     // // print_r('id_formattime : '.$order->id_formattime.'<br>');
+    //     // // print_r('price : '.$order->price.'<br>');
+    //     // // print_r('time_work : '.$order->time_work.'<br>');
+    //     // return view('/orderstep4', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+
+    // }
+    // /**
+    //  * Post Request to store step1 info in session
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function postCreateStep4($username, Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'time_work' => 'required',
+    //     ]);
+    //     $order = $request->session()->get('order');
+    //     $request->session()->put('order', $order);
+    //     $order->time_work = $request->time_work;
+    //     return redirect($username.'/order/step5')->with('username', $username);
+
+    //     // $validatedData = $request->validate([
+    //     //     'date_work' => 'required',
+    //     // ]);
+    //     // $order = $request->session()->get('order');
+    //     // $request->session()->put('order', $order);
+    //     // $order->date_work = $request->date_work;
+    //     // return redirect($username.'/order/step5')->with('username', $username);
+
+    // }
     /**
      * Show the Product Review page
      *
      * @return \Illuminate\Http\Response
      */
     public function createStep4($username, Request $request)
-    {
-        $order = $request->session()->get('order');
-        $user = User::whereUsername($username)->first();
-        // print_r('category : '.$order->id_category.'<br>');
-        // print_r('id_photographer : '.$order->id_photographer.'<br>');
-        // print_r('id_formattime : '.$order->id_formattime.'<br>');
-        // print_r('price : '.$order->price.'<br>');
-        // print_r('time_work : '.$order->time_work.'<br>');
-        return view('/orderstep4', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-
-    }
-    /**
-     * Post Request to store step1 info in session
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function postCreateStep4($username, Request $request)
-    {
-        $validatedData = $request->validate([
-            'date_work' => 'required',
-        ]);
-        $order = $request->session()->get('order');
-        $request->session()->put('order', $order);
-        $order->date_work = $request->date_work;
-        return redirect($username.'/order/step5')->with('username', $username);
-
-    }
-    /**
-     * Show the Product Review page
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createStep5($username, Request $request)
     {
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
@@ -289,7 +334,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postCreateStep5($username, Request $request)
+    public function postCreateStep4($username, Request $request)
     {
         $validatedData = $request->validate([
             'place_id' => 'required|string',
@@ -310,7 +355,7 @@ class OrderController extends Controller
             'address',
             'url',
         ]);
-        return redirect($username.'/order/step6')->with('username', $username);
+        return redirect($username.'/order/step5')->with('username', $username);
 
     }
 
@@ -319,7 +364,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createStep6($username, Request $request)
+    public function createStep5($username, Request $request)
     {
         $order = $request->session()->get('order');
         // dd($order);
@@ -358,13 +403,14 @@ class OrderController extends Controller
         $order->price = $request->price;
         $order->detail = $request->detail;
         $order->date_work = $request->date_work;
-        $order->time_work = $request->time_work;
+        $order->start_time = $request->start_time;
+        $order->end_time = $request->end_time;
         $order->id_category = $request->id_category;
         $order->id_formattime = $request->id_formattime;
         $order->id_employer = $user->id;
         $order->id_photographer = $request->id_photographer;
         $order->status_order = 'รอการตอบรับ';
-        $order->status_payment = 'Unpaid';
+        $order->status_payment = 'ยังไม่ชำระเงิน';
         $order->total = $order->price;
         $order->place_id = $place->place_id;
         $order->place_name = $place->place_name;

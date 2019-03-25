@@ -14,15 +14,16 @@ Route::get('echo/{id}', function ($id) {
 Auth::routes();
 
 Route::get('photographer/chatchannel', function () {return view('photographer.chatchannel.chatchannel');});
-Route::get('photographer/notification', function () {return view('photographer.notification.notification');});
 
 // Success CRUD
-// Route::resource('profile_photographer', 'AlbumsController');
 Route::get('photographer/show/{id}', 'AlbumsController@show');
 Route::get('createAlbum', 'AlbumsController@create');
 Route::post('createAlbum/store', 'AlbumsController@store');
-Route::get('photographer/show/{id}/edit', 'AlbumsController@edit');
-Route::get('photographer/show/{id}/update', 'AlbumsController@update');
+Route::get('createAlbum/{id}/upload', 'AlbumsController@uploadimage');
+Route::post('createAlbum/{id}/upload/store', 'AlbumsController@upload');
+Route::get('profile/{username}/album/{id}', 'AlbumsController@show');
+Route::get('profile/{username}/album/{id}/edit', 'AlbumsController@edit');
+Route::post('profile/{username}/album/{id}/update', 'AlbumsController@update');
 Route::get('photographer/show/{id}/destroy', 'AlbumsController@destroy');
 Route::get('createAlbumSuccess', function () {return view('createAlbumSuccess');});
 
@@ -95,6 +96,9 @@ Route::get('checkout', function () {return view('checkout');});
 Route::get('/credits/{username}', 'DepositAccountController@index');
 Route::get('/credits/{username}/create', 'DepositAccountController@create');
 Route::post('/credits/{username}/store', 'DepositAccountController@store');
+Route::get('/credits/{username}/edit', 'DepositAccountController@edit');
+Route::post('/credits/{username}/update', 'DepositAccountController@update');
+
 
 Route::get('listTag', function () {return view('listTag');});
 Route::get('management', function () {return view('mn_order');});
@@ -102,3 +106,4 @@ Route::get('management', function () {return view('mn_order');});
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/portfolioPhotographer', function () {return view('regforphotographer.portfolio');});
+
