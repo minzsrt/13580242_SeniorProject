@@ -16,7 +16,7 @@
     <section class="text_right" style="height:60px; padding:20px;">    
         <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/index'"><i class="fas fa-times-circle"></i></a>
     </section>
-    <form action="/{{$username}}/order/step4" method="post">
+    <form action="/{{$username}}/order/step3" method="post">
     {{ csrf_field() }}
     <div class="container">
         <div class="row">
@@ -42,6 +42,18 @@
                 <input type="date" class="input_line" name="date_work">
             </div>
         </div>
+
+        <span class="all_more_link">เวลา</span>
+        <div class="row">
+                        <div class="col input-group">
+                            <input name="start_time" type="time" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                        </div>
+                        <span>-</span>
+                        <div class="col input-group">
+                            <input name="end_time" type="time" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                        </div>
+        </div>
+        
 
         <!-- <div class="row" style="margin-top:20px;">
             <div class="col">
@@ -122,7 +134,7 @@
         <nav class="container nav_bottom nav_bottom">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step3'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step2'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
             </div>
             <div class="col">
                 <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>

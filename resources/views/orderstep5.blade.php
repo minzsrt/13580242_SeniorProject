@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		
-        <form action="/{{$username}}/order/step5" method="POST" class="mt-4">
+        <form action="/{{$username}}/order/step4" method="POST" class="mt-4">
 			{{ csrf_field() }}
 			
 			<input type="hidden" name="place_id">
@@ -70,7 +70,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step4'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                    <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step3'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
                 </div>
                 <div class="col">
                     <button type="submit" id="submit" class="btn_color" disabled style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
