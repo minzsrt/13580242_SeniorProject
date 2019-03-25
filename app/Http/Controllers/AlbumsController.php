@@ -19,25 +19,25 @@ use Illuminate\Support\Collection;
 
 class AlbumsController extends Controller
 {
+    public function __construct(){
+
+        $this->middleware('auth',['except'=>['show']]);
+
+     }
     public function index(){
-        $albums = Album::orderBy('id', 'DESC')->get();
-        $package_cards = PackageCard::all();
-        $categories = Category::all();
-        return view('photographer.profile_photographer', compact('albums','package_cards','categories'));
+       
     }
 
     public function show($username,$id){
-
         $data['username'] = $username;
         $album = Album::find($id);
         $photos = ImageAlbum::where('album_id',$album->id)->get();
-
         return view('photographer.show', $data, compact('album','photos')); 
-
     }
 
     public function create(){
-        return view('photographer.createAlbum');
+        $category = Category::pluck('name_category','id');
+        return view('photographer.createAlbum',compact('category'));
     }
     
     public function store(Request $request){
@@ -54,20 +54,37 @@ class AlbumsController extends Controller
     }
 
     public function uploadimage($id){
+
         $album = Album::find($id);
         return view('photographer.upload',compact('album'));
+
     }
 
     public function upload($id,Request $request){
         // dd($request->photos);
-        foreach ($request->photos as $photo) {
-            $filename = $photo->store('photos', ['disk' => 'my_files']);
-            ImageAlbum::create([
-                'name_image' => $filename,
-                'album_id' => $request->id,
-            ]);
+        $checkalbum = ImageAlbum::where('album_id',$id)->first();
+
+        if(empty($checkalbum)){
+            foreach ($request->photos as $photo) {
+                $filename = $photo->store('photos', ['disk' => 'my_files']);
+                ImageAlbum::create([
+                    'name_image' => $filename,
+                    'album_id' => $request->id,
+                ]);
+            }
+            return redirect('createAlbumSuccess');
+        }else{
+            foreach ($request->photos as $photo) {
+                $filename = $photo->store('photos', ['disk' => 'my_files']);
+                ImageAlbum::create([
+                    'name_image' => $filename,
+                    'album_id' => $request->id,
+                ]);
+            }
+            return redirect('profile/'.Auth::user()->username.'/album/'.$id.'/edit')->with('alertedit', 'เพิ่มรูปในอัลบั้มสำเร็จ!');
         }
-        return redirect('createAlbumSuccess');
+
+        
     }
 
     public function edit($username,$id){
@@ -96,7 +113,7 @@ class AlbumsController extends Controller
             }
             $album->save();
 
-            return redirect('profile/'.$username.'/album/'.$id.'/edit');
+            return redirect('profile/'.$username.'/album/'.$id.'/edit')->with('alertedit', 'แก้ไขอัลบั้มสำเร็จ!');
     }
 
     public function destroy($id){
@@ -110,15 +127,11 @@ class AlbumsController extends Controller
             }
         }
         $album->delete();
-		return redirect('profile/'.Auth::user()->username);
+		return redirect('profile/'.Auth::user()->username)->with('alertdelete', 'ลบอัลบั้ม'.$album->name_album.'สำเร็จ!');
     }
 
      
-    public function __construct(){
 
-        $this->middleware('auth');
-
-     }
      
     
 }

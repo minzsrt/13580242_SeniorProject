@@ -65,6 +65,16 @@
                     <i class="fas fa-plus-circle"></i>
                 </button> 
                 </div>
+
+                @if (session('alertdelete'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('alertdelete') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                @endif
+                
                 @foreach($albums as $album)
                     @if( Auth::user()->id === $album->id_user )
                         <a href="{{ url("profile/{$username}/album/{$album->id}") }}">

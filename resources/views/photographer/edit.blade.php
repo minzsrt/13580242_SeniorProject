@@ -1,13 +1,20 @@
 @extends('layouts.mainprofile')
-@section('page_title', 'Show')
+@section('page_title', 'Edit Album '.$album->name_album)
+@section('link_back', '/profile/'.$album->user->username.'/album/'.$album->id)
 @section('content')
     <div class="container">
 
+        @if (session('alertedit'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('alertedit') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+        @endif
+
         <p class="headder_text" style="position: relative; padding: 5px;">
         {{$album->name_album}}
-        <a class="btn badge bg_dbdbdb color_white" style="position: absolute; right: 0;" data-toggle="modal" data-target="#editAlbum{{$album->id}}">
-        <i class="fas fa-pen"></i> แก้ไข
-        </a>
         <br>
         <span class="btn badge bg_aeaeae color_white" style="border-radius: 15px;">
         {{$album->category->name_category}}
@@ -17,9 +24,7 @@
         <div class="wf-container">
             @foreach($photos as $photo)
             <div class="wf-box">
-                <a data-fancybox="gallery" href="$photo->name_image">
-                    <img class="radius10" src="{{ url($photo->name_image) }}">
-                </a>
+                <img class="radius10" src="{{ url($photo->name_image) }}">
             </div>
             @endforeach
         </div>
@@ -61,18 +66,16 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn bg-gray-200" data-dismiss="modal">ยกเลิก</button>
-                                        <button type="submit" class="btn bg_color_gradient text-white">แก้ไข</button>
+                                        <button type="submit" class="btn bg_color_gradient text-white">บันทึก</button>
                                     </div>
                                 {!! Form::close() !!}
                                 </div>
                             </div>
                         </div>
 
-        <!-- <section style="height:250px;"></section> -->
-
     </div>
 
-    <!-- <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+    <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
         <div class="row">
             <div class="col" style="display: inherit; padding-top:10px;">
                 <a 	class="btn btn_layout_bottom" 
@@ -81,10 +84,10 @@
                 </a>  
             </div>
             <div class="col" style="display: inherit; padding-top:10px;">
-                <a href="{{ url("profile/{$username}/album/{$album->id}/edit/") }}" class="btn_color btn_bottom" style="width:100%; margin:0; padding-top:10px;">แก้ไข</a>
+                <a data-toggle="modal" data-target="#editAlbum{{$album->id}}" class="btn_color btn_bottom color_white" style="width:100%; margin:0; padding-top:10px;">แก้ไข</a>
             </div>
         </div>
-    </nav> -->
+    </nav>
 
 <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('js/responsive_waterfall.js') }}"></script>

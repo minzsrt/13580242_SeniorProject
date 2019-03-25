@@ -1,4 +1,4 @@
-@extends('layouts.mainmenu_guest')
+@extends('layouts.mainmenu_general')
 @section('page_title', 'Index')
 @section('content')
 

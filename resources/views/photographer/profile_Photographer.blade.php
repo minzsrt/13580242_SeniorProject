@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="img_profile">
-                    <img src="assets/image/avatar05.jpg">   
+                    <img src="assets/image/avatar05.jpg">    
                 </div>
             </div>
             <div class="col" style="padding-top:20px;">

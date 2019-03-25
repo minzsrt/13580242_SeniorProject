@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="{{url('css/modal.css')}}">
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{url('js/modal.js')}}"></script>
+    <script src="{{ URL::asset('js/modal.js')}}"></script>
+    
 </head>
 <body style="font-family: 'Prompt', sans-serif;">
 
@@ -42,15 +43,19 @@
                     <img class="menu_list" src="{{url('assets/image/search.svg')}}">
                 </button>
                 </div>
-                <!-- <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='{{url('/chatchannel')}}'">
-                    @if (trim($__env->yieldContent('page_title')==='Chatchannel'))
+
+                <div class="col">
+                @if(Auth::guest())
+                <button class="btn_menu_list _pst-rlt"  onclick="window.location.href='/home'">
+                    @if (trim($__env->yieldContent('page_title')==='Notification'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
                     @endif
-                    <img class="menu_list" src="{{url('assets/image/speech-bubbles.svg')}}" >
+                    <img class="menu_list" src="{{url('assets/image/notification.svg')}}" >
+                    <div class="noti-badge {{ $notification_count > 0 ? '' : '_dp-n' }}">
+						{{ $notification_count }}
+					</div>
                 </button>
-                </div> -->
-                <div class="col">
+                @else
                 <button class="btn_menu_list _pst-rlt"  onclick="window.location.href='/notification/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
                         <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
@@ -60,7 +65,9 @@
 						{{ $notification_count }}
 					</div>
                 </button>
+                @endif
                 </div>
+
                 <div class="col">
                 @if(Auth::guest())
                 <button class="btn_menu_list" onclick="window.location.href='/home'">

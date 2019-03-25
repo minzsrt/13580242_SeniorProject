@@ -54,7 +54,7 @@
                         </tr>
                         <tr>
                             <th>เวลา </th>
-                            <td>{{$order->time_work}}</td>
+                            <td>{{$order->start_time.'-'.$order->end_time}}</td>
                             <!-- <td class="text_right" style="padding-right:20px;">{{$order->price}}</td> -->
                         </tr>
                         </table>
@@ -127,8 +127,10 @@
         <input type="hidden" name="id_formattime" value="{{$order->id_formattime}}">
         <input type="hidden" name="place_name" value="{{$order->place_name}}">
         <input type="hidden" name="shipping_cost" value="{{$order->shipping_cost}}">
+        <input type="hidden" name="price" value="{{$order->price}}">
         <input type="hidden" name="date_work" value="{{$order->date_work}}">
-        <input type="hidden" name="time_work" value="{{$order->time_work}}">
+        <input type="hidden" name="start_time" value="{{$order->start_time}}">
+        <input type="hidden" name="end_time" value="{{$order->end_time}}">
 
         <div class="row">
             <div class="col text_center">

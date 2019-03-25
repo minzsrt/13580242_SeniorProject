@@ -22,8 +22,7 @@
             </div>
             <div class="wrap_choose_file">
                 <div class="upload-btn-wrapper">
-                    <button class="btn_choose"><span class="hastag_album">Choose File...</span></button>
-                    <!-- <input name="cover_album" type="file" id="fileupload"/> -->
+                    <button class="btn_choose"><span class="hastag_album">เพิ่มรูปภาพในอัลบั้มนี้</span></button>
                     <input multiple="multiple" name="photos[]" type="file" id="fileupload"/>
                 </div>
             </div>
@@ -31,15 +30,14 @@
     
     <input name="album_id" type="hidden" value="{{$album->id}}"/>
 
-    <section style="height:250px;"></section>
 
         <nav class="container nav_bottom">
         <div class="row">
             <div class="col">
-                <button type="button" class="btn_color" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                
             </div>
             <div class="col">
-                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">บันทึก</button>
             </div>
         </div>
         </nav>

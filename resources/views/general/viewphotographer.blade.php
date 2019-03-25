@@ -102,7 +102,7 @@
                     <div class="container">
                         @foreach($albums as $album)
                             @if( $user->id === $album->id_user )
-                                <a href="{{ url('photographer/show', $album->id) }}">
+                                <a href="{{ url("profile/{$username}/album/{$album->id}") }}">
                                         <div class="card album_show_wrap">
                                             <div class="album_show">
                                                 <div class="album_show_detail_group">

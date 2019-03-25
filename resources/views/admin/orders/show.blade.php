@@ -45,7 +45,7 @@
                             <br>
                             <span class="text-xs font-weight-bold text-uppercase mb-1">เวลา</span> 
                             <br>
-                            <span>{{$order->time_work}}</span>
+                            <span>{{ $order->start_time.' - '.$order->end_time }}</span>
                         </div>
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card h-100 py-2">

@@ -39,7 +39,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">รายละเอียด</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">รายละเอียดออเดอร์ #{{$order->id}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -58,31 +58,41 @@
                     </div>
                     <hr>
                     <div class="row">
-                    <div class="col" style="color:#000;">
-                            <table class="all_more_link" style="width:100%; font-size: 14px; color:#000;">
-                            <tr>
-                                <th>สถานที่ </th>
-                                <td>{{$order->place}}</td>
-                            </tr>
-                            <tr>
-                                <th>วันที่ </th>
-                                <td>{{$order->date_work}}</td>
-                            </tr>
-                            <tr>
-                                <th>เวลา </th>
-                                <td>{{$order->time_work}}</td>
-                                <!-- <td class="text_right" style="padding-right:20px;">{{$order->price}}x{{$order->time_work}}</td> -->
-                            </tr>
-                            </table>
-                            <span class="all_more_link fontsize14" style="color:#000; font-weight: bold;">
+
+                        <div class="col">
+                            
+                            <span class="all_more_link">ผู้ว่าจ้าง</span> 
+                            <br>
+                            <span class="fontsize14">{{$order->employer->username}}</span>
+
+                            <div class="row">
+                                <div class="col">
+                                    <span class="all_more_link">วันที่</span> 
+                                    <br>
+                                    <span class="fontsize14">{{ date("j M, Y", strtotime($order->date_work) )}}</span>
+                                </div>
+                                <div class="col">
+                                    <span class="all_more_link">เวลา</span> 
+                                    <br>
+                                    <span class="fontsize14">{{$order->start_time.'-'.$order->end_time}}</span>
+                                </div>
+                            </div>
+
+                            <span class="all_more_link">สถานที่</span> 
+                            <br>
+                            <span class="fontsize14">{{$order->place_name}}</span>
+							<a class="btn badge badge-info" href="{{ $order->place['url'] }}" target="_blank">ดูแผนที่</a>
+                            <hr>
+                            <span class="all_more_link">
                                 สิ่งที่ลูกค้าได้รับ
                             </span>
                             <p class="all_more_link fontsize14" style="color:#000;">
                                 {{$order->detail}}
                             </p>
+                            
                         </div>
+
                     </div>
-                </div>
                 @if($order->status_order == 'รอการตอบรับ')
                 <div class="modal-footer">
                     <button type="button" class="btn btn_layout_back" data-dismiss="modal">ยกเลิก</button>

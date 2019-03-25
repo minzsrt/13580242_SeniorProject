@@ -15,16 +15,6 @@ class Order extends Model
 
     }
 
-    public function photographer(){
-
-        return $this->belongsTo('App\User', 'id_photographer');
-
-
-    public function employer()
-    {
-        return $this->belongsTo('App\User', 'id_employer');
-    }
-
     public function photographer()
     {
         return $this->belongsTo('App\User', 'id_photographer');

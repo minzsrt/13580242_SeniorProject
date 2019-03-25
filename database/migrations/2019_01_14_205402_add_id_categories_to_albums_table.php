@@ -15,7 +15,7 @@ class AddIdCategoriesToAlbumsTable extends Migration
     {
         Schema::table('albums', function (Blueprint $table) {
             $table->integer('id_category')->unsigned();
-            $table->foreign('id', 'category_album_foreign')
+            $table->foreign('id_category', 'category_album_foreign')
                 ->references('id')
                 ->on('categories')
                 ->onDelete('cascade');

@@ -53,8 +53,8 @@ class PaymentController extends Controller
             $pay->livemode = $result['livemode'];
             $pay->save();
 
-            $order->status_order = 'ชำระเงินแล้ว';
-            $order->status_payment = 'Paid';
+            $order->status_order = 'ลงคิว';
+            $order->status_payment = 'ชำระเงินแล้ว';
             $order->save();
 
         } catch (\Exception $e) {

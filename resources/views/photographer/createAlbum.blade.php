@@ -1,7 +1,6 @@
 @extends('layouts.mainprofile')
-@section('page_title', 'Edit')
-@section('btn_name', 'แก้ไขอัลบั้ม')
-@section('linktoback', URL::previous() )
+@section('page_title', 'Craete Album')
+@section('link_back', '/profile/'.Auth::user()->username)
 @section('content')
 
 <form action="createAlbum/store" method="post" enctype="multipart/form-data">
@@ -19,7 +18,7 @@
             </div>
             <div class="wrap_choose_file">
                 <div class="upload-btn-wrapper">
-                    <button class="btn_choose"><span class="hastag_album">Choose File...</span></button>
+                    <button class="btn_choose"><span class="hastag_album">เลือกหน้าปก...</span></button>
                     <input name="cover_album" type="file" id="fileupload"/>
                     <!-- <input multiple="multiple" name="photos[]" type="file" id="fileupload"/> -->
                 </div>
@@ -39,7 +38,7 @@
             </div>
             <div class="col-md margin_top10">
                 <span class="all_more_link">แท็ก</span>
-                {!! Form::select('id_category',['1' => 'รับปริญญา', '2' => 'ภาพบุคคล/แฟชั่น', '3' => 'งานแต่งงาน', '4' => 'พรีเวดดิ้ง', '5' => 'งานอีเวนต์', '6' => 'สถาปัตยกรรม', '7' => 'สินค้า/อาหาร'],null,['class'=>'form-control select_search'],['placeholder' => 'เลือกประเภทงาน...']) !!}
+                    {!! Form::select('id_category', $category, null, ['class' => 'form-control']) !!}
             </div>
         </div>
     </div>
@@ -48,12 +47,12 @@
 
     <section style="height:250px;"></section>
 
-    <nav class="container nav_bottom">
+    <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
         <div class="row">
-            <div class="col">
+            <div class="col" style="display: inherit; padding-top:10px;">
             </div>
-            <div class="col">
-                <button type="submit" class="btn_color" style="margin:0;">ต่อไป</button>
+            <div class="col" style="display: inherit; padding-top:10px;">
+                <button  type="submit" class="btn_color btn_bottom color_white" style="width:100%; margin:0;">ต่อไป</button>
             </div>
         </div>
     </nav>
