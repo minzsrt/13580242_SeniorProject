@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "laravel-echo": "^1.5.3",
+        "pg-calendar": "^1.4.30",
         "pusher-js": "^4.4.0"
     }
 }

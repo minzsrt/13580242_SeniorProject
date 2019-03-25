@@ -2,7 +2,7 @@
 @section('page_title', 'Notification')
 @section('content')
 <div class="container">
-    @foreach($orders as $order)
+    <!-- @foreach($orders as $order)
         <div class="row margin_box10">
             <div class="col-12 noti_card noti_active">
                 <div class="row">
@@ -18,7 +18,7 @@
             </div>
             </div>
         </div>
-    @endforeach
+    @endforeach -->
 
         @foreach($orders as $order)
         <div class="row margin_box10">
