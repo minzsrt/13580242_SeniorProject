@@ -48,16 +48,20 @@
             </a>
         @endforeach
 
-        @if($username == Auth::user()->username)
-        <form action="/createPackagecardCategory" method="post">
-            {{ csrf_field() }}
-            <input type="hidden" name="id_category" value="{{$get_id}}">
-            <div class="btn_create">
-                <button type="submit" class="btn btn_width color_DBDBDB">
-                    <i class="fas fa-plus-circle "></i>
-                </button> 
-            </div>
-        </form>
+        @if(Auth::guest())
+        
+        @else
+            @if($username == Auth::user()->username)
+            <form action="/createPackagecardCategory" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="id_category" value="{{$get_id}}">
+                <div class="btn_create">
+                    <button type="submit" class="btn btn_width color_DBDBDB">
+                        <i class="fas fa-plus-circle "></i>
+                    </button> 
+                </div>
+            </form>
+            @endif
         @endif
     </div>
 

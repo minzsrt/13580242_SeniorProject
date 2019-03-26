@@ -1,0 +1,34 @@
+/* hide the tabs and panes to prevent flash of tabs on page
+ * load/refresh before plugin has time to wrap them in the 
+ * scroller; .nav-tabs are automatically unhidden by the 
+ * plugin when they're ready, and .tab-content is unhidden 
+ * in st-demo.js when the 'ready.scrtabs' event fires */
+.nav-tabs,
+.tab-content {
+  display: none;
+}
+
+.st-demo-header {
+  background-color: #666666;
+  color: white;
+  font-size: 24px;
+  padding: 8px 24px;
+}
+
+.st-demo-header button {
+  color: black;
+  font-size: 12px;
+}
+
+.st-demo-subheader {
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+  height: 65px;
+  margin-top: 50px;
+  padding: 8px 24px;
+}
+
+.st-demo-subheader:first-child {
+  margin-top: 0;
+}

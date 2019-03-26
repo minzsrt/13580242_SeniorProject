@@ -1,4 +1,7 @@
 {
+    "/js/pignose.calendar.min.js": "/js/pignose.calendar.min.js",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/pignose.calendar.min.css": "/css/pignose.calendar.min.css",
+    "/css/pignose.calendar.css": "/css/pignose.calendar.css"
 }

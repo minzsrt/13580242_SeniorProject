@@ -16,9 +16,7 @@
     <link href="{{url('css/style.css')}}" rel="stylesheet">
 	<link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="{{url('css/pignose.calendar.css')}}" />
 
 </head>
 <body style="font-family: 'Prompt', sans-serif;">

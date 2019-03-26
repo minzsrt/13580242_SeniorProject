@@ -25,6 +25,11 @@
 
 <div class="container wrap_all ">
 
+    <div class="row top_fixed">
+        <div class="col">
+            <a class="btn btn_layout_line_back animsition-link" href="{{ URL::previous() }}">กลับ</a>
+        </div>
+    </div>
 
 
     <div class="row text_right center_fixed">

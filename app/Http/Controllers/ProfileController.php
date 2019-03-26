@@ -86,8 +86,12 @@ class ProfileController extends Controller
                 }
             } elseif ($user->username != $authcheck) {
                 if ($user->role_id == 2) {
+
                     $albums = Album::orderBy('id', 'DESC')->get();
+                    $category_albums = Album::groupBy('id_category')->get();
+                    dd($category_albums);
                     $package_cards = PackageCard::Where('id_user', $user->id)->groupBy('id_category')->get();
+
                     if (empty($package_cards)) {
                         abort(404);
                     }
@@ -96,7 +100,7 @@ class ProfileController extends Controller
                     $categories = Category::all();
                     $reviews = Review::where('id_photographer', $user->id)->get();
 
-                    return view('general.viewphotographer', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
+                    // return view('general.viewphotographer', $data, compact('albums','category_albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
 
@@ -115,6 +119,7 @@ class ProfileController extends Controller
                     // dd($id_user);
 
                     $albums = Album::orderBy('id', 'DESC')->get();
+                    $category_albums = Album::groupBy('id_category')->get();
                     $package_cards = PackageCard::Where('id_user', 'LIKE', $id_user)->groupBy('id_category')->get();
                     // dd($package_cards);
                     if (empty($package_cards)) {
@@ -126,7 +131,7 @@ class ProfileController extends Controller
 
                     $reviews = Review::where('id_photographer', $user->id)->get();
 
-                    return view('general.viewphotographer', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
+                    return view('general.viewphotographer', $data, compact('albums','category_albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
 

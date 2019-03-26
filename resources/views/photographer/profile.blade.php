@@ -206,80 +206,9 @@
                 </div>
             @endforeach        
         </div>
-        <div class="tab-pane fade margin_top20 container" id="menu4" role="tabpanel" aria-labelledby="menu4-tab">
-            <div class="date_r">
-                <div class="row text_center">
-                    <div class="col">
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    </div>
-                    <div class="col ">
-                    JUNE 2017
-                    </div>
-                    <div class="col">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </div>
-                </div>
-                
-                <table class="datepicker text_center">
-                        <tbody>
-                            <tr>
-                                <th>S</th>
-                                <th>M</th>
-                                <th>T</th>
-                                <th>W</th>
-                                <th>T</th>
-                                <th>F</th>
-                                <th>S</th>
-                            </tr>
-                            <tr>
-                                <td class="active_employ_date">28</td>
-                                <td class="active_employ_date">29</td>
-                                <td class="active_employ_date">30</td>
-                                <td class="active_employ_date">31</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>12</td>
-                                <td class="activedate">13</td>
-                                <td>14</td>
-                                <td class="active_employ_date">15</td>
-                                <td>16</td>
-                                <td class="active_employ_date">17</td>
-                            </tr>
-                            <tr>
-                                <td>18</td>
-                                <td>19</td>
-                                <td class="active_employ_date">20</td>
-                                <td>21</td>
-                                <td>22</td>
-                                <td class="active_employ_date">23</td>
-                                <td>24</td>
-                            </tr>
-                            <tr>
-                                <td>25</td>
-                                <td>26</td>
-                                <td>27</td>
-                                <td>28</td>
-                                <td>29</td>
-                                <td>30</td>
-                                <td style="opacity: 0.5;">1</td>
-                            </tr>
-                        </tbody>
-                </table>
-            </div>
-    </div>
+        <div class="tab-pane fade margin_top10" id="menu4" role="tabpanel" aria-labelledby="menu4-tab">
+            <div class="calendar"></div>
+        </div>
     </div>
 
     <a style="display: none;" id="logout" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -289,8 +218,10 @@
         @csrf
     </form>
 
+    <script src="{{ URL::asset('js/pignose.calendar.min.js') }}"></script>
+
     <script>
-    $(function () {
+    $(document).ready(function(){
         $('#actions').click(function () {
             $.actions([
                 [

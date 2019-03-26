@@ -20,6 +20,7 @@
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{url('js/modal.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{url('css/pignose.calendar.css')}}" />
 
 </head>
 <body style="font-family: 'Prompt', sans-serif;">
@@ -76,7 +77,8 @@
 
 	<script>
 		const userID = {!! Auth::id() !!}
-	</script>
+    </script>
+    <script src="{{ URL::asset('js/pignose.calendar.min.js') }}"></script>
 	<script src="{{ mix('js/app.js') }}"></script>
 	@stack('scripts')
 </body>

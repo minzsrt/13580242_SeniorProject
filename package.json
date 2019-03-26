@@ -20,6 +20,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "jquery-bootstrap-scrolling-tabs": "^2.6.0",
         "laravel-echo": "^1.5.3",
         "pg-calendar": "^1.4.30",
         "pusher-js": "^4.4.0"
