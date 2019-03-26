@@ -71,10 +71,12 @@
 	@yield('content')
 </div>
 
-	<script>
-		const userID = {!! Auth::id() !!}
-	</script>
-	<script src="{{ mix('js/app.js') }}"></script>
-	@stack('scripts')
+@auth
+<script>
+	const userID = {!! Auth::id() !!}
+</script>
+<script src="{{ mix('js/app.js') }}"></script>
+@endauth
+@stack('scripts')
 </body>
 </html>

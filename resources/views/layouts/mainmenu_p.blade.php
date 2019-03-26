@@ -75,11 +75,12 @@
 	@yield('content')
 </div>
 
+	@auth
 	<script>
 		const userID = {!! Auth::id() !!}
     </script>
-    <script src="{{ URL::asset('js/pignose.calendar.min.js') }}"></script>
 	<script src="{{ mix('js/app.js') }}"></script>
+	@endauth
 	@stack('scripts')
 </body>
 </html>

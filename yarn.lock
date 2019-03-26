@@ -958,6 +958,11 @@ bonjour@^3.5.0:
     multicast-dns "^6.0.1"
     multicast-dns-service-types "^1.1.0"
 
+bootstrap@^3.1.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.4.1.tgz#c3a347d419e289ad11f4033e3c4132b87c081d72"
+  integrity sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==
+
 bootstrap@^4.0.0:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
@@ -3441,7 +3446,15 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-jquery@^3.2:
+jquery-bootstrap-scrolling-tabs@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/jquery-bootstrap-scrolling-tabs/-/jquery-bootstrap-scrolling-tabs-2.6.0.tgz#aa57dda800d99618dacce8b5e5f133fefa836fda"
+  integrity sha512-IAuDWyNzfD6XZGKvfiIAJ06Dkc4i2F5Q+jtq1m4IhI1b9tjCM+OkzpGoKs3VBI+yFZII0DCcu3U1sgbunN9+zg==
+  dependencies:
+    bootstrap "^3.1.1"
+    jquery ">=1.9.0 <4.0.0"
+
+"jquery@>=1.9.0 <4.0.0", jquery@^3.2, jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
   integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
@@ -4100,6 +4113,11 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
+moment@^2.22.2:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -4692,6 +4710,14 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
+pg-calendar@^1.4.30:
+  version "1.4.30"
+  resolved "https://registry.yarnpkg.com/pg-calendar/-/pg-calendar-1.4.30.tgz#979b182e6e61c3c26fad2b83b79f31872f8d472a"
+  integrity sha512-wGqugR6PyuQD6bbsAKrqVja6ve4MLQZ4stuuMwsvuDQKMqcB40SIpuiNIpw6x3+NZsEaYgvq0wm1L77Rox8X6Q==
+  dependencies:
+    jquery "^3.3.1"
+    moment "^2.22.2"
 
 pify@^2.0.0:
   version "2.3.0"

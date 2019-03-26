@@ -97,10 +97,12 @@
 	@yield('content')
 </div>
 
+@auth
 <script>
 	const userID = {!! Auth::id() !!}
 </script>
 <script src="{{ mix('js/app.js') }}"></script>
+@endauth
 
 </body>
 </html>

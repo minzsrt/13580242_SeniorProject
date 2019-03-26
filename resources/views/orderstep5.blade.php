@@ -80,10 +80,7 @@
         </form>
     </div>
 
-	<script>
-		const userID = {!! Auth::id() !!}
-	</script>
-	<script src="{{ mix('js/app.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
     <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
