@@ -301,6 +301,6 @@
         });
 
     });
-</script>
+    </script>
 
 @stop

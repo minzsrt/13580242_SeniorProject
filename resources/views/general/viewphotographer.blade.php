@@ -188,6 +188,9 @@
         </div><!-- end menu 4 -->
     </div><!-- end tab-content -->
 
+
+
+
     <nav class="container nav_bottom nav_bottom_profile" style="background: #fff;">
         <div class="row">
             <div class="col" style="display: inherit; padding-top:10px;">
@@ -195,10 +198,23 @@
                     {{ csrf_field() }}
                     <input type="hidden" value="{{$user->id}}" name="id_user">
                 </form>
-                <a href="{{ url("{$user->username}/order/step1") }}" class="btn btn_color" style="width:100%; margin:0; padding-top:10px;" target="_blank">จ้างช่างภาพ</a>
+                <button class="btn btn_color" data-toggle="modal" data-target="#myModal" style="width:100%; margin:0; padding-top:10px;">จ้างช่างภาพ</button>
+                <!-- <a href="{{ url("{$user->username}/order/step1") }}" class="btn btn_color" style="width:100%; margin:0; padding-top:10px;" target="_blank">จ้างช่างภาพ</a> -->
             </div>
         </div>
     </nav>
+
+    <!-- Modal iframeOrder -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <iframe class="iframeOrder" src="{{ url("{$user->username}/order/step1") }}" frameborder="0" allowtransparency="true"></iframe>  
+            </div>
+        </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

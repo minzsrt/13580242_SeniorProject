@@ -13,9 +13,9 @@
 </head>
 <body>
 
-    <section class="text_right" style="height:60px; padding:20px;">    
-        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/index'"><i class="fas fa-times-circle"></i></a>
-    </section>
+    <!-- <section class="text_right" style="height:60px; padding:20px;">    
+        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/'"><i class="fas fa-times-circle"></i></a>
+    </section> -->
 
     <form action="/{{$username}}/order/step2" method="post">
     {{ csrf_field() }}
@@ -26,7 +26,7 @@
                 <div class="order_img_profile">
                     <img src="{{url($user->avatar)}}"> 
                 </div>
-                <h3 class="headder_text text_center" style="padding: 5px; font-size:14px;">จ้างงาน {{$username}}</h3>
+                <h3 class="headder_text text_center fontsize14 pad5">จ้างงาน {{$username}}</h3>
             </div>
         </div>
         <div class="row margin_bomtom20">
@@ -53,15 +53,15 @@
                                 >
                                     <label class="container_radio">
                                     <div class="row">
-                                        <div class="col" style="font-size: 18px;">
+                                        <div class="col" style="font-size: 16px;">
                                             <h3  style="font-size:18px;">ถ่ายภาพ{{ $package_card->formattime->name_format_time }}</h3>
                                         </div>
-                                        <div class="col text_right">
-                                            <h3  style="font-size:18px; padding-right:20px;">{{ $package_card->price }}</h3>
+                                        <div class="col-4 text_right">
+                                            <h3  style="font-size:16px; padding-right:20px;">{{ $package_card->price }}</h3>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col" style="font-size: 18px;">
+                                        <div class="col" style="font-size: 16px;">
                                             <span class="all_more_link">
                                                 สิ่งที่ได้รับ
                                             </span>
@@ -81,15 +81,16 @@
     				    <input type="hidden" name="detail" id="detail">
             </div>
         </div>
-        <nav class="container nav_bottom nav_bottom">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step1'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+
+        <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+            <div class="row">
+                <div class="col" style="display: inherit; padding-top:10px;">
+                    <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step1'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                </div>
+                <div class="col" style="display: inherit; padding-top:10px;">
+                    <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                </div>
             </div>
-            <div class="col">
-                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
-            </div>
-        </div>
         </nav>
 
     </div>
@@ -98,8 +99,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
     jQuery(function($) {
-
-
         $('#radioBtn a').on('click', function(){
             var sel = $(this).data('title');
             var sel2 = $(this).data('price');

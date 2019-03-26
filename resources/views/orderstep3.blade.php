@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
     <link href="{{url('css/style.css')}}" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="{{url('css/pignose.calendar.css')}}" />
+
 
 </head>
 <body>
 
-    <section class="text_right" style="height:60px; padding:20px;">    
-        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/index'"><i class="fas fa-times-circle"></i></a>
-    </section>
+    <!-- <section class="text_right" style="height:60px; padding:20px;">    
+        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/'"><i class="fas fa-times-circle"></i></a>
+    </section> -->
+
     <form action="/{{$username}}/order/step3" method="post">
     {{ csrf_field() }}
     <div class="container">
@@ -24,7 +27,7 @@
                 <div class="order_img_profile">
                     <img src="{{url($user->avatar)}}"> 
                 </div>
-                <h3 class="headder_text text_center review_username">จ้างงาน {{$user->username}}</h3>
+                <h3 class="headder_text text_center fontsize14 pad5">จ้างงาน {{$user->username}}</h3>
             </div>
         </div>
         <div class="row margin_bomtom20">
@@ -39,7 +42,10 @@
 
         <div class="row">
             <div class="col">
-                <input type="date" class="input_line" name="date_work">
+                    <div class="inner-addon right-addon">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="text" id="text-calendar" class="calendar input_box" name="date_work"/>
+                    </div>
             </div>
         </div>
 
@@ -131,18 +137,31 @@
             </div>
         </div> -->
 
-        <nav class="container nav_bottom nav_bottom">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step2'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+        <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+            <div class="row">
+                <div class="col" style="display: inherit; padding-top:10px;">
+                    <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step2'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                </div>
+                <div class="col" style="display: inherit; padding-top:10px;">
+                    <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                </div>
             </div>
-            <div class="col">
-                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
-            </div>
-        </div>
         </nav>
 
     </div>
     </form>
+
+    <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('js/pignose.calendar.min.js') }}"></script>
+    <script>
+    jQuery(function($) {
+
+        $('input.calendar').pignoseCalendar({
+		format: 'YYYY-MM-DD' // date format string. (2017-02-02)
+        });
+        
+    });
+
+    </script>
 </body>
 </html>

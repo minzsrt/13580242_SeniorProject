@@ -13,9 +13,9 @@
 </head>
 <body>
 
-    <section class="text_right" style="height:60px; padding:20px;">    
+    <!-- <section class="text_right" style="height:60px; padding:20px;">    
         <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/'"><i class="fas fa-times-circle"></i></a>
-    </section>
+    </section> -->
 
     <form action="/{{$username}}/order/step1" method="post">
     {{ csrf_field() }}
@@ -25,8 +25,8 @@
             <div class="col">
                 <div class="order_img_profile">
                     <img src="{{url($user->avatar)}}"> 
-                </div>
-                <h3 class="headder_text text_center review_username">จ้างงาน {{$user->username}}</h3>
+                </div> 
+                <h3 class="headder_text text_center fontsize14 pad5">จ้างงาน {{$user->username}}</h3>
             </div>
         </div>
         <div class="row margin_bomtom20">
@@ -59,15 +59,17 @@
     				    <input type="hidden" name="id_category" id="id_category">
             </div>
         </div>
-        <nav class="container nav_bottom">
-        <div class="row">
-            <div class="col">
+
+        <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+            <div class="row">
+                <div class="col" style="display: inherit; padding-top:10px;">
+                </div>
+                <div class="col" style="display: inherit; padding-top:10px;">
+                    <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
+                </div>
             </div>
-            <div class="col">
-                <button type="submit" class="btn_color" style="background:#72AFD3; width:100%; margin:0;">ต่อไป</button>
-            </div>
-        </div>
         </nav>
+
         </form>
 
     </div>

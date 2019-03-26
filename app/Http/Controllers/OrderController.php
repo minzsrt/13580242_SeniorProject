@@ -326,7 +326,7 @@ class OrderController extends Controller
         // print_r('price : '.$order->price.'<br>');
         // print_r('time_work : '.$order->time_work.'<br>');
         // print_r('date_work : '.$order->date_work.'<br>');
-        return view('/orderstep5', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+        return view('/orderstep4', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
     }
     /**
      * Post Request to store step1 info in session
@@ -374,7 +374,7 @@ class OrderController extends Controller
         // dd($order->time_work);
         // dd($order->date_work);
         // dd($order->place);
-        return view('/orderstep6', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+        return view('/orderstep5', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
     }
 
     /**
@@ -426,7 +426,14 @@ class OrderController extends Controller
         event(new TriggerNotification($order->id_photographer));
         Notification::route('mail', $photographer->email)
             ->notify(new OrderCreatedEmail($user));
-        return redirect('/');
+        return redirect('order/'.$order->id.'/createsuccess');
+    }
+
+    public function createsuccess($id,Request $request){
+        $order = Order::find($id);
+        $user = User::findOrFail($order->id_photographer);
+        // dd($user);
+        return view('createOrderSuccess', compact('order', 'user'));
     }
 
     public function __construct()

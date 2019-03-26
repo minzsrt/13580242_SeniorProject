@@ -81,7 +81,7 @@ Route::get('{username}/order/step5', 'OrderController@createStep5');
 Route::post('{username}/order/step5', 'OrderController@postCreateStep5');
 Route::get('{username}/order/step6', 'OrderController@createStep6');
 Route::post('/order/store', 'OrderController@store');
-Route::get('orderstep7', function () {return view('orderstep7');});
+Route::get('/order/{id}/createsuccess', 'OrderController@createsuccess');
 Route::get('/order/{id}/invoice', 'OrderController@edit');
 Route::get('/order/{id}/update', 'OrderController@update');
 Route::get('invoiceSuccess', function () {return view('invoiceSuccess');});
