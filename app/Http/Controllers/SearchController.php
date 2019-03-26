@@ -7,10 +7,10 @@ use App\ImageAlbum;
 use App\PackageCard;
 use App\Category;
 use App\User;
+use App\Review;
 use Auth;
 use Storage;
 use Illuminate\Http\Request;
-use App\Http\Requests\AlbumRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Input;
@@ -22,28 +22,44 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request;
         $category = Input::get ( 'category' );
         $price1 = Input::get ( 'price1' );
         $price2 = Input::get ( 'price2' );
         $formattime = Input::get ( 'formattime' );
+        $id_category = Category::all();
 
-        $package_cards = PackageCard::Where([
-            ['id_category','LIKE',$category],
-            ['id_formattime', 'LIKE', $formattime],
-        ])->whereBetween( 'price', [$price1, $price2] )->get();
+        if(!empty($category) && !empty($price1) && !empty($price2) && !empty($formattime)){
+
+            $package_cards = PackageCard::Where([
+                ['id_category','LIKE',$category],
+                ['id_formattime', 'LIKE', $formattime],
+            ])->whereBetween( 'price', [$price1, $price2] )->groupBy('id_user')->orderBy('price','ASC')->get();
+            
+            if(!empty($package_cards)){
+                $albums = Album::all(); 
+                $data['price1'] =  $price1 ;
+                $data['price2'] =  $price2 ;
+                $data['formattime'] =  $formattime ;
+                $categorySearch = Category::findOrFail($category); 
+                return view('general.search',$data,compact('albums','id_category','categorySearch','package_cards'))->withDetails($package_cards);
+            }
+            else {
+                $data['price1'] =  $price1 ;
+                $data['price2'] =  $price2 ;
+                return view('general.search',$data,compact('id_category'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
+            }
+        }
+
+        $data['price1'] =  $price1 ;
+        $data['price2'] =  $price2 ;
+
+        return view('general.search',$data,compact('albums','id_category','package_cards'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
+
         
-        if(!empty($package_cards)){
-            $albums = Album::all();
-            $data['price1'] =  $price1 ;
-            $data['price2'] =  $price2 ;
-            return view('general.search',$data,compact('albums','image_albums','package_cards','categories','users','imgusers'))->withDetails($package_cards);
-        }
-        else {
-            $data['alertsearch'] = 'Search not found!';
-            return redirect('general.search',$data);
-        }
+        
     }
 
     /**

@@ -20,6 +20,7 @@
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/modal.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{url('css/pignose.calendar.css')}}" />
     
 </head>
 <body style="font-family: 'Prompt', sans-serif;">

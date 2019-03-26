@@ -98,21 +98,21 @@
   opacity: 0.7;
 }
 .pignose-calendar {
-  width: 80%;
-  max-width: 360px;
+  width: 100%;
+  /* max-width: 360px; */
   background-color: #ffffff;
-  border: 1px solid #d8d8d8;
-  font-size: 100%;
+  /* border: 1px solid #d8d8d8; */
+  font-size: 14px;
   margin: 0 auto;
-  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  /* -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25); */
 }
 .pignose-calendar .pignose-calendar-top {
   padding: 2.6em 0;
-  background-color: #fafafa;
-  border-bottom: 1px solid #e2e2e2;
+  background-color: #ffffff;
+  /* border-bottom: 1px solid #e2e2e2;
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
-          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125); */
   position: relative;
   overflow: hidden;
 }
@@ -139,7 +139,7 @@
 }
 .pignose-calendar .pignose-calendar-top .pignose-calendar-top-month {
   margin-bottom: 0.4em;
-  font-size: 130%;
+  font-size: 14px;
   font-weight: 600;
 }
 .pignose-calendar .pignose-calendar-top .pignose-calendar-top-nav {
@@ -233,8 +233,8 @@
 }
 .pignose-calendar .pignose-calendar-unit a {
   display: inline-block;
-  width: 2.4em;
-  height: 2.4em;
+  width: 2.3em;
+  height: 2.3em;
   border-radius: 50%;
   color: #49c4d0;
   line-height: 2.4em;
@@ -251,11 +251,12 @@
   background-color: #efefef;
 }
 .pignose-calendar .pignose-calendar-unit.pignose-calendar-unit-active a {
-  background-color: #2fabb7;
+  background-image: linear-gradient(to bottom, #72afd3, #4cc0df, #00d0df, #00dfd2, #37ecba);
+  /* background-color: #2fabb7; */
   color: #ffffff;
   font-weight: 600;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  /* -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); */
 }
 .pignose-calendar .pignose-calendar-unit.pignose-calendar-unit-active.pignose-calendar-unit-sun a,
 .pignose-calendar .pignose-calendar-unit.pignose-calendar-unit-active.pignose-calendar-unit-sat a {
@@ -280,7 +281,7 @@
 }
 .pignose-calendar .pignose-calendar-unit.pignose-calendar-unit-sun a,
 .pignose-calendar .pignose-calendar-unit.pignose-calendar-unit-sat a {
-  color: #fa4832;
+  color: #ff6955;
 }
 .pignose-calendar.pignose-calendar-default .pignose-calendar-body .pignose-calendar-row .pignose-calendar-unit.pignose-calendar-unit-toggle-active a {
   color: #cccccc !important;

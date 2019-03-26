@@ -40,6 +40,12 @@ nav{
     top: 20px;
     left: 20px;
 }
+.menu_list_active_p{
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
 /* menu */
 
 .menu_list_profile{
@@ -101,6 +107,7 @@ select.select_search {
     border-top:0;
     border-left:0;
     border-right:0;
+    border-radius: 0;
     background: none;
 }
 .btn_color{
@@ -454,6 +461,7 @@ select.select_search {
   .album_show{
     width:100%;
     height:auto;
+    max-height: 240px;
     overflow:hidden;
     position:relative;
     border-radius: 10px;
@@ -693,6 +701,9 @@ select.select_search {
 }
 .color_37ECBA{
     color: #37ECBA !important;
+}
+.color_AEAEAE{
+    color:#aeaeae !important;
 }
 
 .img_profile{
@@ -987,6 +998,9 @@ select.select_search {
 .pad20{
     padding: 20px;
    }
+   .pad10{
+    padding: 10px;
+   }
 #payment button{
     width:200px;
     height:40px;
@@ -1052,4 +1066,54 @@ select.select_search {
     
 .wf-container { width: 1170px; }
     
+}
+
+
+/* <a class="w">Hover over me!</a>
+<div class="p">Stuff shown on hover</div> */
+.boxshow {
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+    
+.cusor:hover + .boxshow {
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+    width: 100%;
+}
+
+/* style icon */
+.inner-addon .fas {
+  position: absolute;
+  /* padding: 10px; */
+  padding-right: 10px;
+  color: #dbdbdb;
+  pointer-events: none;
+}
+.inner-addon .selecticon{
+    position: absolute;
+    padding: 10px;
+    color: #dbdbdb;
+    pointer-events: none;
+}
+
+/* align icon */
+.left-addon .fas  { left:  0px;}
+.right-addon .fas { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.noneshadow{
+    box-shadow: none !important;
 }

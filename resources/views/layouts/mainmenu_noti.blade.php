@@ -24,28 +24,25 @@
 <nav>
         <div class="container" style="height:100%;">
             <div class="row" style="height:100%;">
+            <div class="col">
+                <button class="btn_menu_list" onclick="window.location.href='{{url('/')}}'">
+                        <img class="menu_list" src="{{url('assets/image/logo.png')}}">
+                </button>
+                </div>
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='{{url('/')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Index'))
-                        <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
+                        <img class="menu_list_active_p" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/home-button.svg')}}">
                 </button>
                 </div>
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='{{url('photographer/chatchannel')}}'">
-                    @if (trim($__env->yieldContent('page_title')==='Chatchannel'))
-                        <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
-                    @endif
-                    <img class="menu_list" src="{{url('assets/image/speech-bubbles.svg')}}" >
-                </button>
-                </div>
-                <div class="col">
-                <button class="btn_menu_list _pst-rlt"  onclick="window.location.href='/notification/{{Auth::user()->username}}'">
+                <button class="btn_menu_list _pst-rlt" onclick="window.location.href='/notification/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Notification'))
-                        <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
+                        <img class="menu_list_active_p" src="{{url('assets/image/circle.svg')}}">
                     @endif
-					<img class="menu_list" src="{{url('assets/image/notification.svg')}}" >
+					<img class="menu_list" src="{{url('assets/image/notification.svg')}}">
 
 					<div class="noti-badge {{ $notification_count > 0 ? '' : '_dp-n' }}">
 						{{ $notification_count }}
@@ -55,7 +52,7 @@
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='/profile/{{Auth::user()->username}}'">
                     @if (trim($__env->yieldContent('page_title')==='Profile'))
-                        <img class="menu_list_active" src="{{url('assets/image/circle.svg')}}">
+                        <img class="menu_list_active_p" src="{{url('assets/image/circle.svg')}}">
                     @endif
                     <img class="menu_list" src="{{url('assets/image/friend.svg')}}" >
                 </button>

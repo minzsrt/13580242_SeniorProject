@@ -271,6 +271,35 @@
         };
         SetRatingStar();
 
+        // calendar
+        $('.calendar').pignoseCalendar({
+            scheduleOptions: {
+                colors: {
+                    employed: '#2fabb7'
+                }
+            },
+            schedules: [
+                {
+                name: 'employed',
+                date: '2019-03-08'
+                },
+                {
+                name: 'employed',
+                date: '2019-03-08'
+                },
+                {
+                name: 'employed',
+                date: '2019-03-05',
+                }
+            ],
+            select: function(date) {
+                console.log('your first date', date);
+                // window.onload = function() {
+                //     document.getElementById("myLink").value = date;
+                // } 
+            }
+        });
+
     });
 </script>
 
