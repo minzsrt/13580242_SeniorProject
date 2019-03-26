@@ -107,8 +107,10 @@ button:disabled {
   padding: 0 7px;
   width: 22px;
   height: 22px;
-  right: 0;
-  background-color: red;
+  right: 15px;
+  top: 14px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#72afd3), color-stop(#4cc0df), color-stop(#00d0df), color-stop(#00dfd2), to(#37ecba));
+  background-image: linear-gradient(to bottom, #72afd3, #4cc0df, #00d0df, #00dfd2, #37ecba);
   color: #fff;
   border-radius: 999999px;
   font-size: 13px;
