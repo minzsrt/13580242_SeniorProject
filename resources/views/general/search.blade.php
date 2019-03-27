@@ -16,7 +16,7 @@
                 <div class="col-md">
                     <span class="all_more_link">ประเภทงาน</span>
                     <div class="inner-addon right-addon">
-                        <i class="fas fa-chevron-down selecticon"></i>
+                        <i class="fas fa-chevron-down selecticon right-icon"></i>
                         <!-- {!! Form::select('category', $id_category, $id_category, ['class' => 'form-control select_search']) !!} -->
                         <select name="category" class="form-control select_search">
                             @foreach($id_category as $valuecategory)
@@ -48,7 +48,7 @@
                 <div class="col-md" style="margin-top:10px;">
                     <span class="all_more_link">วันที่</span>
                     <div class="inner-addon right-addon">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i class="fas fa-calendar-alt right-icon"></i>
                         <input type="text" id="text-calendar" class="calendar input_box" name="date"/>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                 <div class="col-md input-group" style="margin-top:10px;">
                     <span class="all_more_link">สถานที่</span>
                     <div class="inner-addon right-addon">
-                        <i class="fas fa-chevron-down selecticon"></i>
+                        <i class="fas fa-chevron-down selecticon right-icon"></i>
                         <select class="form-control select_search">
                             <option selected>เลือกสถานที่...</option>
                             <option value="1">กรุงเทพและปริมลฑล</option>

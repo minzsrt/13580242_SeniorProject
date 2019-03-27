@@ -11,16 +11,21 @@ use App\Notification as NotificationModel;
 use App\Notifications\OrderCreatedEmail;
 use App\Notifications\OrderFreelanceAcceptEmail;
 use App\Order;
+use App\Sendwork;
+
 // use Request;
 use App\PackageCard;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
+use Carbon\Carbon;
 use Notification;
-use Storage;
+use Zipper;
+// use Storage;
 
 class OrderController extends Controller
 {
@@ -52,7 +57,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-
+        $order = Order::find($id);
+        return view('photographer.order.show', compact('order'));
     }
 
     /**
@@ -65,7 +71,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         // dd($order);
-        return view('photographer.notifications.orders.invoice', compact('order'));
+        return view('photographer.order.invoice', compact('order'));
 
     }
 
@@ -84,7 +90,7 @@ class OrderController extends Controller
         $order->update($request->all());
         NotificationModel::create([
             'user_id' => $order->id_employer,
-            'message' => 'Freelance '.$order->photographer->username.' ได้รับงานของคุณ ',
+            'message' => 'ช่างภาพ '.$order->photographer->username.' ได้ตอบรับงานของคุณ ',
         ]);
         event(new TriggerNotification($order->id_employer));
         Notification::route('mail', $order->employer->email)
@@ -209,20 +215,6 @@ class OrderController extends Controller
         // print_r('price : '.$order->price.'<br>');
         // print_r('time_work : '.$order->time_work.'<br>');
         return view('/orderstep3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-
-        // $order = $request->session()->get('order');
-        // $user = User::whereUsername($username)->first();
-        // // print_r('category : '.$order->id_category.'<br>');
-        // // print_r('id_photographer : '.$order->id_photographer.'<br>');
-        // // print_r('id_formattime : '.$order->id_formattime.'<br>');
-        // // print_r('price : '.$order->price.'<br>');
-        // if ($order->id_formattime == '3') {
-        //     // print_r($order->id_formattime);
-        //     return view('/orderstep3-fm3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-        // } else {
-        //     // print_r($order->id_formattime);
-        //     return view('/orderstep3-fm12', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-        // }
     }
     /**
      * Post Request to store step1 info in session
@@ -245,72 +237,8 @@ class OrderController extends Controller
         $order->end_time = $request->end_time;
         return redirect($username.'/order/step4')->with('username', $username);
 
-        // $validatedData = $request->validate([
-        //     'time_work' => 'required',
-        // ]);
-        // $order = $request->session()->get('order');
-        // $request->session()->put('order', $order);
-        // $order->time_work = $request->time_work;
-        // return redirect($username.'/order/step4')->with('username', $username);
-
     }
-    /**
-     * Show the Product Review page
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function createStep4($username, Request $request)
-    // {
 
-    //     $order = $request->session()->get('order');
-    //     $user = User::whereUsername($username)->first();
-    //     // print_r('category : '.$order->id_category.'<br>');
-    //     // print_r('id_photographer : '.$order->id_photographer.'<br>');
-    //     // print_r('id_formattime : '.$order->id_formattime.'<br>');
-    //     // print_r('price : '.$order->price.'<br>');
-    //     if ($order->id_formattime == '3') {
-    //         // print_r($order->id_formattime);
-    //         return view('/orderstep3-fm3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-    //     } else {
-    //         // print_r($order->id_formattime);
-    //         return view('/orderstep3-fm12', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-    //     }
-
-    //     // $order = $request->session()->get('order');
-    //     // $user = User::whereUsername($username)->first();
-    //     // // print_r('category : '.$order->id_category.'<br>');
-    //     // // print_r('id_photographer : '.$order->id_photographer.'<br>');
-    //     // // print_r('id_formattime : '.$order->id_formattime.'<br>');
-    //     // // print_r('price : '.$order->price.'<br>');
-    //     // // print_r('time_work : '.$order->time_work.'<br>');
-    //     // return view('/orderstep4', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
-
-    // }
-    // /**
-    //  * Post Request to store step1 info in session
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function postCreateStep4($username, Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'time_work' => 'required',
-    //     ]);
-    //     $order = $request->session()->get('order');
-    //     $request->session()->put('order', $order);
-    //     $order->time_work = $request->time_work;
-    //     return redirect($username.'/order/step5')->with('username', $username);
-
-    //     // $validatedData = $request->validate([
-    //     //     'date_work' => 'required',
-    //     // ]);
-    //     // $order = $request->session()->get('order');
-    //     // $request->session()->put('order', $order);
-    //     // $order->date_work = $request->date_work;
-    //     // return redirect($username.'/order/step5')->with('username', $username);
-
-    // }
     /**
      * Show the Product Review page
      *
@@ -434,6 +362,58 @@ class OrderController extends Controller
         $user = User::findOrFail($order->id_photographer);
         // dd($user);
         return view('createOrderSuccess', compact('order', 'user'));
+    }
+
+    public function uploadfileview($id){
+
+        $order = Order::find($id);
+        // dd($order);
+        return view('photographer.order.upload',compact('order'));
+
+    }
+
+    public function uploadfile($id,Request $request){
+
+            foreach ($request->filenames as $filename) {
+                $filename = $filename->store('order-'.$id, ['disk' => 'sendwork_files']);
+                Sendwork::create([
+                    'filename' => $filename,
+                    'id_order' => $id,
+                ]);
+                // dd('sendwork');
+            }
+            return redirect('order/'.$id.'/uploadfile/success');
+
+    }
+
+    public function uploadfilesuccess($id){
+
+        $data['id'] = $id;
+        return view('uploadfileSuccess',$data);
+
+    }
+
+    public function viewfile($id){
+
+        $order = Order::find($id);
+        $fileworks = Sendwork::where('id_order',$id)->get();
+        // dd($fileworks);
+        return view('photographer.order.viewfile',compact('order','fileworks'));
+
+    }
+
+    public function downloadzip($id)
+    {
+        $order = Order::find($id);
+
+        if($order->id_employer == Auth::user()->id || Auth::user()->role_id == '1'){
+            $files = glob(public_path('sendwork/order-'.$id.'/*'));
+            Zipper::make(public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'))->add($files);
+            return response()->download(public_path('sendwork/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'));
+        }else{
+            abort(404);
+        }
+        
     }
 
     public function __construct()

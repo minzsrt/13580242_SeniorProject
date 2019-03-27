@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col">
                     <div class="inner-addon right-addon">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i class="fas fa-calendar-alt right-icon"></i>
                         <input type="text" id="text-calendar" class="calendar input_box" name="date_work"/>
                     </div>
             </div>

@@ -9,6 +9,7 @@ use App\Category;
 use App\User;
 // use Request;
 use Auth;
+use Zipper;
 // use Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +22,7 @@ class AlbumsController extends Controller
 {
     public function __construct(){
 
-        $this->middleware('auth',['except'=>['show']]);
+        $this->middleware('auth',['except'=>['show','downloadZip']]);
 
      }
     public function index(){
@@ -129,6 +130,15 @@ class AlbumsController extends Controller
         $album->delete();
 		return redirect('profile/'.Auth::user()->username)->with('alertdelete', 'ลบอัลบั้ม'.$album->name_album.'สำเร็จ!');
     }
+
+    public function download($id)
+    {
+        $ImageAlbum = ImageAlbum::findOrFail($id);
+        $file_path = $ImageAlbum->name_image; 
+        return '<a href=" /'.$ImageAlbum->name_image.' " download=" /'.$ImageAlbum->name_image.'">download</a>';
+         
+    }
+
 
      
 

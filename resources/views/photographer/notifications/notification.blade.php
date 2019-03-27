@@ -2,23 +2,23 @@
 @section('page_title', 'Notification')
 @section('content')
 <div class="container">
-    <!-- @foreach($orders as $order)
+    @foreach($messagenoti as $messagenotishow)
         <div class="row margin_box10">
             <div class="col-12 noti_card noti_active">
                 <div class="row">
                     <div class="col-12" >
-                        <span class="fontsize10">วันนี้</span><br>
-                        @foreach($employer as $employ)
-                            <span class="fontsize14">{{$employ->username}} ชำระเงินเรียบร้อย</span>
-                        @endforeach
-                    </div>
+                        <span class="fontsize10">{{date_format($messagenotishow->created_at,"H:i:s Y/m/d ")}}</span><br>
+                        <span class="fontsize10">
+                            </span><br>
+                            <span class="fontsize14">{{$messagenotishow->message}}</span>
+                        </div>
                     <div class="col-12 text_center">
                         <button class="btn_color" onclick="window.location.href='/management'"}}'">จัดการออร์เดอร์</button>
                     </div>
             </div>
             </div>
         </div>
-    @endforeach -->
+    @endforeach
 
         @foreach($orders as $order)
         <div class="row margin_box10">
@@ -31,11 +31,12 @@
                         @endforeach
                     </div>
                     <div class="col-12 text_center">
-                        <button class="btn_color" data-toggle="modal" data-target="#modalorder{{$order->id}}">ดูรายละเอียด</button>
+                        <button class="btn_color" >ดูรายละเอียด</button>
+                        <!-- <button class="btn_color" data-toggle="modal" data-target="#modalorder{{$order->id}}">ดูรายละเอียด</button> -->
                     </div>
             </div>
             </div>
-            <div class="modal fade" id="modalorder{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+            <!-- <div class="modal fade" id="modalorder{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -103,7 +104,7 @@
                 @endif
                 </div>
             </div>
-            </div>
+            </div> -->
         </div>
         @endforeach
 </div> 

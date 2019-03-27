@@ -16,7 +16,7 @@
 <body>
 
     <section class="text_right" style="height:60px; padding:20px;">    
-        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/'"><i class="fas fa-times-circle"></i></a>
+        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/order/{{$order->id}}'"><i class="fas fa-times-circle"></i></a>
     </section>
 
 {!! Form::model($order, ['method' => 'GET','action' => ['OrderController@update',$order->id]]) !!}

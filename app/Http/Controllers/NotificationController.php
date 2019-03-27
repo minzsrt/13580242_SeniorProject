@@ -17,6 +17,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Storage;
+use Response;
 
 class NotificationController extends Controller
 {
@@ -34,7 +35,7 @@ class NotificationController extends Controller
             foreach ($orders as $order) {
                 $employer = User::where('id', 'like', $order->id_employer)->get();
             }
-            $messagenoti = Notification::all();
+            $messagenoti = Notification::where('user_id',$user->id)->get();
             return view('photographer.notifications.notification', compact('user', 'orders', 'employer', 'messagenoti'))->with('username', $username);
         } else {
             $orders = Order::where('id_employer', 'Like', $user->id)->get();
@@ -123,4 +124,7 @@ class NotificationController extends Controller
 
         return response()->json(null, 204);
     }
+
+    
+
 }

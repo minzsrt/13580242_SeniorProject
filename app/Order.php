@@ -35,4 +35,10 @@ class Order extends Model
         return $this->hasOne('App\Payment');
     }
 
+    public function sendwork(){
+
+        return $this->hasMany('App\Sendwork');
+        
+    }
+
 }

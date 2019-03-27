@@ -71,7 +71,10 @@ return [
             'driver' => 'local',
             'root'   => public_path() . '',
         ],
-        
+        'sendwork_files' => [
+            'driver' => 'local',
+            'root'   => public_path('sendwork') . '',
+        ],
 
     ],
 

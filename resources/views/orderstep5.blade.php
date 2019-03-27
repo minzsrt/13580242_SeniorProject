@@ -43,75 +43,50 @@
                     <div class="card-body">
                             <div class="row">
                                 <div class="col" style="margin-bottom: -0.5rem;">
-                                    <span  class="fontsize16">{{$order->category->name_category}}</span><br>
+                                    <span  class="fontsize16 font-weight-bold">{{$order->category->name_category}}</span><br>
                                     <span class="fontsize14">
                                     ถ่ายภาพ{{$order->formattime->name_format_time}}
                                     </span>
                                 </div>
 
                                 <div class="col-4 text_right">
-                                    <h3  class="fontsize16">{{$order->price}} ฿</h3>
+                                    <h3  class="fontsize16 badge bg_3B5998 color_white">{{$order->price}} ฿</h3>
 
                                 </div>                
                             </div>
 
-                            <hr>
+                            <hr class="color_white">
 
-                            <div class="row">
-                                <div class="col-4">
-                                    <span class="all_more_link fontsize14 color_black font-weight-bold">สถานที่</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="all_more_link color_black font-weight-bold">วันที่</span> 
+                                        <br>
+                                        <span class="fontsize14">{{ date("j M, Y", strtotime($order->date_work) )}}</span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="all_more_link color_black font-weight-bold">เวลา</span> 
+                                        <br>
+                                        <span class="fontsize14">{{$order->start_time.' - '.$order->end_time}}</span>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <span class="all_more_link fontsize14 color_black">{{ $order->place['place_name'] }}</span>
-                                    <a class="btn badge badge-info color_white" href="{{ $order->place['url'] }}" target="_blank">ดูแผนที่</a>
-                                </div>
-                            </div>
-                            
 
-                            <div class="row">
-                                <div class="col-4">
-                                    <span class="all_more_link fontsize14 color_black font-weight-bold">วันที่</span>
-                                </div>
-                                <div class="col">
-                                    <span class="all_more_link fontsize14 color_black">{{$order->date_work}}</span>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <span class="all_more_link fontsize14 color_black font-weight-bold">เวลา</span>
-                                </div>
-                                <div class="col">
-                                    <span class="all_more_link fontsize14 color_black">{{$order->start_time.' - '.$order->end_time}}</span>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                <span class="all_more_link fontsize14 color_black font-weight-bold">
-                                    สิ่งที่ได้รับ
+                                <span class="all_more_link color_black font-weight-bold">สถานที่</span> 
+                                <br>
+                                <span class="fontsize14 ">{{ $order->place['place_name'] }}</span>
+                                <a class="btn badge badge-info color_white" href="{{ $order->place['url'] }}" target="_blank">ดูแผนที่</a>
+                                <hr class="color_white">
+                                <span class="all_more_link color_black font-weight-bold">
+                                    สิ่งที่ลูกค้าได้รับ
                                 </span>
-                                <p class="all_more_link fontsize12 color_black">
+                                <p class="all_more_link fontsize14 color_black">
                                     {{$order->detail}}
                                 </p>
-                                </div>
-                            </div>
-
+                                
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- <div class="row">
-            <div class="col">
-                <span class="all_more_link">ส่วนลด</span>
-                <input type="text" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
-            </div>
-            <div class="col text_right" style="padding-top:18px;">
-                <span class="headder_text ">-100 ฿</span>
-            </div>
-        </div> -->
 
         <input type="hidden" name="id_category" value="{{$order->id_category}}">
         <input type="hidden" name="id_formattime" value="{{$order->id_formattime}}">
@@ -123,15 +98,15 @@
 		<input type="hidden" name="end_time" value="{{$order->end_time}}">
 		<input type="hidden" name="id_photographer" value="{{ $user->id }}">
 		
-        <nav class="container nav_bottom">
-        <div class="row">
-            <div class="col">
-                <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step4'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+        <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+            <div class="row">
+                <div class="col" style="display: inherit; padding-top:10px;">
+                    <button type="button" class="btn_color" onclick="window.location.href='/{{$username}}/order/step4'" style="background:#fff; border:1px solid #72AFD3; color:#72AFD3; width:100%; margin:0;">กลับ</button>
+                </div>
+                <div class="col" style="display: inherit; padding-top:10px;">
+                    <button type="submit" id="load" class="btn_color btnload" style="background:#72AFD3; width:100%; margin:0;">จ้างงาน</button>
+                </div>
             </div>
-            <div class="col">
-                <button type="submit" id="load" class="btn_color btnload" style="background:#72AFD3; width:100%; margin:0;">จ้างงาน</button>
-            </div>
-        </div>
         </nav>
 
     </div>
