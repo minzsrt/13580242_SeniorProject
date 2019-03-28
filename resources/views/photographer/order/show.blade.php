@@ -200,6 +200,75 @@
                                                     </button>
                                             </div>
                                         </div>
+
+                                        <button class="btn_color" data-toggle="modal" data-target="#modalorder{{$order->id}}">ดูรายละเอียด</button>
+
+                                        <div class="modal fade" id="modalorder{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="modalorder{{$order->id}}Title" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/order/{{$order->id}}/review/store" method="post">
+                                                    {{ csrf_field() }}
+                                                    <div class="container">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="order_img_profile">
+                                                                <img src="{{url($order->photographer->avatar)}}"> 
+                                                            </div>
+                                                            <h3 class="headder_text text_center review_username">รีวิวช่างภาพ {{$order->photographer->username}}</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md text_left">
+                                                            <span class="all_more_link">เรทติ้ง</span>
+                                                            <div class="form-group">
+                                                                <div class="container">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                        <div class="star-rating">
+                                                                            <span class="fas fa-star" data-rating="1"></span>
+                                                                            <span class="fas fa-star" data-rating="2"></span>
+                                                                            <span class="fas fa-star" data-rating="3"></span>
+                                                                            <span class="fas fa-star" data-rating="4"></span>
+                                                                            <span class="fas fa-star" data-rating="5"></span>
+                                                                            <input type="hidden" name="rating" class="rating-value" value="0">
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md text_left">
+                                                            <span class="all_more_link">ความคิดเห็น</span>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <input type="textarea" name="comment" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" name="id_user" class="form-control " value="{{Auth::user()->id}}">
+                                                        <input type="hidden" name="id_photographer" class="form-control " value="{{$order->id_photographer}}">
+                                                        <input type="hidden" name="id_order" class="form-control " value="{{$order->id}}">
+                                                        <button type="submit" class="btn btn_color btn_width">
+                                                        รีวิว
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                    </form>
+                                                </div>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                         @elseif($order->status_order == 'เสร็จสิ้น' && $review != null)
                                         <div class="row">
                                             <div class="col">
@@ -296,19 +365,44 @@
     // rating
     @if($order->status_order == 'เสร็จสิ้น' && $review != null)
     $(document).ready(function() {
-        var $star_rating = $(' .star-rating .fas');
+        var $star_rating_val = $(' .star-rating .fas');
         var SetRatingStar = function() {
-            return $star_rating.each(function() {
-                if (parseInt($star_rating.siblings('input.rating-value{{$review->id}}').val()) >= parseInt($(this).data('rating{{$review->id}}'))) {
+            return $star_rating_val.each(function() {
+                if (parseInt($star_rating_val.siblings('input.rating-value{{$review->id}}').val()) >= parseInt($(this).data('rating{{$review->id}}'))) {
                     return $(this).addClass('checked');
                 }
             });
         };
     SetRatingStar();
+    });
     @endif
 
+    // rating
+    @if($order->status_order == 'ส่งงาน')
+    $(document).ready(function() {
+
+    var $star_rating = $('.star-rating .fas');
+
+    var SetRatingStar = function() {
+    return $star_rating.each(function() {
+        if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+        return $(this).addClass('checked');
+        } else {
+        return $(this).removeClass('checked');
+        }
+    });
+    };
+
+    $star_rating.on('click', function() {
+    $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+    return SetRatingStar();
+    });
+
+    SetRatingStar();
 
     });
+    @endif
+
     
     
 </script>

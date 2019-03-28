@@ -59,6 +59,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
+        $this->middleware('auth');
         $order = Order::find($id);
         $review = Review::where('id_order',$id)->first();
         // dd($review);
