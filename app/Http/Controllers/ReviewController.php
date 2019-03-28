@@ -9,7 +9,7 @@ use App\Events\TriggerNotification;
 use App\Http\Requests\AlbumRequest;
 use App\ImageAlbum;
 use App\Notification as NotificationModel;
-use App\Notifications\OrderCreatedEmail;
+use App\Notifications\OrderReviewEmail;
 use App\Order;
 use App\Photographer;
 use App\DepositAccount;
@@ -71,16 +71,37 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $checkorder = Review::where('id_order',$request->id_order)->first();
-        if(empty($checkorder)){
-            // print_r('empty');
+        $check_order_in_review = Review::where('id_order',$request->id_order)->first();
+
+        $order = Order::findOrFail($request->id_order);
+        $order->status_order = 'เสร็จสิ้น';
+        $order->update();
+
+        $addmoney = DepositAccount::findOrFail($order->id_photographer);
+        $addmoney->total = $addmoney->total + $order->total-((5/100)*($order->total));
+        // dd($addmoney->total);
+        $addmoney->update();
+
+        if(empty($check_order_in_review)){
+
             Review::create($request->all());
+
+            NotificationModel::create([
+                'user_id' => $order->id_photographer,
+                'id_order' => $order->id,
+                'message' => 'ผู้ว่าจ้าง '.$order->employer->username.' ได้รีวิวให้คุณ',
+            ]);
+
+            event(new TriggerNotification($order->id_photographer));
+    
+            Notification::route('mail', $order->photographer->email)
+                ->notify(new OrderReviewEmail($order->employer));
+
             return redirect('reviewSuccess');  
+
         }else{
-            // print_r('not empty');
             abort(404);
         }
-        // Review::create($request->all());
     }
 
     /**

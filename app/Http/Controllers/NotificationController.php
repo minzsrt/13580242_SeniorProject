@@ -35,15 +35,16 @@ class NotificationController extends Controller
             foreach ($orders as $order) {
                 $employer = User::where('id', 'like', $order->id_employer)->get();
             }
-            $messagenoti = Notification::where('user_id',$user->id)->get();
+            $messagenoti = Notification::where('user_id',$user->id)->orderBy('created_at','DESC')->get();
             return view('photographer.notifications.notification', compact('user', 'orders', 'employer', 'messagenoti'))->with('username', $username);
         } else {
+            $messagenoti = Notification::where('user_id',$user->id)->orderBy('created_at','DESC')->get();
             $orders = Order::where('id_employer', 'Like', $user->id)->get();
             foreach ($orders as $order) {
                 $photographer = User::where('id', 'like', $order->id_photographer)->get();
             }
             // dd($orders);
-            return view('general.notification', compact('user', 'orders', 'photographer'))->with('username', $username);
+            return view('general.notification', compact('user', 'orders', 'photographer','messagenoti'))->with('username', $username);
         }
 
     }

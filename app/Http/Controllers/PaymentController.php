@@ -53,7 +53,7 @@ class PaymentController extends Controller
             $pay->livemode = $result['livemode'];
             $pay->save();
 
-            $order->status_order = 'ลงคิว';
+            $order->status_order = 'ชำระเงินแล้ว';
             $order->status_payment = 'ชำระเงินแล้ว';
             $order->save();
 
@@ -65,6 +65,7 @@ class PaymentController extends Controller
 
         NotificationModel::create([
             'user_id' => $order->id_photographer,
+            'id_order' => $order->id,
             'message' => 'ผู้ว่าจ้าง '.$order->employer->username.' ได้ชำระเงินให้คุณแล้ว',
         ]);
         event(new TriggerNotification($order->id_photographer));

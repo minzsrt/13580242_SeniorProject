@@ -14,7 +14,7 @@
                     <i class="fas fa-plus"></i> อัปโหลดไฟล์
                     </a>
                 @elseif( Auth::user()->id == $order->id_employer)
-                    <a class="btn badge bg_72AFD3 color_white radius_badge" style="position: absolute; right: 0;" href="/order/{{$order->id}}/download-all-file" >
+                    <a class="btn badge bg_72AFD3 color_white radius_badge" style="position: absolute; right: 0;" href="/order/{{$order->id}}/download" >
                     <i class="fas fa-file-archive"></i> ดาวน์โหลด
                     </a>
                 @endif

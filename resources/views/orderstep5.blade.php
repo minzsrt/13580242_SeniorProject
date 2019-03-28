@@ -34,28 +34,28 @@
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width: 84%" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-            </div>
+            </div> 
         </div>
 
         <div class="row">
             <div class="col">
                 <div class="card cardbox">
                     <div class="card-body">
-                            <div class="row">
-                                <div class="col" style="margin-bottom: -0.5rem;">
-                                    <span  class="fontsize16 font-weight-bold">{{$order->category->name_category}}</span><br>
-                                    <span class="fontsize14">
-                                    ถ่ายภาพ{{$order->formattime->name_format_time}}
-                                    </span>
+                                <div class="row">
+                                    <div class="col" style="margin-bottom: -0.5rem;">
+                                        <span  class="fontsize16 font-weight-bold">{{$order->category->name_category}}</span><br>
+                                        <span class="fontsize14">
+                                        ถ่ายภาพ{{$order->formattime->name_format_time}}
+                                        </span>
+                                    </div>
+
+                                    <div class="col-4 text_right">
+                                        <h3  class="fontsize18 badge category_badge color_white">{{number_format($order->price)}} ฿</h3>
+
+                                    </div>                
                                 </div>
 
-                                <div class="col-4 text_right">
-                                    <h3  class="fontsize16 badge bg_3B5998 color_white">{{$order->price}} ฿</h3>
-
-                                </div>                
-                            </div>
-
-                            <hr class="color_white">
+                                <hr class="color_white">
 
                                 <div class="row">
                                     <div class="col">
@@ -70,19 +70,21 @@
                                     </div>
                                 </div>
 
-                                <span class="all_more_link color_black font-weight-bold">สถานที่</span> 
-                                <br>
-                                <span class="fontsize14 ">{{ $order->place['place_name'] }}</span>
-                                <a class="btn badge badge-info color_white" href="{{ $order->place['url'] }}" target="_blank">ดูแผนที่</a>
-                                <hr class="color_white">
-                                <span class="all_more_link color_black font-weight-bold">
-                                    สิ่งที่ลูกค้าได้รับ
-                                </span>
-                                <p class="all_more_link fontsize14 color_black">
-                                    {{$order->detail}}
-                                </p>
-                                
-                        </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="all_more_link color_black font-weight-bold">สถานที่</span> 
+                                        <br>
+                                        <span class="fontsize14 ">{{ $order->place['place_name'] }}</span>
+                                        <a class="btn badge badge-info color_white" href="{{ $order->place['url'] }}" target="_blank"><i class="fas fa-map-marker-alt"></i> ดูแผนที่</a>
+                                        <hr class="color_white">
+                                        <span class="all_more_link color_black font-weight-bold">
+                                            สิ่งที่ลูกค้าได้รับ
+                                        </span>
+                                        <p class="all_more_link fontsize14 color_black">
+                                            {{$order->detail}}
+                                        </p>
+                                    </div>
+                                </div>
                     </div>
                 </div>
             </div>

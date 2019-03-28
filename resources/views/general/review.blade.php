@@ -44,7 +44,7 @@
                 </div>
             </div>
             <input type="hidden" name="id_user" class="form-control " value="{{Auth::user()->id}}">
-            <input type="text" name="id_photographer" class="form-control " value="{{$user->id}}">
+            <input type="hidden" name="id_photographer" class="form-control " value="{{$user->id}}">
             <input type="hidden" name="id_order" class="form-control " value="{{$id}}">
             <button type="submit" class="btn btn_color btn_width">
             รีวิว

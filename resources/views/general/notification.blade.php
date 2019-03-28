@@ -1,106 +1,23 @@
 @extends('layouts.mainmenu_notiG')
 @section('page_title', 'Notification')
 @section('content')
-        
-        <div class="container">
-        @foreach($orders as $order)
-        <div class="row margin_box10">
-            <div class="col-12 noti_card noti_active">
-                <div class="row">
-                    <div class="col-12" >
-                        <span class="fontsize10">วันนี้</span><br>
-                        @foreach($photographer as $photograph)
-                            <span class="fontsize14">{{$photograph->username}} ตอบรับออเดอร์ว่าจ้างของคุณแล้ว</span>
-                        @endforeach
-                    </div>
-                    <div class="col-12 text_center">
-                        <a href="/listpayment/{{ $order->id }}" class="btn_color link">ชำระเงิน</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
 
-        @foreach($orders as $order)
-        <div class="row margin_box10">
-            <div class="col-12 noti_card noti_active">
-                <div class="row">
-                    <div class="col-12" >
-                        <span class="fontsize10">วันนี้</span><br>
-                        @foreach($photographer as $photograph)
-                            <span class="fontsize14">คุณได้ส่งคำขอจ้างงาน {{$photograph->username}}</span>
-                        @endforeach
-                    </div>
-                    <div class="col-12 text_center">
-                        <button class="btn_color" data-toggle="modal" data-target="#modalorder{{$order->id}}">ดูรายละเอียด</button>
-                    </div>
-            </div>
-            </div>
-            <div class="modal fade" id="modalorder{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">รายละเอียด</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col fontsize18">
-                            <span class="fontsize18">ภาพ{{$order->category->name_category}}</span><br>
-                            <span style="font-size:14px;">
-                            ถ่ายภาพ{{$order->formattime->name_format_time}}
+    <div class="container">
+        @foreach($messagenoti as $messagenotishow)
+            <div class="row margin_box10" onclick="window.location.href='/order/{{$messagenotishow->id_order}}'">
+                <div class="col-12 noti_card noti_active ">
+                            <span class="all_more_link fontsize10">
+                                {{date_format($messagenotishow->created_at,"g:i A jS M Y  ")}}
                             </span>
-                        </div>
-                        <div class="col text_right">
-                            <h3  style="font-size:18px; padding-right:20px;">{{$order->total}} ฿</h3>
-                        </div>                
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col" style="color:#000;">
-                            <table class="all_more_link" style="width:100%; font-size: 14px; color:#000;">
-                            <tr>
-                                <th>สถานที่ </th>
-                                <td>{{$order->place}}</td>
-                            </tr>
-                            <tr>
-                                <th>วันที่ </th>
-                                <td>{{$order->date_work}}</td>
-                            </tr>
-                            <tr>
-                                <th>ชั่วโมง </th>
-                                <td>{{$order->time_work}} ชั่วโมงต่อวัน</td>
-                                <td class="text_right" style="padding-right:20px;">{{$order->price}}x{{$order->time_work}}</td>
-                            </tr>
-                            </table>
-                            <span class="all_more_link fontsize14" style="color:#000; font-weight: bold;">
-                                สิ่งที่ลูกค้าได้รับ
+                            <br>
+                            <span class="fontsize14">
+                                {{$messagenotishow->message}}
                             </span>
-                            <p class="all_more_link fontsize14" style="color:#000;">
-                                {{$order->detail}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                @if($order->status_order == 'รอชำระเงิน')
-                <div class="modal-footer">
-                    <button type="button" class="btn btn_layout_back" data-dismiss="modal">ยกเลิก</button>
-                    <button class="btn_layout_next" onclick="window.location.href='/order/{{$order->id}}/invoice'"}}'">
-                    @if($order->status_order == 'รอการตอบกลับ')
-                        ส่งใบเสนอราคา
-                    @elseif($order->status_order == 'รอการตอบกลับ')
-                        แก้ไขใบเสนอราคา
-                    @endif
-                    </button>
-                </div>
-                @endif
                 </div>
             </div>
-            </div>
-        </div>
         @endforeach
+    </div>
+
 </div> 
 @stop
 

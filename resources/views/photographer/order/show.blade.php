@@ -24,8 +24,8 @@
                                     </div>
 
                                     <div class="col-4 text_right">
-                                        <h3  class="fontsize18 badge category_badge color_white">{{$order->price}} ฿</h3>
-
+                                        <h3  class="fontsize18 badge category_badge color_white">{{number_format($order->total)}} ฿
+                                        </h3>
                                     </div>                
                                 </div>
 
@@ -52,7 +52,7 @@
                                     <div class="col">
                                         <span class="all_more_link color_black font-weight-bold">วันที่</span> 
                                         <br>
-                                        <span class="fontsize14">{{ date("j M, Y", strtotime($order->date_work) )}}</span>
+                                        <span class="fontsize14">{{ date("j M Y", strtotime($order->date_work) )}}</span>
                                     </div>
                                     <div class="col">
                                         <span class="all_more_link color_black font-weight-bold">เวลา</span> 
@@ -67,7 +67,59 @@
                                         <br>
                                         <span class="fontsize14 ">{{ $order->place_name }}</span>
                                         <a class="btn badge badge-info color_white" href="{{ $order->url }}" target="_blank"><i class="fas fa-map-marker-alt"></i> ดูแผนที่</a>
-                                        <hr class="color_white">
+                                       
+                                    </div>
+                                </div>
+
+                                <hr class="color_white">
+
+                                @if(Auth::user()->role_id == '3')
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="all_more_link color_black font-weight-bold">รายการ</span> 
+                                            </div>
+                                            <div class="col">
+                                                <span class="all_more_link color_black font-weight-bold">ราคา</span> 
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="fontsize14">{{ 'งานถ่าย'.$order->category->name_category.$order->formattime->name_format_time}}</span> 
+                                            </div>
+                                            <div class="col">
+                                                <span class="fontsize14">{{number_format($order->price)}}</span> 
+                                            </div>
+                                        </div>
+        
+                                        @if(!empty($order->transportation_cost))
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="fontsize14">ค่าเดินทาง</span> 
+                                            </div>
+                                            <div class="col">
+                                                <span class="fontsize14">{{number_format($order->transportation_cost)}}</span> 
+                                            </div>
+                                        </div>
+                                        @endif
+
+                                        <div class="row">
+                                            <div class="col-8 text_right">
+                                                <span class="fontsize14 font-weight-bold">รวมยอด</span> 
+                                            </div>
+                                            <div class="col">
+                                                <span class="fontsize14 font-weight-bold"><u>{{number_format($order->total)}}</u></span> 
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr class="color_white">
+                                @endif
+
+                                <div class="row">
+                                    <div class="col">
                                         <span class="all_more_link color_black font-weight-bold">
                                             สิ่งที่ลูกค้าได้รับ
                                         </span>
@@ -94,21 +146,81 @@
                                             </div>
                                         </div>
 
-                                        @elseif($order->status_order == 'ทำงานตามกำหนด')
+                                        @elseif($order->status_order == 'รอชำระเงิน' && Auth::user()->role_id == '3')
                                         <div class="row">
-                                            <div class="col">
-                                                <button onclick="window.location.href='/order/{{$order->id}}/invoice'" class="btn btn_color bg_72AFD3" type="button" disabled>
-                                                ส่งงาน
-                                                </button><br>
-                                                <span class="all_more_link">*จะสามารถส่งงานได้เมื่อผ่านวันจ้างงานไปแล้ว</span>
+                                            <div class="col text_center">
+                                                    <div class="row" id="payment">
+                                                        <form name="checkoutForm" method="POST" action="/listpayment">
+                                                            @csrf
+                                                            <input type="hidden" name="order_id" value="{{$order->id}}">
+                                                            <script type="text/javascript" src="https://cdn.omise.co/omise.js"
+                                                                data-key="{{ $OMISE_PUBLIC_KEY }}"
+                                                                data-image="{{url('assets/image/logo.png')}}"
+                                                                data-frame-label="ชำระเงิน"
+                                                                data-button-label="ชำระเงิน"
+                                                                data-submit-label="Submit"
+                                                                data-location="no"
+                                                                data-amount="{{ $chargeAmount }}"
+                                                                data-currency="thb"
+                                                                >
+                                                            </script>
+                                                        <!--the script will render <input type="hidden" name="omiseToken"> for you automatically-->
+                                                        </form>
+                                                    </div>
                                             </div>
                                         </div>
 
-                                        @elseif($order->status_order == 'ชำระเงินแล้ว')
-                                        <a class="btn badge bg_72AFD3 color_white radius_badge"
-                                        href="" target="_blank">
-                                            <i class="fas fa-file-download"></i> ดาวน์โหลดใบเสนอราคา
-                                        </a>
+                                        <div class="row">
+                                            <div class="col">
+                                                    
+                                            </div>
+                                        </div>
+
+                                        @elseif($order->status_order == 'ชำระเงินแล้ว' && Auth::user()->role_id == '2')
+                                        <div class="row">
+                                            <div class="col">
+                                                <form action="/order/{{$order->id}}/sendwork" method="POST">
+                                                    {{ csrf_field() }}
+
+                                                    <button type="submit"  id="load" class="margin_auto btn btn_color bg_72AFD3" type="button" 
+                                                    @if($order->status_order == 'ส่งงาน') disabled @endif>
+                                                    ส่งงาน
+                                                    </button>
+                                                </form>
+                                                @if($order->status_order == 'ชำระเงินแล้ว')
+                                                <span class="all_more_link color_72AFD3">*จะสามารถส่งงานได้เมื่อผ่านวันจ้างงานไปแล้ว</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @elseif($order->status_order == 'ส่งงาน' && Auth::user()->role_id == '3')
+                                        <div class="row">
+                                            <div class="col">
+                                                    <button type="submit" onclick="window.location.href='/order/{{$order->id}}/review'" id="load" class="margin_auto btn btn_color bg_72AFD3" type="button" >
+                                                    รีวิว
+                                                    </button>
+                                            </div>
+                                        </div>
+                                        @elseif($order->status_order == 'เสร็จสิ้น' && $review != null)
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="star-rating" id="rating{{$review->id}}">
+                                                <span class="fas fa-star" data-rating{{$review->id}}="1"></span>
+                                                <span class="fas fa-star" data-rating{{$review->id}}="2"></span>
+                                                <span class="fas fa-star" data-rating{{$review->id}}="3"></span>
+                                                <span class="fas fa-star" data-rating{{$review->id}}="4"></span>
+                                                <span class="fas fa-star" data-rating{{$review->id}}="5"></span>
+                                                <input type="hidden" id="rating{{$review->id}}" class="rating-value{{$review->id}}" value="{{$review->rating}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="headder_text">
+                                                    " {{$review->comment}} "
+                                                </p> 
+                                            </div>
+                                        </div>
                                         @endif
 
                                     </div>
@@ -118,13 +230,26 @@
             </div>
         </div>
 
+        @if($order->status_order == 'ชำระเงินแล้ว' || $order->status_order == 'ส่งงาน' || $order->status_order == 'เสร็จสิ้น')
+
         <p class="headder_text margin_top20" style="position: relative; padding: 5px;">
         จัดการออเดอร์
         </p>
 
         <div class="row">
 
-            <div class="col-md margin_top20 margin_bomtom20">
+            @if($order->status_order != 'รอการตอบรับ' && $order->status_order != 'รอชำระเงิน')
+            <div class="col-md margin_bomtom20">
+                <div class="inner-addon right-addon" id="headingOne">
+                    <i class="fas fa-chevron-right selecticon top12 fontsize16 right-icon"></i>
+                    <button onclick="window.location.href='/order/{{$order->id}}/invoicepdf'" class="menubtn fontsize16" type="button">
+                        ใบเสนอราคา
+                    </button>
+                </div>
+            </div>
+            @endif
+            @if(Auth::user()->role_id == '2' && $order->status_order != 'รอการตอบรับ' && $order->status_order != 'รอชำระเงิน')
+            <div class="col-md margin_bomtom20">
                 <div class="inner-addon right-addon" id="headingOne">
                     <i class="fas fa-chevron-right selecticon top12 fontsize16 right-icon"></i>
                     <button onclick="window.location.href='/order/{{$order->id}}/viewfile'" class="menubtn fontsize16" type="button">
@@ -132,22 +257,59 @@
                     </button>
                 </div>
             </div>
+            @endif
+            @if(Auth::user()->role_id == '3' && $order->status_order != 'รอการตอบรับ' && $order->status_order != 'รอชำระเงิน' && $order->status_order != 'ชำระเงินแล้ว')
+            <div class="col-md margin_bomtom20">
+                <div class="inner-addon right-addon" id="headingOne">
+                    <i class="fas fa-chevron-right selecticon top12 fontsize16 right-icon"></i>
+                    <button onclick="window.location.href='/order/{{$order->id}}/viewfile'" class="menubtn fontsize16" type="button">
+                        ไฟล์งาน
+                    </button>
+                </div>
+            </div>
+            @endif
+
+            @if($order->status_order != 'เสร็จสิ้น' && $order->status_order != 'ส่งงาน' )
             <div class="col-md margin_bomtom20">
                     <button class="menubtn fontsize16 menubtnred color_ff4949" type="button">
                         ยกเลิกงาน
                     </button>
             </div>
+            @endif
+
         </div>
+        @endif
+
 
     </div>
 
 <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('js/responsive_waterfall.js') }}"></script>
 <script>
-    var waterfall = new Waterfall({ 
-        containerSelector: '.wf-container',
-        boxSelector: '.wf-box',
-        minBoxWidth: 250
+
+    $('.btnload').on('click', function() {
+            document.getElementById("load").innerHTML = "<div class='spinner'><div class='bounce1'></div><div class='bounce2'></div><div class='bounce3'></div></div>";
+            // document.getElementById("load").disabled = true;
+            console.log('button loading');
     });
+
+    // rating
+    @if($order->status_order == 'เสร็จสิ้น' && $review != null)
+    $(document).ready(function() {
+        var $star_rating = $(' .star-rating .fas');
+        var SetRatingStar = function() {
+            return $star_rating.each(function() {
+                if (parseInt($star_rating.siblings('input.rating-value{{$review->id}}').val()) >= parseInt($(this).data('rating{{$review->id}}'))) {
+                    return $(this).addClass('checked');
+                }
+            });
+        };
+    SetRatingStar();
+    @endif
+
+
+    });
+    
+    
 </script>
 @stop

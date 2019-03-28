@@ -3,23 +3,23 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
-class OrderFreelanceAcceptEmail extends Notification
+class OrderReviewEmail extends Notification
 {
     use Queueable;
-    private $photographer;
-
+    private $employer;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($photographer)
+    public function __construct($employer)
     {
-        $this->photographer = $photographer;
+        $this->employer = $employer;
+
     }
 
     /**
@@ -42,10 +42,10 @@ class OrderFreelanceAcceptEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('ช่างภาพ '.$this->photographer->username.' ได้รับงานของคุณ')
-            ->greeting('ยินดีด้วยช่างภาพรับงานของคุณ')
-            ->line('กรุณาตรวจสอบข้อมูลในเว็บไซต์')
-            ->action('เข้าสู่เว็บไซต์', url('/'));
+        ->subject('ผู้ว่าจ้าง '.$this->employer->username.' ได้รีวิวให้คุณ')
+        ->greeting('ผู้ว่าจ้าง '.$this->employer->username.' ได้รีวิวให้คุณ')
+        ->line('กรุณาตรวจสอบข้อมูลในเว็บไซต์')
+        ->action('เข้าสู่เว็บไซต์', url('/'));
     }
 
     /**

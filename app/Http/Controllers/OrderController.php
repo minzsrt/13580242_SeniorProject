@@ -10,7 +10,9 @@ use App\ImageAlbum;
 use App\Notification as NotificationModel;
 use App\Notifications\OrderCreatedEmail;
 use App\Notifications\OrderFreelanceAcceptEmail;
+use App\Notifications\OrderSendworkEmail;
 use App\Order;
+use App\Review;
 use App\Sendwork;
 
 // use Request;
@@ -58,7 +60,14 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::find($id);
-        return view('photographer.order.show', compact('order'));
+        $review = Review::where('id_order',$id)->first();
+        // dd($review);
+        $chargeAmount = $order->total * 100;
+
+        return view('photographer.order.show', compact('order', 'chargeAmount','review'))->with([
+            'OMISE_PUBLIC_KEY' => OMISE_PUBLIC_KEY,
+        ]);
+
     }
 
     /**
@@ -90,6 +99,7 @@ class OrderController extends Controller
         $order->update($request->all());
         NotificationModel::create([
             'user_id' => $order->id_employer,
+            'id_order' => $order->id,
             'message' => 'ช่างภาพ '.$order->photographer->username.' ได้ตอบรับงานของคุณ ',
         ]);
         event(new TriggerNotification($order->id_employer));
@@ -349,6 +359,7 @@ class OrderController extends Controller
         $order->save();
         NotificationModel::create([
             'user_id' => $order->id_photographer,
+            'id_order' => $order->id,
             'message' => 'คุณได้รับงานใหม่จาก '.$user->username,
         ]);
         event(new TriggerNotification($order->id_photographer));
@@ -362,6 +373,31 @@ class OrderController extends Controller
         $user = User::findOrFail($order->id_photographer);
         // dd($user);
         return view('createOrderSuccess', compact('order', 'user'));
+    }
+
+
+
+//////////////////////////////////////////
+//////// ------- send work ------- ////////
+//////////////////////////////////////////
+
+    public function sendwork($id){
+
+        $order = Order::findOrFail($id);
+        $order->status_order = 'ส่งงาน';
+        $order->update();
+
+        NotificationModel::create([
+            'user_id' => $order->id_employer,
+            'id_order' => $order->id,
+            'message' => 'ช่างภาพ '.$order->photographer->username.' ได้ส่งงานให้คุณ',
+        ]);
+        event(new TriggerNotification($order->id_employer));
+
+        Notification::route('mail', $order->employer->email)
+            ->notify(new OrderSendworkEmail($order->photographer));
+
+        return redirect('invoiceSuccess');
     }
 
     public function uploadfileview($id){
@@ -382,6 +418,10 @@ class OrderController extends Controller
                 ]);
                 // dd('sendwork');
             }
+
+            $workfiles = glob(public_path('sendwork/order-'.$id.'/*'));
+            Zipper::make(public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'))->add($workfiles);
+            
             return redirect('order/'.$id.'/uploadfile/success');
 
     }
@@ -407,19 +447,30 @@ class OrderController extends Controller
         $order = Order::find($id);
 
         if($order->id_employer == Auth::user()->id || Auth::user()->role_id == '1'){
-            $files = glob(public_path('sendwork/order-'.$id.'/*'));
-            Zipper::make(public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'))->add($files);
-            return response()->download(public_path('sendwork/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'));
+            sleep(5);
+            return response()->download(public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'));
         }else{
             abort(404);
         }
+        // return redirect('order/'.$id.'/viewfile');
         
     }
+    public function downloadziplink($id)
+    {
+        $pathToFile = public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip');
+        // ->deleteFileAfterSend(true)
+        return response()->download(public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'));
+        
+    }
+    
 
     public function __construct()
     {
 
         $this->middleware('auth');
+        define('OMISE_API_VERSION', '2017-11-02');
+        define('OMISE_PUBLIC_KEY', 'pkey_test_5faugmy9xfv3xyavv2c');
+        define('OMISE_SECRET_KEY', 'skey_test_5ex5bjgyhmvyyjtv3y4');
 
     }
 

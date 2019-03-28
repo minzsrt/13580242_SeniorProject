@@ -31,7 +31,7 @@
                     <button class="btn_choose"><span class="hastag_album">เพิ่มรูปภาพ</span></button>
                     <input multiple="multiple" name="filenames[]" type="file" id="fileupload"/>
                 </div>
-            </div>
+            </div> 
     </div>
     
     <input name="id_order" type="hidden" value="{{$order->id}}"/>
@@ -50,7 +50,7 @@
 </form>
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+ 	<script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
 <script language="javascript" type="text/javascript">
 window.onload = function () {
     var fileUpload = document.getElementById("fileupload");
