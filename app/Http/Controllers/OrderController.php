@@ -14,6 +14,8 @@ use App\Notifications\OrderSendworkEmail;
 use App\Order;
 use App\Review;
 use App\Sendwork;
+use App\Photographer;
+
 
 // use Request;
 use App\PackageCard;
@@ -27,6 +29,7 @@ use Illuminate\Support\Facades\Gate;
 use Carbon\Carbon;
 use Notification;
 use Zipper;
+use PDF;
 // use Storage;
 
 class OrderController extends Controller
@@ -462,7 +465,18 @@ class OrderController extends Controller
         return response()->download(public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'));
         
     }
-    
+
+    function generatepdf($id) {
+
+        $order = Order::findOrFail($id);
+        $photographer = Photographer::where('id_user',$order->id_photographer)->first();
+        // dd($photographer);
+        $pdf = PDF::loadView('documents.invoicedocument',['order'=> $order],['photographer'=> $photographer]);
+        $pdf->SetProtection(['copy', 'print'], '', 'pass');
+
+        // return $pdf->download('invoicedocument.pdf');
+        return $pdf->stream('ใบเสนอราคา(สำเนา).pdf');
+    }
 
     public function __construct()
     {

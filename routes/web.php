@@ -86,6 +86,15 @@ Route::get('/order/{id}/createsuccess', 'OrderController@createsuccess');
 Route::get('/order/{id}/invoice', 'OrderController@edit');
 Route::get('/order/{id}/update', 'OrderController@update');
 Route::get('invoiceSuccess', function () {return view('invoiceSuccess');});
+Route::get('order/{id}', 'OrderController@show');
+Route::get('order/{id}/uploadfile', 'OrderController@uploadfileview');
+Route::post('order/{id}/uploadfile/store', 'OrderController@uploadfile');
+Route::get('sendworkSuccess', function () {return view('sendworkSuccess');});
+Route::post('order/{id}/sendwork', 'OrderController@sendwork');
+Route::get('order/{id}/uploadfile/success', 'OrderController@uploadfilesuccess');
+Route::get('order/{id}/viewfile', 'OrderController@viewfile');
+Route::get('order/{id}/download', 'OrderController@downloadzip');
+Route::get('order/{id}/downloadlink', 'OrderController@downloadzip');
 
 // Payment
 Route::get('listpayment/{id}', 'PaymentController@index');
@@ -152,16 +161,9 @@ Route::any('search', 'SearchController@index');
 
 Route::get('listTag', function () {return view('listTag');});
 Route::get('management', function () {return view('mn_order');});
+Route::get('document/invoice', function () {return view('invoicedocument');});
 
-Route::get('order/{id}', 'OrderController@show');
-Route::get('order/{id}/uploadfile', 'OrderController@uploadfileview');
-Route::post('order/{id}/uploadfile/store', 'OrderController@uploadfile');
-Route::get('sendworkSuccess', function () {return view('sendworkSuccess');});
-Route::post('order/{id}/sendwork', 'OrderController@sendwork');
-Route::get('order/{id}/uploadfile/success', 'OrderController@uploadfilesuccess');
-Route::get('order/{id}/viewfile', 'OrderController@viewfile');
-Route::get('order/{id}/download', 'OrderController@downloadzip');
-Route::get('order/{id}/downloadlink', 'OrderController@downloadzip');
+Route::get('order/{id}/invoice/download','OrderController@generatepdf');
 
 
 

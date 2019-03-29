@@ -1,6 +1,6 @@
 @extends('layouts.mainprofile')
 @section('page_title', 'Profile')
-@section('link_back', '/Profile/'.Auth::user()->username)
+@section('link_back', '/profile/'.Auth::user()->username)
 @section('content')
 
     <div class="wrap_container_head">

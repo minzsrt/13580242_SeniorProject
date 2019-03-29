@@ -1,155 +1,170 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>สร้างใบเสนอราคา</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{url('bootstrap/css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
-    <link href="{{url('css/style.css')}}" rel="stylesheet"> 
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
 
-</head>
-<body>
 
-    <section class="text_right" style="height:60px; padding:20px;">    
-        <a style="cursor:pointer; color:#aeaeae;" onclick="window.location.href='/order/{{$order->id}}'"><i class="fas fa-times-circle"></i></a>
-    </section>
+@extends('layouts.mainprofile')
+@section('page_title', 'Show')
+@section('link_back', '/notification/'.Auth::user()->username)
+@section('content')
 
 {!! Form::model($order, ['method' => 'GET','action' => ['OrderController@update',$order->id]]) !!}
     {{ csrf_field() }}
 
     <div class="container">
-        <div class="row">
-            <div class="col-12 text_center">
-                <h3 class="headder_text">สร้างใบเสนอราคา</h3>
-            </div>
-        </div>
-        <hr>
+
+        <p class="headder_text" style="position: relative; padding: 5px;">
+        สร้างใบเสนอราคาออเดอร์ #{{$order->id}}<br>
+        <span class="btn badge color_white fontsize12 category_badge">
+        {{$order->category->name_category}}
+        </span><br>
+        </p>
+
         <div class="row">
             <div class="col">
-                <div class="row">
-                    <div class="col" style="font-size:18px; margin-bottom: -0.5rem;">
-                        <span  style="font-size:18px;">ภาพ{{$order->category->name_category}}</span><br>
-                        <span style="font-size:14px;">
-                         ถ่ายภาพ{{$order->formattime->name_format_time}}
-                        </span>
-                    </div>              
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col" style="color:#000;">
-                        <table class="all_more_link" style="width:100%; font-size: 14px; color:#000;">
-                        <tr>
-                            <th>สถานที่ </th>
-                            <td>{{$order->place_name}}</td>
-                        </tr>
-                        <tr>
-                            <th>วันที่ </th>
-                            <td>{{$order->date_work}}</td>
-                            <!-- <td class="text_right" style="padding-right:20px;">x2</td> -->
-                        </tr>
-                        <tr>
-                            <th>เวลา </th>
-                            <td>{{$order->start_time.'-'.$order->end_time}}</td>
-                            <!-- <td class="text_right" style="padding-right:20px;">{{$order->price}}</td> -->
-                        </tr>
-                        </table>
-                        <br>
-                        
-                    </div>
-                    
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <span class="all_more_link fontsize14" style="color:#000; font-weight: bold;">
-                                สิ่งที่ได้รับ
-                                </span>
-                                {!! Form::textarea('detail',null,['class'=>'form-control textarea_edit']) !!}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span class="all_more_link fontsize14" style="color:#000; font-weight: bold;">
-                                    ราคางาน
-                                </span>
-                                {!! Form::text('price',null,['disabled','class'=>'form-control','id'=>'input_price']) !!}
-                            </div>
-                            <div class="col text_right padtop30">
-                                <div class="input-group">
-                                    <input type="text" id="output_price" class="form-control fontsize18 textinput_none text_right" disabled>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text textinput_none">฿</span>
+                <div class="card cardbox">
+                    <div class="card-body">
+                                <div class="row">
+                                    <div class="col" style="margin-bottom: -0.5rem;">
+                                        <span  class="fontsize16 font-weight-bold">{{$order->category->name_category}}</span><br>
+                                        <span class="fontsize14">
+                                        ถ่ายภาพ{{$order->formattime->name_format_time}}
+                                        </span>
+                                    </div>
+
+                                    <div class="col-4 text_right">
+                                        <h3  class="fontsize18 badge category_badge color_white" id="displaybadge">{{number_format($order->total)}}
+                                        ฿
+                                        </h3>
+                                    </div>                
+                                </div>
+
+                                <hr class="color_white">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="all_more_link color_black font-weight-bold">ผู้ว่าจ้าง</span> 
+                                        <br>
+                                        <span class="fontsize14">{{ $order->employer->username }}</span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span class="all_more_link fontsize14" style="color:#000; font-weight: bold;">
-                                    ค่าเดินทาง
-                                </span>
-                                {!! Form::text('transportation_cost',null,['class'=>'form-control','id'=>'input_transportation_cost', 'name' => 'transportation_cost']) !!}
-                            </div>
-                            <div class="col text_right padtop30">                                      
-                                <div class="input-group">
-                                    <input type="text" id="output_transportation_cost" class="form-control fontsize18 textinput_none text_right" disabled>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text textinput_none">฿</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="all_more_link color_black font-weight-bold">วันที่</span> 
+                                        <br>
+                                        <span class="fontsize14">{{ date("j M Y", strtotime($order->date_work) )}}</span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="all_more_link color_black font-weight-bold">เวลา</span> 
+                                        <br>
+                                        <span class="fontsize14">{{$order->start_time.' - '.$order->end_time}}</span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text  textinput_none">ราคารวม</span>
-                            </div>
-                            <input type="text" class="form-control fontsize18 textinput_none text_right" disabled>
-                            <div class="input-group-append">
-                                <span class="input-group-text  textinput_none">฿</span>
-                            </div>
-                        </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="all_more_link color_black font-weight-bold">สถานที่</span> 
+                                        <br>
+                                        <span class="fontsize14 ">{{ $order->place_name }}</span>
+                                        <a class="btn badge badge-info color_white" href="{{ $order->url }}" target="_blank"><i class="fas fa-map-marker-alt"></i> ดูแผนที่</a>
+                                       
+                                    </div>
+                                </div>
+
+                                <hr class="color_white">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="all_more_link color_black font-weight-bold">รายการ</span> 
+                                            </div>
+                                            <div class="col">
+                                                <span class="all_more_link color_black font-weight-bold">ราคา</span> 
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="fontsize14">{{ 'งานถ่าย'.$order->category->name_category.$order->formattime->name_format_time}}</span> 
+                                            </div>
+                                            <div class="col">
+                                                <span class="fontsize14">
+                                                    {{number_format($order->price)}}
+                                                </span> 
+                                            </div>
+                                        </div>
+        
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <span class="fontsize14">ค่าเดินทาง</span> 
+                                            </div>
+                                            <div class="col">
+                                                    {!! Form::number('transportation_cost',null,['class'=>'form-control','id'=>'input_transportation_cost', 'name' => 'transportation_cost','class'=>'input_box fontsize12']) !!}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-8 text_right">
+                                                <span class="fontsize14 font-weight-bold">รวมยอด</span> 
+                                            </div>
+                                            <div class="col-4">
+                                                <span class="fontsize14" id="displaytotal">
+                                                    {{number_format($order->total)}}
+                                                </span> 
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr class="color_white">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="all_more_link color_black font-weight-bold">
+                                            สิ่งที่ลูกค้าได้รับ
+                                        </span>
+                                        <p class="all_more_link fontsize14 color_black">
+                                            {{$order->detail}}
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col text_center">
+                                        <p class="fontsize12">
+                                        การกด "ส่งใบเสนอราคา"<br>
+                                        ถือเป็นการยอมรับ
+                                        <button type="button" class="btn textinput_none fontsize12" data-toggle="modal" data-target="#exampleModalLong" style="color:red !important;">
+                                        ข้อตกลงและเงื่อนไข</button> 
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text_center">
+                                        <div class="row">
+                                            <div class="col">
+                                                    <button class="margin_auto btn btn_color bg_72AFD3" type="submit" >
+                                                    ส่งใบเสนอราคา
+                                                    </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
                 </div>
-                <hr>
             </div>
         </div>
-        <input type="hidden" name="id_category" value="{{$order->id_category}}">
-        <input type="hidden" name="id_formattime" value="{{$order->id_formattime}}">
-        <input type="hidden" name="place_name" value="{{$order->place_name}}">
-        <input type="hidden" name="shipping_cost" value="{{$order->shipping_cost}}">
-        <input type="hidden" name="price" value="{{$order->price}}">
-        <input type="hidden" name="date_work" value="{{$order->date_work}}">
-        <input type="hidden" name="start_time" value="{{$order->start_time}}">
-        <input type="hidden" name="end_time" value="{{$order->end_time}}">
 
-        <div class="row">
-            <div class="col text_center">
-                <p class="fontsize12">
-                การกด "ส่งใบเสนอราคา"<br>
-                ถือเป็นการยอมรับ
-                <button type="button" class="btn textinput_none fontsize12" data-toggle="modal" data-target="#exampleModalLong" style="color:red !important;">
-                ข้อตกลงและเงื่อนไข</button> 
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <button class="btn_color margin_box10" type="submit">ส่งใบเสนอราคา</button>
-        </div>
     </div>
-    </form>
 
-    <!-- Modal -->
+        <input type="text" name="id_category" value="{{$order->id_category}}">
+        <input type="text" name="id_formattime" value="{{$order->id_formattime}}">
+        <input type="text" name="place_name" value="{{$order->place_name}}">
+        <input type="text" name="shipping_cost" value="{{$order->shipping_cost}}">
+        <input type="text" name="price" value="{{$order->price}}" id="price_cost">
+        <input type="text" name="date_work" value="{{$order->date_work}}">
+        <input type="text" name="start_time" value="{{$order->start_time}}">
+        <input type="text" name="end_time" value="{{$order->end_time}}">
+
+<!-- modal -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -179,19 +194,42 @@
     </div>
     </div>
 
+</form>
+
+<script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
+<script src="{{ URL::asset('js/responsive_waterfall.js') }}"></script>
 <script>
-    document.getElementById('input_price').addEventListener("keyup", myPrice);
-    var input_price_box = document.getElementById('input_price');
-    function myPrice(){
-        var input_price_int = parseInt(input_price_box.value);
-        document.getElementById('output_price').value = input_price_int;
-    }
+
+    $('.btnload').on('click', function() {
+            document.getElementById("load").innerHTML = "<div class='spinner'><div class='bounce1'></div><div class='bounce2'></div><div class='bounce3'></div></div>";
+            // document.getElementById("load").disabled = true;
+            console.log('button loading');
+    });
+
     document.getElementById('input_transportation_cost').addEventListener("keyup", myFunction);
-    var input_transportation_cost_box = document.getElementById('input_transportation_cost');
+        var input_transportation_cost_box = document.getElementById('input_transportation_cost');
+        var price_cost_box = document.getElementById('price_cost');
     function myFunction(){
+
         var input_transportation_cost_int = parseInt(input_transportation_cost_box.value);
-        document.getElementById('output_transportation_cost').value = parseInt(input_transportation_cost_int);
+        var price_cost_int = parseInt(price_cost_box.value);
+
+        document.getElementById('sum_total').value = parseInt(input_transportation_cost_int+price_cost_int);
+
+        document.getElementById('total').value = parseInt(input_transportation_cost_int+price_cost_int);
     }
+
+    $('#input_transportation_cost').keyup(function () {
+        
+        var input_transportation_cost_box = document.getElementById('input_transportation_cost');
+        var price_cost_box = document.getElementById('price_cost');
+
+        var input_transportation_cost_int = parseInt(input_transportation_cost_box.value);
+        var price_cost_int = parseInt(price_cost_box.value);
+
+        $('#displaybadge').text(input_transportation_cost_int+price_cost_int+' ฿');
+        $('#displaytotal').text(input_transportation_cost_int+price_cost_int);
+    });
+
 </script>
-</body>
-</html>
+@stop
