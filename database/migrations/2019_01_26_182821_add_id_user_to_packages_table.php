@@ -14,7 +14,7 @@ class AddIdUserToPackagesTable extends Migration
     public function up()
     {
         Schema::table('package_cards', function (Blueprint $table) { 
-            $table->integer('id_user')->unsigned()->default(1); 
+            $table->integer('id_user')->unsigned(); 
             $table->foreign('id_user', 'id_users_packages_foreign')
             ->references('id')
             ->on('users')

@@ -195,13 +195,11 @@
                                         @elseif($order->status_order == 'ส่งงาน' && Auth::user()->role_id == '3')
                                         <div class="row">
                                             <div class="col">
-                                                    <button type="submit" onclick="window.location.href='/order/{{$order->id}}/review'" id="load" class="margin_auto btn btn_color bg_72AFD3" type="button" >
+                                                    <button data-toggle="modal" data-target="#modalorder{{$order->id}}" id="load" class="margin_auto btn btn_color bg_72AFD3" type="button" >
                                                     รีวิว
                                                     </button>
                                             </div>
                                         </div>
-
-                                        <button class="btn_color" data-toggle="modal" data-target="#modalorder{{$order->id}}">ดูรายละเอียด</button>
 
                                         <div class="modal fade" id="modalorder{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="modalorder{{$order->id}}Title" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">

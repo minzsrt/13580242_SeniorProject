@@ -29,10 +29,10 @@
                     <span style=" padding: 3px 10px; border:1px solid #000; border-radius: 20px;">เตรียมการโอนเงิน</span> 
                     </div>
                     <div class="col-12 text-center">
-                        <h3  style="font-size:28px; padding: 20px;">{{$deposit->total}} ฿</h3>
+                        <h3  style="font-size:28px; padding: 20px;">{{number_format($deposit->total)}} ฿</h3>
                     </div>
                     <div class="col-12 text-center">
-                        รอบการโอนถัดไปคือวันที่ 15 มกราคม 2562
+                        โอนเงินเข้าบัญชีทุกวันที่ 15 ของเดือน
                     </div>
                 </div>
         </label>

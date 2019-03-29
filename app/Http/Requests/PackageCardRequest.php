@@ -27,7 +27,6 @@ class PackageCardRequest extends FormRequest
             'price' => 'required|min:1|max:7',
             'detail' => 'required',
             'shipping' => 'required',
-            'shipping_cost' => 'required|min:1|max:7',
             'id_category' => 'required',
             'id_formattime' => 'required'
         ];

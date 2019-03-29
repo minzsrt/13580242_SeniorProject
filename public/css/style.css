@@ -226,6 +226,13 @@ select.select_search {
     background-image: linear-gradient(to bottom, rgba(114,175,211,0.5), rgba(76,192,223,0.5), rgba(0,208,223,0.5), rgba(0,223,210,0.5), rgba(55,236,186,0.5));
     padding-top:18px; 
 }
+.btn-delete{
+    background: rgba(0,0,0,0.5);
+    color: #ffffff;
+}
+.btn-delete:hover{
+    background: rgba(0,0,0,0.1);
+}
 .slick-active .btn_catagory_text{
     text-decoration: underline;
     font-weight: bold;
@@ -1168,6 +1175,13 @@ a:hover{
     pointer-events: none;
 }
 
+.inner-addon .alink{
+    position: absolute;
+    padding: 10px;
+    /* color: #dbdbdb; */
+    pointer-events: none;
+}
+
 /* align icon */
 .left-addon .right-icon  { left:  0px;}
 .right-addon .right-icon { right: 0px;}
@@ -1233,7 +1247,7 @@ a:hover{
 
   .menubtn{
     width: 100%;
-    height:60px;
+    height: 60px;
     background:#fff;
     color:#000000;
     box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
@@ -1252,4 +1266,33 @@ a:hover{
 
   #accordion .card{
   border:none!important;
+  }
+
+  /* button delete in img */
+  .container_button_img {
+    position: relative;
+    /* width: 100%; */
+    /* margin: 0 !important; */
+  }
+
+  .container_button_img .btn {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+  }
+  
+  .messageicon{
+    width: 40px;
+    height: auto;
+    margin: 50% auto 0;
+    opacity: 0.3;
+  }
+  .messageicon img{
+    width: 100%;
+    height: auto;
+  }
+
+  .shadownone{
+    box-shadow: none;
+
   }

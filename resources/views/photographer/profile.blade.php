@@ -122,7 +122,7 @@
                 </div>
             </div>
             @foreach($package_cards as $id_category => $package_card)
-            <div onclick="window.location.href='{{ url("profile/{$username}/listPackage/{$package_card->id_category}") }}'" class="packagecard_box">    
+            <div onclick="window.location.href='{{ url("profile/{$username}/listPackage/{$package_card->id_category}") }}'" class="packagecard_box bg_color_gradient_opacity">    
                     <div class="row packagecard_box_padding">
                         <div class="col">
                             <span>{{ $package_card->category->name_category }}</span>

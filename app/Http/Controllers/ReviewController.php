@@ -77,7 +77,7 @@ class ReviewController extends Controller
         $order->status_order = 'เสร็จสิ้น';
         $order->update();
 
-        $addmoney = DepositAccount::findOrFail($order->id_photographer);
+        $addmoney = DepositAccount::where('id_photographer',$order->id_photographer)->first();
         $addmoney->total = $addmoney->total + $order->total-((5/100)*($order->total));
         // dd($addmoney->total);
         $addmoney->update();

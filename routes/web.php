@@ -48,7 +48,8 @@ Route::post('createAlbum/{id}/upload/store', 'AlbumsController@upload');
 Route::get('profile/{username}/album/{id}', 'AlbumsController@show');
 Route::get('profile/{username}/album/{id}/edit', 'AlbumsController@edit');
 Route::post('profile/{username}/album/{id}/update', 'AlbumsController@update');
-Route::get('photographer/show/{id}/destroy', 'AlbumsController@destroy');
+Route::get('profile/{username}/album/{id}/destroy', 'AlbumsController@destroy');
+Route::get('profile/{username}/album/{id}/destroyimage', 'AlbumsController@destroyimage');
 Route::get('createAlbumSuccess', function () {return view('createAlbumSuccess');});
 
 
@@ -155,6 +156,7 @@ Route::get('management', function () {return view('mn_order');});
 Route::get('order/{id}', 'OrderController@show');
 Route::get('order/{id}/uploadfile', 'OrderController@uploadfileview');
 Route::post('order/{id}/uploadfile/store', 'OrderController@uploadfile');
+Route::get('sendworkSuccess', function () {return view('sendworkSuccess');});
 Route::post('order/{id}/sendwork', 'OrderController@sendwork');
 Route::get('order/{id}/uploadfile/success', 'OrderController@uploadfilesuccess');
 Route::get('order/{id}/viewfile', 'OrderController@viewfile');

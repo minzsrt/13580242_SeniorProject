@@ -71,8 +71,9 @@ class ProfileController extends Controller
 
                     $albums = Album::orderBy('id', 'DESC')->get();
 
-                    $package_cards = PackageCard::where('id_user', 'LIKE', $user->id)->groupBy('id_category')->get();
-                    // dd($package_cards);
+                    $package_cards = PackageCard::select('id_category','price')->where('id_user', $user->id)->groupBy('id_category')->get();
+                    
+                    // $package_cards = PackageCard::where('id_user', $user->id)->get();
 
                     $reviews = Review::where('id_photographer', $user->id)->get();
 

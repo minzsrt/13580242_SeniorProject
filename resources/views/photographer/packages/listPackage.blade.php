@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.mainprofile')
 @section('page_title', 'List Package')
 @section('link_back', '/profile/'.$username)
 @section('content')
@@ -27,20 +27,21 @@
     <div class="container">
         @foreach($package_cards as $package_card)
             <a class="a_getlink" href="{{ url("profile/{$username}/listPackage/{$package_card->id_category}/{$package_card->id}/edit") }}">
-                <div class="card-body album_show_wrap padding_card">
-                    <div class="row">
+                <div class="card-body album_show_wrap padding_card bg_color_gradient_opacity">
+                    <div class="row color_black">
                         <div class="col-8" style="font-size:10px;">
-                            <h3  style="font-size:18px; padding-right:10px; display: inline;" >
+                            <h3 class="fontsize18">
                             ถ่ายภาพ{{ $package_card->formattime->name_format_time }}
                             </h3>
                         </div>
                         <div class="col-4 text_right">
-                            <h3  style="font-size:18px; padding-right:10px;">{{ $package_card->price }} ฿</h3>
+                        <h3  class="fontsize18 badge category_badge color_white">{{number_format($package_card->price)}} ฿
+                        </h3>
                         </div>
                     </div>
                     <div class="row">
                         <p class="col detail_pack">
-                        <span>สิ่งที่ได้รับ</span><br>
+                        <span class="all_more_link color_72AFD3">สิ่งที่ได้รับ</span><br>
                             {{ $package_card->detail }}
                         </p>
                     </div>

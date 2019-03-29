@@ -59,7 +59,6 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $this->middleware('auth');
         $order = Order::find($id);
         $review = Review::where('id_order',$id)->first();
         // dd($review);
@@ -398,7 +397,7 @@ class OrderController extends Controller
         Notification::route('mail', $order->employer->email)
             ->notify(new OrderSendworkEmail($order->photographer));
 
-        return redirect('invoiceSuccess');
+        return redirect('sendworkSuccess');
     }
 
     public function uploadfileview($id){

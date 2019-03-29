@@ -135,7 +135,7 @@
                                 </div>
                             </div>
                             @foreach($albums as $album) 
-                                @if($package_card->id_user === $album->id_user && $package_card->$id_category === $album->$id_category && $loop->last)
+                                @if($package_card->id_user == $album->id_user)
                                 <img class="card-img-top" src="{{$album->cover_album}}">    
                                 @endif
                             @endforeach

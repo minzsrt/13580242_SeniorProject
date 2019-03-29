@@ -9,7 +9,7 @@
     <div class="col">
         <p class="headder_text" style="padding: 5px;">
         {{$album->name_album}}<br>
-        <span class="btn badge bg_aeaeae color_white" style="border-radius: 15px;">
+        <span class="btn badge color_white fontsize12 category_badge" style="border-radius: 15px;">
         {{$album->category->name_category}}
         </span>
         </p>   

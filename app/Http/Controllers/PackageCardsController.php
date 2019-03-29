@@ -121,7 +121,9 @@ class PackageCardsController extends Controller
     
     public function create(Request $request){
         $package_card = $request->session()->get('package_card');
-        
+
+        $formattime = Format_time::pluck('name_format_time','id');
+
         if($package_card->id_category == '1'){
             $data['head_category'] = 'รับปริญญา';
             // dd($data);
@@ -139,7 +141,7 @@ class PackageCardsController extends Controller
         }elseif($package_card->id_category == '7'){
             $data['head_category'] = 'สินค้า/อาหาร';
         }
-        return view('photographer.packages.createPackageCard',$data,compact('package_card',$package_card));
+        return view('photographer.packages.createPackageCard',$data,compact('package_card',$package_card,'formattime'));
     }
     
     public function store(Request $request){
@@ -160,11 +162,12 @@ class PackageCardsController extends Controller
         // print_r('idcategory : ' . $idcategory . '<br>');
         // print_r('id : ' . $id . '<br>');
         $package_card = PackageCard::find($id);
+        $formattime = Format_time::pluck('name_format_time','id');
         // dd($package_card);
         if(empty($package_card))
         abort(404);
         $data['username'] = $username;
-        return view('photographer.packages.edit',$data, compact('package_card'));
+        return view('photographer.packages.edit',$data, compact('package_card','formattime'));
     }
 
     public function update($username,$idcategory,$id, PackageCardRequest $request){
@@ -191,7 +194,7 @@ class PackageCardsController extends Controller
         if( $check == '1'){
             return redirect('/profile/'.$username);
         }else{
-		    return redirect('/profile/'.$username.'/listPackage/'.$package_card->id_category)->with('alertdelete', 'Delete your package success!');
+		    return redirect('/profile/'.$username.'/listPackage/'.$idcategory)->with('alertdelete', 'Delete your package success!');
         }
 	}
 

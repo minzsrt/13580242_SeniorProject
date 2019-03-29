@@ -29,8 +29,9 @@
         <div class="container" style="height:100%;">
             <div class="row" style="height:100%;">
                 <div class="col">
-                <button class="btn_menu_list" onclick="window.location.href='{{url('/')}}'">
-                        <img class="menu_list" src="{{url('assets/image/logo.png')}}">
+                <button class="btn_menu_list text-info" onclick="window.location.href='{{url('/')}}'">
+                        <!-- <img class="menu_list" src="{{url('assets/image/logo.png')}}"> -->
+                        FINDPHO
                 </button>
                 </div>
                 <div class="col">

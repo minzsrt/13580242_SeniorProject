@@ -93,6 +93,7 @@ class AlbumsController extends Controller
         $data['username'] = $username;
         $album = Album::find($id);
         $photos = ImageAlbum::where('album_id',$album->id)->get();
+        // dd($photos);
         $category = Category::pluck('name_category','id');
 
         return view('photographer.edit', $data, compact('album','photos','category')); 
@@ -117,7 +118,7 @@ class AlbumsController extends Controller
             return redirect('profile/'.$username.'/album/'.$id.'/edit')->with('alertedit', 'แก้ไขอัลบั้มสำเร็จ!');
     }
 
-    public function destroy($id){
+    public function destroy($username,$id){
         $album = Album::findOrFail($id);
         $image_albums = ImageAlbum::Where( 'album_id' , 'LIKE' , $id )->get();
         foreach ($image_albums as $image_album) {
@@ -128,7 +129,19 @@ class AlbumsController extends Controller
             }
         }
         $album->delete();
-		return redirect('profile/'.Auth::user()->username)->with('alertdelete', 'ลบอัลบั้ม'.$album->name_album.'สำเร็จ!');
+		return redirect('profile/'.Auth::user()->username)->with('alertdelete', 'ลบอัลบั้ม '.$album->name_album.' สำเร็จ!');
+    }
+
+    public function destroyimage($username,$id){
+        $image_album = ImageAlbum::findOrFail($id);
+        // dd(public_path('/'.$image_album->name_image));
+        if(\File::exists(public_path('/'.$image_album->name_image))){
+            \File::delete(public_path('/'.$image_album->name_image));
+        }else{
+            dd('File does not exists.');
+        }
+        $image_album->delete();
+		return redirect('profile/'.Auth::user()->username.'/album/'.$image_album->album->id.'/edit')->with('alertdelete', 'ลบรูปภาพสำเร็จ!');
     }
 
     public function download($id)

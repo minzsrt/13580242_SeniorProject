@@ -18,7 +18,6 @@ class CreatePackagesTable extends Migration
             $table->integer('price');
             $table->text('detail');
             $table->text('shipping');
-            $table->integer('shipping_cost')->nullable();
             $table->timestamps();
         });
     }
