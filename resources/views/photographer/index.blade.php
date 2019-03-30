@@ -70,25 +70,25 @@
             @foreach ($orders as $order)
                 @if(date('Ymd') == date('Ymd', strtotime($order->date_work)))
                 <div class="container radius10 shadowbox bg_color_gradient_opacity2 pad10">
-                <div class="row">
-                    <div class="col-2 text-center bg_color_gradient_opacity color_72AFD3 shadownone radius10 marginnone">
-                    {{ date("j M", strtotime($order->date_work) )}}
+                    <div class="row">
+                        <div class="col-2 text-center bg_color_gradient_opacity color_72AFD3 shadownone radius10 marginnone">
+                        {{ date("j M", strtotime($order->date_work) )}}
+                        </div>
+                        <div class="col-10">
+                            รับปริญญา<br>
+                            <span class="all_more_link color_72AFD3">{{ $order->employer->username }}</span>
+                        </div>
                     </div>
-                    <div class="col-10">
-                        รับปริญญา<br>
-                        <span class="all_more_link color_72AFD3">{{ $order->employer->username }}</span>
-                    </div>
-                </div>
                 </div>
                 @else
                 <div class="container radius10 shadowbox bg_color_gradient_opacity2 pad10">
                 <div class="row">
-                    <div class="col-md">
+                    <div class="col-md-12">
                         <div class="messageicon margin_auto">
                             <img src="{{url('assets/image/calendar.svg')}}">
                         </div>
                     </div>
-                    <div class="col-md text_center">
+                    <div class="col-md-12 text_center">
                         <span class="all_more_link">ไม่มีคิวงานวันนี้</span> 
                     </div>
                 </div>
@@ -99,21 +99,21 @@
     </div>
 
     <div class="row margin_top10">
-        <div class="col-md">
+        <div class="col-12">
         <h3 class="headder_text">คิวงานใกล้จะถึง</h3>
         </div>
-        <div class="col-md">
+        <div class="col-12">
             @foreach ($orders as $order)
             <div class="container radius10 shadowbox bg_color_gradient_opacity2 pad10">
-            <div class="row">
-                <div class="col-2 text-center bg_color_gradient_opacity color_72AFD3 shadownone radius10 marginnone">
-                {{ date("j M", strtotime($order->date_work) )}}
+                <div class="row">
+                    <div class="col-2 text-center bg_color_gradient_opacity color_72AFD3 shadownone radius10 marginnone">
+                    {{ date("j M", strtotime($order->date_work) )}}
+                    </div>
+                    <div class="col-10">
+                        รับปริญญา<br>
+                        <span class="all_more_link color_72AFD3">{{ $order->employer->username }}</span>
+                    </div>
                 </div>
-                <div class="col-10">
-                    รับปริญญา<br>
-                    <span class="all_more_link color_72AFD3">{{ $order->employer->username }}</span>
-                </div>
-            </div>
             </div>
             @endforeach
         </div>
@@ -127,12 +127,12 @@
         <div class="col">
                 <div class="container radius10 shadowbox bg_color_gradient_opacity2 pad10">
                 <div class="row">
-                    <div class="col-md">
+                    <div class="col-md-12">
                         <div class="messageicon margin_auto">
                             <img src="{{url('assets/image/calendar.svg')}}">
                         </div>
                     </div>
-                    <div class="col-md text_center">
+                    <div class="col-md-12 text_center">
                         <span class="all_more_link">ไม่มีคิวงานวันนี้</span> 
                     </div>
                 </div>
@@ -141,18 +141,18 @@
     </div>
 
     <div class="row margin_top10">
-        <div class="col-md">
+        <div class="col-md-12">
         <h3 class="headder_text">คิวงานใกล้จะถึง</h3>
         </div>
-        <div class="col-md">
+        <div class="col-md-12">
                 <div class="container radius10 shadowbox bg_color_gradient_opacity2 pad10">
                 <div class="row">
-                    <div class="col-md">
+                    <div class="col-md-12">
                         <div class="messageicon margin_auto">
                             <img src="{{url('assets/image/calendar.svg')}}">
                         </div>
                     </div>
-                    <div class="col-md text_center">
+                    <div class="col-md-12 text_center">
                         <span class="all_more_link">ไม่มีคิวงานใกล้จะถึง</span> 
                     </div>
                 </div>

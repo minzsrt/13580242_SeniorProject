@@ -122,7 +122,7 @@ class ProfileController extends Controller
 
                     $id_user = $authall->pluck('id');
                     // dd($id_user);
-
+                    $depositcheck = DepositAccount::Where('id_photographer', $user->id)->get();
                     $albums = Album::orderBy('id', 'DESC')->get();
                     $category_albums = Album::groupBy('id_category')->get();
                     $package_cards = PackageCard::Where('id_user', 'LIKE', $id_user)->groupBy('id_category')->get();
@@ -138,7 +138,7 @@ class ProfileController extends Controller
 
                     $reviews = Review::where('id_photographer', $user->id)->get();
 
-                    return view('general.viewphotographer', $data, compact('albums','category_albums', 'package_cards', 'categories', 'image_albums','reviews','disableddate'))->withUser($user);
+                    return view('general.viewphotographer', $data, compact('depositcheck','albums','category_albums', 'package_cards', 'categories', 'image_albums','reviews','disableddate'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
 
