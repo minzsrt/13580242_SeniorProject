@@ -41,4 +41,10 @@ class Order extends Model
         
     }
 
+    public function reportorder(){
+
+        return $this->hasMany('App\Reportorder');
+
+    }
+
 }

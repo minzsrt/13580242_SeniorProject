@@ -89,12 +89,18 @@ Route::get('invoiceSuccess', function () {return view('invoiceSuccess');});
 Route::get('order/{id}', 'OrderController@show');
 Route::get('order/{id}/uploadfile', 'OrderController@uploadfileview');
 Route::post('order/{id}/uploadfile/store', 'OrderController@uploadfile');
-Route::get('sendworkSuccess', function () {return view('sendworkSuccess');});
+Route::get('order/{id}/cancel', 'OrderController@cancelview');
+Route::post('order/{id}/cancel/store', 'OrderController@cancelstore');
+Route::get('reportorderSuccess', function () {return view('reportorderSuccess');});
+Route::post('order/{id}/reject/store', 'OrderController@rejectstore');
+Route::get('rejectorderSuccess', function () {return view('rejectorderSuccess');});
 Route::post('order/{id}/sendwork', 'OrderController@sendwork');
+Route::get('sendworkSuccess', function () {return view('sendworkSuccess');});
 Route::get('order/{id}/uploadfile/success', 'OrderController@uploadfilesuccess');
 Route::get('order/{id}/viewfile', 'OrderController@viewfile');
 Route::get('order/{id}/download', 'OrderController@downloadzip');
 Route::get('order/{id}/downloadlink', 'OrderController@downloadzip');
+Route::get('order/{id}/invoice/download','OrderController@generatepdf');
 
 // Payment
 Route::get('listpayment/{id}', 'PaymentController@index');
@@ -153,17 +159,16 @@ Route::get('/admin/verify/{id}/update', 'AdminController@verifyupdate');
 // Unsuccess CRUD
 // Route::get('photographer/chatchannel', function () {return view('photographer.chatchannel.chatchannel');});
 // Route::get('chatchannel', function () {return view('general.chatchannel');})->middleware('auth');
-Route::get('recommendSetting', function () {return view('recommendSetting');});
+// Route::get('recommendSetting', function () {return view('recommendSetting');});
 Route::get('/portfolioPhotographer', function () {return view('regforphotographer.portfolio');});
 
 Route::any('search', 'SearchController@index');
 // Route::get('searchResult', function(){ return view('searchResult');});
 
 Route::get('listTag', function () {return view('listTag');});
-Route::get('management', function () {return view('mn_order');});
-Route::get('document/invoice', function () {return view('invoicedocument');});
+// Route::get('management', function () {return view('mn_order');});
+// Route::get('document/invoice', function () {return view('invoicedocument');});
 
-Route::get('order/{id}/invoice/download','OrderController@generatepdf');
 
 
 

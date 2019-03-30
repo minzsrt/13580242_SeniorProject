@@ -68,8 +68,8 @@ class UsersTableSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'username' => 'duodeep',
-                'email' => 'service@duodeep.com',
+                'username' => 'CBstudio',
+                'email' => 'CBstudio@findpho.com',
                 'password' => bcrypt('12345678'),
                 'role_id' => '3',
                 'remember_token' => str_random(10),

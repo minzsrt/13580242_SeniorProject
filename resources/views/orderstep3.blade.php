@@ -52,14 +52,51 @@
         <span class="all_more_link">เวลา</span>
         <div class="row">
                         <div class="col input-group">
-                            <input name="start_time" type="time" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                            <select name="start_time" id="start_time">
+                                <option value="6:00:00">6:00 AM</option>
+                                <option value="7:00:00">7:00 AM</option>
+                                <option value="8:00:00">8:00 AM</option>
+                                <option value="9:00:00">9:00 AM</option>
+                                <option value="10:00:00">10:00 AM</option>
+                                <option value="11:00:00">11:00 AM</option>
+                                <option value="12:00:00">12:00 PM</option>
+                                <option value="13:00:00">1:00 PM</option>
+                                <option value="14:00:00">2:00 PM</option>
+                                <option value="15:00:00">3:00 PM</option>
+                                <option value="16:00:00">4:00 PM</option>
+                                <option value="17:00:00">5:00 PM</option>
+                                <option value="18:00:00">6:00 PM</option>
+                                <option value="19:00:00">7:00 PM</option>
+                                <option value="20:00:00">8:00 PM</option>
+                                <option value="21:00:00">9:00 PM</option>
+                                <option value="22:00:00">10:00 PM</option>
+                            </select>           
+                            <!-- <input name="start_time" type="time" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;"> -->
                         </div>
                         <span>-</span>
                         <div class="col input-group">
-                            <input name="end_time" type="time" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;">
+                            <select name="end_time" id="end_time" @if($order->id_formattime != 3) disabled @endif>
+                                <option value="6:00:00">6:00 AM</option>
+                                <option value="7:00:00">7:00 AM</option>
+                                <option value="8:00:00">8:00 AM</option>
+                                <option value="9:00:00">9:00 AM</option>
+                                <option value="10:00:00">10:00 AM</option>
+                                <option value="11:00:00">11:00 AM</option>
+                                <option value="12:00:00">12:00 PM</option>
+                                <option value="13:00:00">1:00 PM</option>
+                                <option value="14:00:00">2:00 PM</option>
+                                <option value="15:00:00">3:00 PM</option>
+                                <option value="16:00:00">4:00 PM</option>
+                                <option value="17:00:00">5:00 PM</option>
+                                <option value="18:00:00">6:00 PM</option>
+                                <option value="19:00:00">7:00 PM</option>
+                                <option value="20:00:00">8:00 PM</option>
+                                <option value="21:00:00">9:00 PM</option>
+                                <option value="22:00:00">10:00 PM</option>
+                            </select>
+                            <!-- <input name="end_time" type="time" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;"> -->
                         </div>
         </div>
-        
 
         <!-- <div class="row" style="margin-top:20px;">
             <div class="col">
@@ -157,11 +194,30 @@
     jQuery(function($) {
 
         $('input.calendar').pignoseCalendar({
-		format: 'YYYY-MM-DD' // date format string. (2017-02-02)
+            format: 'YYYY-MM-DD', // date format string. (2017-02-02)
+            disabledDates:[
+                @foreach ($disableddate as $disdate)
+                
+                '{{$disdate->date_work}}',
+                
+                @endforeach
+            ],
         });
-        
-    });
 
+    });
+        var selectElem = document.getElementById('start_time')
+        // When a new <option> is selected
+        selectElem.addEventListener('change', function() {
+            var index = selectElem.selectedIndex;
+            
+            @if($order->id_formattime == 1)
+            var index2 = index+4;
+            @elseif($order->id_formattime == 2)
+            var index2 = index+8;
+            @endif
+
+            document.getElementById("end_time").selectedIndex = index2;
+        })
     </script>
 </body>
 </html>

@@ -84,6 +84,12 @@
                             </div>
                         </div>
 
+                        <div class="form-group row margin_bottom20">
+                            <div class="col-md-6">
+                                {!! Form::select('id_scopework', $scopework,null, ['class'=>'form-control input_box','placeholder' => 'เลือกสถานที่รับงาน']) !!} 
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <input class="form-control input_box" type="hidden" name="id_user" value="{{Auth::user()->id}}">  

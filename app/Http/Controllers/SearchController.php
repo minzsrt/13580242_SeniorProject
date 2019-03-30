@@ -7,7 +7,9 @@ use App\ImageAlbum;
 use App\PackageCard;
 use App\Category;
 use App\User;
+use App\Order;
 use App\Review;
+use App\Scopework;
 use Auth;
 use Storage;
 use Illuminate\Http\Request;
@@ -29,7 +31,12 @@ class SearchController extends Controller
         $price1 = Input::get ( 'price1' );
         $price2 = Input::get ( 'price2' );
         $formattime = Input::get ( 'formattime' );
+        $scope = Input::get ( 'scopework' );
+        $date = Input::get ( 'date' );
+
         $id_category = Category::all();
+        $scopeworks = Scopework::all();
+        $disableddate = Order::all();
 
         if(!empty($category) && !empty($price1) && !empty($price2) && !empty($formattime)){
 
@@ -43,20 +50,25 @@ class SearchController extends Controller
                 $data['price1'] =  $price1 ;
                 $data['price2'] =  $price2 ;
                 $data['formattime'] =  $formattime ;
+                $data['scope'] =  $scope ;
+                $data['date'] =  $date ;
                 $categorySearch = Category::findOrFail($category); 
-                return view('general.search',$data,compact('albums','id_category','categorySearch','package_cards'))->withDetails($package_cards);
+                return view('general.search',$data,compact('albums','id_category','categorySearch','package_cards','scopeworks','disableddate'))->withDetails($package_cards);
             }
             else {
                 $data['price1'] =  $price1 ;
                 $data['price2'] =  $price2 ;
-                return view('general.search',$data,compact('id_category'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
+                $data['formattime'] =  $formattime ;
+                $data['scope'] =  $scope ;
+                $data['date'] =  $date ;
+                return view('general.search',$data,compact('id_category','scopeworks','disableddate'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
             }
         }
 
         $data['price1'] =  $price1 ;
         $data['price2'] =  $price2 ;
 
-        return view('general.search',$data,compact('albums','id_category','package_cards'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
+        return view('general.search',$data,compact('albums','id_category','package_cards','disableddate','scopeworks'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
 
         
         

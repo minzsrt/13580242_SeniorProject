@@ -132,7 +132,7 @@
                                 <div class="row">
                                     <div class="col text_center">
 
-                                        @if($order->status_order == 'รอการตอบรับ')
+                                        @if($order->status_order == 'รอการตอบรับ' && Auth::user()->role_id == '2')
                                         <div class="row">
                                             <div class="col">
                                                 <button onclick="window.location.href='/order/{{$order->id}}/invoice'" class="btn btn_width btn_color bg_72AFD3" type="button">
@@ -140,12 +140,39 @@
                                                 </button>
                                             </div>
                                             <div class="col">
-                                                <button onclick="window.location.href='/order/{{$order->id}}/viewfile'" class="btn btn_width btn_color color_72AFD3 bg_72AFD3_line" type="button">
+                                                <button class="btn btn_width btn_color color_72AFD3 bg_72AFD3_line" type="button" data-toggle="modal" data-target="#cancel{{$order->id}}">
                                                 ปฏิเสธ
                                                 </button>
                                             </div>
                                         </div>
 
+                                        <div class="modal fade" id="cancel{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="cancel{{$order->id}}Title" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <form action="/order/{{$order->id}}/reject/store" method="post">
+                                                        {{ csrf_field() }}
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col margin_top10">
+                                                                    <h3 class="headder_text text_center ">คุณแน่ใจหรือไม่ที่จะปฏิเสธงานนี้</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                <button type="button" class="btn btn_width btn_color bg_72AFD3_line color_72AFD3" data-dismiss="modal">ยกเลิก</button>
+                                                                </div>
+                                                                <div class="col">
+                                                                <button type="submit" class="btn btn_width btn_color bg_72AFD3">แน่ใจ</button>
+                                                                </div>
+                                                            </div>
+                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         @elseif($order->status_order == 'รอชำระเงิน' && Auth::user()->role_id == '3')
                                         <div class="row">
                                             <div class="col text_center">
@@ -170,12 +197,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col">
-                                                    
-                                            </div>
-                                        </div>
-
                                         @elseif($order->status_order == 'ชำระเงินแล้ว' && Auth::user()->role_id == '2')
                                         <div class="row">
                                             <div class="col">
@@ -183,7 +204,7 @@
                                                     {{ csrf_field() }}
 
                                                     <button type="submit"  id="load" class="margin_auto btn btn_color bg_72AFD3" type="button" 
-                                                    @if($order->status_order == 'ส่งงาน') disabled @endif>
+                                                    @if( date('Ymd') < date('Ymd', strtotime($order->date_work)) ) disabled @endif >
                                                     ส่งงาน
                                                     </button>
                                                 </form>
@@ -204,10 +225,6 @@
                                         <div class="modal fade" id="modalorder{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="modalorder{{$order->id}}Title" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
                                                 <div class="modal-body">
                                                     <form action="/order/{{$order->id}}/review/store" method="post">
                                                     {{ csrf_field() }}
@@ -253,7 +270,7 @@
                                                         <input type="hidden" name="id_user" class="form-control " value="{{Auth::user()->id}}">
                                                         <input type="hidden" name="id_photographer" class="form-control " value="{{$order->id_photographer}}">
                                                         <input type="hidden" name="id_order" class="form-control " value="{{$order->id}}">
-                                                        <button type="submit" class="btn btn_color btn_width">
+                                                        <button type="submit" class="btn btn_color">
                                                         รีวิว
                                                         </button>
                                                     </div>
@@ -297,7 +314,7 @@
             </div>
         </div>
 
-        @if($order->status_order == 'ชำระเงินแล้ว' || $order->status_order == 'ส่งงาน' || $order->status_order == 'เสร็จสิ้น')
+        @if($order->status_order == 'รอชำระเงิน'||$order->status_order == 'ชำระเงินแล้ว' || $order->status_order == 'ส่งงาน' || $order->status_order == 'เสร็จสิ้น')
 
         <p class="headder_text margin_top20" style="position: relative; padding: 5px;">
         จัดการออเดอร์
@@ -309,7 +326,7 @@
             <div class="col-md margin_bomtom20">
                 <div class="inner-addon right-addon" id="headingOne">
                     <i class="fas fa-chevron-right selecticon top12 fontsize16 right-icon"></i>
-                    <button onclick="window.location.href='/order/{{$order->id}}/invoicepdf'" class="menubtn fontsize16" type="button">
+                    <button onclick="window.location.href='/order/{{$order->id}}/invoice/download'" class="menubtn fontsize16" type="button">
                         ใบเสนอราคา
                     </button>
                 </div>
@@ -338,7 +355,7 @@
 
             @if($order->status_order != 'เสร็จสิ้น' && $order->status_order != 'ส่งงาน' )
             <div class="col-md margin_bomtom20">
-                    <button class="menubtn fontsize16 menubtnred color_ff4949" type="button">
+                    <button onclick="window.location.href='/order/{{$order->id}}/cancel'" class="menubtn fontsize16 menubtnred color_ff4949" type="button">
                         ยกเลิกงาน
                     </button>
             </div>

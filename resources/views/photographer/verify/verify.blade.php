@@ -1,14 +1,10 @@
 @extends('layouts.mainprofile')
 @section('page_title', 'Verify')
+@section('link_back', '/')
 @section('content')
 
-@if(empty($checkverify))
-<form action="{{url('verify/'.Auth::user()->username.'/store')}}" method="post"  enctype="multipart/form-data">
-@else
-    @if($checkverify->id_status == '3')
-    {!! Form::model($checkverify, ['url' => ['verify/'.Auth::user()->username.'/update'], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-    @endif
-@endif
+
+{!! Form::model($checkverify, ['url' => ['verify/'.Auth::user()->username.'/update'], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 {{ csrf_field() }}
 
     <div class="container">
@@ -25,21 +21,21 @@
                     </p>
                 </div>
                 <div class="col-md">
-                @if(empty($checkverify))
-                    <div class="card album_show_wrap_full" style="height:auto !important;">
-                        <div id="dvPreview">
-                            <img src="/assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
-                        </div>
-                        <div class="wrap_choose_file">
-                            <div class="upload-btn-wrapper">
-                                <button class="btn_choose">
-                                    <span class="hastag_album">Choose File...</span>
-                                </button>
-                                <input name="copy_id_card" type="file" id="fileupload"/>
+                    @if($checkverify->id_status == '4')
+                        <div class="card album_show_wrap_full" style="height:auto !important;">
+                            <div id="dvPreview">
+                                <img src="/assets/image/color_aeaeae.svg" id="profile-img-tag" class="card-img-top"/>
+                            </div>
+                            <div class="wrap_choose_file">
+                                <div class="upload-btn-wrapper">
+                                    <button class="btn_choose">
+                                        <span class="hastag_album">Choose File...</span>
+                                    </button>
+                                    <input name="copy_id_card" type="file" id="fileupload"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @else
+                    @else
                     <div class="card album_show_wrap_full" style="height:auto !important;">
                         <div id="dvPreview">
                             <img src="{{ url($checkverify->copy_id_card) }}" id="profile-img-tag" class="card-img-top" style="opacity:0.5;"/>
@@ -61,7 +57,7 @@
                                     </span>
                                 </button>
                             </div>
-                            @else
+                            @elseif($checkverify->id_status == '3')
                             <div class="upload-btn-wrapper">
                                 <button class="btn_choose">
                                     <span class="hastag_album text-danger fontsize18" style="border-color:red;">
@@ -80,10 +76,10 @@
                 <input name="id_user" type="hidden" value="{{Auth::user()->id}}"/>
                 
                 <div class="col-md text_center">
-                    @if(empty($checkverify))
-                    <button type="submit" class="btn btn_color">
-                    ยืนยันตัวตน
-                    </button>
+                    @if($checkverify->id_status == '4')
+                        <button type="submit" class="btn btn_color">
+                        ยืนยันตัวตน
+                        </button>
                     @else
                         @if($checkverify->id_status == '3')
                         <span class="all_more_link">กรุณาอัปโหลดไฟล์เพื่อยืนยันตัวตนอีกครั้ง</span><br>

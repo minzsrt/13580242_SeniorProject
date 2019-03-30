@@ -57,6 +57,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Review');
     }
 
-
+    public function reportorder(){
+        return $this->hasMany('App\Reportorder');
+    }
 
 }

@@ -726,6 +726,10 @@ select.select_search {
     border: none !important;
     background: linear-gradient(135deg, rgba(114,175,211,0.15) 0%,rgba(55,236,186,0.5) 100%);
 }
+.bg_color_gradient_opacity2{
+    border: none !important;
+    background: linear-gradient(135deg,rgba(55,236,186,0.18) 30%,rgba(114,175,211,0.5) 100%);
+}
 
 .color_black{
     color: #000000 !important;
@@ -845,6 +849,9 @@ select.select_search {
 }
 .margin_top10{
     margin-top:10px;
+}
+.marginnone{
+    margin:0 !important;
 }
 .index_boxcol-12{
     padding: 0; border-radius: 10px; border:0; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);
@@ -1059,6 +1066,9 @@ select.select_search {
    }
 .pad5{
     padding: 5px;
+   }
+   .padnone{
+    padding: 0 !important;
    }
 #payment button{
     width:200px;
@@ -1291,8 +1301,25 @@ a:hover{
     width: 100%;
     height: auto;
   }
-
+  .iconalert{
+    width: 25px;
+    height: auto;
+    margin: 0 auto;
+  }
+  .iconalert img{
+    width: 100%;
+    height: auto;
+  }
+  .shadowbox{
+    box-shadow: 0px 3px 20px rgba(0,0,0,0.1);
+  }
   .shadownone{
     box-shadow: none;
+  }
 
+  .show{
+    display: block;
+  }
+  .unshow{
+    display: none;
   }

@@ -50,8 +50,11 @@
                                     </div>
 
                                     <div class="col-4 text_right">
+                                        @if($order->id_formattime == 1 || $order->id_formattime == 2)
                                         <h3  class="fontsize18 badge category_badge color_white">{{number_format($order->price)}} ฿</h3>
-
+                                        @else
+                                        <h3  class="fontsize18 badge category_badge color_white">{{number_format( $order->price* 2 )}} ฿</h3>
+                                        @endif
                                     </div>                
                                 </div>
 

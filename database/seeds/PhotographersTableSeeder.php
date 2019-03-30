@@ -23,6 +23,8 @@ class PhotographersTableSeeder extends Seeder
                 'district' => 'พญาไท',
                 'province' => 'กรุงเทพฯ',
                 'zipcode' => '10400',
+                'phone' => '0852721898',
+                'id_scopework' => '1',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'id_user' => '2'
@@ -37,6 +39,8 @@ class PhotographersTableSeeder extends Seeder
                 'district' => 'เมืองนครนครราชสีมา',
                 'province' => 'นครราชสีมา',
                 'zipcode' => '30000',
+                'phone' => '0852721898',
+                'id_scopework' => '1',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'id_user' => '6'
@@ -51,6 +55,8 @@ class PhotographersTableSeeder extends Seeder
                 'district' => 'ปากเกร็ด',
                 'province' => 'นนทบุรี',
                 'zipcode' => '11120',
+                'phone' => '0852721898',
+                'id_scopework' => '1',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'id_user' => '7'

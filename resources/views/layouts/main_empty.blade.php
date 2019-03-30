@@ -16,6 +16,7 @@
 	<link href="{{url('css/style.css')}}" rel="stylesheet">
 	<link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="{{url('css/jquery.fancybox.min.css')}}">
 
     <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
 </head>
@@ -63,7 +64,10 @@
 
         });
 
-    </script>
 
+
+
+    </script>
+     @yield('js')
 </body>
 </html>

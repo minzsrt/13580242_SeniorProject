@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Photographer;
 use App\VerifyCard;
+use App\Scopework;
 use Illuminate\Http\Request;
 // use Request;
 use Auth;
@@ -29,7 +30,8 @@ class RegisterPhotographerController extends Controller
      */
     public function create()
     {
-        return view('regforphotographer.registerPhotographer');
+        $scopework = Scopework::pluck('scopework','id');
+        return view('regforphotographer.registerPhotographer',compact('scopework'));
     }
 
     /**

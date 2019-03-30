@@ -49,7 +49,8 @@
                     <span class="all_more_link">วันที่</span>
                     <div class="inner-addon right-addon">
                         <i class="fas fa-calendar-alt right-icon"></i>
-                        <input type="text" id="text-calendar" class="calendar input_box" name="date"/>
+                       
+                        <input type="text" id="text-calendar" class="calendar input_box" name="date"  @if(!empty($date)) value="{{$date}}" @endif />
                     </div>
                 </div>
                 <div class="col-md" style="margin-top:10px; font-size:14px;">
@@ -96,15 +97,16 @@
                     <span class="all_more_link">สถานที่</span>
                     <div class="inner-addon right-addon">
                         <i class="fas fa-chevron-down selecticon right-icon"></i>
-                        <select class="form-control select_search">
-                            <option selected>เลือกสถานที่...</option>
-                            <option value="1">กรุงเทพและปริมลฑล</option>
-                            <option value="2">ภาคเหนือ</option>
-                            <option value="3">ภาคกลาง</option>
-                            <option value="1">ภาคตะวันออก</option>
-                            <option value="2">ภาคตะวันออกเฉียงเหนือ</option>
-                            <option value="3">ภาคตะวันตก</option>
-                            <option value="3">ภาคใต้</option>
+                        <select name="scopework" class="form-control select_search">
+                            @foreach($scopeworks as $scopework)
+                                <option value="{{ $scopework->id }}"
+                                    @if(!empty($scope))
+                                    {{ $scope == $scopework->id  ? 'selected' : ''}}
+                                    @endif
+                                    >
+                                    {{ $scopework->scopework}}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -195,7 +197,16 @@
         });
 
         $('input.calendar').pignoseCalendar({
-		format: 'YYYY-MM-DD' // date format string. (2017-02-02)
+            format: 'YYYY-MM-DD',// date format string. (2017-02-02)
+            disabledDates:[
+                @if($disableddate->count() > 0)
+                @foreach ($disableddate as $disdate)
+                
+                '{{$disdate->date_work}}',
+                
+                @endforeach
+                @endif
+            ],
         });
 
 

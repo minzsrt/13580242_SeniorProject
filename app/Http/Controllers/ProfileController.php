@@ -72,14 +72,15 @@ class ProfileController extends Controller
                     $albums = Album::orderBy('id', 'DESC')->get();
 
                     $package_cards = PackageCard::select('id_category','price')->where('id_user', $user->id)->groupBy('id_category')->get();
-                    
                     // $package_cards = PackageCard::where('id_user', $user->id)->get();
+                    
+                    $disableddate = Order::select('date_work')->Where('id_photographer', $user->id)->get();
 
                     $reviews = Review::where('id_photographer', $user->id)->get();
 
                     $categories = Category::all();
                     $image_albums = ImageAlbum::all();
-                    return view('photographer.profile', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
+                    return view('photographer.profile', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews','disableddate'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
                     return view('general.profile', $data)->withUser($user);
@@ -93,6 +94,8 @@ class ProfileController extends Controller
                     // dd($category_albums);
                     $package_cards = PackageCard::Where('id_user', $user->id)->groupBy('id_category')->get();
 
+                    $disableddate = Order::select('date_work')->Where('id_photographer', $user->id)->get();
+
                     if (empty($package_cards)) {
                         abort(404);
                     }
@@ -101,7 +104,7 @@ class ProfileController extends Controller
                     $categories = Category::all();
                     $reviews = Review::where('id_photographer', $user->id)->get();
 
-                    return view('general.viewphotographer', $data, compact('albums','category_albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
+                    return view('general.viewphotographer', $data, compact('albums','category_albums', 'package_cards', 'categories', 'image_albums','disableddate','reviews'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
 
@@ -127,12 +130,14 @@ class ProfileController extends Controller
                         abort(404);
                     }
 
+                    $disableddate = Order::select('date_work')->Where('id_photographer', $user->id)->get();
+
                     $image_albums = ImageAlbum::all();
                     $categories = Category::all();
 
                     $reviews = Review::where('id_photographer', $user->id)->get();
 
-                    return view('general.viewphotographer', $data, compact('albums','category_albums', 'package_cards', 'categories', 'image_albums','reviews'))->withUser($user);
+                    return view('general.viewphotographer', $data, compact('albums','category_albums', 'package_cards', 'categories', 'image_albums','reviews','disableddate'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
 

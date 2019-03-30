@@ -116,7 +116,7 @@ class VerifyController extends Controller
         $verify = VerifyCard::where('id_user',$user->id)->first();   
         
         $verify->fill([
-            'status_verify' => $request->status_verify,
+            'id_status' => $request->id_status,
             'id_user' => $request->id_user,
         ]);
 

@@ -282,19 +282,22 @@
                 }
             },
             schedules: [
+                @foreach ($disableddate as $disdate)
                 {
                 name: 'employed',
-                date: '2019-03-08'
+                date: '{{$disdate->date_work}}'
                 },
-                {
-                name: 'employed',
-                date: '2019-03-08'
-                },
-                {
-                name: 'employed',
-                date: '2019-03-05',
-                }
+                @endforeach
+                
             ],
+            disabledDates:[
+                @foreach ($disableddate as $disdate)
+                
+                '{{$disdate->date_work}}',
+                
+                @endforeach
+            ],
+
             select: function(date) {
                 console.log('your first date', date);
                 // window.onload = function() {

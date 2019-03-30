@@ -15,6 +15,7 @@ use App\Order;
 use App\Review;
 use App\Sendwork;
 use App\Photographer;
+use App\Reportorder;
 
 
 // use Request;
@@ -222,12 +223,14 @@ class OrderController extends Controller
     {
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
+        $disableddate = Order::select('date_work')->Where('id_photographer', $user->id)->get();
+
         // print_r('category : '.$order->id_category.'<br>');
         // print_r('id_photographer : '.$order->id_photographer.'<br>');
         // print_r('id_formattime : '.$order->id_formattime.'<br>');
         // print_r('price : '.$order->price.'<br>');
         // print_r('time_work : '.$order->time_work.'<br>');
-        return view('/orderstep3', compact('order', $order, 'package_cards', 'user'))->with('username', $username);
+        return view('/orderstep3', compact('order', $order, 'package_cards', 'user','disableddate'))->with('username', $username);
     }
     /**
      * Post Request to store step1 info in session
@@ -458,13 +461,14 @@ class OrderController extends Controller
         // return redirect('order/'.$id.'/viewfile');
         
     }
-    public function downloadziplink($id)
-    {
-        $pathToFile = public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip');
-        // ->deleteFileAfterSend(true)
-        return response()->download(public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'));
+    
+    // public function downloadziplink($id)
+    // {
+    //     $pathToFile = public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip');
+    //     // ->deleteFileAfterSend(true)
+    //     return response()->download(public_path('download/order-'.$id.'/'.Carbon::now()->format('Ymd').'-download-all.zip'));
         
-    }
+    // }
 
     function generatepdf($id) {
 
@@ -474,9 +478,68 @@ class OrderController extends Controller
         $pdf = PDF::loadView('documents.invoicedocument',['order'=> $order],['photographer'=> $photographer]);
         $pdf->SetProtection(['copy', 'print'], '', 'pass');
 
-        // return $pdf->download('invoicedocument.pdf');
-        return $pdf->stream('ใบเสนอราคา(สำเนา).pdf');
+        return $pdf->download('invoicedocument.pdf');
+        // return $pdf->stream('ใบเสนอราคา(สำเนา).pdf');
     }
+
+    public function cancelview($id){
+
+        $order = Order::find($id);
+        // dd($fileworks);
+        return view('photographer.order.cancalview',compact('order'));
+
+    }
+
+    public function cancelstore($id,Request $request){
+
+        $order = Order::findOrFail($id);
+        $order->status_order = 'รอดำเนินการยกเลิก';
+        $order->update();
+
+        $reportorder = Reportorder::create($request->all());
+        $reportorder->save();
+
+        $user = User::findOrFail($request->id_user);
+
+        if($request->id_user == $order->id_employer){
+            NotificationModel::create([
+                'user_id' => $order->id_photographer,
+                'id_order' => $order->id,
+                'message' => $user->username.' ขอยกเลิกงานคุณ',
+            ]);
+            event(new TriggerNotification($order->id_photographer));
+        }else{
+            NotificationModel::create([
+                'user_id' => $order->id_employer,
+                'id_order' => $order->id,
+                'message' => $user->username.' ขอยกเลิกงานคุณ',
+            ]);
+            event(new TriggerNotification($order->id_employer));
+        }
+
+        return redirect('reportorderSuccess');  
+
+    }
+
+    public function rejectstore($id,Request $request){
+
+        $order = Order::findOrFail($id);
+        $order->status_order = 'ปฏิเสธงาน';
+        $order->update();
+
+        $user = User::findOrFail($request->user_id);
+
+            NotificationModel::create([
+                'user_id' => $order->id_employer,
+                'id_order' => $order->id,
+                'message' => $user->username.' ปฎิเสธคำของานคุณ',
+            ]);
+            event(new TriggerNotification($order->id_employer));
+
+        return redirect('rejectorderSuccess');  
+
+    }
+    
 
     public function __construct()
     {
