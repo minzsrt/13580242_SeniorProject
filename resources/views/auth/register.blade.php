@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('page_title', 'Register')
-
+@section('link_back', '/home' )
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -73,8 +73,10 @@
                             </div>
                         </div>
 
-                        <input type="hinden" name="avatar" value="profile/profile-default.svg">
-
+                        <!-- <input type="hinden" name="avatar" value="profile/profile-default.svg"> -->
+                        <input type="text" name="avatar" value="https://avatars.dicebear.com/v2/identicon/Bee2019.svg">
+                        
+                       <!-- <a href="{{url('https://avatars.dicebear.com/v2/identicon/Bee2019.svg')}}" target="_blank">12345</a> -->
                         <!-- <div class="form-group row mb-0 bottom_fixed">
                                 <div class="col-md-8 offset-md-4 text_center">
                                     <h3 class="headder_text">

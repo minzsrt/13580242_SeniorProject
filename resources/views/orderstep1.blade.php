@@ -42,7 +42,7 @@
         <div class="row">
             <div class="container form-group">
                         <div id="radioBtn" class="row">
-                        @foreach($package_cards as $package_card)
+                            @foreach($package_cards as $package_card)
                             <a class="col-md" data-toggle="id_category" data-title="{{$package_card->id_category}}">
                                 <label class="container_radio">
                                     <div class="row height60">

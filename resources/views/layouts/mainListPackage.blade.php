@@ -24,7 +24,7 @@
         <button class="btn_layout_back " onclick="window.location.href='/profile/{{Auth::user()->username}}'" >กลับ</button>
 </section>
 
-<div class="container">
+<div class="container wrapcontent">
 	@yield('content')
 </div>
 

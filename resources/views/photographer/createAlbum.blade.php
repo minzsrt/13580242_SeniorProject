@@ -26,7 +26,7 @@
     </div>
 
     <div class="row">
-            <div class="col-md margin_top10">
+            <div class="col-md-12 margin_top10">
                 <span class="all_more_link">ชื่ออัลบั้ม</span>
                 <div class="row">
                     <div class="col">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md margin_top10">
+            <div class="col-md-12 margin_top10">
                 <span class="all_more_link">แท็ก</span>
                     {!! Form::select('id_category', $category, null, ['class' => 'form-control']) !!}
             </div>
@@ -47,7 +47,7 @@
 
     <section style="height:250px;"></section>
 
-    <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+    <nav class="wrapcontent container nav_bottom nav_bottom_profile" style="box-shadow: none;">
         <div class="row">
             <div class="col" style="display: inherit; padding-top:10px;">
             </div>

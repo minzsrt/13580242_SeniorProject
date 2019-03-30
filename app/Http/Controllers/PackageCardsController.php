@@ -162,12 +162,18 @@ class PackageCardsController extends Controller
         // print_r('idcategory : ' . $idcategory . '<br>');
         // print_r('id : ' . $id . '<br>');
         $package_card = PackageCard::find($id);
-        $formattime = Format_time::pluck('name_format_time','id');
-        // dd($package_card);
-        if(empty($package_card))
-        abort(404);
-        $data['username'] = $username;
-        return view('photographer.packages.edit',$data, compact('package_card','formattime'));
+        
+        if(Auth::user()->username == $package_card->user->username){
+            $formattime = Format_time::pluck('name_format_time','id');
+            // dd($package_card);
+            if(empty($package_card))
+            abort(404);
+            $data['username'] = $username;
+            return view('photographer.packages.edit',$data, compact('package_card','formattime'));
+        }else{
+            abort(404);     
+        }
+       
     }
 
     public function update($username,$idcategory,$id, PackageCardRequest $request){

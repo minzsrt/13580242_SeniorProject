@@ -11,7 +11,7 @@
                     <img src="{{ url(Auth::user()->avatar) }}" style="width:auto !important; height: 100%;">   
                 </div>
 
-                <div class="col-12" style="height:40px;">
+                <div class="col-md-12" style="height:40px;">
                     <div class="wrap_choose_file"  style="left:0;">
                         <div class="upload-btn-wrapper">
                             <button class="btn_choose"><span class="hastag_album" style="color:#adadad; border:0.5px solid #adadad;">เปลี่ยนภาพโปรไฟล์</span></button>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
 
-                <div class="col-md" style="margin-top:10px;">
+                <div class="col-md-12" style="margin-top:10px;">
                     <span class="all_more_link">ชื่อผู้ใช้</span>
                     <div class="row">
                         <div class="col">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md" style="margin-top:10px;">
+                <div class="col-md-12" style="margin-top:10px;">
                     <span class="all_more_link">อีเมล</span>
                     <div class="row">
                         <div class="col">
@@ -51,8 +51,8 @@
                     </div>
                 </div>
                 
-                <div class="col-md text_center" style="margin-top:10px;">
-                    {!! Form::submit('บันทึก', ['class' => 'btn btn_color','style' => 'background:#72AFD3; width:100%; margin:0;']) !!}
+                <div class="col-md-12 text_center" style="margin-top:10px;">
+                    {!! Form::submit('บันทึก', ['class' => 'btn_color btn_bottom color_white','style' => 'background:#72AFD3; width:100%; margin:0;']) !!}
                 </div>
 
         </div>        

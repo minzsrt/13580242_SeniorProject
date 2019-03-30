@@ -31,7 +31,7 @@
             </div>
 </section>
 
-<div class="container">
+<div class="container wrapcontent">
 	@yield('content')
 </div>
 

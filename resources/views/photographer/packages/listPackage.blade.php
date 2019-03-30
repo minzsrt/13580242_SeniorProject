@@ -26,7 +26,9 @@
 
     <div class="container">
         @foreach($package_cards as $package_card)
+            @if($package_card->user->username == Auth::user()->username)
             <a class="a_getlink" href="{{ url("profile/{$username}/listPackage/{$package_card->id_category}/{$package_card->id}/edit") }}">
+            @endif
                 <div class="card-body album_show_wrap padding_card bg_color_gradient_opacity">
                     <div class="row color_black">
                         <div class="col-8" style="font-size:10px;">
@@ -46,7 +48,9 @@
                         </p>
                     </div>
                 </div>
+            @if($package_card->user->username == $username)
             </a>
+            @endif
         @endforeach
 
         @if(Auth::guest())

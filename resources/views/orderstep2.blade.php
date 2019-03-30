@@ -70,15 +70,15 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <input type="radio" checked="checked" name="radio">
+                                    <input type="radio" name="radio" {{ $loop->first ? 'checked' : '' }}>
                                     <span class="checkmark"></span>
                                     </label>
                                 </a>
                             @endforeach
                         </div>
-    				    <input type="hidden" name="id_formattime" id="id_formattime">
-    				    <input type="hidden" name="price" id="price">
-    				    <input type="hidden" name="detail" id="detail">
+    				    <input type="hidden" name="id_formattime" id="id_formattime" value="">
+    				    <input type="hidden" name="price" id="price" value="">
+    				    <input type="hidden" name="detail" id="detail" value="">
             </div>
         </div>
 

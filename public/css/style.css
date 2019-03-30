@@ -1050,6 +1050,9 @@ select.select_search {
 .noti_active{
     background:#37ECBA30; 
 }
+.nonebg{
+    background: none !important;
+}
 .textinput_none{
     border: none !important;
     background: none !important;
@@ -1128,10 +1131,80 @@ select.select_search {
 
 .wf-column { float: left; }
 
+.showmenu{
+    display: none;
+}
+.menu_listph{
+    height: 60px !important;
+    position: absolute;
+    top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+}
 @media screen and (min-width: 768px) {
 
 .wf-container { width: 750px; }
-    
+
+.showmenu{
+    display: block;
+}
+.wrapmenuright{
+    width: 30%;
+    margin: 0 0 0 auto;
+    max-width: 350px;
+}
+.menu_list_active_p{
+    right: 0;
+}
+.btn_menu_list_logo{
+    height: 60px;
+    top: 0px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.logomenu{
+    position: fixed;
+}
+.logosize{
+    width: 60px;
+    height: auto;
+    top: -15px;
+    left: 0;
+    right: auto;
+}
+.textlogo{
+    width: 60px;
+    height: auto;
+    top: 20px;
+    left: 70px;
+    position: absolute;
+    font-size: 18px;
+}
+.noti-badge{
+    right: 10px !important;
+}
+.wrapcontent{
+    width: 40%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+.actions-modal{
+    width: 40% !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+}
 }
     
 @media screen and (min-width: 992px) {

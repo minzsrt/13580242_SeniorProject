@@ -36,7 +36,7 @@
     
     <input name="id_order" type="hidden" value="{{$order->id}}"/>
 
-        <nav class="container nav_bottom">
+        <nav class="wrapcontent container nav_bottom">
         <div class="row">
             <div class="col">
                 

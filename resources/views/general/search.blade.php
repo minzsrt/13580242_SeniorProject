@@ -13,7 +13,7 @@
             </div>
  
             <div class="row">
-                <div class="col-md">
+                <div class="col-md-12">
                     <span class="all_more_link">ประเภทงาน</span>
                     <div class="inner-addon right-addon">
                         <i class="fas fa-chevron-down selecticon right-icon"></i>
@@ -33,7 +33,7 @@
                     <div class="input-group">
                     </div>     
                 </div>
-                <div class="col-md" style="margin-top:10px;">
+                <div class="col-md-12" style="margin-top:10px;">
                     <span class="all_more_link">งบประมาณ (บาท)</span>
                     <div class="row">
                         <div class="col input-group">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md" style="margin-top:10px;">
+                <div class="col-md-12" style="margin-top:10px;">
                     <span class="all_more_link">วันที่</span>
                     <div class="inner-addon right-addon">
                         <i class="fas fa-calendar-alt right-icon"></i>
@@ -53,7 +53,7 @@
                         <input type="text" id="text-calendar" class="calendar input_box" name="date"  @if(!empty($date)) value="{{$date}}" @endif />
                     </div>
                 </div>
-                <div class="col-md" style="margin-top:10px; font-size:14px;">
+                <div class="col-md-12" style="margin-top:10px; font-size:14px;">
                     <span class="all_more_link">เวลา</span>
                     <div class="input-group">
                         <div id="radioBtn" class="row">
@@ -93,7 +93,7 @@
                         @endif>
     			    </div>   
                 </div>
-                <div class="col-md input-group" style="margin-top:10px;">
+                <div class="col-md-12 input-group" style="margin-top:10px;">
                     <span class="all_more_link">สถานที่</span>
                     <div class="inner-addon right-addon">
                         <i class="fas fa-chevron-down selecticon right-icon"></i>

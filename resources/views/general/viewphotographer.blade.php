@@ -1,6 +1,12 @@
 @extends('layouts.mainprofile')
 @section('page_title', 'Profile')
-@section('link_back', '/profile/'.Auth::user()->username)
+
+@if(Auth::check())
+@section('link_back','/profile/'.Auth::user()->username)
+@else
+@section('link_back', '/' )
+@endif
+
 @section('content')
 
     <div class="wrap_container_head">
@@ -118,7 +124,7 @@
                 </div>
                 <div class="container">
                     @foreach($package_cards as $id_category => $package_card)
-                        <div onclick="window.location.href='{{ url("profile/{$username}/listPackage/{$package_card->id_category}") }}'" class="packagecard_box">
+                        <div onclick="window.location.href='{{ url("profile/{$username}/listPackage/{$package_card->id_category}") }}'" class="packagecard_box bg_color_gradient_opacity">
                             <div class="row packagecard_box_padding">
                                 <div class="col">
                                     <span>{{ $package_card->category->name_category }}</span>
@@ -190,8 +196,8 @@
 
 
 
-
-    <nav class="container nav_bottom nav_bottom_profile" style="background: #fff;">
+    @if($depositcheck->count() != 0)
+    <nav class="wrapcontent container nav_bottom nav_bottom_profile" style="background: #fff;">
         <div class="row">
             <div class="col" style="display: inherit; padding-top:10px;">
                 <form action="/orderstep1" method="post">
@@ -203,6 +209,7 @@
             </div>
         </div>
     </nav>
+    @endif
 
     <!-- Modal iframeOrder -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

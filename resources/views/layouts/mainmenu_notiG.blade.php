@@ -22,7 +22,16 @@
 
 <nav>
         <div class="container" style="height:100%;">
-            <div class="row" style="height:100%;">
+            <div class="row showmenu logomenu">
+                <div class="col logosize">
+                    <button class="btn_menu_list" onclick="window.location.href='{{url('/')}}'">
+                        <img class="btn_menu_list_logo" src="{{url('assets/image/logo.png')}}"></button>
+                </div>
+                <div class="col textlogo text-info">
+                FINDPHO.CO
+                </div>
+            </div>
+            <div class="row wrapmenuright" style="height:100%;">
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='{{url('/')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Index'))
@@ -80,7 +89,7 @@
 <section style="height:60px; padding:20px;"></section>
 
 
-<div class="">
+<div class="wrapcontent">
 	@yield('content')
 </div>
 

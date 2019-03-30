@@ -89,14 +89,17 @@ class AlbumsController extends Controller
     }
 
     public function edit($username,$id){
-
         $data['username'] = $username;
         $album = Album::find($id);
         $photos = ImageAlbum::where('album_id',$album->id)->get();
-        // dd($photos);
         $category = Category::pluck('name_category','id');
 
-        return view('photographer.edit', $data, compact('album','photos','category')); 
+        if(Auth::user()->username == $album->user->username){
+            return view('photographer.edit', $data, compact('album','photos','category')); 
+        }else{
+            abort(404);     
+        }
+
     }
 
     public function update($username , $id , Request $request){

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('page_title', 'Login')
-
+@section('link_back', '/home' )
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

@@ -119,7 +119,7 @@
     </div>                    
 
 
-    <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+    <nav class="wrapcontent container nav_bottom nav_bottom_profile" style="box-shadow: none;">
         <div class="row">
             <div class="col" style="display: inherit; padding-top:10px;">
                 <a 	class="btn btn_layout_bottom" 

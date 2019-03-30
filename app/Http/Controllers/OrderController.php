@@ -67,8 +67,9 @@ class OrderController extends Controller
         $review = Review::where('id_order',$id)->first();
         // dd($review);
         $chargeAmount = $order->total * 100;
-
-        return view('photographer.order.show', compact('order', 'chargeAmount','review'))->with([
+        $fileworks = Sendwork::where('id_order',$id)->get();
+        // dd($fileworks->count());
+        return view('photographer.order.show', compact('order', 'chargeAmount','review','fileworks'))->with([
             'OMISE_PUBLIC_KEY' => OMISE_PUBLIC_KEY,
         ]);
 
@@ -122,7 +123,7 @@ class OrderController extends Controller
     {
         //
     }
-
+ 
     /**
      *
      * @return \Illuminate\Http\Response
@@ -246,6 +247,7 @@ class OrderController extends Controller
             'start_time' => 'required',
             'end_time' => 'required',
         ]);
+
         $order = $request->session()->get('order');
         $request->session()->put('order', $order);
         $order->date_work = $request->date_work;

@@ -27,13 +27,24 @@
 
 <nav>
         <div class="container" style="height:100%;">
-            <div class="row" style="height:100%;">
+            <div class="row showmenu logomenu">
+                <div class="col logosize">
+                    <button class="btn_menu_list" onclick="window.location.href='http://127.0.0.1:8000/search'">
+                        <img class="btn_menu_list_logo" src="http://127.0.0.1:8000/assets/image/logo.png" style="
+                    
+                "></button>
+                </div>
+                <div class="col textlogo text-info">
+                FINDPHO.CO
+                </div>
+            </div>
+            <div class="row wrapmenuright" style="height:100%;">
                 <div class="col">
                 <button class="btn_menu_list text-info" onclick="window.location.href='{{url('/')}}'">
-                        <!-- <img class="menu_list" src="{{url('assets/image/logo.png')}}"> -->
-                        FINDPHO
+                        <img class="menu_list menu_listph" src="{{url('assets/image/photographer.svg')}}">
+                        <!-- PHOTO<br>GRAPHER -->
                 </button>
-                </div>
+                </div> 
                 <div class="col">
                 <button class="btn_menu_list" onclick="window.location.href='{{url('/')}}'">
                     @if (trim($__env->yieldContent('page_title')==='Index'))
@@ -69,7 +80,7 @@
 <section style="height:60px; padding:20px;"></section>
 
 
-<div class="">
+<div class="wrapcontent">
 	@yield('content')
 </div>
 

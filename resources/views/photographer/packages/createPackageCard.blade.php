@@ -12,11 +12,11 @@
 
     <div class="container">
     <div class="row">
-            <div class="col-md margin_top10">
+            <div class="col-md-12 margin_top10">
                 <span class="all_more_link">รูปแบบงาน</span>
                     {!! Form::select('id_formattime', $formattime, null, ['class' => 'form-control select_search']) !!}
             </div>
-            <div class="col-md margin_top10">
+            <div class="col-md-12 margin_top10">
                 <span class="all_more_link">ราคา</span>
                 <div class="row">
                     <div class="col">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md margin_top10">
+            <div class="col-md-12 margin_top10">
                 <span class="all_more_link">สิ่งที่ลูกค้าจะได้รับ</span>
                 <div class="row">
                     <div class="col">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md margin_top10">
+            <div class="col-md-12 margin_top10">
                 <span class="all_more_link">การจัดส่ง</span>
                 <div class="row form-group" id="radioBtn">
                 <a class="col" data-toggle="shipping" data-title="1">
@@ -74,7 +74,7 @@
 
     <section style="height:250px;"></section>
 
-    <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+    <nav class="wrapcontent container nav_bottom nav_bottom_profile" style="box-shadow: none;">
         <div class="row">
             <div class="col" style="display: inherit; padding-top:10px;">
             </div>

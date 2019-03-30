@@ -26,7 +26,7 @@
 </section>
 
 <!-- <div class="container"> -->
-<div>
+<div class="wrapcontent">
 	@yield('content')
 </div>
 

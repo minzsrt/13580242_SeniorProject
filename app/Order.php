@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $guarded = [];
-    // protected $fillable = ['price','time_work','date_work','place','detail','transportation_cost','shipping_cost','total','status_order','status_payment'];
+    // protected $fillable = ['price','start_time','end_time','date_work','detail','transportation_cost','shipping_cost','total','place_id','place_name','lat','lng','address','url','status_order','status_payment','id_category','id_formattime','id_employer','id_photographer'];
 
     public function employer(){
 

@@ -42,10 +42,10 @@ class IndexController extends Controller
                 $package_cards = PackageCard::all();
                 $categories = Category::all();
                 $orders = Order::where('id_photographer', Auth::user()->id)->get();
-                $deposits = DepositAccount::where('id_photographer','LIKE',Auth::user()->id)->get();
+                $deposit = DepositAccount::where('id_photographer','LIKE',Auth::user()->id)->first();
                 $verify = VerifyCard::where('id_user',Auth::user()->id)->first();
 
-                return view('photographer.index', compact('albums','package_cards','categories','deposits','orders','verify'));
+                return view('photographer.index', compact('albums','package_cards','categories','deposit','orders','verify'));
     
             }elseif($checkrole == 3){
                 $albums = Album::orderBy('id', 'DESC')->get();

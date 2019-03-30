@@ -17,16 +17,16 @@
 
 <div>
 
-    <div class="container wrap_container_head">
+    <!-- <div class="container wrap_container_head">
         <div class="row">
             <div class="col">
                 <h3 class="headder_text">รับปริญญา</h3>
             </div>
             <div class="col text_right">
-                <!-- <a class="all_more_link" href="searchResult">ดูทั้งหมด</a>  -->
+                <a class="all_more_link" href="searchResult">ดูทั้งหมด</a> 
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- <div class="container">
         <div class="row">

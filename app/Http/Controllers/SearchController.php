@@ -33,11 +33,12 @@ class SearchController extends Controller
         $formattime = Input::get ( 'formattime' );
         $scope = Input::get ( 'scopework' );
         $date = Input::get ( 'date' );
-
+        
         $id_category = Category::all();
         $scopeworks = Scopework::all();
         $disableddate = Order::all();
-
+        // $price1 = isset( Input::get ( 'price1' )) ? Input::get ( 'price1' ) : ''; 
+        // dd($price1);
         if(!empty($category) && !empty($price1) && !empty($price2) && !empty($formattime)){
 
             $package_cards = PackageCard::Where([

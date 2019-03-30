@@ -10,6 +10,7 @@ use App\PackageCard;
 use App\User;
 use App\Order;
 use App\Review;
+use App\DepositAccount; 
 use Auth;
 use DB;
 use Illuminate\Support\Str;
@@ -83,6 +84,7 @@ class ProfileController extends Controller
                     return view('photographer.profile', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews','disableddate'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
+
                     return view('general.profile', $data)->withUser($user);
 
                 }
@@ -91,10 +93,9 @@ class ProfileController extends Controller
 
                     $albums = Album::orderBy('id', 'DESC')->get();
                     $category_albums = Album::groupBy('id_category')->get();
-                    // dd($category_albums);
                     $package_cards = PackageCard::Where('id_user', $user->id)->groupBy('id_category')->get();
-
                     $disableddate = Order::select('date_work')->Where('id_photographer', $user->id)->get();
+                    $depositcheck = DepositAccount::Where('id_photographer', $user->id)->get();
 
                     if (empty($package_cards)) {
                         abort(404);
@@ -104,7 +105,7 @@ class ProfileController extends Controller
                     $categories = Category::all();
                     $reviews = Review::where('id_photographer', $user->id)->get();
 
-                    return view('general.viewphotographer', $data, compact('albums','category_albums', 'package_cards', 'categories', 'image_albums','disableddate','reviews'))->withUser($user);
+                    return view('general.viewphotographer', $data, compact('depositcheck','albums','category_albums', 'package_cards', 'categories', 'image_albums','disableddate','reviews'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
 

@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col">
-                <div class="card cardbox">
+                <div class="card cardbox bg_fff margin_bomtom20">
                     <div class="card-body">
                                 <div class="row">
                                     <div class="col" style="margin-bottom: -0.5rem;">
@@ -121,7 +121,7 @@
                                             สิ่งที่ลูกค้าได้รับ
                                         </span>
                                         <p class="all_more_link fontsize14 color_black">
-                                            {{$order->detail}}
+                                            {!! Form::textarea('detail',null,['class'=>'form-control textarea_edit fontsize14']) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@
                                     <div class="col text_center">
                                         <div class="row">
                                             <div class="col">
-                                                    <button class="margin_auto btn btn_color bg_72AFD3" type="submit" >
+                                                    <button class="margin_auto btn btn_color bg_72AFD3 btnload" type="submit" id="load">
                                                     ส่งใบเสนอราคา
                                                     </button>
                                             </div>
@@ -155,14 +155,14 @@
 
     </div>
 
-        <input type="text" name="id_category" value="{{$order->id_category}}">
-        <input type="text" name="id_formattime" value="{{$order->id_formattime}}">
-        <input type="text" name="place_name" value="{{$order->place_name}}">
-        <input type="text" name="shipping_cost" value="{{$order->shipping_cost}}">
-        <input type="text" name="price" value="{{$order->price}}" id="price_cost">
-        <input type="text" name="date_work" value="{{$order->date_work}}">
-        <input type="text" name="start_time" value="{{$order->start_time}}">
-        <input type="text" name="end_time" value="{{$order->end_time}}">
+        <input type="hidden" name="id_category" value="{{$order->id_category}}">
+        <input type="hidden" name="id_formattime" value="{{$order->id_formattime}}">
+        <input type="hidden" name="place_name" value="{{$order->place_name}}">
+        <input type="hidden" name="shipping_cost" value="{{$order->shipping_cost}}">
+        <input type="hidden" name="price" value="{{$order->price}}" id="price_cost">
+        <input type="hidden" name="date_work" value="{{$order->date_work}}">
+        <input type="hidden" name="start_time" value="{{$order->start_time}}">
+        <input type="hidden" name="end_time" value="{{$order->end_time}}">
 
 <!-- modal -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

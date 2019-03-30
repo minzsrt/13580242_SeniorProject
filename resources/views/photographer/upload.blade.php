@@ -31,7 +31,7 @@
     <input name="album_id" type="hidden" value="{{$album->id}}"/>
 
 
-        <nav class="container nav_bottom">
+        <nav class="wrapcontent container nav_bottom">
         <div class="row">
             <div class="col">
                 

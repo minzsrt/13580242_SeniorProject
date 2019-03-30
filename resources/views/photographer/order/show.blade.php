@@ -204,7 +204,7 @@
                                                     {{ csrf_field() }}
 
                                                     <button type="submit"  id="load" class="margin_auto btn btn_color bg_72AFD3" type="button" 
-                                                    @if( date('Ymd') < date('Ymd', strtotime($order->date_work)) ) disabled @endif >
+                                                    @if( date('Ymd') < date('Ymd', strtotime($order->date_work)) && $fileworks->count() == 0 ) disabled @endif >
                                                     ส่งงาน
                                                     </button>
                                                 </form>
@@ -216,7 +216,7 @@
                                         @elseif($order->status_order == 'ส่งงาน' && Auth::user()->role_id == '3')
                                         <div class="row">
                                             <div class="col">
-                                                    <button data-toggle="modal" data-target="#modalorder{{$order->id}}" id="load" class="margin_auto btn btn_color bg_72AFD3" type="button" >
+                                                    <button data-toggle="modal" data-target="#modalorder{{$order->id}}" class="margin_auto btn btn_color bg_72AFD3" type="button" >
                                                     รีวิว
                                                     </button>
                                             </div>
@@ -270,7 +270,7 @@
                                                         <input type="hidden" name="id_user" class="form-control " value="{{Auth::user()->id}}">
                                                         <input type="hidden" name="id_photographer" class="form-control " value="{{$order->id_photographer}}">
                                                         <input type="hidden" name="id_order" class="form-control " value="{{$order->id}}">
-                                                        <button type="submit" class="btn btn_color">
+                                                        <button type="submit" class="btn btn_color bg_72AFD3 btnload" id="load">
                                                         รีวิว
                                                         </button>
                                                     </div>

@@ -8,7 +8,7 @@
         <span class="all_more_link">ประเภทงาน</span>
         <div class="row form-group" id="radioBtn">
             @foreach($categories as $category)
-            <a class="col-md" data-toggle="id_category" data-title="{{$category->id}}">
+            <a class="col-md-12" data-toggle="id_category" data-title="{{$category->id}}">
                 <label class="container_radio">
                     <div class="row height60">
                         <div class="col padtop20">
@@ -22,7 +22,7 @@
             @endforeach
     		<input type="hidden" name="id_category" id="id_category">
         </div>
-        <nav class="container nav_bottom">
+        <nav class="wrapcontent container nav_bottom">
         <div class="row">
             <div class="col">
             </div>

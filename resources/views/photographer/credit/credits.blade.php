@@ -29,7 +29,11 @@
                     <span style=" padding: 3px 10px; border:1px solid #000; border-radius: 20px;">เตรียมการโอนเงิน</span> 
                     </div>
                     <div class="col-12 text-center">
-                        <h3  style="font-size:28px; padding: 20px;">{{number_format($deposit->total)}} ฿</h3>
+                    @if(!empty($deposit)) 
+                        <h3  style="font-size:28px; padding: 20px;">{{$deposit->total}} ฿</h3>
+                    @else
+                        <h3  style="font-size:28px; padding: 20px;">0 ฿</h3>
+                    @endif
                     </div>
                     <div class="col-12 text-center">
                         โอนเงินเข้าบัญชีทุกวันที่ 15 ของเดือน

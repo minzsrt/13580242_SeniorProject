@@ -16,8 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('price');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->text('start_time');
+            $table->text('end_time');
             $table->date('date_work');
             $table->text('detail');
             $table->integer('transportation_cost')->nullable();

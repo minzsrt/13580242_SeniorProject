@@ -1,6 +1,6 @@
 @extends('layouts.mainprofile')
 @section('page_title', 'Cancal Order')
-@section('link_back', '/profile/'.Auth::user()->username)
+@section('link_back', '/order/'.$order->id)
 @section('content')
 
 <form action="/order/{{$order->id}}/cancel/store" method="post">
@@ -16,7 +16,7 @@
         </p>
     </div>
 
-    <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
+    <nav class="wrapcontent container nav_bottom nav_bottom_profile" style="box-shadow: none;">
         <div class="row">
             <div class="col" style="display: inherit; padding-top:10px;">
             </div>

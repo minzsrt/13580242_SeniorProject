@@ -79,7 +79,6 @@ class ReviewController extends Controller
 
         $addmoney = DepositAccount::where('id_photographer',$order->id_photographer)->first();
         $addmoney->total = $addmoney->total + $order->total-((5/100)*($order->total));
-        // dd($addmoney->total);
         $addmoney->update();
 
         if(empty($check_order_in_review)){

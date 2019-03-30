@@ -52,127 +52,51 @@
         <span class="all_more_link">เวลา</span>
         <div class="row">
                         <div class="col input-group">
-                            <select name="start_time" id="start_time">
-                                <option value="6:00:00">6:00 AM</option>
-                                <option value="7:00:00">7:00 AM</option>
-                                <option value="8:00:00">8:00 AM</option>
-                                <option value="9:00:00">9:00 AM</option>
-                                <option value="10:00:00">10:00 AM</option>
-                                <option value="11:00:00">11:00 AM</option>
-                                <option value="12:00:00">12:00 PM</option>
-                                <option value="13:00:00">1:00 PM</option>
-                                <option value="14:00:00">2:00 PM</option>
-                                <option value="15:00:00">3:00 PM</option>
-                                <option value="16:00:00">4:00 PM</option>
-                                <option value="17:00:00">5:00 PM</option>
-                                <option value="18:00:00">6:00 PM</option>
-                                <option value="19:00:00">7:00 PM</option>
-                                <option value="20:00:00">8:00 PM</option>
-                                <option value="21:00:00">9:00 PM</option>
-                                <option value="22:00:00">10:00 PM</option>
-                            </select>           
-                            <!-- <input name="start_time" type="time" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;"> -->
+                            <select id="start_time" name="timeselect_start" class="select_search" style="text-align-last:center;">
+                                <option value="6:00">6:00 AM</option>
+                                <option value="7:00">7:00 AM</option>
+                                <option value="8:00">8:00 AM</option>
+                                <option value="9:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                            </select>   
+                            <input name="start_time" type="hidden" id="get_id_val_start" value="">
                         </div>
                         <span>-</span>
                         <div class="col input-group">
-                            <select name="end_time" id="end_time" @if($order->id_formattime != 3) disabled @endif>
-                                <option value="6:00:00">6:00 AM</option>
-                                <option value="7:00:00">7:00 AM</option>
-                                <option value="8:00:00">8:00 AM</option>
-                                <option value="9:00:00">9:00 AM</option>
-                                <option value="10:00:00">10:00 AM</option>
-                                <option value="11:00:00">11:00 AM</option>
-                                <option value="12:00:00">12:00 PM</option>
-                                <option value="13:00:00">1:00 PM</option>
-                                <option value="14:00:00">2:00 PM</option>
-                                <option value="15:00:00">3:00 PM</option>
-                                <option value="16:00:00">4:00 PM</option>
-                                <option value="17:00:00">5:00 PM</option>
-                                <option value="18:00:00">6:00 PM</option>
-                                <option value="19:00:00">7:00 PM</option>
-                                <option value="20:00:00">8:00 PM</option>
-                                <option value="21:00:00">9:00 PM</option>
-                                <option value="22:00:00">10:00 PM</option>
+                            <select name="timeselect_end" id="end_time" @if($order->id_formattime != 3) disabled @endif class="nonebg select_search" style="text-align-last:center;">
+                                <option value="6:00">6:00 AM</option>
+                                <option value="7:00">7:00 AM</option>
+                                <option value="8:00">8:00 AM</option>
+                                <option value="9:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                                <option value="22:00">10:00 PM</option>
                             </select>
-                            <!-- <input name="end_time" type="time" style="width:100%; border-bottom: 1px solid #ccc; border-top:0; border-left:0; border-right:0;"> -->
+                            <input name="end_time" id="get_id_val_end" type="hidden" value="">
                         </div>
         </div>
-
-        <!-- <div class="row" style="margin-top:20px;">
-            <div class="col">
-            <div class="date_r">
-            <div class="row text_center">
-                <div class="col">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                </div>
-                <div class="col ">
-                JUNE 2017
-                </div>
-                <div class="col">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </div>
-            </div>
-            
-            <table class="datepicker text_center">
-                    <tbody>
-                        <tr>
-                            <th>S</th>
-                            <th>M</th>
-                            <th>T</th>
-                            <th>W</th>
-                            <th>T</th>
-                            <th>F</th>
-                            <th>S</th>
-                        </tr>
-                        <tr>
-                            <td style="opacity: 0.5;">28</td>
-                            <td style="opacity: 0.5;">29</td>
-                            <td style="opacity: 0.5;">30</td>
-                            <td style="opacity: 0.5;">31</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>12</td>
-                            <td class="activedate">13</td>
-                            <td>14</td>
-                            <td class="active_employ_date">15</td>
-                            <td>16</td>
-                            <td class="active_employ_date">17</td>
-                        </tr>
-                        <tr>
-                            <td>18</td>
-                            <td>19</td>
-                            <td class="active_employ_date">20</td>
-                            <td>21</td>
-                            <td>22</td>
-                            <td class="active_employ_date">23</td>
-                            <td>24</td>
-                        </tr>
-                        <tr>
-                            <td>25</td>
-                            <td>26</td>
-                            <td>27</td>
-                            <td>28</td>
-                            <td>29</td>
-                            <td>30</td>
-                            <td style="opacity: 0.5;">1</td>
-                        </tr>
-                    </tbody>
-            </table>
-            </div>
-        </div> -->
 
         <nav class="container nav_bottom nav_bottom_profile" style="box-shadow: none;">
             <div class="row">
@@ -206,6 +130,9 @@
 
     });
         var selectElem = document.getElementById('start_time')
+        var $idvalstart = $('#get_id_val_start');
+        var $idvalend = $('#get_id_val_end');
+
         // When a new <option> is selected
         selectElem.addEventListener('change', function() {
             var index = selectElem.selectedIndex;
@@ -217,7 +144,18 @@
             @endif
 
             document.getElementById("end_time").selectedIndex = index2;
+
+            $('select[name="timeselect_start"]').change(function(){
+                $idvalstart.val($(this).val())
+            }).triggerHandler('change')
+            $('select[name="timeselect_end"]').change(function(){
+                $idvalend.val($(this).val())
+            }).triggerHandler('change')
+
         })
+
+
+
     </script>
 </body>
 </html>
