@@ -74,7 +74,7 @@
                         </div>
 
                         <!-- <input type="hinden" name="avatar" value="profile/profile-default.svg"> -->
-                        <input type="text" name="avatar" value="https://avatars.dicebear.com/v2/identicon/Bee2019.svg">
+                        <input type="hidden" name="avatar" value="https://avatars.dicebear.com/v2/identicon/Bee2019.svg">
                         
                        <!-- <a href="{{url('https://avatars.dicebear.com/v2/identicon/Bee2019.svg')}}" target="_blank">12345</a> -->
                         <!-- <div class="form-group row mb-0 bottom_fixed">

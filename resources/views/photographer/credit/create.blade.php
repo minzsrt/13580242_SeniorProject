@@ -46,6 +46,7 @@
                             </div>
                         </div>
                         <input type="hidden" name="id_photographer" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="total" value="0">
                         <div class="row">
                             <div class="col-12 text_center">
                                 <button class="btn_color">บันทึก</button>
