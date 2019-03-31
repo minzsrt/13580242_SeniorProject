@@ -18,7 +18,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="email" type="email" class="input_box 
                                 form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="อีเมล" required autofocus>
 
@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password" type="password" class="input_box form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="รหัสผ่าน" required>
 
                                 @if ($errors->has('password'))

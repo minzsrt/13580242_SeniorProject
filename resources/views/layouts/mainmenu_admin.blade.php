@@ -66,7 +66,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">จัดการออเดอร์:</h6>
             <a class="collapse-item" href="/admin/orders">ออเดอร์</a>
-            <a class="collapse-item" href="#">การชำระเงิน</a>
           </div>
         </div>
       </li>

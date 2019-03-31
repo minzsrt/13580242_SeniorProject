@@ -19,13 +19,6 @@
                 </div>
                 <div class="col" style="padding-top:20px;">
                     <span>{{$user->username}}</span>
-                    <div class="username_profile">
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star"></i>        
-                    </div>        
                 </div>
             </div>
         </div>

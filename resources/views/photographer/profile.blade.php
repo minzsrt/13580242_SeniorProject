@@ -11,14 +11,7 @@
                     </div>
                 </div>
                 <div class="col" style="padding-top:20px;">
-                    <span>{{ Auth::user()->username }}</span>
-                    <div class="username_profile">
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star checked"></i>
-                        <i class="fas fa-star"></i>        
-                    </div>        
+                    <span>{{ Auth::user()->username }}</span>     
                 </div>
                 <div class="col text_right" style="padding-top:20px;">
                     <button id="actions" class="btn_layout_back">ตั้งค่า</button>

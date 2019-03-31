@@ -22,7 +22,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="email" type="email" class="input_box form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="อีเมล" required>
 
                                 @if ($errors->has('email'))
@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="username" type="text" class="input_box form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="ชื่อผู้ใช้" required autofocus>
 
                                 @if ($errors->has('username'))
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password" type="password" class="input_box 
                                 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="รหัสผ่าน" required>
 
@@ -60,13 +60,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="input_box form-control" name="password_confirmation" placeholder="ยืนยันรหัสผ่าน" required>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-12 offset-md-4">
                                 <button type="submit" class="btn_color btn_color_employ btn_width">
                                     {{ __('Register') }}
                                 </button>

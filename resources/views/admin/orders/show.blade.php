@@ -15,9 +15,9 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">ออเดอร์ #{{$order->id}}</h1>
-            <a href="#" class="text-white d-none d-sm-inline-block btn btn-sm bg_color_gradient shadow-sm">
+            <!-- <a href="#" class="text-white d-none d-sm-inline-block btn btn-sm bg_color_gradient shadow-sm">
                 <i class="fas fa-edit fa-sm text-white"></i> แก้ไข
-            </a>
+            </a> -->
           </div>
 
           <!-- Content Row -->

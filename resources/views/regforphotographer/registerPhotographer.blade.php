@@ -1,6 +1,6 @@
-@extends('layouts.main_empty')
-@section('page_title', 'Register for a Photographer')
-
+@extends('layouts.main')
+@section('page_title', 'Login')
+@section('link_back', '/invitePhotographer' )
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

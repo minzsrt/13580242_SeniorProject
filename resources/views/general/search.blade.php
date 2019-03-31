@@ -154,13 +154,6 @@
                                         <div class="col-12 fontsize14">
                                             <span>{{$package_card->user->username}}</span>
                                         </div>
-                                        <div class="col-12 fontsize10">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col text_right">

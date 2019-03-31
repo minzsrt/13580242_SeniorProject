@@ -52,7 +52,8 @@ class IndexController extends Controller
                 $package_cards = PackageCard::all();
                 $categories = Category::all();
                 $image_albums = ImageAlbum::all();
-                return view('general.index', compact('albums','package_cards','categories','image_albums'));
+                $orders = Order::all()->sum('total');
+                return view('general.index', compact('orders','albums','package_cards','categories','image_albums'));
     
             }
             elseif($checkrole == 1){

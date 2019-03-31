@@ -16,12 +16,12 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">{{$user->username}}</h1>
             <div>
-            <a href="#" class="text-white d-none d-sm-inline-block btn btn-sm bg_color_gradient">
+            <!-- <a href="#" class="text-white d-none d-sm-inline-block btn btn-sm bg_color_gradient">
                 <i class="fas fa-edit fa-sm text-white"></i> แก้ไข
             </a>
             <a class="text-white d-none d-sm-inline-block btn btn-sm btn-danger" href="{{ url("/admin/users/photographer/{$user->id}")}}">
             <i class="far fa-trash-alt"></i> ลบผู้ใช้
-            </a>
+            </a> -->
             </div>
           </div>
 
