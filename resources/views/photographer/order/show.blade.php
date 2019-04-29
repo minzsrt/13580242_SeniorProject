@@ -8,7 +8,9 @@
         ออเดอร์ #{{$order->id}}<br>
         <span class="btn badge color_white fontsize12 category_badge">
         {{$order->status_order}}
-        </span><br>
+        </span>
+
+        <br>
         </p>
 
         <div class="row">
@@ -183,9 +185,10 @@
                                                             <script type="text/javascript" src="https://cdn.omise.co/omise.js"
                                                                 data-key="{{ $OMISE_PUBLIC_KEY }}"
                                                                 data-image="{{url('assets/image/logo.png')}}"
-                                                                data-frame-label="ชำระเงิน"
+                                                                data-frame-label="ชำระเงินออเดอร์ #{{$order->id}}"
+                                                                data-frame-description="FINDPHO.CO"
                                                                 data-button-label="ชำระเงิน"
-                                                                data-submit-label="Submit"
+                                                                data-submit-label="ชำระเงิน"
                                                                 data-location="no"
                                                                 data-amount="{{ $chargeAmount }}"
                                                                 data-currency="thb"

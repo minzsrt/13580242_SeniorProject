@@ -21,16 +21,16 @@
     <link rel="stylesheet" href="css/animsition.min.css">
 
 </head>
-<body class="animsition">
+<!-- <body class="animsition"> -->
+<body>
 
-<div class="container wrap_all ">
+<div class="container wrap_all onmobile">
 
     <div class="row top_fixed">
         <div class="col">
             <a class="btn btn_layout_line_back animsition-link" href="/">กลับ</a>
         </div>
     </div>
-
 
     <div class="row text_right center_fixed">
         <div class="col">
@@ -50,11 +50,206 @@
 
     
 </div>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<div class="container ondesktop margin_box20">
+
+    <div class="row margin_auto"  style="height:90vh;  border-radius: 10px; overflow: hidden; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+        <div class="col wrap_all" style="position:relative;">
+            <div class="row text_right center_absolute">
+                <div class="col-12">
+                    <h1 class="headder_text color_white">ค้นหาช่างภาพได้ง่ายๆกับเรา</h1>
+                </div>
+                <div class="col-12">
+                    <h3 class="all_more_link color_white">ช่างภาพฝีมือดีรอคุณอยู่</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+
+                <div class="row margin_box20">
+                        <img class="logo margin_auto" src="assets/image/logo.png">    
+                </div>
+
+                <div class="row">
+                    <div class="col-8 margin_auto">
+                        <ul class="nav nav-tabs nav-justified btn_width" role="tablist">
+                            <div class="slider"></div>
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#menu1" role="tab" aria-controls="menu1" aria-selected="true">
+                                เข้าสู่ระบบ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#menu2" role="tab" aria-controls="menu2" aria-selected="false">
+                                สร้างบัญชีของคุณ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="tab-content btn_width">
+
+                        <div class="tab-pane fade margin_top20 show active" id="menu1" role="tabpanel" aria-labelledby="menu1-tab">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                        <div class="card-body">
+                                            <form method="POST" action="{{ route('login') }}">
+                                                @csrf
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <input id="email" type="email" class="input_box 
+                                                        form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="อีเมล" required autofocus>
+
+                                                        @if ($errors->has('email'))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $errors->first('email') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <input id="password" type="password" class="input_box form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="รหัสผ่าน" required>
+
+                                                        @if ($errors->has('password'))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $errors->first('password') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row mb-0">
+                                                    <div class="col-md-8 offset-md-4 text_right">
+                                                        @if (Route::has('password.request'))
+                                                            <a class="btn btn-link all_more_link animsition-link" href="{{ route('password.request') }}">
+                                                                {{ __('ลืมรหัสผ่านใช่ไหม?') }}
+                                                            </a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row margin_box20">
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="btn_color btn_color_employ btn_width">
+                                                            {{ __('Login') }}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade container" id="menu2" role="tabpanel" aria-labelledby="menu2-tab">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    
+                                        <p style="color:#000;" class="invalid-feedback"  role="alert">
+                                            error
+                                        </p>
+
+                                        <div class="card-body">
+                                            <form method="POST" action="{{ route('register') }}">
+                                                @csrf
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <input id="email" type="email" class="input_box form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="อีเมล" required>
+
+                                                        @if ($errors->has('email'))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $errors->first('email') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <input id="username" type="text" class="input_box form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="ชื่อผู้ใช้" required autofocus>
+
+                                                        @if ($errors->has('username'))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $errors->first('username') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <input id="password" type="password" class="input_box 
+                                                        form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="รหัสผ่าน" required>
+
+                                                        @if ($errors->has('password'))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $errors->first('password') }}</strong>
+                                                            </span>
+                                                        @endif
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <input id="password-confirm" type="password" class="input_box form-control" name="password_confirmation" placeholder="ยืนยันรหัสผ่าน" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row margin_box20">
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="btn_color btn_color_employ btn_width">
+                                                            {{ __('Register') }}
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <!-- <input type="hinden" name="avatar" value="profile/profile-default.svg"> -->
+                                                <input type="hidden" name="avatar" value="https://avatars.dicebear.com/v2/identicon/Bee2019.svg">
+                                                
+                                            <!-- <a href="{{url('https://avatars.dicebear.com/v2/identicon/Bee2019.svg')}}" target="_blank">12345</a> -->
+                                                <!-- <div class="form-group row mb-0 bottom_fixed">
+                                                        <div class="col-md-8 offset-md-4 text_center">
+                                                            <h3 class="headder_text">
+                                                                หรือ สร้างบัญชีด้วย
+                                                            </h3>
+                                                        </div> 
+                                                        <div class="col-md-8 offset-md-4">
+                                                            <button class="btn_color_facebook btn_color_employ btn_width margin_box20">
+                                                                {{ __('Facebook') }}
+                                                            </button>
+                                                        </div>
+                                                </div> -->
+                                                
+                                            </form>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+        </div>
+    </div>
+    
+</div>
+
+
 
 <!-- animsition.js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/animsition.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
   $(".animsition").animsition({
@@ -78,6 +273,19 @@ $(document).ready(function() {
     overlayParentElement : 'body',
     transition: function(url){ window.location.href = url; }
   });
+
+  $(".nav-tabs a").click(function() {
+            var position = $(this).parent().position();
+            console.log(position);
+            var width = $(this).parent().width();
+            console.log(width);
+            $(".slider").css({"left":+ position.left,"width":width});
+        });
+        var actWidth = $(".nav-tabs").find(".active").parent("li").width();
+            console.log(actWidth);
+        var actPosition = $(".nav-tabs .active").position();
+        $(".slider").css({"left":+ actPosition.left,"width": actWidth});
+
 });
 </script>
     

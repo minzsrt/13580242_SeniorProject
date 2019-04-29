@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<div class="container wrap_all_reg_photographer">
+<div class="container wrap_all_reg_photographer onmobile">
     <section class="text_right" style="height:60px; padding:20px;">    
             <button class="btn_layout_back" onclick="window.location.href='/'" >ข้าม</button> 
     </section>
@@ -32,8 +32,30 @@
     </div>
 </div>
 
+<div class="container ondesktop margin_box20">
+
+    <div class="row margin_auto"  style="height:90vh;  border-radius: 10px; overflow: hidden; box-shadow: 0px 5px 8px rgba(0,0,0,0.1);">
+        <div class="col wrap_all_reg_photographer" style="position:relative;">
+            
+        </div>
+        <div class="col" style="height:90vh;">
+                <section class="text_right" style="height:60px; padding:20px;">    
+                    <button class="btn_layout_back" onclick="window.location.href='/'" >ข้าม</button> 
+                </section>
+                <div class="row" style=" padding-top:50%;">
+                    <div class="col text_center">
+                        <h1 class="headder_text color_fff">สนใจลงทะเบียนเป็นช่างภาพกับเรา</h1>
+                        <h3 class="all_more_link color_fff">ลงทะเบียนตอนนี้เลย</h3>
+                        <a class="btn btn_color" href="/regPhotographer">ลงทะเบียนเป็นช่างภาพ</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+</div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-    
+
 </body>
 </html>

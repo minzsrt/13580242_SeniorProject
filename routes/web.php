@@ -1,25 +1,11 @@
 <?php
 
-
-// Test Noti
-use App\Events\TriggerNotification;
-Route::get('echo/{id}', function ($id) {
-    \App\Notification::create([
-        'user_id' => $id,
-        'message' => 'ทดสอบ',
-    ]);
-    event(new TriggerNotification($id));
-});
-
-
 // Login
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 // index
 Route::resource('/', 'IndexController');
-
 
 // Reg Photographer
 Route::resource('invitePhotographer', 'RegisterPhotographerController');
@@ -133,7 +119,6 @@ Route::post('/verify/{username}/update', 'VerifyController@update');
 
 
 //admin
-// Route::get('/admin', 'AdminController@index');
 Route::get('/admin/orders', 'AdminController@orderlist');
 Route::get('/admin/orders/{id}', 'AdminController@ordershow');
 Route::get('/admin/users/general', 'AdminController@usergenerallist');
@@ -157,19 +142,21 @@ Route::get('/admin/verify/{id}/update', 'AdminController@verifyupdate');
 
 
 // Unsuccess CRUD
-// Route::get('photographer/chatchannel', function () {return view('photographer.chatchannel.chatchannel');});
-// Route::get('chatchannel', function () {return view('general.chatchannel');})->middleware('auth');
-// Route::get('recommendSetting', function () {return view('recommendSetting');});
 Route::get('/portfolioPhotographer', function () {return view('regforphotographer.portfolio');});
 
 Route::any('search', 'SearchController@index');
-// Route::get('searchResult', function(){ return view('searchResult');});
-
-Route::get('listTag', function () {return view('listTag');});
-// Route::get('management', function () {return view('mn_order');});
 // Route::get('document/invoice', function () {return view('invoicedocument');});
 
 
+// Test Noti
+use App\Events\TriggerNotification;
+Route::get('echo/{id}', function ($id) {
+    \App\Notification::create([
+        'user_id' => $id,
+        'message' => 'ทดสอบ',
+    ]);
+    event(new TriggerNotification($id));
+});
 
 
 

@@ -51,7 +51,7 @@
                         </div>
                         <div class="col text_right" style="padding-top: 10px;">
                                 @if(!empty($deposit)) 
-                                <h3 class="listtag_price">{{$deposit->total}} ฿</h3>
+                                <h3 class="listtag_price">{{number_format($deposit->total)}} ฿</h3>
                                 @else
                                     <h3 class="listtag_price">0 ฿</h3>
                                 @endif

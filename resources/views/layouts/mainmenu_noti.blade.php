@@ -25,7 +25,7 @@
         <div class="container" style="height:100%;">
             <div class="row showmenu logomenu">
                 <div class="col logosize">
-                    <button class="btn_menu_list" onclick="window.location.href='http://127.0.0.1:8000/search'">
+                    <button class="btn_menu_list" onclick="window.location.href='/'">
                         <img class="btn_menu_list_logo" src="http://127.0.0.1:8000/assets/image/logo.png" style="
                     
                 "></button>
