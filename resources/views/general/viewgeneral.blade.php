@@ -39,14 +39,13 @@
         <div class="slider"></div>
         <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#menu1" role="tab" aria-controls="menu1" aria-selected="true">
-                <img class="menu_list_profile" src="{{url('assets/image/heart_layout_black.svg')}}"><br>
-                <span class="menu_list_profile_text">Favorite</span>
+                <img class="menu_list_profile" src="{{url('assets/image/history.svg')}}"><br>
+                <span class="menu_list_profile_text">History</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2" role="tab" aria-controls="profile" aria-selected="false">
-                <img class="menu_list_profile" src="{{url('assets/image/user.svg')}}"><br>
-                <span class="menu_list_profile_text">Following</span>
+            <a class="nav-link" data-toggle="tab" href="#menu3" role="tab" aria-controls="profile" aria-selected="false">
+                
             </a>
         </li>
     </ul>

@@ -84,8 +84,10 @@ class ProfileController extends Controller
                     return view('photographer.profile', $data, compact('albums', 'package_cards', 'categories', 'image_albums','reviews','disableddate'))->withUser($user);
 
                 } elseif ($user && $user->role_id == 3) {
+                    
+                    $histories = Order::where('id_employer', $user->id)->get();
 
-                    return view('general.profile', $data)->withUser($user);
+                    return view('general.profile', $data,compact('histories'))->withUser($user);
 
                 }
             } elseif ($user->username != $authcheck) {
