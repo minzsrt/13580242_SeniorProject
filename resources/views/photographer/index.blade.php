@@ -104,6 +104,7 @@
         </div>
         <div class="col-12">
             @foreach ($orders as $order)
+            @if(date('Ymd') < date('Ymd', strtotime($order->date_work)))
             <div class="container radius10 shadowbox bg_color_gradient_opacity2 pad10">
                 <div class="row">
                     <div class="col-2 text-center bg_color_gradient_opacity color_72AFD3 shadownone radius10 marginnone">
@@ -115,6 +116,22 @@
                     </div>
                 </div>
             </div>
+            @else
+            <div class="col-md-12">
+                <div class="container radius10 shadowbox bg_color_gradient_opacity2 pad10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="messageicon margin_auto">
+                            <img src="{{url('assets/image/calendar.svg')}}">
+                        </div>
+                    </div>
+                    <div class="col-md-12 text_center">
+                        <span class="all_more_link">ไม่มีคิวงานใกล้จะถึง</span> 
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endif
             @endforeach
         </div>
     </div>
