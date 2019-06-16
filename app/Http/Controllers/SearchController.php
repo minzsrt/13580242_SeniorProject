@@ -31,14 +31,16 @@ class SearchController extends Controller
         $price1 = Input::get ( 'price1' );
         $price2 = Input::get ( 'price2' );
         $formattime = Input::get ( 'formattime' );
-        $scope = Input::get ( 'scopework' );
-        $date = Input::get ( 'date' );
+        // $scope = Input::get ( 'scopework' );
+        // $date = Input::get ( 'date' );
         
         $id_category = Category::all();
         $scopeworks = Scopework::all();
         $disableddate = Order::all();
+        $albums = Album::all(); 
         // $price1 = isset( Input::get ( 'price1' )) ? Input::get ( 'price1' ) : ''; 
         // dd($price1);
+
         if(!empty($category) && !empty($price1) && !empty($price2) && !empty($formattime)){
 
             $package_cards = PackageCard::Where([
@@ -51,8 +53,8 @@ class SearchController extends Controller
                 $data['price1'] =  $price1 ;
                 $data['price2'] =  $price2 ;
                 $data['formattime'] =  $formattime ;
-                $data['scope'] =  $scope ;
-                $data['date'] =  $date ;
+                // $data['scope'] =  $scope ;
+                // $data['date'] =  $date ;
                 $categorySearch = Category::findOrFail($category); 
                 return view('general.search',$data,compact('albums','id_category','categorySearch','package_cards','scopeworks','disableddate'))->withDetails($package_cards);
             }
@@ -62,15 +64,46 @@ class SearchController extends Controller
                 $data['formattime'] =  $formattime ;
                 $data['scope'] =  $scope ;
                 $data['date'] =  $date ;
-                return view('general.search',$data,compact('id_category','scopeworks','disableddate'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
+                $data['alertsearch'] =  'ไม่พบช่างภาพที่คุณค้นหา' ;
+                return view('general.search',$data,compact('albums','id_category','package_cards','disableddate'));
             }
         }
 
         $data['price1'] =  $price1 ;
         $data['price2'] =  $price2 ;
 
-        return view('general.search',$data,compact('albums','id_category','package_cards','disableddate','scopeworks'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
+        return view('general.search',$data,compact('albums','id_category','package_cards','scopeworks','disableddate'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
 
+        // $search = $request;
+        // $category = Input::get ( 'category' );
+        // $price1 = Input::get ( 'price1' );
+        // $price2 = Input::get ( 'price2' );
+        // $formattime = Input::get ( 'formattime' );
+        // $id_category = Category::all();
+
+        // if(!empty($category) && !empty($price1) && !empty($price2) && !empty($formattime)){
+        //     $package_cards = PackageCard::Where([
+        //         ['id_category','LIKE',$category],
+        //         ['id_formattime', 'LIKE', $formattime],
+        //     ])->whereBetween( 'price', [$price1, $price2] )->groupBy('id_user')->orderBy('price','ASC')->get();
+            
+        //     if(!empty($package_cards)){
+        //         $albums = Album::all(); 
+        //         $data['price1'] =  $price1 ;
+        //         $data['price2'] =  $price2 ;
+        //         $data['formattime'] =  $formattime ;
+        //         $categorySearch = Category::findOrFail($category); 
+        //         return view('general.search',$data,compact('albums','id_category','categorySearch','package_cards'))->withDetails($package_cards);
+        //     }
+        //     else {
+        //         $data['price1'] =  $price1 ;
+        //         $data['price2'] =  $price2 ;
+        //         return view('general.search',$data,compact('id_category'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
+        //     }
+        // }
+        // $data['price1'] =  $price1 ;
+        // $data['price2'] =  $price2 ;
+        // return view('general.search',$data,compact('albums','id_category','package_cards','disableddate','scopeworks'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
         
         
     }

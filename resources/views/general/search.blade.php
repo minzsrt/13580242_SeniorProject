@@ -121,12 +121,14 @@
 </form>
 
     <div class="container margin_top20">
+            
     @if(!empty($package_cards))
         <div class="row">
             <div class="col">
                 <h3 class="headder_text">ผลการค้นหา{{$categorySearch->name_category}}</h3>
             </div>
         </div>  
+        
         @foreach($package_cards as $package_card) 
         <a class="a_getlink" href="/profile/{{$package_card->user->username}}" target="_blank">
                     <div class="card album_show_wrap bg_fff color_black">
