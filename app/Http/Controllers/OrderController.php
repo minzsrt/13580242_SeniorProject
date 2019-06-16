@@ -224,6 +224,7 @@ class OrderController extends Controller
     {
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
+        $package_cards = PackageCard::where('id_user', $user->id)->groupBy('id_category')->get();
         $disableddate = Order::select('date_work')->Where('id_photographer', $user->id)->get();
 
         // print_r('category : '.$order->id_category.'<br>');
@@ -266,6 +267,7 @@ class OrderController extends Controller
     {
         $order = $request->session()->get('order');
         $user = User::whereUsername($username)->first();
+        $package_cards = PackageCard::where('id_user', $user->id)->groupBy('id_category')->get();
         // print_r('category : '.$order->id_category.'<br>');
         // print_r('id_photographer : '.$order->id_photographer.'<br>');
         // print_r('id_formattime : '.$order->id_formattime.'<br>');
@@ -315,6 +317,7 @@ class OrderController extends Controller
         $order = $request->session()->get('order');
         // dd($order);
         $user = User::whereUsername($username)->first();
+        $package_cards = PackageCard::where('id_user', $user->id)->groupBy('id_category')->get();
         // dd($order->id_category);
         // dd($order->id_formattime);
         // dd($order->time_work);

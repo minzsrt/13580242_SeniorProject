@@ -65,14 +65,14 @@ class SearchController extends Controller
                 $data['scope'] =  $scope ;
                 $data['date'] =  $date ;
                 $data['alertsearch'] =  'ไม่พบช่างภาพที่คุณค้นหา' ;
-                return view('general.search',$data,compact('albums','id_category','package_cards','disableddate'));
+                return view('general.search',$data,compact('albums','id_category','disableddate'));
             }
         }
 
         $data['price1'] =  $price1 ;
         $data['price2'] =  $price2 ;
 
-        return view('general.search',$data,compact('albums','id_category','package_cards','scopeworks','disableddate'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
+        return view('general.search',$data,compact('albums','id_category','scopeworks','disableddate'))->with('alertsearch', 'ไม่พบช่างภาพที่คุณค้นหา!');
 
         // $search = $request;
         // $category = Input::get ( 'category' );
